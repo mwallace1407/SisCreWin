@@ -12,6 +12,25 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\hoperaciones\SisCred\SisCredApp\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsUrl>\\hoperaciones\SisCredApp\DotNetFX461</BootstrapperComponentsUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,9 +51,35 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E66643E61ECEE22A984982ED8F9CFFF1879838E7</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SisCreWin_ClaveTemporal.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="De_CryptDLL">
+      <HintPath>..\..\DLL\De_CryptDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,25 +89,189 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="BD\clsBD.cs" />
+    <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\clsCatalogosFijos.cs" />
+    <Compile Include="Modelo\clsGeneral.cs" />
+    <Compile Include="Modelo\ExportarExcel.cs" />
+    <Compile Include="Negocio\Buro\frmHistPuentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Buro\frmHistPuentes.Designer.cs">
+      <DependentUpon>frmHistPuentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Buro\frmHistInd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Buro\frmHistInd.Designer.cs">
+      <DependentUpon>frmHistInd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Buro\frmINTFPuentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Buro\frmINTFPuentes.Designer.cs">
+      <DependentUpon>frmINTFPuentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Buro\frmCSVIndividuales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Buro\frmCSVIndividuales.Designer.cs">
+      <DependentUpon>frmCSVIndividuales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Buro\frmTXTModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Buro\frmTXTModal.Designer.cs">
+      <DependentUpon>frmTXTModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Catalogos\frmTIIE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Catalogos\frmTIIE.Designer.cs">
+      <DependentUpon>frmTIIE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Catalogos\frmProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Catalogos\frmProyectos.Designer.cs">
+      <DependentUpon>frmProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Catalogos\frmPromotores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Catalogos\frmPromotores.Designer.cs">
+      <DependentUpon>frmPromotores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Catalogos\frmOrigenesPuente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Catalogos\frmOrigenesPuente.Designer.cs">
+      <DependentUpon>frmOrigenesPuente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Puentes\frmRegistroPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Puentes\frmRegistroPago.Designer.cs">
+      <DependentUpon>frmRegistroPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Puentes\frmCierreDiario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Puentes\frmCierreDiario.Designer.cs">
+      <DependentUpon>frmCierreDiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\frmBitacoraMov.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sistema\frmBitacoraMov.Designer.cs">
+      <DependentUpon>frmBitacoraMov.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\frmModulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sistema\frmModulos.Designer.cs">
+      <DependentUpon>frmModulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\frmTXTModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sistema\frmTXTModal.Designer.cs">
+      <DependentUpon>frmTXTModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\frmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sistema\frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad\clsSeguridad.cs" />
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Buro\frmHistPuentes.resx">
+      <DependentUpon>frmHistPuentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Buro\frmHistInd.resx">
+      <DependentUpon>frmHistInd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Buro\frmINTFPuentes.resx">
+      <DependentUpon>frmINTFPuentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Buro\frmCSVIndividuales.resx">
+      <DependentUpon>frmCSVIndividuales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Buro\frmTXTModal.resx">
+      <DependentUpon>frmTXTModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Catalogos\frmTIIE.resx">
+      <DependentUpon>frmTIIE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Catalogos\frmProyectos.resx">
+      <DependentUpon>frmProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Catalogos\frmPromotores.resx">
+      <DependentUpon>frmPromotores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Catalogos\frmOrigenesPuente.resx">
+      <DependentUpon>frmOrigenesPuente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Puentes\frmRegistroPago.resx">
+      <DependentUpon>frmRegistroPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Puentes\frmCierreDiario.resx">
+      <DependentUpon>frmCierreDiario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Sistema\frmBitacoraMov.resx">
+      <DependentUpon>frmBitacoraMov.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sistema\frmModulos.resx">
+      <DependentUpon>frmModulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sistema\frmTXTModal.resx">
+      <DependentUpon>frmTXTModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sistema\frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -72,9 +281,52 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SisCreWin_ClaveTemporal.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SisCreIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Online_banking_gray-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help1600_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Graphicloads-Filetype-Excel-xls.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xlsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xlsIcon_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gears_animated_t.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DivBackA.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DivBackA_big.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
