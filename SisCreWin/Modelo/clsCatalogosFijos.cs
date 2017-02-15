@@ -86,6 +86,7 @@ namespace SisCreWin.Modelo
         public static String Puentes_I_CierreDiario { get { return "sp_Puentes_I_CierreDiario"; } }
         public static String Puentes_M_RegistrarPago { get { return "sp_Puentes_M_RegistrarPago"; } }
         public static String Puentes_C_ObtenerPrestamos { get { return "sp_Puentes_C_ObtenerPrestamos"; } }
+        public static String Puentes_C_MovimientosPrestamo { get { return "sp_Puentes_C_MovimientosPrestamo"; } }
         //!Operaciones_Puentes
         #endregion Negocio
         #endregion Variables
@@ -112,6 +113,8 @@ namespace SisCreWin.Modelo
         public static int Puentes_OCP_ABC { get { return 7; } }
         public static int Puentes_GenerarCierre { get { return 9; } }
         public static int Puentes_RegistrarPago { get { return 10; } }
+
+        public static int Puentes_Historico { get { return 15; } }
         #endregion Negocio
         #endregion Variables
     }

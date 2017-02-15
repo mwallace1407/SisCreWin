@@ -31,6 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this.tab01 = new System.Windows.Forms.TabControl();
             this.tabCrear = new System.Windows.Forms.TabPage();
+            this.chkIngActivo = new System.Windows.Forms.CheckBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtIngSpread = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtIngMontoDesembolsadoPesos = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtIngMontoCredPesos = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboIngPromotor = new System.Windows.Forms.ComboBox();
             this.txtIngTipoAmortizacion = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dtpIngFechaVencimiento = new System.Windows.Forms.DateTimePicker();
@@ -47,29 +57,10 @@
             this.tabModificar = new System.Windows.Forms.TabPage();
             this.btnExportarExcel = new System.Windows.Forms.Button();
             this.gbDatos = new System.Windows.Forms.GroupBox();
-            this.txtModId = new System.Windows.Forms.NumericUpDown();
-            this.label16 = new System.Windows.Forms.Label();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.grdDatos = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tip01 = new System.Windows.Forms.ToolTip(this.components);
-            this.sfd01 = new System.Windows.Forms.SaveFileDialog();
-            this.cboIngPromotor = new System.Windows.Forms.ComboBox();
-            this.txtIngMontoCredPesos = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtIngMontoDesembolsadoPesos = new System.Windows.Forms.NumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtIngAdministracion = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtIngSpread = new System.Windows.Forms.NumericUpDown();
-            this.label19 = new System.Windows.Forms.Label();
-            this.chkIngActivo = new System.Windows.Forms.CheckBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.chkModActivo = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtModSpread = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtModAdministracion = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtModMontoDesembolsadoPesos = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
@@ -87,20 +78,29 @@
             this.txtModNombre = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.txtModId = new System.Windows.Forms.NumericUpDown();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.grdDatos = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tip01 = new System.Windows.Forms.ToolTip(this.components);
+            this.sfd01 = new System.Windows.Forms.SaveFileDialog();
+            this.cboIngAdministracion = new System.Windows.Forms.ComboBox();
+            this.cboModAdministracion = new System.Windows.Forms.ComboBox();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIngSpread)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIngMontoDesembolsadoPesos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIngMontoCredPesos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngNumViviendas)).BeginInit();
             this.tabModificar.SuspendLayout();
             this.gbDatos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtModId)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngMontoCredPesos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngMontoDesembolsadoPesos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngSpread)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModSpread)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModMontoDesembolsadoPesos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModMontoCredPesos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModNumViviendas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtModId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.SuspendLayout();
             // 
             // tab01
@@ -120,11 +120,11 @@
             // 
             // tabCrear
             // 
+            this.tabCrear.Controls.Add(this.cboIngAdministracion);
             this.tabCrear.Controls.Add(this.chkIngActivo);
             this.tabCrear.Controls.Add(this.label20);
             this.tabCrear.Controls.Add(this.txtIngSpread);
             this.tabCrear.Controls.Add(this.label19);
-            this.tabCrear.Controls.Add(this.txtIngAdministracion);
             this.tabCrear.Controls.Add(this.label18);
             this.tabCrear.Controls.Add(this.txtIngMontoDesembolsadoPesos);
             this.tabCrear.Controls.Add(this.label17);
@@ -152,6 +152,115 @@
             this.tabCrear.TabIndex = 0;
             this.tabCrear.Text = "Crear";
             this.tabCrear.UseVisualStyleBackColor = true;
+            // 
+            // chkIngActivo
+            // 
+            this.chkIngActivo.AutoSize = true;
+            this.chkIngActivo.Checked = true;
+            this.chkIngActivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkIngActivo.Enabled = false;
+            this.chkIngActivo.Location = new System.Drawing.Point(229, 338);
+            this.chkIngActivo.Name = "chkIngActivo";
+            this.chkIngActivo.Size = new System.Drawing.Size(15, 14);
+            this.chkIngActivo.TabIndex = 11;
+            this.chkIngActivo.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(8, 335);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(54, 17);
+            this.label20.TabIndex = 27;
+            this.label20.Text = "Activo:";
+            // 
+            // txtIngSpread
+            // 
+            this.txtIngSpread.DecimalPlaces = 2;
+            this.txtIngSpread.Location = new System.Drawing.Point(229, 309);
+            this.txtIngSpread.Name = "txtIngSpread";
+            this.txtIngSpread.Size = new System.Drawing.Size(252, 23);
+            this.txtIngSpread.TabIndex = 10;
+            this.txtIngSpread.ThousandsSeparator = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(8, 311);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(57, 17);
+            this.label19.TabIndex = 25;
+            this.label19.Text = "Spread:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(8, 283);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(108, 17);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "Administración:";
+            // 
+            // txtIngMontoDesembolsadoPesos
+            // 
+            this.txtIngMontoDesembolsadoPesos.DecimalPlaces = 2;
+            this.txtIngMontoDesembolsadoPesos.Location = new System.Drawing.Point(229, 219);
+            this.txtIngMontoDesembolsadoPesos.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.txtIngMontoDesembolsadoPesos.Name = "txtIngMontoDesembolsadoPesos";
+            this.txtIngMontoDesembolsadoPesos.Size = new System.Drawing.Size(252, 23);
+            this.txtIngMontoDesembolsadoPesos.TabIndex = 7;
+            this.txtIngMontoDesembolsadoPesos.ThousandsSeparator = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(8, 221);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(214, 17);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "Monto desembolsado en pesos:";
+            // 
+            // txtIngMontoCredPesos
+            // 
+            this.txtIngMontoCredPesos.DecimalPlaces = 2;
+            this.txtIngMontoCredPesos.Location = new System.Drawing.Point(229, 190);
+            this.txtIngMontoCredPesos.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.txtIngMontoCredPesos.Name = "txtIngMontoCredPesos";
+            this.txtIngMontoCredPesos.Size = new System.Drawing.Size(252, 23);
+            this.txtIngMontoCredPesos.TabIndex = 6;
+            this.txtIngMontoCredPesos.ThousandsSeparator = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 192);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(185, 17);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Monto de crédito en pesos:";
+            // 
+            // cboIngPromotor
+            // 
+            this.cboIngPromotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboIngPromotor.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboIngPromotor.FormattingEnabled = true;
+            this.cboIngPromotor.Location = new System.Drawing.Point(229, 41);
+            this.cboIngPromotor.Name = "cboIngPromotor";
+            this.cboIngPromotor.Size = new System.Drawing.Size(252, 24);
+            this.cboIngPromotor.TabIndex = 1;
             // 
             // txtIngTipoAmortizacion
             // 
@@ -245,7 +354,7 @@
             // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(229, 359);
+            this.btnCrear.Location = new System.Drawing.Point(229, 358);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(252, 24);
             this.btnCrear.TabIndex = 12;
@@ -323,11 +432,11 @@
             // 
             this.gbDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbDatos.Controls.Add(this.cboModAdministracion);
             this.gbDatos.Controls.Add(this.chkModActivo);
             this.gbDatos.Controls.Add(this.label4);
             this.gbDatos.Controls.Add(this.txtModSpread);
             this.gbDatos.Controls.Add(this.label6);
-            this.gbDatos.Controls.Add(this.txtModAdministracion);
             this.gbDatos.Controls.Add(this.label7);
             this.gbDatos.Controls.Add(this.txtModMontoDesembolsadoPesos);
             this.gbDatos.Controls.Add(this.label8);
@@ -354,199 +463,6 @@
             this.gbDatos.TabIndex = 3;
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Proyecto seleccionado:";
-            // 
-            // txtModId
-            // 
-            this.txtModId.Location = new System.Drawing.Point(228, 22);
-            this.txtModId.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.txtModId.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtModId.Name = "txtModId";
-            this.txtModId.ReadOnly = true;
-            this.txtModId.Size = new System.Drawing.Size(221, 23);
-            this.txtModId.TabIndex = 8;
-            this.txtModId.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(7, 24);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(147, 17);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "Número de proyecto:";
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModificar.Location = new System.Drawing.Point(228, 368);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(221, 23);
-            this.btnModificar.TabIndex = 24;
-            this.btnModificar.Text = "Modificar proyecto";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
-            // grdDatos
-            // 
-            this.grdDatos.AllowUserToAddRows = false;
-            this.grdDatos.AllowUserToDeleteRows = false;
-            this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.grdDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.grdDatos.Location = new System.Drawing.Point(11, 40);
-            this.grdDatos.MultiSelect = false;
-            this.grdDatos.Name = "grdDatos";
-            this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDatos.Size = new System.Drawing.Size(564, 423);
-            this.grdDatos.TabIndex = 2;
-            this.grdDatos.SelectionChanged += new System.EventHandler(this.grdDatos_SelectionChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 20);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(235, 17);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Proyectos registrados en el sistema:";
-            // 
-            // sfd01
-            // 
-            this.sfd01.CheckFileExists = true;
-            this.sfd01.DefaultExt = "*.xlsx";
-            this.sfd01.Filter = "Archivos de Excel|*.xlsx";
-            // 
-            // cboIngPromotor
-            // 
-            this.cboIngPromotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboIngPromotor.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboIngPromotor.FormattingEnabled = true;
-            this.cboIngPromotor.Location = new System.Drawing.Point(229, 41);
-            this.cboIngPromotor.Name = "cboIngPromotor";
-            this.cboIngPromotor.Size = new System.Drawing.Size(252, 24);
-            this.cboIngPromotor.TabIndex = 1;
-            // 
-            // txtIngMontoCredPesos
-            // 
-            this.txtIngMontoCredPesos.DecimalPlaces = 2;
-            this.txtIngMontoCredPesos.Location = new System.Drawing.Point(229, 190);
-            this.txtIngMontoCredPesos.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            0});
-            this.txtIngMontoCredPesos.Name = "txtIngMontoCredPesos";
-            this.txtIngMontoCredPesos.Size = new System.Drawing.Size(252, 23);
-            this.txtIngMontoCredPesos.TabIndex = 6;
-            this.txtIngMontoCredPesos.ThousandsSeparator = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 192);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(185, 17);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Monto de crédito en pesos:";
-            // 
-            // txtIngMontoDesembolsadoPesos
-            // 
-            this.txtIngMontoDesembolsadoPesos.DecimalPlaces = 2;
-            this.txtIngMontoDesembolsadoPesos.Location = new System.Drawing.Point(229, 219);
-            this.txtIngMontoDesembolsadoPesos.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            0});
-            this.txtIngMontoDesembolsadoPesos.Name = "txtIngMontoDesembolsadoPesos";
-            this.txtIngMontoDesembolsadoPesos.Size = new System.Drawing.Size(252, 23);
-            this.txtIngMontoDesembolsadoPesos.TabIndex = 7;
-            this.txtIngMontoDesembolsadoPesos.ThousandsSeparator = true;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(8, 221);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(214, 17);
-            this.label17.TabIndex = 21;
-            this.label17.Text = "Monto desembolsado en pesos:";
-            // 
-            // txtIngAdministracion
-            // 
-            this.txtIngAdministracion.Location = new System.Drawing.Point(229, 280);
-            this.txtIngAdministracion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIngAdministracion.MaxLength = 25;
-            this.txtIngAdministracion.Name = "txtIngAdministracion";
-            this.txtIngAdministracion.Size = new System.Drawing.Size(252, 23);
-            this.txtIngAdministracion.TabIndex = 9;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(8, 283);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(108, 17);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "Administración:";
-            // 
-            // txtIngSpread
-            // 
-            this.txtIngSpread.DecimalPlaces = 2;
-            this.txtIngSpread.Location = new System.Drawing.Point(229, 310);
-            this.txtIngSpread.Name = "txtIngSpread";
-            this.txtIngSpread.Size = new System.Drawing.Size(252, 23);
-            this.txtIngSpread.TabIndex = 10;
-            this.txtIngSpread.ThousandsSeparator = true;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(8, 312);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 17);
-            this.label19.TabIndex = 25;
-            this.label19.Text = "Spread:";
-            // 
-            // chkIngActivo
-            // 
-            this.chkIngActivo.AutoSize = true;
-            this.chkIngActivo.Location = new System.Drawing.Point(229, 339);
-            this.chkIngActivo.Name = "chkIngActivo";
-            this.chkIngActivo.Size = new System.Drawing.Size(15, 14);
-            this.chkIngActivo.TabIndex = 11;
-            this.chkIngActivo.UseVisualStyleBackColor = true;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(8, 336);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(54, 17);
-            this.label20.TabIndex = 27;
-            this.label20.Text = "Activo:";
             // 
             // chkModActivo
             // 
@@ -585,15 +501,6 @@
             this.label6.Size = new System.Drawing.Size(57, 17);
             this.label6.TabIndex = 48;
             this.label6.Text = "Spread:";
-            // 
-            // txtModAdministracion
-            // 
-            this.txtModAdministracion.Location = new System.Drawing.Point(228, 290);
-            this.txtModAdministracion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtModAdministracion.MaxLength = 25;
-            this.txtModAdministracion.Name = "txtModAdministracion";
-            this.txtModAdministracion.Size = new System.Drawing.Size(221, 23);
-            this.txtModAdministracion.TabIndex = 21;
             // 
             // label7
             // 
@@ -656,6 +563,7 @@
             // cboModPromotor
             // 
             this.cboModPromotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboModPromotor.Enabled = false;
             this.cboModPromotor.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboModPromotor.FormattingEnabled = true;
             this.cboModPromotor.Location = new System.Drawing.Point(228, 51);
@@ -782,6 +690,105 @@
             this.label25.TabIndex = 29;
             this.label25.Text = "Nombre del promotor::";
             // 
+            // txtModId
+            // 
+            this.txtModId.Enabled = false;
+            this.txtModId.Location = new System.Drawing.Point(228, 22);
+            this.txtModId.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.txtModId.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtModId.Name = "txtModId";
+            this.txtModId.ReadOnly = true;
+            this.txtModId.Size = new System.Drawing.Size(221, 23);
+            this.txtModId.TabIndex = 8;
+            this.txtModId.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(7, 24);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(147, 17);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "Número de proyecto:";
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModificar.Location = new System.Drawing.Point(228, 368);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(221, 23);
+            this.btnModificar.TabIndex = 24;
+            this.btnModificar.Text = "Modificar proyecto";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // grdDatos
+            // 
+            this.grdDatos.AllowUserToAddRows = false;
+            this.grdDatos.AllowUserToDeleteRows = false;
+            this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdDatos.Location = new System.Drawing.Point(11, 40);
+            this.grdDatos.MultiSelect = false;
+            this.grdDatos.Name = "grdDatos";
+            this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdDatos.Size = new System.Drawing.Size(564, 423);
+            this.grdDatos.TabIndex = 2;
+            this.grdDatos.SelectionChanged += new System.EventHandler(this.grdDatos_SelectionChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 20);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(235, 17);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Proyectos registrados en el sistema:";
+            // 
+            // sfd01
+            // 
+            this.sfd01.CheckFileExists = true;
+            this.sfd01.DefaultExt = "*.xlsx";
+            this.sfd01.Filter = "Archivos de Excel|*.xlsx";
+            // 
+            // cboIngAdministracion
+            // 
+            this.cboIngAdministracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboIngAdministracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboIngAdministracion.FormattingEnabled = true;
+            this.cboIngAdministracion.Location = new System.Drawing.Point(229, 279);
+            this.cboIngAdministracion.Name = "cboIngAdministracion";
+            this.cboIngAdministracion.Size = new System.Drawing.Size(252, 25);
+            this.cboIngAdministracion.TabIndex = 28;
+            // 
+            // cboModAdministracion
+            // 
+            this.cboModAdministracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboModAdministracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboModAdministracion.FormattingEnabled = true;
+            this.cboModAdministracion.Location = new System.Drawing.Point(228, 289);
+            this.cboModAdministracion.Name = "cboModAdministracion";
+            this.cboModAdministracion.Size = new System.Drawing.Size(221, 25);
+            this.cboModAdministracion.TabIndex = 50;
+            // 
             // frmProyectos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -796,20 +803,20 @@
             this.tab01.ResumeLayout(false);
             this.tabCrear.ResumeLayout(false);
             this.tabCrear.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIngSpread)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIngMontoDesembolsadoPesos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIngMontoCredPesos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngNumViviendas)).EndInit();
             this.tabModificar.ResumeLayout(false);
             this.tabModificar.PerformLayout();
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtModId)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngMontoCredPesos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngMontoDesembolsadoPesos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngSpread)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModSpread)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModMontoDesembolsadoPesos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModMontoCredPesos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModNumViviendas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtModId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -848,7 +855,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.NumericUpDown txtIngSpread;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txtIngAdministracion;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.CheckBox chkIngActivo;
         private System.Windows.Forms.Label label20;
@@ -856,7 +862,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown txtModSpread;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtModAdministracion;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown txtModMontoDesembolsadoPesos;
         private System.Windows.Forms.Label label8;
@@ -874,5 +879,7 @@
         private System.Windows.Forms.TextBox txtModNombre;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox cboIngAdministracion;
+        private System.Windows.Forms.ComboBox cboModAdministracion;
     }
 }

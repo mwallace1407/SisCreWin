@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -168,6 +168,12 @@
     <Compile Include="Negocio\Catalogos\frmOrigenesPuente.Designer.cs">
       <DependentUpon>frmOrigenesPuente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\Puentes\frmHistCred.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Puentes\frmHistCred.Designer.cs">
+      <DependentUpon>frmHistCred.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Puentes\frmRegistroPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Catalogos\frmOrigenesPuente.resx">
       <DependentUpon>frmOrigenesPuente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Puentes\frmHistCred.resx">
+      <DependentUpon>frmHistCred.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Puentes\frmRegistroPago.resx">
       <DependentUpon>frmRegistroPago.cs</DependentUpon>

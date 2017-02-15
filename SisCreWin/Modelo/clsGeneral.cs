@@ -39,6 +39,50 @@ namespace SisCreWin.Modelo
                 return ddl;
             }
         }
+
+        public static DataTable ddlActLiq
+        {
+            get
+            {
+                DataTable ddl = new DataTable();
+                DataRow dr;
+
+                ddl.Columns.Add("Valor");
+                ddl.Columns.Add("Descripcion");
+                dr = ddl.NewRow();
+                dr[0] = "ACTIVO";
+                dr[1] = "Activo";
+                ddl.Rows.Add(dr);
+                dr = ddl.NewRow();
+                dr[0] = "LIQUIDADO";
+                dr[1] = "Liquidado";
+                ddl.Rows.Add(dr);
+
+                return ddl;
+            }
+        }
+
+        public static DataTable ddlAdminCred
+        {
+            get
+            {
+                DataTable ddl = new DataTable();
+                DataRow dr;
+
+                ddl.Columns.Add("Valor");
+                ddl.Columns.Add("Descripcion");
+                dr = ddl.NewRow();
+                dr[0] = "FUERA DE BALANCE";
+                dr[1] = "Fuera de balance";
+                ddl.Rows.Add(dr);
+                dr = ddl.NewRow();
+                dr[0] = "BALANCE";
+                dr[1] = "Balance";
+                ddl.Rows.Add(dr);
+
+                return ddl;
+            }
+        }
         #endregion Variables
         #region Enumeraciones
         public enum TiposMensaje
@@ -456,9 +500,10 @@ namespace SisCreWin.Modelo
             public decimal PHP_InteresCubierto;
             public decimal PHP_InteresCapVenc;
             public decimal PHP_ComiAplicacion;
+            public decimal PHP_PagoIntMoratorios;
 
             public PuentesPagos(int vUsr_Id, DateTime vPHP_FechaPago, int vPHP_NumeroPrestamo, decimal vPHP_PagoCapital,
-                decimal vPHP_InteresCubierto, decimal vPHP_InteresCapVenc, decimal vPHP_ComiAplicacion,
+                decimal vPHP_InteresCubierto, decimal vPHP_InteresCapVenc, decimal vPHP_ComiAplicacion, decimal vPHP_PagoIntMoratorios,
                 DateTime? vPHP_FechaCierre = null, DateTime? vPHP_Fecha = null, int vPHP_Id = 0)
             {
                 PHP_Id = vPHP_Id;
@@ -471,6 +516,7 @@ namespace SisCreWin.Modelo
                 PHP_InteresCubierto = vPHP_InteresCubierto;
                 PHP_InteresCapVenc = vPHP_InteresCapVenc;
                 PHP_ComiAplicacion = vPHP_ComiAplicacion;
+                PHP_PagoIntMoratorios = vPHP_PagoIntMoratorios;
             }
         }
         #endregion Negocio

@@ -58,7 +58,7 @@ namespace SisCreWin.Negocio.Catalogos
             }
         }
 
-        private void CargarPromotores()
+        private void CargarCombos()
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT();
 
@@ -71,6 +71,14 @@ namespace SisCreWin.Negocio.Catalogos
             cboModPromotor.ValueMember = "Prom_Id";
             cboModPromotor.DisplayMember = "Prom_Nombre";
             cboModPromotor.DataSource = Resultado.Resultado;
+
+            cboIngAdministracion.ValueMember = "Valor";
+            cboIngAdministracion.DisplayMember = "Descripcion";
+            cboIngAdministracion.DataSource = clsGeneral.ddlAdminCred;
+
+            cboModAdministracion.ValueMember = "Valor";
+            cboModAdministracion.DisplayMember = "Descripcion";
+            cboModAdministracion.DataSource = clsGeneral.ddlAdminCred;
         }
 
         public frmProyectos()
@@ -86,7 +94,7 @@ namespace SisCreWin.Negocio.Catalogos
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Catalogos_I_Proyectos, vBit_DatosPrevios: null);
             clsGeneral.Proyecto Proyecto = new clsGeneral.Proyecto((int)cboIngPromotor.SelectedValue, txtIngNombre.Text, (int)txtIngNumViviendas.Value,
                     dtpIngFechaApertura.Value, dtpIngFechaVencimiento.Value, txtIngMontoCredPesos.Value, txtIngMontoDesembolsadoPesos.Value,
-                    txtIngTipoAmortizacion.Text, txtIngAdministracion.Text, txtIngSpread.Value, chkIngActivo.Checked);
+                    txtIngTipoAmortizacion.Text, cboIngAdministracion.SelectedValue.ToString(), txtIngSpread.Value, chkIngActivo.Checked);
 
             Resultado = clsBD.Catalogos_I_Proyectos(Proyecto);
 
@@ -108,7 +116,7 @@ namespace SisCreWin.Negocio.Catalogos
                     txtIngMontoCredPesos.Value = 0;
                     txtIngMontoDesembolsadoPesos.Value = 0;
                     txtIngTipoAmortizacion.Text = string.Empty;
-                    txtIngAdministracion.Text = string.Empty;
+                    if (cboIngAdministracion.Items.Count > 0) { cboIngAdministracion.SelectedIndex = 0; }
                     txtIngSpread.Value = 0;
                     chkIngActivo.Checked = false;
                     cboIngPromotor.Focus();
@@ -126,7 +134,7 @@ namespace SisCreWin.Negocio.Catalogos
 
         private void tab01_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarPromotores();
+            CargarCombos();
 
             if (tab01.SelectedIndex == 1)
             {
@@ -150,7 +158,7 @@ namespace SisCreWin.Negocio.Catalogos
                 txtModMontoCredPesos.Value = (decimal)dr.Cells["Proy_Monto_Credito_Pesos"].Value;
                 txtModMontoDesembolsadoPesos.Value = (decimal)dr.Cells["Proy_Monto_Desembolsado_Pesos"].Value;
                 txtModTipoAmortizacion.Text = dr.Cells["Proy_Tipo_Amortizacion"].Value.ToString();
-                txtModAdministracion.Text = dr.Cells["Proy_Administracion"].Value.ToString();
+                if (cboModAdministracion.Items.Count > 0) { cboModAdministracion.SelectedValue = dr.Cells["Proy_Administracion"].Value.ToString(); }
                 txtModSpread.Value = (decimal)dr.Cells["Proy_Spread"].Value;
 
                 if (dr.Cells["Proy_Activo"].Value.ToString() == "S")
@@ -171,7 +179,7 @@ namespace SisCreWin.Negocio.Catalogos
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Catalogos_U_Proyectos, vBit_DatosPrevios: null);
             clsGeneral.Proyecto Proyecto = new clsGeneral.Proyecto((int)cboModPromotor.SelectedValue, txtModNombre.Text, (int)txtModNumViviendas.Value,
                 dtpModFechaApertura.Value, dtpModFechaVencimiento.Value, (decimal)txtModMontoCredPesos.Value, (decimal)txtModMontoDesembolsadoPesos.Value,
-                txtModTipoAmortizacion.Text, txtModAdministracion.Text, (decimal)txtModSpread.Value, chkModActivo.Checked, vProy_Id: (int)txtModId.Value);
+                txtModTipoAmortizacion.Text, cboModAdministracion.SelectedValue.ToString(), (decimal)txtModSpread.Value, chkModActivo.Checked, vProy_Id: (int)txtModId.Value);
 
             Resultado = clsBD.Catalogos_C_ProyectosBitacora((int)txtModId.Value);
 
@@ -236,7 +244,7 @@ namespace SisCreWin.Negocio.Catalogos
             cboModPromotor.DropDownClosed += cboModPromotor_DropDownClosed;
             cboModPromotor.LostFocus += cboModPromotor_LostFocus;
 
-            CargarPromotores();
+            CargarCombos();
         }
 
         private void cboIngPromotor_LostFocus(object sender, EventArgs e)

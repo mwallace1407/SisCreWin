@@ -30,7 +30,11 @@
         {
             this.tab01 = new System.Windows.Forms.TabControl();
             this.tabCrear = new System.Windows.Forms.TabPage();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
+            this.grdDatos = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPagoIntMoratorios = new System.Windows.Forms.NumericUpDown();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtComiAplicacion = new System.Windows.Forms.NumericUpDown();
@@ -54,7 +58,9 @@
             this.wkr01 = new System.ComponentModel.BackgroundWorker();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPagoIntMoratorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtComiAplicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInteresCapVenc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInteresCubierto)).BeginInit();
@@ -74,11 +80,13 @@
             this.tab01.Margin = new System.Windows.Forms.Padding(5);
             this.tab01.Name = "tab01";
             this.tab01.SelectedIndex = 0;
-            this.tab01.Size = new System.Drawing.Size(392, 409);
+            this.tab01.Size = new System.Drawing.Size(996, 449);
             this.tab01.TabIndex = 1;
             // 
             // tabCrear
             // 
+            this.tabCrear.Controls.Add(this.btnExportarExcel);
+            this.tabCrear.Controls.Add(this.grdDatos);
             this.tabCrear.Controls.Add(this.groupBox1);
             this.tabCrear.Controls.Add(this.label5);
             this.tabCrear.Controls.Add(this.txtMontoTotal);
@@ -92,13 +100,43 @@
             this.tabCrear.Margin = new System.Windows.Forms.Padding(5);
             this.tabCrear.Name = "tabCrear";
             this.tabCrear.Padding = new System.Windows.Forms.Padding(5);
-            this.tabCrear.Size = new System.Drawing.Size(384, 379);
+            this.tabCrear.Size = new System.Drawing.Size(988, 419);
             this.tabCrear.TabIndex = 0;
             this.tabCrear.Text = "Crear";
             this.tabCrear.UseVisualStyleBackColor = true;
             // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportarExcel.BackgroundImage = global::SisCreWin.Properties.Resources.xlsIcon_32;
+            this.btnExportarExcel.Location = new System.Drawing.Point(948, 18);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(32, 32);
+            this.btnExportarExcel.TabIndex = 13;
+            this.btnExportarExcel.UseVisualStyleBackColor = true;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            // 
+            // grdDatos
+            // 
+            this.grdDatos.AllowUserToAddRows = false;
+            this.grdDatos.AllowUserToDeleteRows = false;
+            this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdDatos.Location = new System.Drawing.Point(372, 52);
+            this.grdDatos.MultiSelect = false;
+            this.grdDatos.Name = "grdDatos";
+            this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdDatos.Size = new System.Drawing.Size(608, 319);
+            this.grdDatos.TabIndex = 12;
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtPagoIntMoratorios);
             this.groupBox1.Controls.Add(this.lblMensaje);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtComiAplicacion);
@@ -110,15 +148,39 @@
             this.groupBox1.Controls.Add(this.txtPagoCapital);
             this.groupBox1.Location = new System.Drawing.Point(13, 142);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(353, 193);
+            this.groupBox1.Size = new System.Drawing.Size(353, 229);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dispersión";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 153);
+            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(140, 17);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Intereses moratorios:";
+            // 
+            // txtPagoIntMoratorios
+            // 
+            this.txtPagoIntMoratorios.DecimalPlaces = 6;
+            this.txtPagoIntMoratorios.Location = new System.Drawing.Point(188, 151);
+            this.txtPagoIntMoratorios.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtPagoIntMoratorios.Name = "txtPagoIntMoratorios";
+            this.txtPagoIntMoratorios.Size = new System.Drawing.Size(150, 23);
+            this.txtPagoIntMoratorios.TabIndex = 8;
+            this.txtPagoIntMoratorios.ValueChanged += new System.EventHandler(this.txtPagoIntMoratorios_ValueChanged);
+            // 
             // lblMensaje
             // 
             this.lblMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
-            this.lblMensaje.Location = new System.Drawing.Point(11, 148);
+            this.lblMensaje.Location = new System.Drawing.Point(11, 177);
             this.lblMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(327, 37);
@@ -248,7 +310,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 85);
+            this.label4.Location = new System.Drawing.Point(11, 55);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(135, 17);
@@ -259,28 +321,30 @@
             // 
             this.cboNumeroPrestamo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNumeroPrestamo.FormattingEnabled = true;
-            this.cboNumeroPrestamo.Location = new System.Drawing.Point(165, 82);
+            this.cboNumeroPrestamo.Location = new System.Drawing.Point(165, 52);
             this.cboNumeroPrestamo.Name = "cboNumeroPrestamo";
             this.cboNumeroPrestamo.Size = new System.Drawing.Size(201, 25);
             this.cboNumeroPrestamo.TabIndex = 2;
+            this.cboNumeroPrestamo.SelectedIndexChanged += new System.EventHandler(this.cboNumeroPrestamo_SelectedIndexChanged);
             // 
             // dtpFechaPago
             // 
             this.dtpFechaPago.CustomFormat = "dd/MM/yyyy";
             this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaPago.Location = new System.Drawing.Point(165, 52);
+            this.dtpFechaPago.Location = new System.Drawing.Point(165, 84);
             this.dtpFechaPago.Name = "dtpFechaPago";
             this.dtpFechaPago.Size = new System.Drawing.Size(201, 23);
             this.dtpFechaPago.TabIndex = 1;
+            this.dtpFechaPago.ValueChanged += new System.EventHandler(this.dtpFechaPago_ValueChanged);
             // 
             // btnCrear
             // 
             this.btnCrear.Enabled = false;
-            this.btnCrear.Location = new System.Drawing.Point(201, 342);
+            this.btnCrear.Location = new System.Drawing.Point(201, 378);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(165, 25);
-            this.btnCrear.TabIndex = 8;
+            this.btnCrear.TabIndex = 9;
             this.btnCrear.Text = "Registrar pago";
             this.btnCrear.UseVisualStyleBackColor = true;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
@@ -288,7 +352,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 57);
+            this.label3.Location = new System.Drawing.Point(10, 89);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 17);
@@ -311,7 +375,7 @@
             this.tabEstadisticas.Margin = new System.Windows.Forms.Padding(5);
             this.tabEstadisticas.Name = "tabEstadisticas";
             this.tabEstadisticas.Padding = new System.Windows.Forms.Padding(5);
-            this.tabEstadisticas.Size = new System.Drawing.Size(384, 379);
+            this.tabEstadisticas.Size = new System.Drawing.Size(988, 419);
             this.tabEstadisticas.TabIndex = 1;
             this.tabEstadisticas.Text = "Estadísticas";
             this.tabEstadisticas.UseVisualStyleBackColor = true;
@@ -326,7 +390,7 @@
             this.pnlProgreso.Controls.Add(this.label2);
             this.pnlProgreso.Location = new System.Drawing.Point(3000, 3000);
             this.pnlProgreso.Name = "pnlProgreso";
-            this.pnlProgreso.Size = new System.Drawing.Size(0, 80);
+            this.pnlProgreso.Size = new System.Drawing.Size(604, 120);
             this.pnlProgreso.TabIndex = 2;
             this.pnlProgreso.Visible = false;
             // 
@@ -335,7 +399,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(-48, 115);
+            this.label2.Location = new System.Drawing.Point(254, 135);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 16);
             this.label2.TabIndex = 0;
@@ -351,7 +415,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 437);
+            this.ClientSize = new System.Drawing.Size(1024, 477);
             this.Controls.Add(this.pnlProgreso);
             this.Controls.Add(this.tab01);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -363,8 +427,10 @@
             this.tab01.ResumeLayout(false);
             this.tabCrear.ResumeLayout(false);
             this.tabCrear.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPagoIntMoratorios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtComiAplicacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInteresCapVenc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInteresCubierto)).EndInit();
@@ -402,5 +468,9 @@
         private System.Windows.Forms.NumericUpDown txtMontoTotal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboNumeroPrestamo;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown txtPagoIntMoratorios;
+        private System.Windows.Forms.DataGridView grdDatos;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }

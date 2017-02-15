@@ -383,6 +383,25 @@ namespace SisCreWin
                 MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
             }
         }
+
+        private void mnuHistoricoPuentes_Click(object sender, EventArgs e)
+        {
+            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
+            frmHistCred frm = new frmHistCred();
+
+            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Puentes_Historico);
+
+            if (Respuesta.Permitido)
+            {
+                frm.MdiParent = this;
+                frm.Icon = SisCreWin.Properties.Resources.favicon;
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
+            }
+        }
         #endregion Menu
 
         private void tmrMtto_Tick(object sender, EventArgs e)

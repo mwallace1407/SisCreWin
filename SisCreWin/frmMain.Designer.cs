@@ -42,6 +42,7 @@
             this.mnuINTFPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuBuroHistInd = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBuroHistPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.puentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCierreDiarioPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRegistrarPagoPuente = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +60,8 @@
             this.tmrMtto = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stMantenimiento = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuBuroHistPuentes = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuHistoricoPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -165,11 +167,20 @@
             this.mnuBuroHistInd.Text = "Histórico de CSV para individuales";
             this.mnuBuroHistInd.Click += new System.EventHandler(this.mnuBuroHistInd_Click);
             // 
+            // mnuBuroHistPuentes
+            // 
+            this.mnuBuroHistPuentes.Name = "mnuBuroHistPuentes";
+            this.mnuBuroHistPuentes.Size = new System.Drawing.Size(297, 22);
+            this.mnuBuroHistPuentes.Text = "Histórico de INTF para puentes";
+            this.mnuBuroHistPuentes.Click += new System.EventHandler(this.mnuBuroHistPuentes_Click);
+            // 
             // puentesToolStripMenuItem
             // 
             this.puentesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuCierreDiarioPuentes,
-            this.mnuRegistrarPagoPuente});
+            this.mnuRegistrarPagoPuente,
+            this.toolStripSeparator1,
+            this.mnuHistoricoPuentes});
             this.puentesToolStripMenuItem.Name = "puentesToolStripMenuItem";
             this.puentesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.puentesToolStripMenuItem.Text = "&Puentes";
@@ -298,12 +309,17 @@
             this.stMantenimiento.Text = "El sistema se encuentra en mantenimiento. Espere por favor.";
             this.stMantenimiento.Visible = false;
             // 
-            // mnuBuroHistPuentes
+            // toolStripSeparator1
             // 
-            this.mnuBuroHistPuentes.Name = "mnuBuroHistPuentes";
-            this.mnuBuroHistPuentes.Size = new System.Drawing.Size(297, 22);
-            this.mnuBuroHistPuentes.Text = "Histórico de INTF para puentes";
-            this.mnuBuroHistPuentes.Click += new System.EventHandler(this.mnuBuroHistPuentes_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(273, 6);
+            // 
+            // mnuHistoricoPuentes
+            // 
+            this.mnuHistoricoPuentes.Name = "mnuHistoricoPuentes";
+            this.mnuHistoricoPuentes.Size = new System.Drawing.Size(276, 22);
+            this.mnuHistoricoPuentes.Text = "&Histórico de créditos";
+            this.mnuHistoricoPuentes.Click += new System.EventHandler(this.mnuHistoricoPuentes_Click);
             // 
             // frmMain
             // 
@@ -367,5 +383,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mnuBuroHistInd;
         private System.Windows.Forms.ToolStripMenuItem mnuBuroHistPuentes;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mnuHistoricoPuentes;
     }
 }

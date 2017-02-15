@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tab01 = new System.Windows.Forms.TabControl();
             this.tabCrear = new System.Windows.Forms.TabPage();
+            this.cboIngProyectos = new System.Windows.Forms.ComboBox();
             this.txtIngEstado = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dtpIngFechaVencimiento = new System.Windows.Forms.DateTimePicker();
@@ -39,7 +40,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtIngNumViviendas = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtIngIdProyecto = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.txtIngId = new System.Windows.Forms.NumericUpDown();
             this.btnCrearModulo = new System.Windows.Forms.Button();
@@ -50,7 +50,8 @@
             this.tabModificar = new System.Windows.Forms.TabPage();
             this.btnExportarExcel = new System.Windows.Forms.Button();
             this.gbDatos = new System.Windows.Forms.GroupBox();
-            this.txtModEstado = new System.Windows.Forms.TextBox();
+            this.cboModEstado = new System.Windows.Forms.ComboBox();
+            this.cboModProyectos = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpModFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtModNumViviendas = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtModIdProyecto = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.txtModId = new System.Windows.Forms.NumericUpDown();
             this.txtModOrigen = new System.Windows.Forms.TextBox();
@@ -72,12 +72,10 @@
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngNumViviendas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngIdProyecto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngId)).BeginInit();
             this.tabModificar.SuspendLayout();
             this.gbDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtModNumViviendas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtModIdProyecto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.SuspendLayout();
@@ -99,6 +97,7 @@
             // 
             // tabCrear
             // 
+            this.tabCrear.Controls.Add(this.cboIngProyectos);
             this.tabCrear.Controls.Add(this.txtIngEstado);
             this.tabCrear.Controls.Add(this.label14);
             this.tabCrear.Controls.Add(this.dtpIngFechaVencimiento);
@@ -107,7 +106,6 @@
             this.tabCrear.Controls.Add(this.label12);
             this.tabCrear.Controls.Add(this.txtIngNumViviendas);
             this.tabCrear.Controls.Add(this.label11);
-            this.tabCrear.Controls.Add(this.txtIngIdProyecto);
             this.tabCrear.Controls.Add(this.label10);
             this.tabCrear.Controls.Add(this.txtIngId);
             this.tabCrear.Controls.Add(this.btnCrearModulo);
@@ -124,19 +122,30 @@
             this.tabCrear.Text = "Crear";
             this.tabCrear.UseVisualStyleBackColor = true;
             // 
+            // cboIngProyectos
+            // 
+            this.cboIngProyectos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboIngProyectos.FormattingEnabled = true;
+            this.cboIngProyectos.Location = new System.Drawing.Point(182, 102);
+            this.cboIngProyectos.Name = "cboIngProyectos";
+            this.cboIngProyectos.Size = new System.Drawing.Size(252, 25);
+            this.cboIngProyectos.TabIndex = 2;
+            // 
             // txtIngEstado
             // 
-            this.txtIngEstado.Location = new System.Drawing.Point(182, 219);
+            this.txtIngEstado.Enabled = false;
+            this.txtIngEstado.Location = new System.Drawing.Point(182, 221);
             this.txtIngEstado.Margin = new System.Windows.Forms.Padding(4);
             this.txtIngEstado.MaxLength = 20;
             this.txtIngEstado.Name = "txtIngEstado";
             this.txtIngEstado.Size = new System.Drawing.Size(252, 23);
             this.txtIngEstado.TabIndex = 6;
+            this.txtIngEstado.Text = "ACTIVO";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 222);
+            this.label14.Location = new System.Drawing.Point(8, 224);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(56, 17);
@@ -147,7 +156,7 @@
             // 
             this.dtpIngFechaVencimiento.CustomFormat = "dd/MM/yyyy";
             this.dtpIngFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpIngFechaVencimiento.Location = new System.Drawing.Point(182, 189);
+            this.dtpIngFechaVencimiento.Location = new System.Drawing.Point(182, 191);
             this.dtpIngFechaVencimiento.Name = "dtpIngFechaVencimiento";
             this.dtpIngFechaVencimiento.Size = new System.Drawing.Size(252, 23);
             this.dtpIngFechaVencimiento.TabIndex = 5;
@@ -155,7 +164,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 194);
+            this.label13.Location = new System.Drawing.Point(8, 196);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(157, 17);
@@ -166,7 +175,7 @@
             // 
             this.dtpIngFechaApertura.CustomFormat = "dd/MM/yyyy";
             this.dtpIngFechaApertura.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpIngFechaApertura.Location = new System.Drawing.Point(182, 160);
+            this.dtpIngFechaApertura.Location = new System.Drawing.Point(182, 162);
             this.dtpIngFechaApertura.Name = "dtpIngFechaApertura";
             this.dtpIngFechaApertura.Size = new System.Drawing.Size(252, 23);
             this.dtpIngFechaApertura.TabIndex = 4;
@@ -174,7 +183,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(8, 165);
+            this.label12.Location = new System.Drawing.Point(8, 167);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(132, 17);
@@ -183,7 +192,7 @@
             // 
             // txtIngNumViviendas
             // 
-            this.txtIngNumViviendas.Location = new System.Drawing.Point(182, 131);
+            this.txtIngNumViviendas.Location = new System.Drawing.Point(182, 133);
             this.txtIngNumViviendas.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -207,39 +216,17 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 133);
+            this.label11.Location = new System.Drawing.Point(8, 135);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(150, 17);
             this.label11.TabIndex = 11;
             this.label11.Text = "Número de viviendas:";
             // 
-            // txtIngIdProyecto
-            // 
-            this.txtIngIdProyecto.Location = new System.Drawing.Point(182, 102);
-            this.txtIngIdProyecto.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.txtIngIdProyecto.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtIngIdProyecto.Name = "txtIngIdProyecto";
-            this.txtIngIdProyecto.Size = new System.Drawing.Size(252, 23);
-            this.txtIngIdProyecto.TabIndex = 2;
-            this.txtIngIdProyecto.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 104);
+            this.label10.Location = new System.Drawing.Point(8, 106);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(107, 17);
@@ -270,7 +257,7 @@
             // 
             // btnCrearModulo
             // 
-            this.btnCrearModulo.Location = new System.Drawing.Point(182, 249);
+            this.btnCrearModulo.Location = new System.Drawing.Point(182, 251);
             this.btnCrearModulo.Name = "btnCrearModulo";
             this.btnCrearModulo.Size = new System.Drawing.Size(252, 24);
             this.btnCrearModulo.TabIndex = 7;
@@ -348,7 +335,8 @@
             // 
             this.gbDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbDatos.Controls.Add(this.txtModEstado);
+            this.gbDatos.Controls.Add(this.cboModEstado);
+            this.gbDatos.Controls.Add(this.cboModProyectos);
             this.gbDatos.Controls.Add(this.label4);
             this.gbDatos.Controls.Add(this.dtpModFechaVencimiento);
             this.gbDatos.Controls.Add(this.label6);
@@ -356,7 +344,6 @@
             this.gbDatos.Controls.Add(this.label7);
             this.gbDatos.Controls.Add(this.txtModNumViviendas);
             this.gbDatos.Controls.Add(this.label8);
-            this.gbDatos.Controls.Add(this.txtModIdProyecto);
             this.gbDatos.Controls.Add(this.label9);
             this.gbDatos.Controls.Add(this.txtModId);
             this.gbDatos.Controls.Add(this.txtModOrigen);
@@ -370,19 +357,28 @@
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Origen seleccionado:";
             // 
-            // txtModEstado
+            // cboModEstado
             // 
-            this.txtModEstado.Location = new System.Drawing.Point(197, 199);
-            this.txtModEstado.Margin = new System.Windows.Forms.Padding(4);
-            this.txtModEstado.MaxLength = 20;
-            this.txtModEstado.Name = "txtModEstado";
-            this.txtModEstado.Size = new System.Drawing.Size(252, 23);
-            this.txtModEstado.TabIndex = 14;
+            this.cboModEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboModEstado.FormattingEnabled = true;
+            this.cboModEstado.Location = new System.Drawing.Point(197, 200);
+            this.cboModEstado.Name = "cboModEstado";
+            this.cboModEstado.Size = new System.Drawing.Size(252, 25);
+            this.cboModEstado.TabIndex = 33;
+            // 
+            // cboModProyectos
+            // 
+            this.cboModProyectos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboModProyectos.FormattingEnabled = true;
+            this.cboModProyectos.Location = new System.Drawing.Point(197, 82);
+            this.cboModProyectos.Name = "cboModProyectos";
+            this.cboModProyectos.Size = new System.Drawing.Size(252, 25);
+            this.cboModProyectos.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 202);
+            this.label4.Location = new System.Drawing.Point(23, 203);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 17);
@@ -393,7 +389,7 @@
             // 
             this.dtpModFechaVencimiento.CustomFormat = "dd/MM/yyyy";
             this.dtpModFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpModFechaVencimiento.Location = new System.Drawing.Point(197, 169);
+            this.dtpModFechaVencimiento.Location = new System.Drawing.Point(197, 171);
             this.dtpModFechaVencimiento.Name = "dtpModFechaVencimiento";
             this.dtpModFechaVencimiento.Size = new System.Drawing.Size(252, 23);
             this.dtpModFechaVencimiento.TabIndex = 13;
@@ -401,7 +397,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 174);
+            this.label6.Location = new System.Drawing.Point(23, 176);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(157, 17);
@@ -412,7 +408,7 @@
             // 
             this.dtpModFechaApertura.CustomFormat = "dd/MM/yyyy";
             this.dtpModFechaApertura.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpModFechaApertura.Location = new System.Drawing.Point(197, 140);
+            this.dtpModFechaApertura.Location = new System.Drawing.Point(197, 142);
             this.dtpModFechaApertura.Name = "dtpModFechaApertura";
             this.dtpModFechaApertura.Size = new System.Drawing.Size(252, 23);
             this.dtpModFechaApertura.TabIndex = 12;
@@ -420,7 +416,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 145);
+            this.label7.Location = new System.Drawing.Point(23, 147);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(132, 17);
@@ -429,7 +425,7 @@
             // 
             // txtModNumViviendas
             // 
-            this.txtModNumViviendas.Location = new System.Drawing.Point(197, 111);
+            this.txtModNumViviendas.Location = new System.Drawing.Point(197, 113);
             this.txtModNumViviendas.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -453,47 +449,26 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 113);
+            this.label8.Location = new System.Drawing.Point(23, 115);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(150, 17);
             this.label8.TabIndex = 25;
             this.label8.Text = "Número de viviendas:";
             // 
-            // txtModIdProyecto
-            // 
-            this.txtModIdProyecto.Location = new System.Drawing.Point(197, 82);
-            this.txtModIdProyecto.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.txtModIdProyecto.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtModIdProyecto.Name = "txtModIdProyecto";
-            this.txtModIdProyecto.Size = new System.Drawing.Size(252, 23);
-            this.txtModIdProyecto.TabIndex = 10;
-            this.txtModIdProyecto.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(23, 84);
+            this.label9.Location = new System.Drawing.Point(23, 85);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 17);
+            this.label9.Size = new System.Drawing.Size(69, 17);
             this.label9.TabIndex = 23;
-            this.label9.Text = "Id de proyecto:";
+            this.label9.Text = "Proyecto:";
             // 
             // txtModId
             // 
+            this.txtModId.Enabled = false;
             this.txtModId.Location = new System.Drawing.Point(197, 22);
             this.txtModId.Maximum = new decimal(new int[] {
             999999,
@@ -506,7 +481,6 @@
             0,
             0});
             this.txtModId.Name = "txtModId";
-            this.txtModId.ReadOnly = true;
             this.txtModId.Size = new System.Drawing.Size(252, 23);
             this.txtModId.TabIndex = 8;
             this.txtModId.Value = new decimal(new int[] {
@@ -547,7 +521,7 @@
             // btnModificar
             // 
             this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModificar.Location = new System.Drawing.Point(197, 229);
+            this.btnModificar.Location = new System.Drawing.Point(197, 231);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(252, 24);
             this.btnModificar.TabIndex = 15;
@@ -604,14 +578,12 @@
             this.tabCrear.ResumeLayout(false);
             this.tabCrear.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngNumViviendas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngIdProyecto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngId)).EndInit();
             this.tabModificar.ResumeLayout(false);
             this.tabModificar.PerformLayout();
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtModNumViviendas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtModIdProyecto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
             this.ResumeLayout(false);
@@ -635,7 +607,6 @@
         private System.Windows.Forms.Button btnExportarExcel;
         private System.Windows.Forms.ToolTip tip01;
         private System.Windows.Forms.SaveFileDialog sfd01;
-        private System.Windows.Forms.NumericUpDown txtIngIdProyecto;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown txtIngId;
         private System.Windows.Forms.DateTimePicker dtpIngFechaApertura;
@@ -646,7 +617,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtIngEstado;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtModEstado;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpModFechaVencimiento;
         private System.Windows.Forms.Label label6;
@@ -654,11 +624,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown txtModNumViviendas;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown txtModIdProyecto;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown txtModId;
         private System.Windows.Forms.TextBox txtModOrigen;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cboModProyectos;
+        private System.Windows.Forms.ComboBox cboIngProyectos;
+        private System.Windows.Forms.ComboBox cboModEstado;
     }
 }

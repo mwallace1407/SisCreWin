@@ -287,10 +287,7 @@ namespace SisCreWin.Sistema
             AsignarVariables();
 
             if (dtpFechaFin.Value < dtpFechaIni.Value)
-            {
-                dtpFechaIni.MaxDate = clsGeneral.ObtieneFecha(dtpFechaFin.Value.ToString("dd/MM/yyyy"));
                 dtpFechaIni.Value = dtpFechaIni.MaxDate;
-            }
         }
 
         private void cboUsuarios_SelectedIndexChanged(object sender, EventArgs e)

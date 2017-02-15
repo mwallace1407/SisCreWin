@@ -26,11 +26,12 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.DataSource = Resultado.Resultado;
                 grdDatos.Columns[0].HeaderText = "Crédito";
                 grdDatos.Columns[1].HeaderText = "Origen";
-                grdDatos.Columns[2].HeaderText = "Id de proyecto";
+                grdDatos.Columns[2].HeaderText = "Proyecto";
                 grdDatos.Columns[3].HeaderText = "Número de viviendas";
                 grdDatos.Columns[4].HeaderText = "Fecha de apertura";
                 grdDatos.Columns[5].HeaderText = "Fecha de vencimiento";
                 grdDatos.Columns[6].HeaderText = "Estado";
+                grdDatos.Columns[7].HeaderText = "Id de proyecto";
                 grdDatos.Columns[0].ReadOnly = true;
                 grdDatos.Columns[1].ReadOnly = true;
                 grdDatos.Columns[2].ReadOnly = true;
@@ -38,10 +39,38 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[4].ReadOnly = true;
                 grdDatos.Columns[5].ReadOnly = true;
                 grdDatos.Columns[6].ReadOnly = true;
+                grdDatos.Columns[7].ReadOnly = true;
+                grdDatos.Columns[7].Visible = false;
             }
             else
             {
                 MessageBox.Show(Resultado.Error, "Error al obtener datos de orígenes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CargarCombos()
+        {
+            ResultadoStored_DT Resultado = new BD.ResultadoStored_DT();
+
+            Resultado = clsBD.Catalogos_C_Proyectos();
+
+            if (!Resultado.HayError)
+            {
+                cboIngProyectos.DisplayMember = "Prom_Nombre";
+                cboIngProyectos.ValueMember = "Prom_Id";
+                cboIngProyectos.DataSource = Resultado.Resultado;
+
+                cboModProyectos.DisplayMember = "Prom_Nombre";
+                cboModProyectos.ValueMember = "Prom_Id";
+                cboModProyectos.DataSource = Resultado.Resultado;
+
+                cboModEstado.DisplayMember = "Descripcion";
+                cboModEstado.ValueMember = "Valor";
+                cboModEstado.DataSource = clsGeneral.ddlActLiq;
+            }
+            else
+            {
+                MessageBox.Show(Resultado.Error, "Error al obtener datos de proyectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -56,7 +85,7 @@ namespace SisCreWin.Negocio.Catalogos
             ResultadoStored_Int Resultado = new ResultadoStored_Int();
 
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Catalogos_I_OrigenCreditosPuente, vBit_DatosPrevios: null);
-            clsGeneral.OrigenCreditosPuente OCP = new clsGeneral.OrigenCreditosPuente((int)txtIngId.Value, txtIngOrigen.Text.Trim(), (int)txtIngIdProyecto.Value,
+            clsGeneral.OrigenCreditosPuente OCP = new clsGeneral.OrigenCreditosPuente((int)txtIngId.Value, txtIngOrigen.Text.Trim(), (int)cboIngProyectos.SelectedValue,
                     (int)txtIngNumViviendas.Value, dtpIngFechaApertura.Value, dtpIngFechaVencimiento.Value, txtIngEstado.Text.Trim());
 
             Resultado = clsBD.Catalogos_I_OrigenCreditosPuente(OCP);
@@ -73,7 +102,7 @@ namespace SisCreWin.Negocio.Catalogos
                     MessageBox.Show("Se ha agregado un origen.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtIngId.Value = 1;
                     txtIngOrigen.Text = string.Empty;
-                    txtIngIdProyecto.Value = 1;
+                    if(cboIngProyectos.Items.Count > 0) { cboIngProyectos.SelectedIndex = 0; }
                     txtIngNumViviendas.Value = 1;
                     dtpIngFechaApertura.Value = DateTime.Now;
                     dtpIngFechaVencimiento.Value = DateTime.Now;
@@ -108,11 +137,11 @@ namespace SisCreWin.Negocio.Catalogos
 
                 txtModId.Value = (int)dr.Cells["OCP_Prestamo"].Value;
                 txtModOrigen.Text = dr.Cells["OCP_Origen_Prestamo"].Value.ToString();
-                txtModIdProyecto.Value = (int)dr.Cells["OCP_Id_Proyecto"].Value;
+                if (cboModProyectos.Items.Count > 0) { cboIngProyectos.SelectedValue = (int)dr.Cells["OCP_Id_Proyecto"].Value; }
                 txtModNumViviendas.Value = (int)dr.Cells["OCP_Numero_Viviendas"].Value;
                 dtpModFechaApertura.Value = clsGeneral.ObtieneFecha(dr.Cells["OCP_Fecha_Apertura"].Value.ToString());
                 dtpModFechaVencimiento.Value = clsGeneral.ObtieneFecha(dr.Cells["OCP_Fecha_Vencimiento"].Value.ToString());
-                txtModEstado.Text = dr.Cells["OCP_Estado"].Value.ToString();
+                if (cboModEstado.Items.Count > 0) { cboModEstado.SelectedValue = dr.Cells["OCP_Estado"].Value; }
             }
             else
             {
@@ -125,8 +154,8 @@ namespace SisCreWin.Negocio.Catalogos
             ResultadoStored_Str Resultado = new ResultadoStored_Str();
 
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Catalogos_U_OrigenCreditosPuente, vBit_DatosPrevios: null);
-            clsGeneral.OrigenCreditosPuente OCP = new clsGeneral.OrigenCreditosPuente((int)txtModId.Value, txtModOrigen.Text.Trim(), (int)txtModIdProyecto.Value,
-                (int)txtModNumViviendas.Value, dtpModFechaApertura.Value, dtpModFechaVencimiento.Value, txtModEstado.Text.Trim());
+            clsGeneral.OrigenCreditosPuente OCP = new clsGeneral.OrigenCreditosPuente((int)txtModId.Value, txtModOrigen.Text.Trim(), (int)cboModProyectos.SelectedValue,
+                (int)txtModNumViviendas.Value, dtpModFechaApertura.Value, dtpModFechaVencimiento.Value, cboModEstado.SelectedValue.ToString());
 
             Resultado = clsBD.Catalogos_C_OrigenCreditosPuenteBitacora(OCP.OCP_Prestamo);
 
@@ -181,7 +210,7 @@ namespace SisCreWin.Negocio.Catalogos
 
         private void frmOrigenesPuente_Load(object sender, EventArgs e)
         {
-
+            CargarCombos();
         }
         #endregion Eventos
     }
