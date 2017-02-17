@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
+using System.IO;
 
 namespace SisCreWin.Negocio.Buro
 {
@@ -135,6 +136,16 @@ namespace SisCreWin.Negocio.Buro
             else
             {
                 MessageBox.Show(Resultado.Error, "Error al obtener datos de bitácora", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GenerarArchivo(string Archivo, string Contenido)
+        {
+            using (StreamWriter outfile = new StreamWriter(Archivo, true, Encoding.UTF8))
+            {
+                outfile.AutoFlush = true;
+                outfile.NewLine = Environment.NewLine;
+                outfile.Write(Contenido);
             }
         }
         #endregion Metodos
@@ -279,6 +290,7 @@ namespace SisCreWin.Negocio.Buro
             {
                 DataGridViewRow dr = grdDatos.SelectedRows[0];
                 ResultadoStored_Byte Resultado = new ResultadoStored_Byte();
+                string Archivo = string.Empty;
 
                 Resultado = clsBD.Buro_C_HistoricoPuentesDatos(Convert.ToInt32(dr.Cells["BHP_Id"].Value));
 
@@ -286,17 +298,36 @@ namespace SisCreWin.Negocio.Buro
                 {
                     try
                     {
-                        Buro.frmTXTModal frm = new Buro.frmTXTModal();
+                        fbd01.ShowDialog(this);
 
-                        frm.frmAlto = this.Height - 50;
-                        frm.frmAncho = this.Width - 50;
-                        frm.frmContenido = clsGeneral.Unzip(Resultado.Resultado);
-                        frm.frmTitulo = "Detalle del movimiento " + dr.Cells["BHP_Id"].Value.ToString();
-                        frm.ShowDialog(this);
+                        if (!Directory.Exists(fbd01.SelectedPath))
+                        {
+                            MessageBox.Show("El directorio seleccionado no existe", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        Archivo = Path.Combine(fbd01.SelectedPath, clsGeneral.GeneraNombreArchivoRnd("BuroPuentes_", "txt"));
+                        GenerarArchivo(Archivo, clsGeneral.Unzip(Resultado.Resultado, clsGeneral.Codificaciones.UTF8));
+
+                        if (File.Exists(Archivo))
+                        {
+                            System.Diagnostics.Process.Start(Archivo);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se puede abrir el archivo correspondiente al registro solicitado", "Error al generar archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        //Buro.frmTXTModal frm = new Buro.frmTXTModal();
+
+                        //frm.frmAlto = this.Height - 50;
+                        //frm.frmAncho = this.Width - 50;
+                        //frm.frmContenido = clsGeneral.Unzip(Resultado.Resultado);
+                        //frm.frmTitulo = "Detalle del movimiento " + dr.Cells["BHP_Id"].Value.ToString();
+                        //frm.ShowDialog(this);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Error al abrir ventana de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Error al generar archivo de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else

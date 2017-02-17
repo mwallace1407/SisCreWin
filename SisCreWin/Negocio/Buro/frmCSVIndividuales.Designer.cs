@@ -30,18 +30,23 @@
         {
             this.tab01 = new System.Windows.Forms.TabControl();
             this.tabCrear = new System.Windows.Forms.TabPage();
-            this.dtpFechaDocumento = new System.Windows.Forms.DateTimePicker();
             this.btnCrear = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabEstadisticas = new System.Windows.Forms.TabPage();
             this.pnlProgreso = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.wkr01 = new System.ComponentModel.BackgroundWorker();
             this.fbd01 = new System.Windows.Forms.FolderBrowserDialog();
+            this.cboFechas = new System.Windows.Forms.ComboBox();
+            this.tabRecrear = new System.Windows.Forms.TabPage();
+            this.cboPeriodosCreados = new System.Windows.Forms.ComboBox();
+            this.btnAutorizar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             this.pnlProgreso.SuspendLayout();
+            this.tabRecrear.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab01
@@ -50,17 +55,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab01.Controls.Add(this.tabCrear);
-            this.tab01.Controls.Add(this.tabEstadisticas);
+            this.tab01.Controls.Add(this.tabRecrear);
             this.tab01.Location = new System.Drawing.Point(14, 14);
             this.tab01.Margin = new System.Windows.Forms.Padding(5);
             this.tab01.Name = "tab01";
             this.tab01.SelectedIndex = 0;
             this.tab01.Size = new System.Drawing.Size(751, 341);
             this.tab01.TabIndex = 1;
+            this.tab01.SelectedIndexChanged += new System.EventHandler(this.tab01_SelectedIndexChanged);
             // 
             // tabCrear
             // 
-            this.tabCrear.Controls.Add(this.dtpFechaDocumento);
+            this.tabCrear.Controls.Add(this.cboFechas);
             this.tabCrear.Controls.Add(this.btnCrear);
             this.tabCrear.Controls.Add(this.label3);
             this.tabCrear.Controls.Add(this.label1);
@@ -73,18 +79,9 @@
             this.tabCrear.Text = "Crear";
             this.tabCrear.UseVisualStyleBackColor = true;
             // 
-            // dtpFechaDocumento
-            // 
-            this.dtpFechaDocumento.CustomFormat = "dd/MM/yyyy";
-            this.dtpFechaDocumento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaDocumento.Location = new System.Drawing.Point(175, 53);
-            this.dtpFechaDocumento.Name = "dtpFechaDocumento";
-            this.dtpFechaDocumento.Size = new System.Drawing.Size(150, 23);
-            this.dtpFechaDocumento.TabIndex = 5;
-            // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(175, 83);
+            this.btnCrear.Location = new System.Drawing.Point(176, 78);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(150, 25);
@@ -96,7 +93,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 58);
+            this.label3.Location = new System.Drawing.Point(12, 49);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(156, 17);
@@ -112,17 +109,6 @@
             this.label1.Size = new System.Drawing.Size(223, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Introduzca los valores requeridos:";
-            // 
-            // tabEstadisticas
-            // 
-            this.tabEstadisticas.Location = new System.Drawing.Point(4, 26);
-            this.tabEstadisticas.Margin = new System.Windows.Forms.Padding(5);
-            this.tabEstadisticas.Name = "tabEstadisticas";
-            this.tabEstadisticas.Padding = new System.Windows.Forms.Padding(5);
-            this.tabEstadisticas.Size = new System.Drawing.Size(743, 311);
-            this.tabEstadisticas.TabIndex = 1;
-            this.tabEstadisticas.Text = "Estadísticas";
-            this.tabEstadisticas.UseVisualStyleBackColor = true;
             // 
             // pnlProgreso
             // 
@@ -155,6 +141,72 @@
             this.wkr01.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr01_DoWork);
             this.wkr01.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr01_RunWorkerCompleted);
             // 
+            // fbd01
+            // 
+            this.fbd01.Description = "Seleccione una carpeta para depositar el archivo";
+            // 
+            // cboFechas
+            // 
+            this.cboFechas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFechas.FormattingEnabled = true;
+            this.cboFechas.Location = new System.Drawing.Point(176, 46);
+            this.cboFechas.Name = "cboFechas";
+            this.cboFechas.Size = new System.Drawing.Size(150, 25);
+            this.cboFechas.TabIndex = 6;
+            // 
+            // tabRecrear
+            // 
+            this.tabRecrear.Controls.Add(this.cboPeriodosCreados);
+            this.tabRecrear.Controls.Add(this.btnAutorizar);
+            this.tabRecrear.Controls.Add(this.label4);
+            this.tabRecrear.Controls.Add(this.label5);
+            this.tabRecrear.Location = new System.Drawing.Point(4, 26);
+            this.tabRecrear.Name = "tabRecrear";
+            this.tabRecrear.Size = new System.Drawing.Size(743, 311);
+            this.tabRecrear.TabIndex = 1;
+            this.tabRecrear.Text = "Recrear CSV";
+            this.tabRecrear.UseVisualStyleBackColor = true;
+            // 
+            // cboPeriodosCreados
+            // 
+            this.cboPeriodosCreados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPeriodosCreados.FormattingEnabled = true;
+            this.cboPeriodosCreados.Location = new System.Drawing.Point(176, 46);
+            this.cboPeriodosCreados.Name = "cboPeriodosCreados";
+            this.cboPeriodosCreados.Size = new System.Drawing.Size(150, 25);
+            this.cboPeriodosCreados.TabIndex = 10;
+            // 
+            // btnAutorizar
+            // 
+            this.btnAutorizar.Location = new System.Drawing.Point(176, 78);
+            this.btnAutorizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAutorizar.Name = "btnAutorizar";
+            this.btnAutorizar.Size = new System.Drawing.Size(150, 25);
+            this.btnAutorizar.TabIndex = 9;
+            this.btnAutorizar.Text = "Autorizar";
+            this.btnAutorizar.UseVisualStyleBackColor = true;
+            this.btnAutorizar.Click += new System.EventHandler(this.btnAutorizar_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 49);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(156, 17);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Fecha del documento:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 26);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(443, 17);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Seleccione el periodo que desea autorizar para volverse a generar:";
+            // 
             // frmCSVIndividuales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -173,6 +225,8 @@
             this.tabCrear.PerformLayout();
             this.pnlProgreso.ResumeLayout(false);
             this.pnlProgreso.PerformLayout();
+            this.tabRecrear.ResumeLayout(false);
+            this.tabRecrear.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -184,11 +238,15 @@
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabEstadisticas;
-        private System.Windows.Forms.DateTimePicker dtpFechaDocumento;
         private System.Windows.Forms.Panel pnlProgreso;
         private System.ComponentModel.BackgroundWorker wkr01;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FolderBrowserDialog fbd01;
+        private System.Windows.Forms.ComboBox cboFechas;
+        private System.Windows.Forms.TabPage tabRecrear;
+        private System.Windows.Forms.ComboBox cboPeriodosCreados;
+        private System.Windows.Forms.Button btnAutorizar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

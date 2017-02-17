@@ -63,10 +63,14 @@ namespace SisCreWin.Modelo
         public static String Buro_I_HistoricoPuentes { get { return "sp_Buro_I_HistoricoPuentes"; } }
         public static String Buro_C_HistoricoPuentes { get { return "sp_Buro_C_HistoricoPuentes"; } }
         public static String Buro_C_HistoricoPuentesDatos { get { return "sp_Buro_C_HistoricoPuentesDatos"; } }
+        public static String Buro_C_PeriodosDisponiblesPuentes { get { return "sp_Buro_C_PeriodosDisponiblesPuentes"; } }
         public static String ReportesBuro_C_CreditosIndividuales { get { return "sp_ReportesBuro_C_CreditosIndividuales"; } }
         public static String Buro_I_HistoricoIndividuales { get { return "sp_Buro_I_HistoricoIndividuales"; } }
         public static String Buro_C_HistoricoIndividuales { get { return "sp_Buro_C_HistoricoIndividuales"; } }
         public static String Buro_C_HistoricoIndDatos { get { return "sp_Buro_C_HistoricoIndDatos"; } }
+        public static String Buro_C_PeriodosDisponiblesIndividuales { get { return "sp_Buro_C_PeriodosDisponiblesIndividuales"; } }
+        public static String Buro_M_Documentos { get { return "sp_Buro_M_Documentos"; } }
+        public static String Buro_U_AutorizarRecreacion { get { return "sp_Buro_U_AutorizarRecreacion"; } }
         //!Buro
         //TIIE
         public static String Catalogos_C_TIIE { get { return "sp_Catalogos_C_TIIE"; } }
@@ -106,14 +110,15 @@ namespace SisCreWin.Modelo
         public static int Catalogos_TIIE_ABC { get { return 6; } }
         public static int Buro_Individuales_GenerarCSV { get { return 8; } }
         public static int Buro_Individuales_Historico { get { return 13; } }
+        public static int Buro_Individuales_RegenerarCSV { get { return 16; } }
         public static int Buro_Puentes_GenerarINTF { get { return 5; } }
         public static int Buro_Puentes_Historico { get { return 14; } }
+        public static int Buro_Puentes_RegenerarINTF { get { return 17; } }
         public static int Promotores_ABC { get { return 3; } }
         public static int Proyectos_ABC { get { return 4; } }
         public static int Puentes_OCP_ABC { get { return 7; } }
         public static int Puentes_GenerarCierre { get { return 9; } }
         public static int Puentes_RegistrarPago { get { return 10; } }
-
         public static int Puentes_Historico { get { return 15; } }
         #endregion Negocio
         #endregion Variables

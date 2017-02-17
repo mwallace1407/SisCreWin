@@ -50,8 +50,6 @@
             this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuModulos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBitacoraMov = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +60,10 @@
             this.stMantenimiento = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuHistoricoPuentes = new System.Windows.Forms.ToolStripMenuItem();
+            this.aplicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.módulosFrecuentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +72,7 @@
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aplicaciónToolStripMenuItem,
             this.negocioToolStripMenuItem,
             this.mnuSistema,
             this.windowsMenu});
@@ -204,9 +207,7 @@
             this.mnuSistema.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuUsuarios,
             this.mnuModulos,
-            this.mnuBitacoraMov,
-            this.toolStripMenuItem1,
-            this.mnuSalir});
+            this.mnuBitacoraMov});
             this.mnuSistema.Name = "mnuSistema";
             this.mnuSistema.Size = new System.Drawing.Size(69, 21);
             this.mnuSistema.Text = "&Sistema";
@@ -231,19 +232,6 @@
             this.mnuBitacoraMov.Size = new System.Drawing.Size(253, 22);
             this.mnuBitacoraMov.Text = "&Bitácora de movimientos";
             this.mnuBitacoraMov.Click += new System.EventHandler(this.mnuBitacoraMov_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(250, 6);
-            // 
-            // mnuSalir
-            // 
-            this.mnuSalir.Name = "mnuSalir";
-            this.mnuSalir.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mnuSalir.Size = new System.Drawing.Size(253, 22);
-            this.mnuSalir.Text = "Salir";
-            this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
             // 
             // windowsMenu
             // 
@@ -321,6 +309,34 @@
             this.mnuHistoricoPuentes.Text = "&Histórico de créditos";
             this.mnuHistoricoPuentes.Click += new System.EventHandler(this.mnuHistoricoPuentes_Click);
             // 
+            // aplicaciónToolStripMenuItem
+            // 
+            this.aplicaciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.módulosFrecuentesToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.mnuSalir});
+            this.aplicaciónToolStripMenuItem.Name = "aplicaciónToolStripMenuItem";
+            this.aplicaciónToolStripMenuItem.Size = new System.Drawing.Size(89, 21);
+            this.aplicaciónToolStripMenuItem.Text = "Aplicación";
+            // 
+            // módulosFrecuentesToolStripMenuItem
+            // 
+            this.módulosFrecuentesToolStripMenuItem.Name = "módulosFrecuentesToolStripMenuItem";
+            this.módulosFrecuentesToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.módulosFrecuentesToolStripMenuItem.Text = "Módulos frecuentes";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
+            // 
+            // mnuSalir
+            // 
+            this.mnuSalir.Name = "mnuSalir";
+            this.mnuSalir.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuSalir.Size = new System.Drawing.Size(200, 22);
+            this.mnuSalir.Text = "Salir";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -373,8 +389,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuPromotores;
         private System.Windows.Forms.ToolStripMenuItem mnuProyectos;
         private System.Windows.Forms.ToolStripMenuItem mnuTIIE;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem mnuSalir;
         private System.Windows.Forms.ToolStripMenuItem mnuCSVIndividuales;
         private System.Windows.Forms.ToolStripMenuItem mnuINTFPuentes;
         private System.Windows.Forms.ToolStripMenuItem mnuCierreDiarioPuentes;
@@ -385,5 +399,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuBuroHistPuentes;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mnuHistoricoPuentes;
+        private System.Windows.Forms.ToolStripMenuItem aplicaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem módulosFrecuentesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem mnuSalir;
     }
 }

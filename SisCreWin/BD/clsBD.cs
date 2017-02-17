@@ -1091,6 +1091,182 @@ namespace SisCreWin.BD
             return Resultado;
         }
 
+        public static ResultadoStored_DT Buro_C_PeriodosDisponiblesPuentes(bool ObtenerCreados = false)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@ObtenerCreados", SqlDbType.Bit);
+            param.Value = ObtenerCreados;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Buro_C_PeriodosDisponiblesPuentes, paramC);
+
+            return Resultado;
+        }
+        //!Puentes
+        //Individuales
+        public static ResultadoStored_DT ReportesBuro_C_CreditosIndividuales(string FECHA_DEL_REPORTE)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@FECHA_DEL_REPORTE", SqlDbType.VarChar);
+            param.Value = FECHA_DEL_REPORTE;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.ReportesBuro_C_CreditosIndividuales, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Buro_I_HistoricoIndividuales(clsGeneral.BuroHistoricoIndividuales Buro)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@Usr_Id", SqlDbType.Int);
+            param.Value = Buro.Usr_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@BHI_Documento", SqlDbType.VarBinary);
+            param.Value = Buro.BHI_Documento;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Buro_I_HistoricoIndividuales, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Buro_C_HistoricoIndividuales(DateTime? BHI_Fecha_Ini, DateTime? BHI_Fecha_Fin, int? Usr_Id, int TopSel = 100)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT();
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@BHI_Fecha_Ini", SqlDbType.DateTime);
+            param.Value = BHI_Fecha_Ini;
+            paramC.Add(param);
+            param = new SqlParameter("@BHI_Fecha_Fin", SqlDbType.DateTime);
+            param.Value = BHI_Fecha_Fin;
+            paramC.Add(param);
+            param = new SqlParameter("@Usr_Id", SqlDbType.Int);
+            param.Value = Usr_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@TopSel", SqlDbType.Int);
+            param.Value = TopSel;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Buro_C_HistoricoIndividuales, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoExport Buro_C_HistoricoIndividuales_Exp(DateTime? BHI_Fecha_Ini, DateTime? BHI_Fecha_Fin, int? Usr_Id, int TopSel = 100)
+        {
+            ResultadoExport Resultado = new ResultadoExport();
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@BHI_Fecha_Ini", SqlDbType.DateTime);
+            param.Value = BHI_Fecha_Ini;
+            paramC.Add(param);
+            param = new SqlParameter("@BHI_Fecha_Fin", SqlDbType.DateTime);
+            param.Value = BHI_Fecha_Fin;
+            paramC.Add(param);
+            param = new SqlParameter("@Usr_Id", SqlDbType.Int);
+            param.Value = Usr_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@TopSel", SqlDbType.Int);
+            param.Value = TopSel;
+            paramC.Add(param);
+
+            Resultado = ExportarExcel(CatalogoStoreds.Buro_C_HistoricoIndividuales, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Byte Buro_C_HistoricoIndDatos(int BHI_Id)
+        {
+            ResultadoStored_Byte Resultado = new ResultadoStored_Byte(null, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@BHI_Id", SqlDbType.Int);
+            param.Value = BHI_Id;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_Byte(CatalogoStoreds.Buro_C_HistoricoIndDatos, paramC, "BHI_Documento");
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Buro_C_PeriodosDisponiblesIndividuales(bool ObtenerCreados = false)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@ObtenerCreados", SqlDbType.Bit);
+            param.Value = ObtenerCreados;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Buro_C_PeriodosDisponiblesIndividuales, paramC);
+
+            return Resultado;
+        }
+        //!Individuales
+        public static ResultadoStored_Str Buro_M_Documentos(clsGeneral.BuroDocumentos Buro)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@Usr_Id", SqlDbType.Int);
+            param.Value = Buro.Usr_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@BDG_Anno", SqlDbType.Int);
+            param.Value = Buro.BDG_Anno;
+            paramC.Add(param);
+            param = new SqlParameter("@BDG_Mes", SqlDbType.Int);
+            param.Value = Buro.BDG_Mes;
+            paramC.Add(param);
+            param = new SqlParameter("@BDG_Tipo", SqlDbType.VarChar);
+            param.Value = Buro.BDG_Tipo;
+            paramC.Add(param);
+            param = new SqlParameter("@BDG_Documento", SqlDbType.VarBinary);
+            param.Value = Buro.BDG_Documento;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Buro_M_Documentos, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Buro_U_AutorizarRecreacion(clsGeneral.BuroDocumentos Buro)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+            
+            param = new SqlParameter("@BDG_Anno", SqlDbType.Int);
+            param.Value = Buro.BDG_Anno;
+            paramC.Add(param);
+            param = new SqlParameter("@BDG_Mes", SqlDbType.Int);
+            param.Value = Buro.BDG_Mes;
+            paramC.Add(param);
+            param = new SqlParameter("@BDG_Tipo", SqlDbType.VarChar);
+            param.Value = Buro.BDG_Tipo;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Buro_U_AutorizarRecreacion, paramC);
+
+            return Resultado;
+        }
+        #endregion Buro
+        #region Puentes
         //Operaciones_Puentes
         public static ResultadoStored_DT Puentes_C_VerificarPosibilidadCierre()
         {
@@ -1191,105 +1367,7 @@ namespace SisCreWin.BD
             return Resultado;
         }
         //!Operaciones_Puentes
-        //!Puentes
-        //Individuales
-        public static ResultadoStored_DT ReportesBuro_C_CreditosIndividuales(string FECHA_DEL_REPORTE)
-        {
-            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
-            SqlParameter param;
-            List<SqlParameter> paramC = new List<SqlParameter>();
-
-            param = new SqlParameter("@FECHA_DEL_REPORTE", SqlDbType.VarChar);
-            param.Value = FECHA_DEL_REPORTE;
-            paramC.Add(param);
-
-            Resultado = EjecutarStored_DT(CatalogoStoreds.ReportesBuro_C_CreditosIndividuales, paramC);
-
-            return Resultado;
-        }
-
-        public static ResultadoStored_Str Buro_I_HistoricoIndividuales(clsGeneral.BuroHistoricoIndividuales Buro)
-        {
-            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
-            SqlParameter param;
-            List<SqlParameter> paramC = new List<SqlParameter>();
-
-            param = new SqlParameter("@Usr_Id", SqlDbType.Int);
-            param.Value = Buro.Usr_Id;
-            paramC.Add(param);
-            param = new SqlParameter("@BHI_Documento", SqlDbType.VarBinary);
-            param.Value = Buro.BHI_Documento;
-            paramC.Add(param);
-
-            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Buro_I_HistoricoIndividuales, paramC);
-
-            return Resultado;
-        }
-
-        public static ResultadoStored_DT Buro_C_HistoricoIndividuales(DateTime? BHI_Fecha_Ini, DateTime? BHI_Fecha_Fin, int? Usr_Id, int TopSel = 100)
-        {
-            ResultadoStored_DT Resultado = new ResultadoStored_DT();
-            SqlParameter param;
-            List<SqlParameter> paramC = new List<SqlParameter>();
-
-            param = new SqlParameter("@BHI_Fecha_Ini", SqlDbType.DateTime);
-            param.Value = BHI_Fecha_Ini;
-            paramC.Add(param);
-            param = new SqlParameter("@BHI_Fecha_Fin", SqlDbType.DateTime);
-            param.Value = BHI_Fecha_Fin;
-            paramC.Add(param);
-            param = new SqlParameter("@Usr_Id", SqlDbType.Int);
-            param.Value = Usr_Id;
-            paramC.Add(param);
-            param = new SqlParameter("@TopSel", SqlDbType.Int);
-            param.Value = TopSel;
-            paramC.Add(param);
-
-            Resultado = EjecutarStored_DT(CatalogoStoreds.Buro_C_HistoricoIndividuales, paramC);
-
-            return Resultado;
-        }
-
-        public static ResultadoExport Buro_C_HistoricoIndividuales_Exp(DateTime? BHI_Fecha_Ini, DateTime? BHI_Fecha_Fin, int? Usr_Id, int TopSel = 100)
-        {
-            ResultadoExport Resultado = new ResultadoExport();
-            SqlParameter param;
-            List<SqlParameter> paramC = new List<SqlParameter>();
-
-            param = new SqlParameter("@BHI_Fecha_Ini", SqlDbType.DateTime);
-            param.Value = BHI_Fecha_Ini;
-            paramC.Add(param);
-            param = new SqlParameter("@BHI_Fecha_Fin", SqlDbType.DateTime);
-            param.Value = BHI_Fecha_Fin;
-            paramC.Add(param);
-            param = new SqlParameter("@Usr_Id", SqlDbType.Int);
-            param.Value = Usr_Id;
-            paramC.Add(param);
-            param = new SqlParameter("@TopSel", SqlDbType.Int);
-            param.Value = TopSel;
-            paramC.Add(param);
-
-            Resultado = ExportarExcel(CatalogoStoreds.Buro_C_HistoricoIndividuales, paramC);
-
-            return Resultado;
-        }
-
-        public static ResultadoStored_Byte Buro_C_HistoricoIndDatos(int BHI_Id)
-        {
-            ResultadoStored_Byte Resultado = new ResultadoStored_Byte(null, string.Empty, false);
-            SqlParameter param;
-            List<SqlParameter> paramC = new List<SqlParameter>();
-
-            param = new SqlParameter("@BHI_Id", SqlDbType.Int);
-            param.Value = BHI_Id;
-            paramC.Add(param);
-
-            Resultado = EjecutarStored_Byte(CatalogoStoreds.Buro_C_HistoricoIndDatos, paramC, "BHI_Documento");
-
-            return Resultado;
-        }
-        //!Individuales
-        #endregion Buro
+        #endregion Puentes
         #endregion Negocio
     }
     #region Modelos

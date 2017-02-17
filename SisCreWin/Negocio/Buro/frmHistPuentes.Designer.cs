@@ -34,6 +34,9 @@
             this.btnExportarExcel = new System.Windows.Forms.Button();
             this.btnAyudaP = new System.Windows.Forms.Button();
             this.gbFiltros = new System.Windows.Forms.GroupBox();
+            this.txtIdentificador = new System.Windows.Forms.NumericUpDown();
+            this.chkI = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.chkU = new System.Windows.Forms.CheckBox();
             this.chkFF = new System.Windows.Forms.CheckBox();
             this.chkFI = new System.Windows.Forms.CheckBox();
@@ -48,17 +51,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grdDatos = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
-            this.chkI = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtIdentificador = new System.Windows.Forms.NumericUpDown();
+            this.fbd01 = new System.Windows.Forms.FolderBrowserDialog();
             this.tab01.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbFiltros.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdentificador)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTopSel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIdentificador)).BeginInit();
             this.SuspendLayout();
             // 
             // tab01
@@ -67,7 +67,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab01.Controls.Add(this.tabPage1);
-            this.tab01.Controls.Add(this.tabPage2);
             this.tab01.Location = new System.Drawing.Point(16, 16);
             this.tab01.Margin = new System.Windows.Forms.Padding(4);
             this.tab01.Name = "tab01";
@@ -140,6 +139,54 @@
             this.gbFiltros.TabIndex = 2;
             this.gbFiltros.TabStop = false;
             this.gbFiltros.Text = "Filtros";
+            // 
+            // txtIdentificador
+            // 
+            this.txtIdentificador.Enabled = false;
+            this.txtIdentificador.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.txtIdentificador.Location = new System.Drawing.Point(130, 140);
+            this.txtIdentificador.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.txtIdentificador.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtIdentificador.Name = "txtIdentificador";
+            this.txtIdentificador.Size = new System.Drawing.Size(182, 23);
+            this.txtIdentificador.TabIndex = 8;
+            this.txtIdentificador.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.txtIdentificador.ValueChanged += new System.EventHandler(this.txtIdentificador_ValueChanged);
+            // 
+            // chkI
+            // 
+            this.chkI.AutoSize = true;
+            this.chkI.Location = new System.Drawing.Point(317, 146);
+            this.chkI.Name = "chkI";
+            this.chkI.Size = new System.Drawing.Size(15, 14);
+            this.chkI.TabIndex = 9;
+            this.chkI.UseVisualStyleBackColor = true;
+            this.chkI.CheckedChanged += new System.EventHandler(this.chkI_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 143);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(94, 17);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Identificador:";
             // 
             // chkU
             // 
@@ -301,64 +348,9 @@
             this.grdDatos.TabIndex = 0;
             this.grdDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDatosP_CellDoubleClick);
             // 
-            // tabPage2
+            // fbd01
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(991, 430);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Estadisticas usuario";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // chkI
-            // 
-            this.chkI.AutoSize = true;
-            this.chkI.Location = new System.Drawing.Point(317, 146);
-            this.chkI.Name = "chkI";
-            this.chkI.Size = new System.Drawing.Size(15, 14);
-            this.chkI.TabIndex = 9;
-            this.chkI.UseVisualStyleBackColor = true;
-            this.chkI.CheckedChanged += new System.EventHandler(this.chkI_CheckedChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 143);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 17);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Identificador:";
-            // 
-            // txtIdentificador
-            // 
-            this.txtIdentificador.Enabled = false;
-            this.txtIdentificador.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.txtIdentificador.Location = new System.Drawing.Point(130, 140);
-            this.txtIdentificador.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.txtIdentificador.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtIdentificador.Name = "txtIdentificador";
-            this.txtIdentificador.Size = new System.Drawing.Size(182, 23);
-            this.txtIdentificador.TabIndex = 8;
-            this.txtIdentificador.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.txtIdentificador.ValueChanged += new System.EventHandler(this.txtIdentificador_ValueChanged);
+            this.fbd01.Description = "Seleccione una carpeta para depositar el archivo";
             // 
             // frmHistPuentes
             // 
@@ -377,9 +369,9 @@
             this.tabPage1.PerformLayout();
             this.gbFiltros.ResumeLayout(false);
             this.gbFiltros.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdentificador)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTopSel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIdentificador)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -388,7 +380,6 @@
 
         private System.Windows.Forms.TabControl tab01;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView grdDatos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbFiltros;
@@ -410,5 +401,6 @@
         private System.Windows.Forms.NumericUpDown txtIdentificador;
         private System.Windows.Forms.CheckBox chkI;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.FolderBrowserDialog fbd01;
     }
 }

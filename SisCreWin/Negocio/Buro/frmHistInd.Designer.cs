@@ -48,8 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grdDatos = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
+            this.fbd01 = new System.Windows.Forms.FolderBrowserDialog();
             this.tab01.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbFiltros.SuspendLayout();
@@ -63,7 +63,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab01.Controls.Add(this.tabPage1);
-            this.tab01.Controls.Add(this.tabPage2);
             this.tab01.Location = new System.Drawing.Point(16, 16);
             this.tab01.Margin = new System.Windows.Forms.Padding(4);
             this.tab01.Name = "tab01";
@@ -292,18 +291,12 @@
             this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdDatos.Size = new System.Drawing.Size(627, 383);
             this.grdDatos.TabIndex = 0;
+            this.grdDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDatos_CellContentClick);
             this.grdDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDatosP_CellDoubleClick);
             // 
-            // tabPage2
+            // fbd01
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(991, 430);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Estadisticas usuario";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.fbd01.Description = "Seleccione una carpeta para depositar el archivo";
             // 
             // frmHistInd
             // 
@@ -332,7 +325,6 @@
 
         private System.Windows.Forms.TabControl tab01;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView grdDatos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbFiltros;
@@ -351,5 +343,6 @@
         private System.Windows.Forms.CheckBox chkU;
         private System.Windows.Forms.CheckBox chkFF;
         private System.Windows.Forms.CheckBox chkFI;
+        private System.Windows.Forms.FolderBrowserDialog fbd01;
     }
 }

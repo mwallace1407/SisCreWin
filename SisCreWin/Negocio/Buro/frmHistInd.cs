@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
+using System.IO;
 
 namespace SisCreWin.Negocio.Buro
 {
@@ -122,6 +123,16 @@ namespace SisCreWin.Negocio.Buro
                 MessageBox.Show(Resultado.Error, "Error al obtener datos de bitácora", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void GenerarArchivo(string Archivo, string Contenido)
+        {
+            using (StreamWriter outfile = new StreamWriter(Archivo, true, Encoding.Default))
+            {
+                outfile.AutoFlush = true;
+                outfile.NewLine = Environment.NewLine;
+                outfile.Write(Contenido);
+            }
+        }
         #endregion Metodos
         #region Eventos
         private void frmBitacoraMov_Load(object sender, EventArgs e)
@@ -194,7 +205,7 @@ namespace SisCreWin.Negocio.Buro
 
         private void btnAyudaP_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Para ver el detalle del registro se debe dar doble clic sobre el mismo.", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Para descargar el archivo asociado al registro se debe dar doble clic sobre el mismo.", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void chkFI_CheckedChanged(object sender, EventArgs e)
@@ -254,6 +265,7 @@ namespace SisCreWin.Negocio.Buro
             {
                 DataGridViewRow dr = grdDatos.SelectedRows[0];
                 ResultadoStored_Byte Resultado = new ResultadoStored_Byte();
+                string Archivo = string.Empty;
 
                 Resultado = clsBD.Buro_C_HistoricoIndDatos(Convert.ToInt32(dr.Cells["BHI_Id"].Value));
 
@@ -261,17 +273,29 @@ namespace SisCreWin.Negocio.Buro
                 {
                     try
                     {
-                        Buro.frmTXTModal frm = new Buro.frmTXTModal();
+                        fbd01.ShowDialog(this);
 
-                        frm.frmAlto = this.Height - 50;
-                        frm.frmAncho = this.Width - 50;
-                        frm.frmContenido = clsGeneral.Unzip(Resultado.Resultado);
-                        frm.frmTitulo = "Detalle del movimiento " + dr.Cells["BHI_Id"].Value.ToString();
-                        frm.ShowDialog(this);
+                        if (!Directory.Exists(fbd01.SelectedPath))
+                        {
+                            MessageBox.Show("El directorio seleccionado no existe", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        Archivo = Path.Combine(fbd01.SelectedPath, clsGeneral.GeneraNombreArchivoRnd("BuroInd_", "csv"));
+                        GenerarArchivo(Archivo, clsGeneral.Unzip(Resultado.Resultado, clsGeneral.Codificaciones.ANSI));
+
+                        if(File.Exists(Archivo))
+                        {
+                            System.Diagnostics.Process.Start(Archivo);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se puede abrir el archivo correspondiente al registro solicitado", "Error al generar archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Error al abrir ventana de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Error al generar archivo de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -279,6 +303,11 @@ namespace SisCreWin.Negocio.Buro
                     MessageBox.Show(Resultado.Error, "Error al obtener datos de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void grdDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
         #endregion Eventos
     }

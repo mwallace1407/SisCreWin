@@ -91,6 +91,12 @@ namespace SisCreWin.Modelo
             Error,
             Informacion
         }
+
+        public enum Codificaciones
+        {
+            UTF8,
+            ANSI
+        }
         #endregion Enumeraciones
         #region Metodos
         public static string UserDecoded(string Usuario)
@@ -253,16 +259,28 @@ namespace SisCreWin.Modelo
             }
         }
 
-        public static byte[] Zip(string str)
+        public static byte[] Zip(string str, Codificaciones Coding = Codificaciones.UTF8)
         {
-            var bytes = Encoding.UTF8.GetBytes(str);
+            byte[] bytes;
+
+            switch (Coding)
+            {
+                case Codificaciones.ANSI:
+                    bytes = Encoding.Default.GetBytes(str);
+                    break;
+                case Codificaciones.UTF8:
+                    bytes = Encoding.UTF8.GetBytes(str);
+                    break;
+                default:
+                    bytes = Encoding.UTF8.GetBytes(str);
+                    break;
+            }
 
             using (var msi = new MemoryStream(bytes))
             using (var mso = new MemoryStream())
             {
                 using (var gs = new GZipStream(mso, CompressionMode.Compress))
                 {
-                    //msi.CopyTo(gs);
                     CopyTo(msi, gs);
                 }
 
@@ -270,7 +288,7 @@ namespace SisCreWin.Modelo
             }
         }
 
-        public static string Unzip(byte[] bytes)
+        public static string Unzip(byte[] bytes, Codificaciones Coding = Codificaciones.UTF8)
         {
             using (var msi = new MemoryStream(bytes))
             using (var mso = new MemoryStream())
@@ -281,7 +299,22 @@ namespace SisCreWin.Modelo
                     CopyTo(gs, mso);
                 }
 
-                return Encoding.UTF8.GetString(mso.ToArray());
+                string Result = string.Empty;
+
+                switch (Coding)
+                {
+                    case Codificaciones.ANSI:
+                        Result = Encoding.Default.GetString(mso.ToArray());
+                        break;
+                    case Codificaciones.UTF8:
+                        Result = Encoding.UTF8.GetString(mso.ToArray());
+                        break;
+                    default:
+                        Result = Encoding.UTF8.GetString(mso.ToArray());
+                        break;
+                }
+
+                return Result;
             }
         }
         //!Compresion
@@ -449,6 +482,28 @@ namespace SisCreWin.Modelo
                 Usr_Id = vUsr_Id;
                 BHI_Fecha = vBHI_Fecha;
                 BHI_Documento = vBHI_Documento;
+            }
+        }
+
+        public struct BuroDocumentos
+        {
+            public int BDG_Id;
+            public int Usr_Id;
+            public int BDG_Anno;
+            public int BDG_Mes;
+            public string BDG_Tipo;
+            public DateTime? BDG_Fecha;
+            public byte[] BDG_Documento;
+
+            public BuroDocumentos(int vUsr_Id, int vBDG_Anno, int vBDG_Mes, string vBDG_Tipo, int vBDG_Id = 0, DateTime? vBDG_Fecha = null, byte[] vBDG_Documento = null)
+            {
+                BDG_Id = vBDG_Id;
+                Usr_Id = vUsr_Id;
+                BDG_Fecha = vBDG_Fecha;
+                BDG_Anno = vBDG_Anno;
+                BDG_Mes = vBDG_Mes;
+                BDG_Tipo = vBDG_Tipo;
+                BDG_Documento = vBDG_Documento;
             }
         }
 
