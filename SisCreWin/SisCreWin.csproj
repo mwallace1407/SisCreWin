@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationRevision>17</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -198,6 +198,12 @@
     <Compile Include="Sistema\frmModulos.Designer.cs">
       <DependentUpon>frmModulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sistema\frmParametros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sistema\frmParametros.Designer.cs">
+      <DependentUpon>frmParametros.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sistema\frmTXTModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sistema\frmModulos.resx">
       <DependentUpon>frmModulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sistema\frmParametros.resx">
+      <DependentUpon>frmParametros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sistema\frmTXTModal.resx">
       <DependentUpon>frmTXTModal.cs</DependentUpon>

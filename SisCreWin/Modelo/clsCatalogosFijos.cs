@@ -43,6 +43,8 @@ namespace SisCreWin.Modelo
         public static String Sistema_C_Mantenimiento { get { return "sp_Sistema_C_Mantenimiento"; } }
         public static String Sistema_C_Top10PaginasUsuario { get { return "sp_Sistema_C_Top10PaginasUsuario"; } }
         public static String Catalogos_C_Procedimientos { get { return "sp_Catalogos_C_Procedimientos"; } }
+        public static String Sistema_C_ParametrosMantenimiento { get { return "sp_Sistema_C_ParametrosMantenimiento"; } }
+        public static String Sistema_U_ParametrosMantenimiento { get { return "sp_Sistema_U_ParametrosMantenimiento"; } }
         //!General
         #endregion Sistema
         #region Negocio
@@ -105,6 +107,7 @@ namespace SisCreWin.Modelo
         public static int Usuarios_ABC { get { return 2; } }
         public static int Usuarios_Permisos { get { return 11; } }
         public static int Bitacora_Movimientos { get { return 12; } }
+        public static int Sistema_Mantenimiento { get { return 18; } }
         #endregion Sistema
         #region Negocio
         public static int Catalogos_TIIE_ABC { get { return 6; } }

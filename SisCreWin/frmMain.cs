@@ -402,6 +402,34 @@ namespace SisCreWin
                 MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
             }
         }
+
+        private void mnuMttoSist_Click(object sender, EventArgs e)
+        {
+            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
+            frmParametros frm = new frmParametros();
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(frmParametros))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
+
+            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Sistema_Mantenimiento);
+
+            if (Respuesta.Permitido)
+            {
+                frm.MdiParent = this;
+                frm.Icon = SisCreWin.Properties.Resources.favicon;
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
+            }
+        }
         #endregion Menu
 
         private void tmrMtto_Tick(object sender, EventArgs e)

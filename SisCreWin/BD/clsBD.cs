@@ -630,6 +630,34 @@ namespace SisCreWin.BD
             return Resultado;
         }
         #endregion Bitacoras
+        #region General
+        public static ResultadoStored_DT Sistema_C_ParametrosMantenimiento()
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Sistema_C_ParametrosMantenimiento, null);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Sistema_U_ParametrosMantenimiento(string SisMant, string UsuMant)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@SisMant", SqlDbType.VarChar);
+            param.Value = SisMant;
+            paramC.Add(param);
+            param = new SqlParameter("@UsuMant", SqlDbType.VarChar);
+            param.Value = UsuMant;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Sistema_U_ParametrosMantenimiento, paramC);
+
+            return Resultado;
+        }
+        #endregion General
         #endregion Sistema
         #region Negocio
         #region Catalogos

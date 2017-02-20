@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.aplicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.módulosFrecuentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.negocioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.catálogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOrigenesPuente = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +50,8 @@
             this.puentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCierreDiarioPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRegistrarPagoPuente = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuHistoricoPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSistema = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuModulos = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,12 +64,7 @@
             this.tmrMtto = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stMantenimiento = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuHistoricoPuentes = new System.Windows.Forms.ToolStripMenuItem();
-            this.aplicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.módulosFrecuentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuMttoSist = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +84,34 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // aplicaciónToolStripMenuItem
+            // 
+            this.aplicaciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.módulosFrecuentesToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.mnuSalir});
+            this.aplicaciónToolStripMenuItem.Name = "aplicaciónToolStripMenuItem";
+            this.aplicaciónToolStripMenuItem.Size = new System.Drawing.Size(89, 21);
+            this.aplicaciónToolStripMenuItem.Text = "Aplicación";
+            // 
+            // módulosFrecuentesToolStripMenuItem
+            // 
+            this.módulosFrecuentesToolStripMenuItem.Name = "módulosFrecuentesToolStripMenuItem";
+            this.módulosFrecuentesToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.módulosFrecuentesToolStripMenuItem.Text = "Módulos frecuentes";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
+            // 
+            // mnuSalir
+            // 
+            this.mnuSalir.Name = "mnuSalir";
+            this.mnuSalir.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuSalir.Size = new System.Drawing.Size(200, 22);
+            this.mnuSalir.Text = "Salir";
+            // 
             // negocioToolStripMenuItem
             // 
             this.negocioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -101,7 +130,7 @@
             this.mnuProyectos,
             this.mnuTIIE});
             this.catálogosToolStripMenuItem.Name = "catálogosToolStripMenuItem";
-            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.catálogosToolStripMenuItem.Text = "&Catálogos";
             // 
             // mnuOrigenesPuente
@@ -141,7 +170,7 @@
             this.mnuBuroHistInd,
             this.mnuBuroHistPuentes});
             this.buróToolStripMenuItem.Name = "buróToolStripMenuItem";
-            this.buróToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.buróToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.buróToolStripMenuItem.Text = "&Buró";
             // 
             // mnuCSVIndividuales
@@ -185,7 +214,7 @@
             this.toolStripSeparator1,
             this.mnuHistoricoPuentes});
             this.puentesToolStripMenuItem.Name = "puentesToolStripMenuItem";
-            this.puentesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.puentesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.puentesToolStripMenuItem.Text = "&Puentes";
             // 
             // mnuCierreDiarioPuentes
@@ -202,12 +231,25 @@
             this.mnuRegistrarPagoPuente.Text = "Registrar &pago para un crédito";
             this.mnuRegistrarPagoPuente.Click += new System.EventHandler(this.mnuRegistrarPagoPuente_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(273, 6);
+            // 
+            // mnuHistoricoPuentes
+            // 
+            this.mnuHistoricoPuentes.Name = "mnuHistoricoPuentes";
+            this.mnuHistoricoPuentes.Size = new System.Drawing.Size(276, 22);
+            this.mnuHistoricoPuentes.Text = "&Histórico de créditos";
+            this.mnuHistoricoPuentes.Click += new System.EventHandler(this.mnuHistoricoPuentes_Click);
+            // 
             // mnuSistema
             // 
             this.mnuSistema.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuUsuarios,
             this.mnuModulos,
-            this.mnuBitacoraMov});
+            this.mnuBitacoraMov,
+            this.mnuMttoSist});
             this.mnuSistema.Name = "mnuSistema";
             this.mnuSistema.Size = new System.Drawing.Size(69, 21);
             this.mnuSistema.Text = "&Sistema";
@@ -297,45 +339,12 @@
             this.stMantenimiento.Text = "El sistema se encuentra en mantenimiento. Espere por favor.";
             this.stMantenimiento.Visible = false;
             // 
-            // toolStripSeparator1
+            // mnuMttoSist
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(273, 6);
-            // 
-            // mnuHistoricoPuentes
-            // 
-            this.mnuHistoricoPuentes.Name = "mnuHistoricoPuentes";
-            this.mnuHistoricoPuentes.Size = new System.Drawing.Size(276, 22);
-            this.mnuHistoricoPuentes.Text = "&Histórico de créditos";
-            this.mnuHistoricoPuentes.Click += new System.EventHandler(this.mnuHistoricoPuentes_Click);
-            // 
-            // aplicaciónToolStripMenuItem
-            // 
-            this.aplicaciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.módulosFrecuentesToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.mnuSalir});
-            this.aplicaciónToolStripMenuItem.Name = "aplicaciónToolStripMenuItem";
-            this.aplicaciónToolStripMenuItem.Size = new System.Drawing.Size(89, 21);
-            this.aplicaciónToolStripMenuItem.Text = "Aplicación";
-            // 
-            // módulosFrecuentesToolStripMenuItem
-            // 
-            this.módulosFrecuentesToolStripMenuItem.Name = "módulosFrecuentesToolStripMenuItem";
-            this.módulosFrecuentesToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.módulosFrecuentesToolStripMenuItem.Text = "Módulos frecuentes";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
-            // 
-            // mnuSalir
-            // 
-            this.mnuSalir.Name = "mnuSalir";
-            this.mnuSalir.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mnuSalir.Size = new System.Drawing.Size(200, 22);
-            this.mnuSalir.Text = "Salir";
+            this.mnuMttoSist.Name = "mnuMttoSist";
+            this.mnuMttoSist.Size = new System.Drawing.Size(253, 22);
+            this.mnuMttoSist.Text = "&Mantenimiento de sistema";
+            this.mnuMttoSist.Click += new System.EventHandler(this.mnuMttoSist_Click);
             // 
             // frmMain
             // 
@@ -403,5 +412,6 @@
         private System.Windows.Forms.ToolStripMenuItem módulosFrecuentesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem mnuSalir;
+        private System.Windows.Forms.ToolStripMenuItem mnuMttoSist;
     }
 }
