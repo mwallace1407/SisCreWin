@@ -282,10 +282,13 @@
             // 
             // grdDatos
             // 
+            this.grdDatos.AllowUserToAddRows = false;
+            this.grdDatos.AllowUserToDeleteRows = false;
             this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.grdDatos.Location = new System.Drawing.Point(11, 40);
             this.grdDatos.Name = "grdDatos";
             this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

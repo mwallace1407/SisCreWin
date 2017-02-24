@@ -73,7 +73,7 @@ namespace SisCreWin.Negocio.Puentes
         private void wkr01_DoWork(object sender, DoWorkEventArgs e)
         {
             ResultadoStored_Str Resultado = new ResultadoStored_Str();
-
+            
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Puentes_I_CierreDiario, vBit_DatosPrevios: clsGeneral.Zip("Parámetros: Ninguno"));
             clsBD.Bitacoras_I_MovimientosSistema(Bitacora);
             Resultado = clsBD.Puentes_I_CierreDiario();

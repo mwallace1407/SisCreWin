@@ -327,13 +327,17 @@ namespace SisCreWin.Modelo
             public int Mod_Id;
             public string Mod_Nombre;
             public string Mod_Descripcion;
+            public string Mod_Formulario;
+            public bool Mod_Multiple;
             public bool Mod_Activo;
 
-            public CatModulos(int vMod_Id, string vMod_Nombre, string vMod_Descripcion, bool vMod_Activo)
+            public CatModulos(int vMod_Id, string vMod_Nombre, string vMod_Descripcion, string vMod_Formulario, bool vMod_Multiple, bool vMod_Activo)
             {
                 Mod_Id = vMod_Id;
                 Mod_Nombre = vMod_Nombre;
                 Mod_Descripcion = vMod_Descripcion;
+                Mod_Formulario = vMod_Formulario;
+                Mod_Multiple = vMod_Multiple;
                 Mod_Activo = vMod_Activo;
             }
         }
@@ -572,6 +576,26 @@ namespace SisCreWin.Modelo
                 PHP_InteresCapVenc = vPHP_InteresCapVenc;
                 PHP_ComiAplicacion = vPHP_ComiAplicacion;
                 PHP_PagoIntMoratorios = vPHP_PagoIntMoratorios;
+            }
+        }
+
+        public struct PuentesCierreMensual
+        {
+            public int PCM_Id;
+            public int Usr_Id;
+            public int PCM_Anno;
+            public int PCM_Mes;
+            public DateTime? PCM_Fecha;
+            public byte[] PCM_Datos;
+
+            public PuentesCierreMensual(int vUsr_Id, int vPCM_Anno, int vPCM_Mes, int vPCM_Id = 0, DateTime? vPCM_Fecha = null, byte[] vPCM_Datos = null)
+            {
+                PCM_Id = vPCM_Id;
+                Usr_Id = vUsr_Id;
+                PCM_Fecha = vPCM_Fecha;
+                PCM_Anno = vPCM_Anno;
+                PCM_Mes = vPCM_Mes;
+                PCM_Datos = vPCM_Datos;
             }
         }
         #endregion Negocio

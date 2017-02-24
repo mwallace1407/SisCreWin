@@ -245,6 +245,24 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
+        public static ResultadoExport ExportarExcel(DataTable DT, bool DevolverError = true, int TimeOut = 0)
+        {
+            ResultadoExport Resultado = new ResultadoExport(string.Empty, string.Empty, false);
+            ExportarExcel exportar = new ExportarExcel();
+
+            try
+            {
+                Resultado.Archivo = System.IO.Path.Combine(System.IO.Path.GetTempPath(), exportar.GenerarExcel(DT.CreateDataReader(), System.IO.Path.GetTempPath(), clsGeneral.GeneraNombreArchivoRnd("Rpt_", "xlsx"), 250000));
+            }
+            catch (Exception ex)
+            {
+                Resultado.HayError = true;
+                Resultado.Error = ex.Message;
+            }
+
+            return Resultado;
+        }
         #endregion ProcedimientosBase
         #region Sistema
         #region Usuarios
@@ -475,6 +493,12 @@ namespace SisCreWin.BD
             param = new SqlParameter("@Mod_Descripcion", SqlDbType.VarChar);
             param.Value = Modulos.Mod_Descripcion;
             paramC.Add(param);
+            param = new SqlParameter("@Mod_Formulario", SqlDbType.VarChar);
+            param.Value = Modulos.Mod_Formulario;
+            paramC.Add(param);
+            param = new SqlParameter("@Mod_Multiple", SqlDbType.Bit);
+            param.Value = Modulos.Mod_Multiple;
+            paramC.Add(param);
             param = new SqlParameter("@Mod_Activo", SqlDbType.Bit);
             param.Value = Modulos.Mod_Activo;
             paramC.Add(param);
@@ -498,6 +522,12 @@ namespace SisCreWin.BD
             paramC.Add(param);
             param = new SqlParameter("@Mod_Descripcion", SqlDbType.VarChar);
             param.Value = Modulos.Mod_Descripcion;
+            paramC.Add(param);
+            param = new SqlParameter("@Mod_Formulario", SqlDbType.VarChar);
+            param.Value = Modulos.Mod_Formulario;
+            paramC.Add(param);
+            param = new SqlParameter("@Mod_Multiple", SqlDbType.Bit);
+            param.Value = Modulos.Mod_Multiple;
             paramC.Add(param);
             param = new SqlParameter("@Mod_Activo", SqlDbType.Bit);
             param.Value = Modulos.Mod_Activo;
@@ -534,6 +564,21 @@ namespace SisCreWin.BD
             paramC.Add(param);
 
             Resultado = EjecutarStored_Str(CatalogoStoreds.Modulos_C_Activo, paramC, "Mod_Activo");
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Catalogos_C_DatosModulo(int Mod_Id)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@Mod_Id", SqlDbType.Int);
+            param.Value = Mod_Id;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Catalogos_C_DatosModulo, paramC);
 
             return Resultado;
         }
@@ -1391,6 +1436,141 @@ namespace SisCreWin.BD
             paramC.Add(param);
 
             Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_MovimientosPrestamo, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Puentes_C_ObtenerFechasCierre(bool ObtenerGenerados = false)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@ObtenerGenerados", SqlDbType.Bit);
+            param.Value = ObtenerGenerados;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_ObtenerFechasCierre, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Puentes_C_ReporteContableMensual(DateTime? SCP_Fecha)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+            
+            param = new SqlParameter("@SCP_Fecha", SqlDbType.DateTime);
+            param.Value = SCP_Fecha;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_ReporteContableMensual, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Puentes_I_HistoricoCierreMensual(int Usr_Id, DateTime PHCM_Periodo, byte[] PHCM_Datos)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@Usr_Id", SqlDbType.Int);
+            param.Value = Usr_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@PHCM_Periodo", SqlDbType.DateTime);
+            param.Value = PHCM_Periodo;
+            paramC.Add(param);
+            param = new SqlParameter("@PHCM_Datos", SqlDbType.VarBinary);
+            param.Value = PHCM_Datos;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Puentes_I_HistoricoCierreMensual, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Puentes_M_CierreMensual(clsGeneral.PuentesCierreMensual Cierre)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@Usr_Id", SqlDbType.Int);
+            param.Value = Cierre.Usr_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@PCM_Anno", SqlDbType.Int);
+            param.Value = Cierre.PCM_Anno;
+            paramC.Add(param);
+            param = new SqlParameter("@PCM_Mes", SqlDbType.Int);
+            param.Value = Cierre.PCM_Mes;
+            paramC.Add(param);
+            param = new SqlParameter("@PCM_Datos", SqlDbType.VarBinary);
+            param.Value = Cierre.PCM_Datos;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Puentes_M_CierreMensual, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Puentes_C_HistoricoCierresMensuales(DateTime? PHCM_Fecha_Ini, DateTime? PHCM_Fecha_Fin, DateTime? PHCM_Periodo, int? Usr_Id, int TopSel = 100)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT();
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PHCM_Fecha_Ini", SqlDbType.DateTime);
+            param.Value = PHCM_Fecha_Ini;
+            paramC.Add(param);
+            param = new SqlParameter("@PHCM_Fecha_Fin", SqlDbType.DateTime);
+            param.Value = PHCM_Fecha_Fin;
+            paramC.Add(param);
+            param = new SqlParameter("@PHCM_Periodo", SqlDbType.DateTime);
+            param.Value = PHCM_Periodo;
+            paramC.Add(param);
+            param = new SqlParameter("@Usr_Id", SqlDbType.Int);
+            param.Value = Usr_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@TopSel", SqlDbType.Int);
+            param.Value = TopSel;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_HistoricoCierresMensuales, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Byte Puentes_C_HistoricoDatos(int PHCM_Id)
+        {
+            ResultadoStored_Byte Resultado = new ResultadoStored_Byte(null, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PHCM_Id", SqlDbType.Int);
+            param.Value = PHCM_Id;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_Byte(CatalogoStoreds.Puentes_C_HistoricoDatos, paramC, "PHCM_Datos");
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Puentes_U_AutorizarRegeneracionCierreMensual(int PCM_Anno, int PCM_Mes)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PCM_Anno", SqlDbType.Int);
+            param.Value = PCM_Anno;
+            paramC.Add(param);
+            param = new SqlParameter("@PCM_Mes", SqlDbType.Int);
+            param.Value = PCM_Mes;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Puentes_U_AutorizarRegeneracionCierreMensual, paramC);
 
             return Resultado;
         }

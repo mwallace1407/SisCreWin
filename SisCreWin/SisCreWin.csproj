@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>21</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -52,7 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>E66643E61ECEE22A984982ED8F9CFFF1879838E7</ManifestCertificateThumbprint>
@@ -186,6 +186,12 @@
     <Compile Include="Negocio\Puentes\frmCierreDiario.Designer.cs">
       <DependentUpon>frmCierreDiario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\Puentes\frmReporteContable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Puentes\frmReporteContable.Designer.cs">
+      <DependentUpon>frmReporteContable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sistema\frmBitacoraMov.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +271,9 @@
     <EmbeddedResource Include="Negocio\Puentes\frmCierreDiario.resx">
       <DependentUpon>frmCierreDiario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Puentes\frmReporteContable.resx">
+      <DependentUpon>frmReporteContable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -311,9 +320,6 @@
     <None Include="Resources\Online_banking_gray-512.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\favicon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
@@ -345,6 +351,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DivBackA_big.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icono.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Icono.ico" />
+    <None Include="Resources\favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

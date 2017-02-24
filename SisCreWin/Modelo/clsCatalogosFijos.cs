@@ -33,6 +33,7 @@ namespace SisCreWin.Modelo
         public static String Catalogos_U_Modulos { get { return "sp_Catalogos_U_Modulos"; } }
         public static String Catalogos_C_ModulosBitacora { get { return "sp_Catalogos_C_ModulosBitacora"; } }
         public static String Modulos_C_Activo { get { return "sp_Modulos_C_Activo"; } }
+        public static String Catalogos_C_DatosModulo { get { return "sp_Catalogos_C_DatosModulo"; } }
         //!Modulos
         //Bitacoras
         public static String Bitacoras_I_MovimientosSistema { get { return "sp_Bitacoras_I_MovimientosSistema"; } }
@@ -93,6 +94,13 @@ namespace SisCreWin.Modelo
         public static String Puentes_M_RegistrarPago { get { return "sp_Puentes_M_RegistrarPago"; } }
         public static String Puentes_C_ObtenerPrestamos { get { return "sp_Puentes_C_ObtenerPrestamos"; } }
         public static String Puentes_C_MovimientosPrestamo { get { return "sp_Puentes_C_MovimientosPrestamo"; } }
+        public static String Puentes_C_ObtenerFechasCierre { get { return "sp_Puentes_C_ObtenerFechasCierre"; } }
+        public static String Puentes_C_ReporteContableMensual { get { return "sp_Puentes_C_ReporteContableMensual"; } }
+        public static String Puentes_I_HistoricoCierreMensual { get { return "sp_Puentes_I_HistoricoCierreMensual"; } }
+        public static String Puentes_M_CierreMensual { get { return "sp_Puentes_M_CierreMensual"; } }
+        public static String Puentes_C_HistoricoCierresMensuales { get { return "sp_Puentes_C_HistoricoCierresMensuales"; } }
+        public static String Puentes_C_HistoricoDatos { get { return "sp_Puentes_C_HistoricoDatos"; } }
+        public static String Puentes_U_AutorizarRegeneracionCierreMensual { get { return "sp_Puentes_U_AutorizarRegeneracionCierreMensual"; } }
         //!Operaciones_Puentes
         #endregion Negocio
         #endregion Variables
@@ -123,6 +131,8 @@ namespace SisCreWin.Modelo
         public static int Puentes_GenerarCierre { get { return 9; } }
         public static int Puentes_RegistrarPago { get { return 10; } }
         public static int Puentes_Historico { get { return 15; } }
+        public static int Puentes_ReporteContable { get { return 19; } }
+        public static int Puentes_RegenerarCierreMensual { get { return 20; } }
         #endregion Negocio
         #endregion Variables
     }

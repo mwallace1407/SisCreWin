@@ -27,11 +27,15 @@ namespace SisCreWin.Sistema
                 grdDatos.Columns[0].HeaderText = "No.";
                 grdDatos.Columns[1].HeaderText = "Nombre";
                 grdDatos.Columns[2].HeaderText = "Descripción";
-                grdDatos.Columns[3].HeaderText = "Activo";
+                grdDatos.Columns[3].HeaderText = "Formulario";
+                grdDatos.Columns[4].HeaderText = "Múltiple";
+                grdDatos.Columns[5].HeaderText = "Activo";
                 grdDatos.Columns[0].ReadOnly = true;
                 grdDatos.Columns[1].ReadOnly = true;
                 grdDatos.Columns[2].ReadOnly = true;
                 grdDatos.Columns[3].ReadOnly = true;
+                grdDatos.Columns[4].ReadOnly = true;
+                grdDatos.Columns[5].ReadOnly = true;
             }
             else
             {
@@ -50,7 +54,7 @@ namespace SisCreWin.Sistema
             ResultadoStored_Int Resultado = new ResultadoStored_Int();
 
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Global.Usr_Id, CatalogoStoreds.Catalogos_I_Modulos, vBit_DatosPrevios: null);
-            clsGeneral.CatModulos Modulos = new clsGeneral.CatModulos(0, txtCNombre.Text.Trim(), txtCDescripcion.Text.Trim(), chkCActivo.Checked);
+            clsGeneral.CatModulos Modulos = new clsGeneral.CatModulos(0, txtCNombre.Text.Trim(), txtCDescripcion.Text.Trim(), txtCFormulario.Text.Trim(), chkCMultiple.Checked, chkCActivo.Checked);
 
             Resultado = clsBD.Catalogos_I_Modulos(Modulos);
 
@@ -97,6 +101,12 @@ namespace SisCreWin.Sistema
                 txtMId.Text = dr.Cells["Mod_Id"].Value.ToString();
                 txtMNombre.Text = dr.Cells["Mod_Nombre"].Value.ToString();
                 txtMDescripcion.Text = dr.Cells["Mod_Descripcion"].Value.ToString();
+                txtMFormulario.Text = dr.Cells["Mod_Formulario"].Value.ToString();
+
+                if (dr.Cells["Mod_Multiple"].Value.ToString() == "S")
+                    chkMMultiple.Checked = true;
+                else
+                    chkMMultiple.Checked = false;
 
                 if (dr.Cells["Mod_Activo"].Value.ToString() == "S")
                     chkMActivo.Checked = true;
@@ -114,7 +124,7 @@ namespace SisCreWin.Sistema
             ResultadoStored_Str Resultado = new ResultadoStored_Str();
 
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Global.Usr_Id, CatalogoStoreds.Catalogos_U_Modulos, vBit_DatosPrevios: null);
-            clsGeneral.CatModulos Modulos = new clsGeneral.CatModulos(Convert.ToInt32(txtMId.Text), txtMNombre.Text.Trim(), txtMDescripcion.Text.Trim(), chkMActivo.Checked);
+            clsGeneral.CatModulos Modulos = new clsGeneral.CatModulos(Convert.ToInt32(txtMId.Text), txtMNombre.Text.Trim(), txtMDescripcion.Text.Trim(), txtMFormulario.Text.Trim(), chkMMultiple.Checked, chkMActivo.Checked);
 
             Resultado = clsBD.Catalogos_C_ModulosBitacora(Convert.ToInt32(txtMId.Text));
 

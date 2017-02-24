@@ -13,12 +13,14 @@ using SisCreWin.Negocio;
 using SisCreWin.Negocio.Catalogos;
 using SisCreWin.Negocio.Buro;
 using SisCreWin.Negocio.Puentes;
+using SisCreWin.BD;
 
 namespace SisCreWin
 {
     public partial class frmMain : Form
     {
         #region Variables
+        DataTable ModulosFecuentes = new DataTable();
         #endregion Variables
         #region Propiedades
         #endregion Propiedades
@@ -28,11 +30,179 @@ namespace SisCreWin
             InitializeComponent();
         }
 
+        private void AbrirVentana(int Mod_Id)
+        {
+            //frmModulos frm2 = new frmModulos();
+
+            //foreach (Form form in Application.OpenForms)
+            //{
+            //    if (form.GetType() == typeof(frmModulos))
+            //    {
+            //        form.Activate();
+            //        return;
+            //    }
+            //}
+            
+            //Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Catalogos_Modulos_ABC);
+
+            //if (Respuesta.Permitido)
+            //{
+            //    frm2.MdiParent = this;
+            //    frm2.Icon = SisCreWin.Properties.Resources.favicon;
+            //    frm2.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
+            //}
+
+            Form frmGen = null;
+            bool Mod_Multiple = false;
+            clsGeneral.RespuestaAcceso Respuesta = new Modelo.clsGeneral.RespuestaAcceso();
+            ResultadoStored_DT Resultado = new BD.ResultadoStored_DT();
+
+            Resultado = clsBD.Catalogos_C_DatosModulo(Mod_Id);
+
+            if(Resultado.Resultado.Rows.Count > 0)
+            {
+                bool.TryParse(Resultado.Resultado.Rows[0]["Mod_Multiple"].ToString(), out Mod_Multiple);
+            }
+
+            switch (Mod_Id)
+            {
+                case 1:
+                    frmGen = new frmModulos();
+                    break;
+                case 2:
+                    frmGen = new frmUsuarios();
+                    break;
+                case 3:
+                    frmGen = new frmPromotores();
+                    break;
+                case 4:
+                    frmGen = new frmProyectos();
+                    break;
+                case 5:
+                    frmGen = new frmINTFPuentes();
+                    break;
+                case 6:
+                    frmGen = new frmTIIE();
+                    break;
+                case 7:
+                    frmGen = new frmOrigenesPuente();
+                    break;
+                case 8:
+                    frmGen = new frmCSVIndividuales();
+                    break;
+                case 9:
+                    frmGen = new frmCierreDiario();
+                    break;
+                case 10:
+                    frmGen = new frmRegistroPago();
+                    break;
+                case 11:
+                    frmGen = new frmUsuarios();
+                    break;
+                case 12:
+                    frmGen = new frmBitacoraMov();
+                    break;
+                case 13:
+                    frmGen = new frmHistInd();
+                    break;
+                case 14:
+                    frmGen = new frmHistPuentes();
+                    break;
+                case 15:
+                    frmGen = new frmHistCred();
+                    break;
+                case 16:
+                    frmGen = new frmCSVIndividuales();
+                    break;
+                case 17:
+                    frmGen = new frmINTFPuentes();
+                    break;
+                case 18:
+                    frmGen = new frmParametros();
+                    break;
+                case 19:
+                    frmGen = new frmReporteContable();
+                    break;
+                case 20:
+                    frmGen = new frmReporteContable();
+                    break;
+                default:
+                    break;
+            }
+
+            if (!Mod_Multiple)
+            {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == frmGen.GetType())
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+            }
+
+            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, Mod_Id);
+
+            if (Respuesta.Permitido)
+            {
+                frmGen.MdiParent = this;
+                frmGen.Icon = SisCreWin.Properties.Resources.favicon;
+                frmGen.Show();
+            }
+            else
+            {
+                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
+            }
+        }
+
+        private void ProcesarFecuentes()
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT();
+
+            Resultado = clsBD.Sistema_C_Top10PaginasUsuario(Global.Usr_Id);
+
+            if(!Resultado.HayError)
+            {
+                for (int w = 0; w < Resultado.Resultado.Rows.Count; w++)
+                {
+                    try
+                    {
+                        ToolStripItem[] itm = mnuMain.Items.Find("mnuFreq" + (w + 1).ToString(), true);
+
+                        if(itm.Count() > 0)
+                        {
+                            if(itm[0].Name == "mnuFreq" + (w + 1).ToString())
+                            {
+                                itm[0].Text = Resultado.Resultado.Rows[w]["Nombre"].ToString();
+                                itm[0].ToolTipText = Resultado.Resultado.Rows[w]["Descripcion"].ToString();
+                                itm[0].Visible = true;
+                            }
+                        }
+                    }
+                    catch { }
+                }
+
+                mnuModulosFreq.Visible = true;
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener la lista para su usuario", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        #endregion Metodos
+        #region Eventos
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.Text = this.Text + " - " + Global.Usuario;
             tmrMtto.Enabled = true;
             tmrMtto.Start();
+            ProcesarFecuentes();
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -46,8 +216,7 @@ namespace SisCreWin
                 Application.Exit();
             }
         }
-        #endregion Metodos
-        #region Eventos
+        
         #region Menu
         private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -71,114 +240,22 @@ namespace SisCreWin
 
         private void mnuUsuarios_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new Modelo.clsGeneral.RespuestaAcceso();
-            frmUsuarios frm = new Sistema.frmUsuarios();
-
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.GetType() == typeof(frmUsuarios))
-                {
-                    form.Activate();
-                    return;
-                }
-            }
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Usuarios_ABC);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Usuarios_ABC);
         }
 
         private void mnuModulos_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new Modelo.clsGeneral.RespuestaAcceso();
-            frmModulos frm = new frmModulos();
-
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.GetType() == typeof(frmModulos))
-                {
-                    form.Activate();
-                    return;
-                }
-            }
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Catalogos_Modulos_ABC);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Catalogos_Modulos_ABC);
         }
 
         private void mnuOrigenesPuente_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new Modelo.clsGeneral.RespuestaAcceso();
-            frmOrigenesPuente frm = new frmOrigenesPuente();
-
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.GetType() == typeof(frmOrigenesPuente))
-                {
-                    form.Activate();
-                    return;
-                }
-            }
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Puentes_OCP_ABC);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Puentes_OCP_ABC);
         }
 
         private void mnuPromotores_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new Modelo.clsGeneral.RespuestaAcceso();
-            frmPromotores frm = new frmPromotores();
-
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.GetType() == typeof(frmPromotores))
-                {
-                    form.Activate();
-                    return;
-                }
-            }
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Promotores_ABC);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Promotores_ABC);
         }
 
         private void mnuSalir_Click(object sender, EventArgs e)
@@ -188,247 +265,62 @@ namespace SisCreWin
 
         private void mnuProyectos_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmProyectos frm = new frmProyectos();
-
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.GetType() == typeof(frmProyectos))
-                {
-                    form.Activate();
-                    return;
-                }
-            }
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Proyectos_ABC);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Proyectos_ABC);
         }
 
         private void mnuTIIE_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmTIIE frm = new frmTIIE();
-
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.GetType() == typeof(frmTIIE))
-                {
-                    form.Activate();
-                    return;
-                }
-            }
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Catalogos_TIIE_ABC);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Catalogos_TIIE_ABC);
         }
 
         private void mnuCSVIndividuales_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmCSVIndividuales frm = new frmCSVIndividuales();
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Buro_Individuales_GenerarCSV);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Buro_Individuales_GenerarCSV);
         }
 
         private void mnuINTFPuentes_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmINTFPuentes frm = new frmINTFPuentes();
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Buro_Puentes_GenerarINTF);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Buro_Puentes_GenerarINTF);
         }
 
         private void mnuCierreDiarioPuentes_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmCierreDiario frm = new frmCierreDiario();
-
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.GetType() == typeof(frmCierreDiario))
-                {
-                    form.Activate();
-                    return;
-                }
-            }
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Puentes_GenerarCierre);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Puentes_GenerarCierre);
         }
 
         private void mnuRegistrarPagoPuente_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmRegistroPago frm = new frmRegistroPago();
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Puentes_RegistrarPago);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Puentes_RegistrarPago);
         }
 
         private void mnuBitacoraMov_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmBitacoraMov frm = new frmBitacoraMov();
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Bitacora_Movimientos);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Bitacora_Movimientos);
         }
 
         private void mnuBuroHistInd_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmHistInd frm = new frmHistInd();
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Buro_Individuales_Historico);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Buro_Individuales_Historico);
         }
 
         private void mnuBuroHistPuentes_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmHistPuentes frm = new frmHistPuentes();
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Buro_Puentes_Historico);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Buro_Puentes_Historico);
         }
 
         private void mnuHistoricoPuentes_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmHistCred frm = new frmHistCred();
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Puentes_Historico);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+            AbrirVentana(CatalogoModulos.Puentes_Historico);
         }
 
         private void mnuMttoSist_Click(object sender, EventArgs e)
         {
-            clsGeneral.RespuestaAcceso Respuesta = new clsGeneral.RespuestaAcceso();
-            frmParametros frm = new frmParametros();
+            AbrirVentana(CatalogoModulos.Sistema_Mantenimiento);
+        }
 
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.GetType() == typeof(frmParametros))
-                {
-                    form.Activate();
-                    return;
-                }
-            }
-
-            Respuesta = clsGeneral.ValidarAccesoUsuario(Global.Usr_Id, CatalogoModulos.Sistema_Mantenimiento);
-
-            if (Respuesta.Permitido)
-            {
-                frm.MdiParent = this;
-                frm.Icon = SisCreWin.Properties.Resources.favicon;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
-            }
+        private void mnuRptContaPuentes_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Puentes_ReporteContable);
         }
         #endregion Menu
 

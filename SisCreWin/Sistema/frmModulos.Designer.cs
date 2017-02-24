@@ -55,6 +55,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
             this.sfd01 = new System.Windows.Forms.SaveFileDialog();
+            this.txtCFormulario = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.chkCMultiple = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.chkMMultiple = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtMFormulario = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             this.tabModificar.SuspendLayout();
@@ -79,6 +87,10 @@
             // 
             // tabCrear
             // 
+            this.tabCrear.Controls.Add(this.chkCMultiple);
+            this.tabCrear.Controls.Add(this.label11);
+            this.tabCrear.Controls.Add(this.txtCFormulario);
+            this.tabCrear.Controls.Add(this.label10);
             this.tabCrear.Controls.Add(this.btnCrearModulo);
             this.tabCrear.Controls.Add(this.chkCActivo);
             this.tabCrear.Controls.Add(this.label4);
@@ -98,7 +110,7 @@
             // 
             // btnCrearModulo
             // 
-            this.btnCrearModulo.Location = new System.Drawing.Point(182, 130);
+            this.btnCrearModulo.Location = new System.Drawing.Point(182, 180);
             this.btnCrearModulo.Name = "btnCrearModulo";
             this.btnCrearModulo.Size = new System.Drawing.Size(252, 23);
             this.btnCrearModulo.TabIndex = 7;
@@ -109,7 +121,9 @@
             // chkCActivo
             // 
             this.chkCActivo.AutoSize = true;
-            this.chkCActivo.Location = new System.Drawing.Point(182, 109);
+            this.chkCActivo.Checked = true;
+            this.chkCActivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCActivo.Location = new System.Drawing.Point(182, 159);
             this.chkCActivo.Margin = new System.Windows.Forms.Padding(4);
             this.chkCActivo.Name = "chkCActivo";
             this.chkCActivo.Size = new System.Drawing.Size(15, 14);
@@ -119,7 +133,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 110);
+            this.label4.Location = new System.Drawing.Point(8, 160);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 17);
@@ -205,6 +219,10 @@
             // 
             this.gbDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbDatos.Controls.Add(this.chkMMultiple);
+            this.gbDatos.Controls.Add(this.label12);
+            this.gbDatos.Controls.Add(this.txtMFormulario);
+            this.gbDatos.Controls.Add(this.label13);
             this.gbDatos.Controls.Add(this.txtMId);
             this.gbDatos.Controls.Add(this.label9);
             this.gbDatos.Controls.Add(this.btnModificarUsuario);
@@ -246,7 +264,7 @@
             // btnModificarUsuario
             // 
             this.btnModificarUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModificarUsuario.Location = new System.Drawing.Point(181, 143);
+            this.btnModificarUsuario.Location = new System.Drawing.Point(181, 193);
             this.btnModificarUsuario.Name = "btnModificarUsuario";
             this.btnModificarUsuario.Size = new System.Drawing.Size(267, 23);
             this.btnModificarUsuario.TabIndex = 14;
@@ -258,7 +276,7 @@
             // 
             this.chkMActivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkMActivo.AutoSize = true;
-            this.chkMActivo.Location = new System.Drawing.Point(181, 122);
+            this.chkMActivo.Location = new System.Drawing.Point(181, 172);
             this.chkMActivo.Margin = new System.Windows.Forms.Padding(4);
             this.chkMActivo.Name = "chkMActivo";
             this.chkMActivo.Size = new System.Drawing.Size(15, 14);
@@ -269,7 +287,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 123);
+            this.label6.Location = new System.Drawing.Point(7, 173);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 17);
@@ -352,6 +370,86 @@
             this.sfd01.DefaultExt = "*.xlsx";
             this.sfd01.Filter = "Archivos de Excel|*.xlsx";
             // 
+            // txtCFormulario
+            // 
+            this.txtCFormulario.Location = new System.Drawing.Point(182, 106);
+            this.txtCFormulario.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCFormulario.MaxLength = 150;
+            this.txtCFormulario.Name = "txtCFormulario";
+            this.txtCFormulario.Size = new System.Drawing.Size(252, 23);
+            this.txtCFormulario.TabIndex = 9;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 109);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(159, 17);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Formulario del módulo:";
+            // 
+            // chkCMultiple
+            // 
+            this.chkCMultiple.AutoSize = true;
+            this.chkCMultiple.Checked = true;
+            this.chkCMultiple.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCMultiple.Location = new System.Drawing.Point(182, 137);
+            this.chkCMultiple.Margin = new System.Windows.Forms.Padding(4);
+            this.chkCMultiple.Name = "chkCMultiple";
+            this.chkCMultiple.Size = new System.Drawing.Size(15, 14);
+            this.chkCMultiple.TabIndex = 11;
+            this.chkCMultiple.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 138);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(117, 17);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Módulo múltiple:";
+            // 
+            // chkMMultiple
+            // 
+            this.chkMMultiple.AutoSize = true;
+            this.chkMMultiple.Location = new System.Drawing.Point(181, 150);
+            this.chkMMultiple.Margin = new System.Windows.Forms.Padding(4);
+            this.chkMMultiple.Name = "chkMMultiple";
+            this.chkMMultiple.Size = new System.Drawing.Size(15, 14);
+            this.chkMMultiple.TabIndex = 20;
+            this.chkMMultiple.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(7, 151);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(117, 17);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Módulo múltiple:";
+            // 
+            // txtMFormulario
+            // 
+            this.txtMFormulario.Location = new System.Drawing.Point(181, 119);
+            this.txtMFormulario.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMFormulario.MaxLength = 150;
+            this.txtMFormulario.Name = "txtMFormulario";
+            this.txtMFormulario.Size = new System.Drawing.Size(267, 23);
+            this.txtMFormulario.TabIndex = 18;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(7, 122);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(159, 17);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "Formulario del módulo:";
+            // 
             // frmModulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -403,5 +501,13 @@
         private System.Windows.Forms.Button btnExportarExcel;
         private System.Windows.Forms.ToolTip tip01;
         private System.Windows.Forms.SaveFileDialog sfd01;
+        private System.Windows.Forms.CheckBox chkCMultiple;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtCFormulario;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox chkMMultiple;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtMFormulario;
+        private System.Windows.Forms.Label label13;
     }
 }

@@ -30,23 +30,25 @@
         {
             this.tab01 = new System.Windows.Forms.TabControl();
             this.tabCrear = new System.Windows.Forms.TabPage();
+            this.cboFechas = new System.Windows.Forms.ComboBox();
             this.btnCrear = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlProgreso = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.wkr01 = new System.ComponentModel.BackgroundWorker();
-            this.fbd01 = new System.Windows.Forms.FolderBrowserDialog();
-            this.cboFechas = new System.Windows.Forms.ComboBox();
             this.tabRecrear = new System.Windows.Forms.TabPage();
             this.cboPeriodosCreados = new System.Windows.Forms.ComboBox();
             this.btnAutorizar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.pnlProgreso = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.wkr01 = new System.ComponentModel.BackgroundWorker();
+            this.fbd01 = new System.Windows.Forms.FolderBrowserDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
-            this.pnlProgreso.SuspendLayout();
             this.tabRecrear.SuspendLayout();
+            this.pnlProgreso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tab01
@@ -79,6 +81,15 @@
             this.tabCrear.Text = "Crear";
             this.tabCrear.UseVisualStyleBackColor = true;
             // 
+            // cboFechas
+            // 
+            this.cboFechas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFechas.FormattingEnabled = true;
+            this.cboFechas.Location = new System.Drawing.Point(176, 46);
+            this.cboFechas.Name = "cboFechas";
+            this.cboFechas.Size = new System.Drawing.Size(150, 25);
+            this.cboFechas.TabIndex = 6;
+            // 
             // btnCrear
             // 
             this.btnCrear.Location = new System.Drawing.Point(176, 78);
@@ -109,50 +120,6 @@
             this.label1.Size = new System.Drawing.Size(223, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Introduzca los valores requeridos:";
-            // 
-            // pnlProgreso
-            // 
-            this.pnlProgreso.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlProgreso.BackgroundImage = global::SisCreWin.Properties.Resources.gears_animated_t;
-            this.pnlProgreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnlProgreso.Controls.Add(this.label2);
-            this.pnlProgreso.Location = new System.Drawing.Point(3000, 3000);
-            this.pnlProgreso.Name = "pnlProgreso";
-            this.pnlProgreso.Size = new System.Drawing.Size(10, 12);
-            this.pnlProgreso.TabIndex = 2;
-            this.pnlProgreso.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(-43, 81);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Procesando...";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // wkr01
-            // 
-            this.wkr01.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr01_DoWork);
-            this.wkr01.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr01_RunWorkerCompleted);
-            // 
-            // fbd01
-            // 
-            this.fbd01.Description = "Seleccione una carpeta para depositar el archivo";
-            // 
-            // cboFechas
-            // 
-            this.cboFechas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFechas.FormattingEnabled = true;
-            this.cboFechas.Location = new System.Drawing.Point(176, 46);
-            this.cboFechas.Name = "cboFechas";
-            this.cboFechas.Size = new System.Drawing.Size(150, 25);
-            this.cboFechas.TabIndex = 6;
             // 
             // tabRecrear
             // 
@@ -207,6 +174,52 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Seleccione el periodo que desea autorizar para volverse a generar:";
             // 
+            // pnlProgreso
+            // 
+            this.pnlProgreso.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlProgreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnlProgreso.Controls.Add(this.pictureBox1);
+            this.pnlProgreso.Controls.Add(this.label2);
+            this.pnlProgreso.Location = new System.Drawing.Point(3000, 3000);
+            this.pnlProgreso.Name = "pnlProgreso";
+            this.pnlProgreso.Size = new System.Drawing.Size(214, 203);
+            this.pnlProgreso.TabIndex = 2;
+            this.pnlProgreso.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(59, 177);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Procesando...";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // wkr01
+            // 
+            this.wkr01.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr01_DoWork);
+            this.wkr01.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr01_RunWorkerCompleted);
+            // 
+            // fbd01
+            // 
+            this.fbd01.Description = "Seleccione una carpeta para depositar el archivo";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::SisCreWin.Properties.Resources.gears_animated_t;
+            this.pictureBox1.Location = new System.Drawing.Point(35, 29);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(144, 144);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmCSVIndividuales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -223,10 +236,11 @@
             this.tab01.ResumeLayout(false);
             this.tabCrear.ResumeLayout(false);
             this.tabCrear.PerformLayout();
-            this.pnlProgreso.ResumeLayout(false);
-            this.pnlProgreso.PerformLayout();
             this.tabRecrear.ResumeLayout(false);
             this.tabRecrear.PerformLayout();
+            this.pnlProgreso.ResumeLayout(false);
+            this.pnlProgreso.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -248,5 +262,6 @@
         private System.Windows.Forms.Button btnAutorizar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
