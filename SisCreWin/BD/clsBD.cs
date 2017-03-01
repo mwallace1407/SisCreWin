@@ -984,17 +984,14 @@ namespace SisCreWin.BD
             param = new SqlParameter("@OCP_Id_Proyecto", SqlDbType.Int);
             param.Value = OCP.OCP_Id_Proyecto;
             paramC.Add(param);
-            param = new SqlParameter("@OCP_Numero_Viviendas", SqlDbType.Int);
-            param.Value = OCP.OCP_Numero_Viviendas;
-            paramC.Add(param);
-            param = new SqlParameter("@OCP_Fecha_Apertura", SqlDbType.DateTime);
-            param.Value = OCP.OCP_Fecha_Apertura;
-            paramC.Add(param);
-            param = new SqlParameter("@OCP_Fecha_Vencimiento", SqlDbType.DateTime);
-            param.Value = OCP.OCP_Fecha_Vencimiento;
-            paramC.Add(param);
             param = new SqlParameter("@OCP_Estado", SqlDbType.NVarChar);
             param.Value = OCP.OCP_Estado;
+            paramC.Add(param);
+            param = new SqlParameter("@OCP_Dacion_o_Adjudicacion", SqlDbType.NChar);
+            param.Value = OCP.OCP_Dacion_o_Adjudicacion;
+            paramC.Add(param);
+            param = new SqlParameter("@OCP_Fecha_Liquidacion", SqlDbType.DateTime);
+            param.Value = OCP.OCP_Fecha_Liquidacion;
             paramC.Add(param);
 
             Resultado = EjecutarStored_Int(CatalogoStoreds.Catalogos_I_OrigenCreditosPuente, paramC, "MensajeBD");
@@ -1017,17 +1014,14 @@ namespace SisCreWin.BD
             param = new SqlParameter("@OCP_Id_Proyecto", SqlDbType.Int);
             param.Value = OCP.OCP_Id_Proyecto;
             paramC.Add(param);
-            param = new SqlParameter("@OCP_Numero_Viviendas", SqlDbType.Int);
-            param.Value = OCP.OCP_Numero_Viviendas;
-            paramC.Add(param);
-            param = new SqlParameter("@OCP_Fecha_Apertura", SqlDbType.DateTime);
-            param.Value = OCP.OCP_Fecha_Apertura;
-            paramC.Add(param);
-            param = new SqlParameter("@OCP_Fecha_Vencimiento", SqlDbType.DateTime);
-            param.Value = OCP.OCP_Fecha_Vencimiento;
-            paramC.Add(param);
             param = new SqlParameter("@OCP_Estado", SqlDbType.NVarChar);
             param.Value = OCP.OCP_Estado;
+            paramC.Add(param);
+            param = new SqlParameter("@OCP_Dacion_o_Adjudicacion", SqlDbType.NChar);
+            param.Value = OCP.OCP_Dacion_o_Adjudicacion;
+            paramC.Add(param);
+            param = new SqlParameter("@OCP_Fecha_Liquidacion", SqlDbType.DateTime);
+            param.Value = (OCP.OCP_Fecha_Liquidacion != null) ? (object)OCP.OCP_Fecha_Liquidacion : DBNull.Value;
             paramC.Add(param);
 
             Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Catalogos_U_OrigenCreditosPuente, paramC);

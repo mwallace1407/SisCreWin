@@ -40,6 +40,28 @@ namespace SisCreWin.Modelo
             }
         }
 
+        public static DataTable ddlSiNo2
+        {
+            get
+            {
+                DataTable ddl = new DataTable();
+                DataRow dr;
+
+                ddl.Columns.Add("Valor");
+                ddl.Columns.Add("Descripcion");
+                dr = ddl.NewRow();
+                dr[0] = "SI";
+                dr[1] = "SI";
+                ddl.Rows.Add(dr);
+                dr = ddl.NewRow();
+                dr[0] = "NO";
+                dr[1] = "NO";
+                ddl.Rows.Add(dr);
+
+                return ddl;
+            }
+        }
+
         public static DataTable ddlActLiq
         {
             get
@@ -530,19 +552,20 @@ namespace SisCreWin.Modelo
             public int OCP_Prestamo;
             public string OCP_Origen_Prestamo;
             public int OCP_Id_Proyecto;
-            public int OCP_Numero_Viviendas;
-            public DateTime OCP_Fecha_Apertura;
-            public DateTime OCP_Fecha_Vencimiento;
+            //public int OCP_Numero_Viviendas;
+            //public DateTime OCP_Fecha_Apertura;
+            //public DateTime OCP_Fecha_Vencimiento;
+            public DateTime? OCP_Fecha_Liquidacion;
+            public string OCP_Dacion_o_Adjudicacion;
             public string OCP_Estado;
 
-            public OrigenCreditosPuente(int vOCP_Prestamo, string vOCP_Origen_Prestamo, int vOCP_Id_Proyecto, int vOCP_Numero_Viviendas, DateTime vOCP_Fecha_Apertura, DateTime vOCP_Fecha_Vencimiento, string vOCP_Estado)
+            public OrigenCreditosPuente(int vOCP_Prestamo, string vOCP_Origen_Prestamo, int vOCP_Id_Proyecto, string vOCP_Estado, string vOCP_Dacion_o_Adjudicacion, DateTime? vOCP_Fecha_Liquidacion)
             {
                 OCP_Prestamo = vOCP_Prestamo;
                 OCP_Origen_Prestamo = vOCP_Origen_Prestamo;
                 OCP_Id_Proyecto = vOCP_Id_Proyecto;
-                OCP_Numero_Viviendas = vOCP_Numero_Viviendas;
-                OCP_Fecha_Apertura = vOCP_Fecha_Apertura;
-                OCP_Fecha_Vencimiento = vOCP_Fecha_Vencimiento;
+                OCP_Dacion_o_Adjudicacion = vOCP_Dacion_o_Adjudicacion;
+                OCP_Fecha_Liquidacion = vOCP_Fecha_Liquidacion;
                 OCP_Estado = vOCP_Estado;
             }
         }

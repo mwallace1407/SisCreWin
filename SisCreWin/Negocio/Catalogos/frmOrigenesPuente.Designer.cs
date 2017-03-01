@@ -34,12 +34,8 @@
             this.cboIngProyectos = new System.Windows.Forms.ComboBox();
             this.txtIngEstado = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.dtpIngFechaVencimiento = new System.Windows.Forms.DateTimePicker();
+            this.dtpIngFechaLiquidacion = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
-            this.dtpIngFechaApertura = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtIngNumViviendas = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtIngId = new System.Windows.Forms.NumericUpDown();
             this.btnCrearModulo = new System.Windows.Forms.Button();
@@ -53,12 +49,6 @@
             this.cboModEstado = new System.Windows.Forms.ComboBox();
             this.cboModProyectos = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dtpModFechaVencimiento = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dtpModFechaApertura = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtModNumViviendas = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtModId = new System.Windows.Forms.NumericUpDown();
             this.txtModOrigen = new System.Windows.Forms.TextBox();
@@ -69,13 +59,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
             this.sfd01 = new System.Windows.Forms.SaveFileDialog();
+            this.cboIngDacionAdju = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.chkIngNoLiquidado = new System.Windows.Forms.CheckBox();
+            this.chkModNoLiquidado = new System.Windows.Forms.CheckBox();
+            this.cboModDacionAdju = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dtpModFechaLiquidacion = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngNumViviendas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngId)).BeginInit();
             this.tabModificar.SuspendLayout();
             this.gbDatos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtModNumViviendas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.SuspendLayout();
@@ -97,15 +93,14 @@
             // 
             // tabCrear
             // 
+            this.tabCrear.Controls.Add(this.chkIngNoLiquidado);
+            this.tabCrear.Controls.Add(this.cboIngDacionAdju);
+            this.tabCrear.Controls.Add(this.label11);
             this.tabCrear.Controls.Add(this.cboIngProyectos);
             this.tabCrear.Controls.Add(this.txtIngEstado);
             this.tabCrear.Controls.Add(this.label14);
-            this.tabCrear.Controls.Add(this.dtpIngFechaVencimiento);
+            this.tabCrear.Controls.Add(this.dtpIngFechaLiquidacion);
             this.tabCrear.Controls.Add(this.label13);
-            this.tabCrear.Controls.Add(this.dtpIngFechaApertura);
-            this.tabCrear.Controls.Add(this.label12);
-            this.tabCrear.Controls.Add(this.txtIngNumViviendas);
-            this.tabCrear.Controls.Add(this.label11);
             this.tabCrear.Controls.Add(this.label10);
             this.tabCrear.Controls.Add(this.txtIngId);
             this.tabCrear.Controls.Add(this.btnCrearModulo);
@@ -134,94 +129,43 @@
             // txtIngEstado
             // 
             this.txtIngEstado.Enabled = false;
-            this.txtIngEstado.Location = new System.Drawing.Point(182, 221);
+            this.txtIngEstado.Location = new System.Drawing.Point(182, 225);
             this.txtIngEstado.Margin = new System.Windows.Forms.Padding(4);
             this.txtIngEstado.MaxLength = 20;
             this.txtIngEstado.Name = "txtIngEstado";
             this.txtIngEstado.Size = new System.Drawing.Size(252, 23);
-            this.txtIngEstado.TabIndex = 6;
+            this.txtIngEstado.TabIndex = 5;
             this.txtIngEstado.Text = "ACTIVO";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 224);
+            this.label14.Location = new System.Drawing.Point(8, 228);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(56, 17);
             this.label14.TabIndex = 17;
             this.label14.Text = "Estado:";
             // 
-            // dtpIngFechaVencimiento
+            // dtpIngFechaLiquidacion
             // 
-            this.dtpIngFechaVencimiento.CustomFormat = "dd/MM/yyyy";
-            this.dtpIngFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpIngFechaVencimiento.Location = new System.Drawing.Point(182, 191);
-            this.dtpIngFechaVencimiento.Name = "dtpIngFechaVencimiento";
-            this.dtpIngFechaVencimiento.Size = new System.Drawing.Size(252, 23);
-            this.dtpIngFechaVencimiento.TabIndex = 5;
+            this.dtpIngFechaLiquidacion.CustomFormat = "dd/MM/yyyy";
+            this.dtpIngFechaLiquidacion.Enabled = false;
+            this.dtpIngFechaLiquidacion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpIngFechaLiquidacion.Location = new System.Drawing.Point(182, 195);
+            this.dtpIngFechaLiquidacion.Name = "dtpIngFechaLiquidacion";
+            this.dtpIngFechaLiquidacion.Size = new System.Drawing.Size(252, 23);
+            this.dtpIngFechaLiquidacion.TabIndex = 4;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 196);
+            this.label13.Location = new System.Drawing.Point(8, 169);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(157, 17);
+            this.label13.Size = new System.Drawing.Size(148, 17);
             this.label13.TabIndex = 15;
-            this.label13.Text = "Fecha de vencimiento:";
-            // 
-            // dtpIngFechaApertura
-            // 
-            this.dtpIngFechaApertura.CustomFormat = "dd/MM/yyyy";
-            this.dtpIngFechaApertura.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpIngFechaApertura.Location = new System.Drawing.Point(182, 162);
-            this.dtpIngFechaApertura.Name = "dtpIngFechaApertura";
-            this.dtpIngFechaApertura.Size = new System.Drawing.Size(252, 23);
-            this.dtpIngFechaApertura.TabIndex = 4;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(8, 167);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(132, 17);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Fecha de apertura:";
-            // 
-            // txtIngNumViviendas
-            // 
-            this.txtIngNumViviendas.Location = new System.Drawing.Point(182, 133);
-            this.txtIngNumViviendas.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.txtIngNumViviendas.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtIngNumViviendas.Name = "txtIngNumViviendas";
-            this.txtIngNumViviendas.Size = new System.Drawing.Size(252, 23);
-            this.txtIngNumViviendas.TabIndex = 3;
-            this.txtIngNumViviendas.ThousandsSeparator = true;
-            this.txtIngNumViviendas.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 135);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(150, 17);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Número de viviendas:";
+            this.label13.Text = "Fecha de liquidación:";
             // 
             // label10
             // 
@@ -229,9 +173,9 @@
             this.label10.Location = new System.Drawing.Point(8, 106);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(107, 17);
+            this.label10.Size = new System.Drawing.Size(69, 17);
             this.label10.TabIndex = 9;
-            this.label10.Text = "Id de proyecto:";
+            this.label10.Text = "Proyecto:";
             // 
             // txtIngId
             // 
@@ -257,10 +201,10 @@
             // 
             // btnCrearModulo
             // 
-            this.btnCrearModulo.Location = new System.Drawing.Point(182, 251);
+            this.btnCrearModulo.Location = new System.Drawing.Point(182, 255);
             this.btnCrearModulo.Name = "btnCrearModulo";
             this.btnCrearModulo.Size = new System.Drawing.Size(252, 24);
-            this.btnCrearModulo.TabIndex = 7;
+            this.btnCrearModulo.TabIndex = 6;
             this.btnCrearModulo.Text = "Crear origen";
             this.btnCrearModulo.UseVisualStyleBackColor = true;
             this.btnCrearModulo.Click += new System.EventHandler(this.btnCrear_Click);
@@ -318,6 +262,7 @@
             this.tabModificar.TabIndex = 1;
             this.tabModificar.Text = "Modificar";
             this.tabModificar.UseVisualStyleBackColor = true;
+            this.tabModificar.Click += new System.EventHandler(this.tabModificar_Click);
             // 
             // btnExportarExcel
             // 
@@ -335,15 +280,14 @@
             // 
             this.gbDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbDatos.Controls.Add(this.chkModNoLiquidado);
+            this.gbDatos.Controls.Add(this.cboModDacionAdju);
+            this.gbDatos.Controls.Add(this.label6);
+            this.gbDatos.Controls.Add(this.dtpModFechaLiquidacion);
+            this.gbDatos.Controls.Add(this.label7);
             this.gbDatos.Controls.Add(this.cboModEstado);
             this.gbDatos.Controls.Add(this.cboModProyectos);
             this.gbDatos.Controls.Add(this.label4);
-            this.gbDatos.Controls.Add(this.dtpModFechaVencimiento);
-            this.gbDatos.Controls.Add(this.label6);
-            this.gbDatos.Controls.Add(this.dtpModFechaApertura);
-            this.gbDatos.Controls.Add(this.label7);
-            this.gbDatos.Controls.Add(this.txtModNumViviendas);
-            this.gbDatos.Controls.Add(this.label8);
             this.gbDatos.Controls.Add(this.label9);
             this.gbDatos.Controls.Add(this.txtModId);
             this.gbDatos.Controls.Add(this.txtModOrigen);
@@ -361,7 +305,7 @@
             // 
             this.cboModEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboModEstado.FormattingEnabled = true;
-            this.cboModEstado.Location = new System.Drawing.Point(197, 200);
+            this.cboModEstado.Location = new System.Drawing.Point(197, 203);
             this.cboModEstado.Name = "cboModEstado";
             this.cboModEstado.Size = new System.Drawing.Size(252, 25);
             this.cboModEstado.TabIndex = 33;
@@ -378,83 +322,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 203);
+            this.label4.Location = new System.Drawing.Point(23, 206);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 17);
             this.label4.TabIndex = 31;
             this.label4.Text = "Estado:";
-            // 
-            // dtpModFechaVencimiento
-            // 
-            this.dtpModFechaVencimiento.CustomFormat = "dd/MM/yyyy";
-            this.dtpModFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpModFechaVencimiento.Location = new System.Drawing.Point(197, 171);
-            this.dtpModFechaVencimiento.Name = "dtpModFechaVencimiento";
-            this.dtpModFechaVencimiento.Size = new System.Drawing.Size(252, 23);
-            this.dtpModFechaVencimiento.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 176);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(157, 17);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "Fecha de vencimiento:";
-            // 
-            // dtpModFechaApertura
-            // 
-            this.dtpModFechaApertura.CustomFormat = "dd/MM/yyyy";
-            this.dtpModFechaApertura.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpModFechaApertura.Location = new System.Drawing.Point(197, 142);
-            this.dtpModFechaApertura.Name = "dtpModFechaApertura";
-            this.dtpModFechaApertura.Size = new System.Drawing.Size(252, 23);
-            this.dtpModFechaApertura.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 147);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 17);
-            this.label7.TabIndex = 27;
-            this.label7.Text = "Fecha de apertura:";
-            // 
-            // txtModNumViviendas
-            // 
-            this.txtModNumViviendas.Location = new System.Drawing.Point(197, 113);
-            this.txtModNumViviendas.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.txtModNumViviendas.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtModNumViviendas.Name = "txtModNumViviendas";
-            this.txtModNumViviendas.Size = new System.Drawing.Size(252, 23);
-            this.txtModNumViviendas.TabIndex = 11;
-            this.txtModNumViviendas.ThousandsSeparator = true;
-            this.txtModNumViviendas.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 115);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(150, 17);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "Número de viviendas:";
             // 
             // label9
             // 
@@ -521,7 +394,7 @@
             // btnModificar
             // 
             this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModificar.Location = new System.Drawing.Point(197, 231);
+            this.btnModificar.Location = new System.Drawing.Point(197, 234);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(252, 24);
             this.btnModificar.TabIndex = 15;
@@ -563,6 +436,90 @@
             this.sfd01.DefaultExt = "*.xlsx";
             this.sfd01.Filter = "Archivos de Excel|*.xlsx";
             // 
+            // cboIngDacionAdju
+            // 
+            this.cboIngDacionAdju.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboIngDacionAdju.FormattingEnabled = true;
+            this.cboIngDacionAdju.Location = new System.Drawing.Point(182, 134);
+            this.cboIngDacionAdju.Name = "cboIngDacionAdju";
+            this.cboIngDacionAdju.Size = new System.Drawing.Size(252, 25);
+            this.cboIngDacionAdju.TabIndex = 3;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 137);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(162, 17);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Dación o adjudicación:";
+            // 
+            // chkIngNoLiquidado
+            // 
+            this.chkIngNoLiquidado.AutoSize = true;
+            this.chkIngNoLiquidado.Checked = true;
+            this.chkIngNoLiquidado.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkIngNoLiquidado.Location = new System.Drawing.Point(182, 168);
+            this.chkIngNoLiquidado.Name = "chkIngNoLiquidado";
+            this.chkIngNoLiquidado.Size = new System.Drawing.Size(163, 21);
+            this.chkIngNoLiquidado.TabIndex = 20;
+            this.chkIngNoLiquidado.Text = "Crédito no liquidado";
+            this.chkIngNoLiquidado.UseVisualStyleBackColor = true;
+            this.chkIngNoLiquidado.CheckedChanged += new System.EventHandler(this.chkIngNoLiquidado_CheckedChanged);
+            // 
+            // chkModNoLiquidado
+            // 
+            this.chkModNoLiquidado.AutoSize = true;
+            this.chkModNoLiquidado.Checked = true;
+            this.chkModNoLiquidado.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkModNoLiquidado.Location = new System.Drawing.Point(197, 147);
+            this.chkModNoLiquidado.Name = "chkModNoLiquidado";
+            this.chkModNoLiquidado.Size = new System.Drawing.Size(163, 21);
+            this.chkModNoLiquidado.TabIndex = 38;
+            this.chkModNoLiquidado.Text = "Crédito no liquidado";
+            this.chkModNoLiquidado.UseVisualStyleBackColor = true;
+            this.chkModNoLiquidado.CheckedChanged += new System.EventHandler(this.chkModNoLiquidado_CheckedChanged);
+            // 
+            // cboModDacionAdju
+            // 
+            this.cboModDacionAdju.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboModDacionAdju.FormattingEnabled = true;
+            this.cboModDacionAdju.Location = new System.Drawing.Point(197, 113);
+            this.cboModDacionAdju.Name = "cboModDacionAdju";
+            this.cboModDacionAdju.Size = new System.Drawing.Size(252, 25);
+            this.cboModDacionAdju.TabIndex = 34;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 116);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(162, 17);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "Dación o adjudicación:";
+            // 
+            // dtpModFechaLiquidacion
+            // 
+            this.dtpModFechaLiquidacion.CustomFormat = "dd/MM/yyyy";
+            this.dtpModFechaLiquidacion.Enabled = false;
+            this.dtpModFechaLiquidacion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpModFechaLiquidacion.Location = new System.Drawing.Point(197, 174);
+            this.dtpModFechaLiquidacion.Name = "dtpModFechaLiquidacion";
+            this.dtpModFechaLiquidacion.Size = new System.Drawing.Size(252, 23);
+            this.dtpModFechaLiquidacion.TabIndex = 35;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 148);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(148, 17);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Fecha de liquidación:";
+            // 
             // frmOrigenesPuente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -577,13 +534,11 @@
             this.tab01.ResumeLayout(false);
             this.tabCrear.ResumeLayout(false);
             this.tabCrear.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngNumViviendas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngId)).EndInit();
             this.tabModificar.ResumeLayout(false);
             this.tabModificar.PerformLayout();
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtModNumViviendas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
             this.ResumeLayout(false);
@@ -609,21 +564,11 @@
         private System.Windows.Forms.SaveFileDialog sfd01;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown txtIngId;
-        private System.Windows.Forms.DateTimePicker dtpIngFechaApertura;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown txtIngNumViviendas;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dtpIngFechaVencimiento;
+        private System.Windows.Forms.DateTimePicker dtpIngFechaLiquidacion;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtIngEstado;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtpModFechaVencimiento;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dtpModFechaApertura;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown txtModNumViviendas;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown txtModId;
         private System.Windows.Forms.TextBox txtModOrigen;
@@ -632,5 +577,13 @@
         private System.Windows.Forms.ComboBox cboModProyectos;
         private System.Windows.Forms.ComboBox cboIngProyectos;
         private System.Windows.Forms.ComboBox cboModEstado;
+        private System.Windows.Forms.ComboBox cboIngDacionAdju;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox chkIngNoLiquidado;
+        private System.Windows.Forms.CheckBox chkModNoLiquidado;
+        private System.Windows.Forms.ComboBox cboModDacionAdju;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dtpModFechaLiquidacion;
+        private System.Windows.Forms.Label label7;
     }
 }

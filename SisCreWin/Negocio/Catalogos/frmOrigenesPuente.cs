@@ -14,6 +14,8 @@ namespace SisCreWin.Negocio.Catalogos
 {
     public partial class frmOrigenesPuente : Form
     {
+        private DateTime? FechaLiq = null;
+
         #region Metodos
         private void CargarGrid()
         {
@@ -27,11 +29,10 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[0].HeaderText = "Crédito";
                 grdDatos.Columns[1].HeaderText = "Origen";
                 grdDatos.Columns[2].HeaderText = "Proyecto";
-                grdDatos.Columns[3].HeaderText = "Número de viviendas";
-                grdDatos.Columns[4].HeaderText = "Fecha de apertura";
-                grdDatos.Columns[5].HeaderText = "Fecha de vencimiento";
-                grdDatos.Columns[6].HeaderText = "Estado";
-                grdDatos.Columns[7].HeaderText = "Id de proyecto";
+                grdDatos.Columns[3].HeaderText = "Dación o Adjudicación";
+                grdDatos.Columns[4].HeaderText = "Fecha de liquidación";
+                grdDatos.Columns[5].HeaderText = "Estado";
+                grdDatos.Columns[6].HeaderText = "Id de proyecto";
                 grdDatos.Columns[0].ReadOnly = true;
                 grdDatos.Columns[1].ReadOnly = true;
                 grdDatos.Columns[2].ReadOnly = true;
@@ -39,8 +40,7 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[4].ReadOnly = true;
                 grdDatos.Columns[5].ReadOnly = true;
                 grdDatos.Columns[6].ReadOnly = true;
-                grdDatos.Columns[7].ReadOnly = true;
-                grdDatos.Columns[7].Visible = false;
+                grdDatos.Columns[6].Visible = false;
             }
             else
             {
@@ -67,6 +67,14 @@ namespace SisCreWin.Negocio.Catalogos
                 cboModEstado.DisplayMember = "Descripcion";
                 cboModEstado.ValueMember = "Valor";
                 cboModEstado.DataSource = clsGeneral.ddlActLiq;
+
+                cboIngDacionAdju.DisplayMember = "Descripcion";
+                cboIngDacionAdju.ValueMember = "Valor";
+                cboIngDacionAdju.DataSource = clsGeneral.ddlSiNo2;
+
+                cboModDacionAdju.DisplayMember = "Descripcion";
+                cboModDacionAdju.ValueMember = "Valor";
+                cboModDacionAdju.DataSource = clsGeneral.ddlSiNo2;
             }
             else
             {
@@ -84,9 +92,14 @@ namespace SisCreWin.Negocio.Catalogos
         {
             ResultadoStored_Int Resultado = new ResultadoStored_Int();
 
+            if (!chkIngNoLiquidado.Checked)
+                FechaLiq = dtpIngFechaLiquidacion.Value;
+            else
+                FechaLiq = null;
+
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Catalogos_I_OrigenCreditosPuente, vBit_DatosPrevios: null);
-            clsGeneral.OrigenCreditosPuente OCP = new clsGeneral.OrigenCreditosPuente((int)txtIngId.Value, txtIngOrigen.Text.Trim(), (int)cboIngProyectos.SelectedValue,
-                    (int)txtIngNumViviendas.Value, dtpIngFechaApertura.Value, dtpIngFechaVencimiento.Value, txtIngEstado.Text.Trim());
+            clsGeneral.OrigenCreditosPuente OCP = new clsGeneral.OrigenCreditosPuente((int)txtIngId.Value, txtIngOrigen.Text.Trim(), (int)cboIngProyectos.SelectedValue, txtIngEstado.Text.Trim(),
+                    cboIngDacionAdju.SelectedValue.ToString(), FechaLiq);
 
             Resultado = clsBD.Catalogos_I_OrigenCreditosPuente(OCP);
 
@@ -103,9 +116,8 @@ namespace SisCreWin.Negocio.Catalogos
                     txtIngId.Value = 1;
                     txtIngOrigen.Text = string.Empty;
                     if(cboIngProyectos.Items.Count > 0) { cboIngProyectos.SelectedIndex = 0; }
-                    txtIngNumViviendas.Value = 1;
-                    dtpIngFechaApertura.Value = DateTime.Now;
-                    dtpIngFechaVencimiento.Value = DateTime.Now;
+                    if (cboIngDacionAdju.Items.Count > 0) { cboIngDacionAdju.SelectedIndex = 0; }
+                    dtpIngFechaLiquidacion.Value = DateTime.Now;
                     txtIngEstado.Text = string.Empty;
                     txtIngId.Focus();
                 }
@@ -138,10 +150,21 @@ namespace SisCreWin.Negocio.Catalogos
                 txtModId.Value = (int)dr.Cells["OCP_Prestamo"].Value;
                 txtModOrigen.Text = dr.Cells["OCP_Origen_Prestamo"].Value.ToString();
                 if (cboModProyectos.Items.Count > 0) { cboIngProyectos.SelectedValue = (int)dr.Cells["OCP_Id_Proyecto"].Value; }
-                txtModNumViviendas.Value = (int)dr.Cells["OCP_Numero_Viviendas"].Value;
-                dtpModFechaApertura.Value = clsGeneral.ObtieneFecha(dr.Cells["OCP_Fecha_Apertura"].Value.ToString());
-                dtpModFechaVencimiento.Value = clsGeneral.ObtieneFecha(dr.Cells["OCP_Fecha_Vencimiento"].Value.ToString());
+                if (cboModDacionAdju.Items.Count > 0) { cboModDacionAdju.SelectedValue = dr.Cells["OCP_Dacion_o_Adjudicacion"].Value; }
                 if (cboModEstado.Items.Count > 0) { cboModEstado.SelectedValue = dr.Cells["OCP_Estado"].Value; }
+
+                if(clsGeneral.ObtieneFecha(dr.Cells["OCP_Fecha_Liquidacion"].Value.ToString()).ToString("dd/MM/yyyy") == "01/01/1900")
+                {
+                    dtpModFechaLiquidacion.Value = clsGeneral.ObtieneFecha(DateTime.Now.ToString("dd/MM/yyyy"));
+                    dtpModFechaLiquidacion.Enabled = false;
+                    chkModNoLiquidado.Checked = true;
+                }
+                else
+                {
+                    dtpModFechaLiquidacion.Value = clsGeneral.ObtieneFecha(dr.Cells["OCP_Fecha_Liquidacion"].Value.ToString());
+                    dtpModFechaLiquidacion.Enabled = true;
+                    chkModNoLiquidado.Checked = false;
+                }
             }
             else
             {
@@ -153,9 +176,14 @@ namespace SisCreWin.Negocio.Catalogos
         {
             ResultadoStored_Str Resultado = new ResultadoStored_Str();
 
+            if (!chkModNoLiquidado.Checked)
+                FechaLiq = dtpModFechaLiquidacion.Value;
+            else
+                FechaLiq = null;
+
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Catalogos_U_OrigenCreditosPuente, vBit_DatosPrevios: null);
-            clsGeneral.OrigenCreditosPuente OCP = new clsGeneral.OrigenCreditosPuente((int)txtModId.Value, txtModOrigen.Text.Trim(), (int)cboModProyectos.SelectedValue,
-                (int)txtModNumViviendas.Value, dtpModFechaApertura.Value, dtpModFechaVencimiento.Value, cboModEstado.SelectedValue.ToString());
+            clsGeneral.OrigenCreditosPuente OCP = new clsGeneral.OrigenCreditosPuente((int)txtModId.Value, txtModOrigen.Text.Trim(), (int)cboModProyectos.SelectedValue, cboModEstado.SelectedValue.ToString(),
+                cboModDacionAdju.SelectedValue.ToString(), FechaLiq);
 
             Resultado = clsBD.Catalogos_C_OrigenCreditosPuenteBitacora(OCP.OCP_Prestamo);
 
@@ -211,6 +239,21 @@ namespace SisCreWin.Negocio.Catalogos
         private void frmOrigenesPuente_Load(object sender, EventArgs e)
         {
             CargarCombos();
+        }
+
+        private void chkIngNoLiquidado_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpIngFechaLiquidacion.Enabled = !chkIngNoLiquidado.Checked;
+        }
+
+        private void chkModNoLiquidado_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpModFechaLiquidacion.Enabled = !chkModNoLiquidado.Checked;
+        }
+
+        private void tabModificar_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion Eventos
     }

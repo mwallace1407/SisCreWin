@@ -135,6 +135,7 @@
             this.mnuSalir.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.mnuSalir.Size = new System.Drawing.Size(200, 22);
             this.mnuSalir.Text = "Salir";
+            this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
             // 
             // negocioToolStripMenuItem
             // 
