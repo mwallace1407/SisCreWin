@@ -28,16 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCnxAlt = new System.Windows.Forms.PictureBox();
             this.txtDominio = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnProcesar = new System.Windows.Forms.Button();
             this.txtContrasenna = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.tip01 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCnxAlt)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsuario
@@ -60,6 +64,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCnxAlt);
             this.groupBox1.Controls.Add(this.txtDominio);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnProcesar);
@@ -75,6 +80,23 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Introduzca sus credenciales";
+            // 
+            // btnCnxAlt
+            // 
+            this.btnCnxAlt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCnxAlt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnCnxAlt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCnxAlt.Image = global::SisCreWin.Properties.Resources.disk_utility_5;
+            this.btnCnxAlt.Location = new System.Drawing.Point(11, 132);
+            this.btnCnxAlt.Name = "btnCnxAlt";
+            this.btnCnxAlt.Size = new System.Drawing.Size(30, 30);
+            this.btnCnxAlt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCnxAlt.TabIndex = 7;
+            this.btnCnxAlt.TabStop = false;
+            this.tip01.SetToolTip(this.btnCnxAlt, "Establecer conexión de base de datos alterna");
+            this.btnCnxAlt.Click += new System.EventHandler(this.btnCnxAlt_Click);
+            this.btnCnxAlt.MouseLeave += new System.EventHandler(this.btnCnxAlt_MouseLeave);
+            this.btnCnxAlt.MouseHover += new System.EventHandler(this.btnCnxAlt_MouseHover);
             // 
             // txtDominio
             // 
@@ -142,6 +164,7 @@
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCnxAlt)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -156,6 +179,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDominio;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolTip tip01;
+        private System.Windows.Forms.PictureBox btnCnxAlt;
     }
 }
 

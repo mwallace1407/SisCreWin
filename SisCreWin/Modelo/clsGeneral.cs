@@ -340,7 +340,10 @@ namespace SisCreWin.Modelo
             }
         }
         //!Compresion
-
+        public static void EnableTab(TabPage page, bool enable)
+        {
+            foreach (Control ctl in page.Controls) ctl.Enabled = enable;
+        }
         #endregion Metodos
         #region Modelos
         #region Sistema
@@ -574,6 +577,8 @@ namespace SisCreWin.Modelo
         {
             public int PHP_Id;
             public int Usr_Id;
+            public int EP_Id;
+            public int PTP_Id;
             public DateTime? PHP_Fecha;
             public DateTime? PHP_FechaCierre;
             public DateTime PHP_FechaPago;
@@ -584,9 +589,9 @@ namespace SisCreWin.Modelo
             public decimal PHP_ComiAplicacion;
             public decimal PHP_PagoIntMoratorios;
 
-            public PuentesPagos(int vUsr_Id, DateTime vPHP_FechaPago, int vPHP_NumeroPrestamo, decimal vPHP_PagoCapital,
+            public PuentesPagos(int vUsr_Id, int vPTP_Id, DateTime vPHP_FechaPago, int vPHP_NumeroPrestamo, decimal vPHP_PagoCapital,
                 decimal vPHP_InteresCubierto, decimal vPHP_InteresCapVenc, decimal vPHP_ComiAplicacion, decimal vPHP_PagoIntMoratorios,
-                DateTime? vPHP_FechaCierre = null, DateTime? vPHP_Fecha = null, int vPHP_Id = 0)
+                DateTime? vPHP_FechaCierre = null, DateTime? vPHP_Fecha = null, int vPHP_Id = 0, int vEP_Id = 1)
             {
                 PHP_Id = vPHP_Id;
                 Usr_Id = vUsr_Id;
@@ -599,6 +604,8 @@ namespace SisCreWin.Modelo
                 PHP_InteresCapVenc = vPHP_InteresCapVenc;
                 PHP_ComiAplicacion = vPHP_ComiAplicacion;
                 PHP_PagoIntMoratorios = vPHP_PagoIntMoratorios;
+                EP_Id = vEP_Id;
+                PTP_Id = vPTP_Id;
             }
         }
 
@@ -619,6 +626,22 @@ namespace SisCreWin.Modelo
                 PCM_Anno = vPCM_Anno;
                 PCM_Mes = vPCM_Mes;
                 PCM_Datos = vPCM_Datos;
+            }
+        }
+
+        public struct TiposPagoPuentes
+        {
+            public int PTP_Id;
+            public string PTP_Descripcion;
+            public int PTP_Orden;
+            public bool PTP_Activo;
+
+            public TiposPagoPuentes(string vPTP_Descripcion, int vPTP_Orden, bool vPTP_Activo, int vPTP_Id = 0)
+            {
+                PTP_Id = vPTP_Id;
+                PTP_Descripcion = vPTP_Descripcion;
+                PTP_Orden = vPTP_Orden;
+                PTP_Activo = vPTP_Activo;
             }
         }
         #endregion Negocio

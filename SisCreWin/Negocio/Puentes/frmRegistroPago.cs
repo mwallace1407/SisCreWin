@@ -18,6 +18,7 @@ namespace SisCreWin.Negocio.Puentes
     {
         #region Variables
         clsGeneral.PuentesPagos Puente;
+        clsGeneral.PuentesPagos PuenteQ;
         string ErrorProceso = string.Empty;
         string ArchivoProceso = string.Empty;
         bool EnProceso = false;
@@ -42,6 +43,9 @@ namespace SisCreWin.Negocio.Puentes
                 cboNumeroPrestamo.DisplayMember = "Descripcion";
                 cboNumeroPrestamo.ValueMember = "Valor";
                 cboNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos().Resultado;
+                cboTipoPago.DisplayMember = "Descripcion";
+                cboTipoPago.ValueMember = "Valor";
+                cboTipoPago.DataSource = clsBD.Puentes_C_TiposPago().Resultado;
                 txtComiAplicacion.Value = 0;
                 txtInteresCapVenc.Value = 0;
                 txtInteresCubierto.Value = 0;
@@ -82,6 +86,41 @@ namespace SisCreWin.Negocio.Puentes
                 btnCrear.Enabled = false;
         }
 
+        private void ValidaQ()
+        {
+            if (cboTipoPago.Text == "Normal")
+                return;
+
+            decimal Suma = txtQPagoCapital.Value + txtQInteresCubierto.Value + txtQInteresCapVenc.Value + txtQComiAplicacion.Value + txtQPagoIntMoratorios.Value;
+
+            if (txtQMontoTotal.Value > Suma)
+            {
+                lblQMensaje.Visible = true;
+                lblQMensaje.Text = "El monto aplicado en la dispersión es menor al monto total";
+                btnCrear.Enabled = false;
+            }
+            else if (txtQMontoTotal.Value < Suma)
+            {
+                lblQMensaje.Visible = true;
+                lblQMensaje.Text = "El monto aplicado en la dispersión es mayor al monto total";
+                btnCrear.Enabled = false;
+            }
+            else if (cboTipoPago.Text != "Normal" && (txtQMontoTotal.Value == 0 || Suma == 0))
+            {
+                lblQMensaje.Visible = true;
+                lblQMensaje.Text = "El monto debe ser mayor a cero";
+                btnCrear.Enabled = false;
+            }
+            else
+            {
+                lblQMensaje.Visible = false;
+                btnCrear.Enabled = true;
+            }
+
+            if (cboNumeroPrestamo.SelectedIndex < 0 || (cboNumeroPrestamo.SelectedIndex >= 0 && Convert.ToInt32(cboNumeroPrestamo.SelectedValue) <= 0))
+                btnCrear.Enabled = false;
+        }
+
         private void CargarGrid()
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT();
@@ -114,6 +153,62 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show(Resultado.Error, "Error al obtener datos de créditos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ExportarSaldos()
+        {
+            ResultadoExport exp = new ResultadoExport();
+            DataTable dt = new DataTable();
+            dt = (DataTable)grdDatos.DataSource;
+
+            exp = clsBD.ExportarExcel(dt);
+
+            if (!exp.HayError)
+            {
+                try
+                {
+                    if (System.IO.File.Exists(exp.Archivo))
+                        System.Diagnostics.Process.Start(exp.Archivo);
+                    else
+                        MessageBox.Show("No existe el archivo especificado", "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ExportarDetalle()
+        {
+            ResultadoExport exp = new ResultadoExport();
+            DataTable dt = new DataTable();
+            dt = (DataTable)grdDetalle.DataSource;
+
+            exp = clsBD.ExportarExcel(dt);
+
+            if (!exp.HayError)
+            {
+                try
+                {
+                    if (System.IO.File.Exists(exp.Archivo))
+                        System.Diagnostics.Process.Start(exp.Archivo);
+                    else
+                        MessageBox.Show("No existe el archivo especificado", "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion Metodos
         #region Eventos
         private void tab01_SelectedIndexChanged(object sender, EventArgs e)
@@ -125,6 +220,7 @@ namespace SisCreWin.Negocio.Puentes
         {
             ValoresIniciales();
             Valida();
+            ValidaQ();
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
@@ -144,7 +240,8 @@ namespace SisCreWin.Negocio.Puentes
             ErrorProceso = string.Empty;
             EnProceso = true;
             Sistema.Global.ProcesosPendientes = true;
-            Puente = new clsGeneral.PuentesPagos(Sistema.Global.Usr_Id, dtpFechaPago.Value, Convert.ToInt32(cboNumeroPrestamo.Text), txtPagoCapital.Value, txtInteresCubierto.Value, txtInteresCapVenc.Value, txtComiAplicacion.Value, txtPagoIntMoratorios.Value);
+            Puente = new clsGeneral.PuentesPagos(Sistema.Global.Usr_Id, Convert.ToInt32(cboTipoPago.SelectedValue), dtpFechaPago.Value, Convert.ToInt32(cboNumeroPrestamo.Text), txtPagoCapital.Value, txtInteresCubierto.Value, txtInteresCapVenc.Value, txtComiAplicacion.Value, txtPagoIntMoratorios.Value);
+            PuenteQ = new clsGeneral.PuentesPagos(Sistema.Global.Usr_Id, Convert.ToInt32(cboTipoPago.SelectedValue), dtpFechaPago.Value, Convert.ToInt32(cboNumeroPrestamo.Text), txtQPagoCapital.Value, txtQInteresCubierto.Value, txtQInteresCapVenc.Value, txtQComiAplicacion.Value, txtQPagoIntMoratorios.Value);
             wkr01.RunWorkerAsync();
         }
 
@@ -154,7 +251,7 @@ namespace SisCreWin.Negocio.Puentes
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Puentes_M_RegistrarPago, vBit_DatosPrevios: clsGeneral.Zip("Préstamo: " + Puente.PHP_NumeroPrestamo.ToString()));
 
             clsBD.Bitacoras_I_MovimientosSistema(Bitacora);
-            Resultado = clsBD.Puentes_M_RegistrarPago(Puente);
+            Resultado = clsBD.Puentes_M_RegistrarPago(Puente, PuenteQ);
 
             if (Resultado.HayError)
                 ErrorProceso = Resultado.Error;
@@ -226,40 +323,105 @@ namespace SisCreWin.Negocio.Puentes
 
         private void btnExportarExcel_Click(object sender, EventArgs e)
         {
-            if ((int)cboNumeroPrestamo.SelectedValue > 0)
+            
+        }
+
+        private void cboTipoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cboTipoPago.Text == "Normal")
             {
-                ResultadoExport exp = new BD.ResultadoExport();
-                SqlParameter param;
-                List<SqlParameter> paramC = new List<SqlParameter>();
+                clsGeneral.EnableTab(tabP02, false);
+                tabPagos.SelectedIndex = 0;
+                Valida();
+            }
+            else
+            {
+                clsGeneral.EnableTab(tabP02, true);
+                ValidaQ();
+            }
+        }
 
-                param = new SqlParameter("@SCP_PRESTAMO", SqlDbType.Int);
-                param.Value = (int)cboNumeroPrestamo.SelectedValue;
-                paramC.Add(param);
-                param = new SqlParameter("@Fecha", SqlDbType.DateTime);
-                param.Value = dtpFechaPago.Value;
-                paramC.Add(param);
+        private void txtQMontoTotal_ValueChanged(object sender, EventArgs e)
+        {
+            ValidaQ();
+        }
 
-                exp = clsBD.ExportarExcel(CatalogoStoreds.Puentes_C_MovimientosPrestamo, paramC);
+        private void txtQPagoCapital_ValueChanged(object sender, EventArgs e)
+        {
+            ValidaQ();
+        }
 
-                if (!exp.HayError)
+        private void txtQInteresCubierto_ValueChanged(object sender, EventArgs e)
+        {
+            ValidaQ();
+        }
+
+        private void txtQInteresCapVenc_ValueChanged(object sender, EventArgs e)
+        {
+            ValidaQ();
+        }
+
+        private void txtQComiAplicacion_ValueChanged(object sender, EventArgs e)
+        {
+            ValidaQ();
+        }
+
+        private void txtQPagoIntMoratorios_ValueChanged(object sender, EventArgs e)
+        {
+            ValidaQ();
+        }
+
+        private void grdDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ResultadoStored_DT Resultado = new ResultadoStored_DT();
+                DateTime FechaPago = clsGeneral.ObtieneFecha(grdDatos[0, e.RowIndex].Value.ToString());
+                int NumeroPrestamo = (int)grdDatos[1, e.RowIndex].Value;
+
+                Resultado = clsBD.Puentes_C_HistoricoDePago(NumeroPrestamo, FechaPago);
+
+                if(!Resultado.HayError)
                 {
-                    try
-                    {
-                        System.Diagnostics.Process.Start(exp.Archivo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    grdDetalle.DataSource = Resultado.Resultado;
                 }
                 else
                 {
-                    MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Resultado.Error, "Error al obtener detalle de pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al procesar detalle de pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion Eventos
+
+        private void mnuExportarSaldos_Click(object sender, EventArgs e)
+        {
+            if ((int)cboNumeroPrestamo.SelectedValue > 0)
+            {
+                if (grdDatos.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hay datos para exportar", "Exportar a Excel", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                ExportarSaldos();
             }
 
             //System.Diagnostics.Process.Start(lblArchivo.Text);
         }
-        #endregion Eventos
+
+        private void mnuExportarDetalle_Click(object sender, EventArgs e)
+        {
+            if (grdDetalle.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar", "Exportar a Excel", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            ExportarDetalle();
+        }
     }
 }

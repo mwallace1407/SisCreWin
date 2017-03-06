@@ -29,9 +29,10 @@ namespace SisCreWin
             txtUsuario.Text = Cred.Usuario;
             txtDominio.Text = Cred.Dominio;
             txtContrasenna.Focus();
+            clsBD.ObtenerBaseConectada();
 
             if (Environment.MachineName.ToLower() == "oenriquez" && txtUsuario.Text.Trim() == "oenriquez")
-                txtContrasenna.Text = new De_CryptDLL.De_Crypt().Desencriptar("7GRodt3g62JucX8dSj6KdA==", Environment.MachineName.ToLower(), true);
+                txtContrasenna.Text = new De_CryptDLL.De_Crypt().Desencriptar("OCdWSNMRbABucX8dSj6KdA==", Environment.MachineName.ToLower(), true);
         }
 
         private void btnProcesar_Click(object sender, EventArgs e)
@@ -72,6 +73,23 @@ namespace SisCreWin
             {
                 MessageBox.Show("Verifique su usuario y contraseña", "Credenciales incorrectas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnCnxAlt_Click(object sender, EventArgs e)
+        {
+            frmCnx frm = new SisCreWin.frmCnx();
+
+            frm.ShowDialog(this);
+        }
+
+        private void btnCnxAlt_MouseHover(object sender, EventArgs e)
+        {
+            btnCnxAlt.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+        private void btnCnxAlt_MouseLeave(object sender, EventArgs e)
+        {
+            btnCnxAlt.BorderStyle = BorderStyle.FixedSingle;
         }
     }
 }

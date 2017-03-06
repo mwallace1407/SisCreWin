@@ -130,6 +130,9 @@ namespace SisCreWin
                 case 20:
                     frmGen = new frmReporteContable();
                     break;
+                case 21:
+                    frmGen = new frmTiposPagoPuentes();
+                    break;
                 default:
                     break;
             }
@@ -203,6 +206,8 @@ namespace SisCreWin
             tmrMtto.Enabled = true;
             tmrMtto.Start();
             ProcesarFecuentes();
+            stBaseConectada.Text = clsBD.ObtenerBaseConectada().BaseDatos;
+            stBaseConectada.ToolTipText = clsBD.ObtenerBaseConectada().Detalle;
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -321,6 +326,11 @@ namespace SisCreWin
         private void mnuRptContaPuentes_Click(object sender, EventArgs e)
         {
             AbrirVentana(CatalogoModulos.Puentes_ReporteContable);
+        }
+
+        private void mnuTiposPagoPuentes_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Catalogos_TiposPagoPuentes_ABC);
         }
         #endregion Menu
 

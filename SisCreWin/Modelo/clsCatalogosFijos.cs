@@ -61,6 +61,12 @@ namespace SisCreWin.Modelo
         public static String Catalogos_U_Proyectos { get { return "sp_Catalogos_U_Proyectos"; } }
         public static String Catalogos_C_ProyectosBitacora { get { return "sp_Catalogos_C_ProyectosBitacora"; } }
         //!Proyectos
+        //TiposPagoPuentes
+        public static String Catalogos_C_TiposPagoPuentes { get { return "sp_Catalogos_C_TiposPagoPuentes"; } }
+        public static String Catalogos_I_TiposPagoPuentes { get { return "sp_Catalogos_I_TiposPagoPuentes"; } }
+        public static String Catalogos_U_TiposPagoPuentes { get { return "sp_Catalogos_U_TiposPagoPuentes"; } }
+        public static String Catalogos_C_TiposPagoPuentesBitacora { get { return "sp_Catalogos_C_TiposPagoPuentesBitacora"; } }
+        //!TiposPagoPuentes
         //Buro
         public static String ReportesBuro_C_CreditosPuentes { get { return "sp_ReportesBuro_C_CreditosPuentes"; } }
         public static String Buro_I_HistoricoPuentes { get { return "sp_Buro_I_HistoricoPuentes"; } }
@@ -101,6 +107,8 @@ namespace SisCreWin.Modelo
         public static String Puentes_C_HistoricoCierresMensuales { get { return "sp_Puentes_C_HistoricoCierresMensuales"; } }
         public static String Puentes_C_HistoricoDatos { get { return "sp_Puentes_C_HistoricoDatos"; } }
         public static String Puentes_U_AutorizarRegeneracionCierreMensual { get { return "sp_Puentes_U_AutorizarRegeneracionCierreMensual"; } }
+        public static String Puentes_C_TiposPago { get { return "sp_Puentes_C_TiposPago"; } }
+        public static String Puentes_C_HistoricoDePago { get { return "sp_Puentes_C_HistoricoDePago"; } }
         //!Operaciones_Puentes
         #endregion Negocio
         #endregion Variables
@@ -119,6 +127,7 @@ namespace SisCreWin.Modelo
         #endregion Sistema
         #region Negocio
         public static int Catalogos_TIIE_ABC { get { return 6; } }
+        public static int Catalogos_TiposPagoPuentes_ABC { get { return 21; } }
         public static int Buro_Individuales_GenerarCSV { get { return 8; } }
         public static int Buro_Individuales_Historico { get { return 13; } }
         public static int Buro_Individuales_RegenerarCSV { get { return 16; } }
@@ -134,6 +143,15 @@ namespace SisCreWin.Modelo
         public static int Puentes_ReporteContable { get { return 19; } }
         public static int Puentes_RegenerarCierreMensual { get { return 20; } }
         #endregion Negocio
+        #endregion Variables
+    }
+
+    public static class CatalogoTiposPagoPuentes
+    {
+        #region Variables
+        public static int Normal { get { return 1; } }
+        public static int Quita { get { return 2; } }
+        public static int Quebranto { get { return 3; } }
         #endregion Variables
     }
 }

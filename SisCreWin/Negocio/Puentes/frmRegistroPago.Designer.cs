@@ -30,43 +30,73 @@
         {
             this.tab01 = new System.Windows.Forms.TabControl();
             this.tabCrear = new System.Windows.Forms.TabPage();
-            this.btnExportarExcel = new System.Windows.Forms.Button();
-            this.grdDatos = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cboTipoPago = new System.Windows.Forms.ComboBox();
+            this.tabPagos = new System.Windows.Forms.TabControl();
+            this.tabP01 = new System.Windows.Forms.TabPage();
+            this.txtMontoTotal = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPagoCapital = new System.Windows.Forms.NumericUpDown();
             this.txtPagoIntMoratorios = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtInteresCubierto = new System.Windows.Forms.NumericUpDown();
             this.lblMensaje = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.txtInteresCapVenc = new System.Windows.Forms.NumericUpDown();
             this.txtComiAplicacion = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtInteresCapVenc = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtInteresCubierto = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtPagoCapital = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtMontoTotal = new System.Windows.Forms.NumericUpDown();
+            this.tabP02 = new System.Windows.Forms.TabPage();
+            this.txtQMontoTotal = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtQPagoCapital = new System.Windows.Forms.NumericUpDown();
+            this.txtQPagoIntMoratorios = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtQInteresCubierto = new System.Windows.Forms.NumericUpDown();
+            this.lblQMensaje = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtQInteresCapVenc = new System.Windows.Forms.NumericUpDown();
+            this.txtQComiAplicacion = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
+            this.grdDatos = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.cboNumeroPrestamo = new System.Windows.Forms.ComboBox();
             this.dtpFechaPago = new System.Windows.Forms.DateTimePicker();
             this.btnCrear = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabEstadisticas = new System.Windows.Forms.TabPage();
             this.pnlProgreso = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.wkr01 = new System.ComponentModel.BackgroundWorker();
+            this.grdDetalle = new System.Windows.Forms.DataGridView();
+            this.mnuRegistroPago = new System.Windows.Forms.MenuStrip();
+            this.mnuHerramientasPago = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExportarSaldos = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExportarDetalle = new System.Windows.Forms.ToolStripMenuItem();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPagoIntMoratorios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtComiAplicacion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCapVenc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCubierto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPagoCapital)).BeginInit();
+            this.tabPagos.SuspendLayout();
+            this.tabP01.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMontoTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPagoCapital)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPagoIntMoratorios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCubierto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCapVenc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtComiAplicacion)).BeginInit();
+            this.tabP02.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQMontoTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQPagoCapital)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQPagoIntMoratorios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCubierto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCapVenc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQComiAplicacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.pnlProgreso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
+            this.mnuRegistroPago.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab01
@@ -75,21 +105,20 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab01.Controls.Add(this.tabCrear);
-            this.tab01.Controls.Add(this.tabEstadisticas);
-            this.tab01.Location = new System.Drawing.Point(14, 14);
+            this.tab01.Location = new System.Drawing.Point(14, 29);
             this.tab01.Margin = new System.Windows.Forms.Padding(5);
             this.tab01.Name = "tab01";
             this.tab01.SelectedIndex = 0;
-            this.tab01.Size = new System.Drawing.Size(996, 449);
+            this.tab01.Size = new System.Drawing.Size(996, 630);
             this.tab01.TabIndex = 1;
             // 
             // tabCrear
             // 
-            this.tabCrear.Controls.Add(this.btnExportarExcel);
+            this.tabCrear.Controls.Add(this.grdDetalle);
+            this.tabCrear.Controls.Add(this.label14);
+            this.tabCrear.Controls.Add(this.cboTipoPago);
+            this.tabCrear.Controls.Add(this.tabPagos);
             this.tabCrear.Controls.Add(this.grdDatos);
-            this.tabCrear.Controls.Add(this.groupBox1);
-            this.tabCrear.Controls.Add(this.label5);
-            this.tabCrear.Controls.Add(this.txtMontoTotal);
             this.tabCrear.Controls.Add(this.label4);
             this.tabCrear.Controls.Add(this.cboNumeroPrestamo);
             this.tabCrear.Controls.Add(this.dtpFechaPago);
@@ -100,21 +129,396 @@
             this.tabCrear.Margin = new System.Windows.Forms.Padding(5);
             this.tabCrear.Name = "tabCrear";
             this.tabCrear.Padding = new System.Windows.Forms.Padding(5);
-            this.tabCrear.Size = new System.Drawing.Size(988, 419);
+            this.tabCrear.Size = new System.Drawing.Size(988, 600);
             this.tabCrear.TabIndex = 0;
             this.tabCrear.Text = "Crear";
             this.tabCrear.UseVisualStyleBackColor = true;
             // 
-            // btnExportarExcel
+            // label14
             // 
-            this.btnExportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportarExcel.BackgroundImage = global::SisCreWin.Properties.Resources.xlsIcon_32;
-            this.btnExportarExcel.Location = new System.Drawing.Point(948, 18);
-            this.btnExportarExcel.Name = "btnExportarExcel";
-            this.btnExportarExcel.Size = new System.Drawing.Size(32, 32);
-            this.btnExportarExcel.TabIndex = 13;
-            this.btnExportarExcel.UseVisualStyleBackColor = true;
-            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(10, 116);
+            this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(99, 17);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Tipo de pago:";
+            // 
+            // cboTipoPago
+            // 
+            this.cboTipoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoPago.FormattingEnabled = true;
+            this.cboTipoPago.Location = new System.Drawing.Point(165, 113);
+            this.cboTipoPago.Name = "cboTipoPago";
+            this.cboTipoPago.Size = new System.Drawing.Size(201, 25);
+            this.cboTipoPago.TabIndex = 23;
+            this.cboTipoPago.SelectedIndexChanged += new System.EventHandler(this.cboTipoPago_SelectedIndexChanged);
+            // 
+            // tabPagos
+            // 
+            this.tabPagos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabPagos.Controls.Add(this.tabP01);
+            this.tabPagos.Controls.Add(this.tabP02);
+            this.tabPagos.Location = new System.Drawing.Point(14, 142);
+            this.tabPagos.Name = "tabPagos";
+            this.tabPagos.SelectedIndex = 0;
+            this.tabPagos.Size = new System.Drawing.Size(352, 424);
+            this.tabPagos.TabIndex = 22;
+            // 
+            // tabP01
+            // 
+            this.tabP01.Controls.Add(this.txtMontoTotal);
+            this.tabP01.Controls.Add(this.label10);
+            this.tabP01.Controls.Add(this.label5);
+            this.tabP01.Controls.Add(this.txtPagoCapital);
+            this.tabP01.Controls.Add(this.txtPagoIntMoratorios);
+            this.tabP01.Controls.Add(this.label6);
+            this.tabP01.Controls.Add(this.txtInteresCubierto);
+            this.tabP01.Controls.Add(this.lblMensaje);
+            this.tabP01.Controls.Add(this.label7);
+            this.tabP01.Controls.Add(this.label9);
+            this.tabP01.Controls.Add(this.txtInteresCapVenc);
+            this.tabP01.Controls.Add(this.txtComiAplicacion);
+            this.tabP01.Controls.Add(this.label8);
+            this.tabP01.Location = new System.Drawing.Point(4, 26);
+            this.tabP01.Name = "tabP01";
+            this.tabP01.Padding = new System.Windows.Forms.Padding(3);
+            this.tabP01.Size = new System.Drawing.Size(344, 394);
+            this.tabP01.TabIndex = 0;
+            this.tabP01.Text = "Normal";
+            this.tabP01.UseVisualStyleBackColor = true;
+            // 
+            // txtMontoTotal
+            // 
+            this.txtMontoTotal.DecimalPlaces = 6;
+            this.txtMontoTotal.Location = new System.Drawing.Point(188, 8);
+            this.txtMontoTotal.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtMontoTotal.Name = "txtMontoTotal";
+            this.txtMontoTotal.Size = new System.Drawing.Size(150, 23);
+            this.txtMontoTotal.TabIndex = 3;
+            this.txtMontoTotal.ValueChanged += new System.EventHandler(this.txtMontoTotal_ValueChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 168);
+            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(140, 17);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Intereses moratorios:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(5, 10);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(146, 17);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Monto total a pagar:";
+            // 
+            // txtPagoCapital
+            // 
+            this.txtPagoCapital.DecimalPlaces = 6;
+            this.txtPagoCapital.Location = new System.Drawing.Point(188, 37);
+            this.txtPagoCapital.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtPagoCapital.Name = "txtPagoCapital";
+            this.txtPagoCapital.Size = new System.Drawing.Size(150, 23);
+            this.txtPagoCapital.TabIndex = 4;
+            this.txtPagoCapital.ValueChanged += new System.EventHandler(this.txtPagoCapital_ValueChanged);
+            // 
+            // txtPagoIntMoratorios
+            // 
+            this.txtPagoIntMoratorios.DecimalPlaces = 6;
+            this.txtPagoIntMoratorios.Location = new System.Drawing.Point(188, 166);
+            this.txtPagoIntMoratorios.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtPagoIntMoratorios.Name = "txtPagoIntMoratorios";
+            this.txtPagoIntMoratorios.Size = new System.Drawing.Size(150, 23);
+            this.txtPagoIntMoratorios.TabIndex = 8;
+            this.txtPagoIntMoratorios.ValueChanged += new System.EventHandler(this.txtPagoIntMoratorios_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 39);
+            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(110, 17);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Pago a capital:";
+            // 
+            // txtInteresCubierto
+            // 
+            this.txtInteresCubierto.DecimalPlaces = 6;
+            this.txtInteresCubierto.Location = new System.Drawing.Point(188, 66);
+            this.txtInteresCubierto.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtInteresCubierto.Name = "txtInteresCubierto";
+            this.txtInteresCubierto.Size = new System.Drawing.Size(150, 23);
+            this.txtInteresCubierto.TabIndex = 5;
+            this.txtInteresCubierto.ValueChanged += new System.EventHandler(this.txtInteresCubierto_ValueChanged);
+            // 
+            // lblMensaje
+            // 
+            this.lblMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
+            this.lblMensaje.Location = new System.Drawing.Point(11, 192);
+            this.lblMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.Size = new System.Drawing.Size(327, 37);
+            this.lblMensaje.TabIndex = 19;
+            this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMensaje.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 68);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(111, 17);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Interés cubierto:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 139);
+            this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(172, 17);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Comisión por aplicación:";
+            // 
+            // txtInteresCapVenc
+            // 
+            this.txtInteresCapVenc.DecimalPlaces = 6;
+            this.txtInteresCapVenc.Location = new System.Drawing.Point(188, 95);
+            this.txtInteresCapVenc.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtInteresCapVenc.Name = "txtInteresCapVenc";
+            this.txtInteresCapVenc.Size = new System.Drawing.Size(150, 23);
+            this.txtInteresCapVenc.TabIndex = 6;
+            this.txtInteresCapVenc.ValueChanged += new System.EventHandler(this.txtInteresCapVenc_ValueChanged);
+            // 
+            // txtComiAplicacion
+            // 
+            this.txtComiAplicacion.DecimalPlaces = 6;
+            this.txtComiAplicacion.Location = new System.Drawing.Point(188, 137);
+            this.txtComiAplicacion.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtComiAplicacion.Name = "txtComiAplicacion";
+            this.txtComiAplicacion.Size = new System.Drawing.Size(150, 23);
+            this.txtComiAplicacion.TabIndex = 7;
+            this.txtComiAplicacion.ValueChanged += new System.EventHandler(this.txtComiAplicacion_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(8, 97);
+            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(172, 35);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Interés sobre capital vencido cubierto:";
+            // 
+            // tabP02
+            // 
+            this.tabP02.Controls.Add(this.txtQMontoTotal);
+            this.tabP02.Controls.Add(this.label11);
+            this.tabP02.Controls.Add(this.label12);
+            this.tabP02.Controls.Add(this.txtQPagoCapital);
+            this.tabP02.Controls.Add(this.txtQPagoIntMoratorios);
+            this.tabP02.Controls.Add(this.label13);
+            this.tabP02.Controls.Add(this.txtQInteresCubierto);
+            this.tabP02.Controls.Add(this.lblQMensaje);
+            this.tabP02.Controls.Add(this.label15);
+            this.tabP02.Controls.Add(this.label16);
+            this.tabP02.Controls.Add(this.txtQInteresCapVenc);
+            this.tabP02.Controls.Add(this.txtQComiAplicacion);
+            this.tabP02.Controls.Add(this.label17);
+            this.tabP02.Location = new System.Drawing.Point(4, 26);
+            this.tabP02.Name = "tabP02";
+            this.tabP02.Padding = new System.Windows.Forms.Padding(3);
+            this.tabP02.Size = new System.Drawing.Size(344, 235);
+            this.tabP02.TabIndex = 1;
+            this.tabP02.Text = "Quita / Quebranto";
+            this.tabP02.UseVisualStyleBackColor = true;
+            // 
+            // txtQMontoTotal
+            // 
+            this.txtQMontoTotal.DecimalPlaces = 6;
+            this.txtQMontoTotal.Location = new System.Drawing.Point(188, 8);
+            this.txtQMontoTotal.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtQMontoTotal.Name = "txtQMontoTotal";
+            this.txtQMontoTotal.Size = new System.Drawing.Size(150, 23);
+            this.txtQMontoTotal.TabIndex = 3;
+            this.txtQMontoTotal.ValueChanged += new System.EventHandler(this.txtQMontoTotal_ValueChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 168);
+            this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(140, 17);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "Intereses moratorios:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(5, 10);
+            this.label12.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(146, 17);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Monto total a pagar:";
+            // 
+            // txtQPagoCapital
+            // 
+            this.txtQPagoCapital.DecimalPlaces = 6;
+            this.txtQPagoCapital.Location = new System.Drawing.Point(188, 37);
+            this.txtQPagoCapital.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtQPagoCapital.Name = "txtQPagoCapital";
+            this.txtQPagoCapital.Size = new System.Drawing.Size(150, 23);
+            this.txtQPagoCapital.TabIndex = 4;
+            this.txtQPagoCapital.ValueChanged += new System.EventHandler(this.txtQPagoCapital_ValueChanged);
+            // 
+            // txtQPagoIntMoratorios
+            // 
+            this.txtQPagoIntMoratorios.DecimalPlaces = 6;
+            this.txtQPagoIntMoratorios.Location = new System.Drawing.Point(188, 166);
+            this.txtQPagoIntMoratorios.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtQPagoIntMoratorios.Name = "txtQPagoIntMoratorios";
+            this.txtQPagoIntMoratorios.Size = new System.Drawing.Size(150, 23);
+            this.txtQPagoIntMoratorios.TabIndex = 8;
+            this.txtQPagoIntMoratorios.ValueChanged += new System.EventHandler(this.txtQPagoIntMoratorios_ValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(8, 39);
+            this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(110, 17);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Pago a capital:";
+            // 
+            // txtQInteresCubierto
+            // 
+            this.txtQInteresCubierto.DecimalPlaces = 6;
+            this.txtQInteresCubierto.Location = new System.Drawing.Point(188, 66);
+            this.txtQInteresCubierto.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtQInteresCubierto.Name = "txtQInteresCubierto";
+            this.txtQInteresCubierto.Size = new System.Drawing.Size(150, 23);
+            this.txtQInteresCubierto.TabIndex = 5;
+            this.txtQInteresCubierto.ValueChanged += new System.EventHandler(this.txtQInteresCubierto_ValueChanged);
+            // 
+            // lblQMensaje
+            // 
+            this.lblQMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
+            this.lblQMensaje.Location = new System.Drawing.Point(11, 192);
+            this.lblQMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblQMensaje.Name = "lblQMensaje";
+            this.lblQMensaje.Size = new System.Drawing.Size(327, 37);
+            this.lblQMensaje.TabIndex = 33;
+            this.lblQMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblQMensaje.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(8, 68);
+            this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(111, 17);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "Interés cubierto:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 139);
+            this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(172, 17);
+            this.label16.TabIndex = 32;
+            this.label16.Text = "Comisión por aplicación:";
+            // 
+            // txtQInteresCapVenc
+            // 
+            this.txtQInteresCapVenc.DecimalPlaces = 6;
+            this.txtQInteresCapVenc.Location = new System.Drawing.Point(188, 95);
+            this.txtQInteresCapVenc.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtQInteresCapVenc.Name = "txtQInteresCapVenc";
+            this.txtQInteresCapVenc.Size = new System.Drawing.Size(150, 23);
+            this.txtQInteresCapVenc.TabIndex = 6;
+            this.txtQInteresCapVenc.ValueChanged += new System.EventHandler(this.txtQInteresCapVenc_ValueChanged);
+            // 
+            // txtQComiAplicacion
+            // 
+            this.txtQComiAplicacion.DecimalPlaces = 6;
+            this.txtQComiAplicacion.Location = new System.Drawing.Point(188, 137);
+            this.txtQComiAplicacion.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtQComiAplicacion.Name = "txtQComiAplicacion";
+            this.txtQComiAplicacion.Size = new System.Drawing.Size(150, 23);
+            this.txtQComiAplicacion.TabIndex = 7;
+            this.txtQComiAplicacion.ValueChanged += new System.EventHandler(this.txtQComiAplicacion_ValueChanged);
+            // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(8, 97);
+            this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(172, 35);
+            this.label17.TabIndex = 31;
+            this.label17.Text = "Interés sobre capital vencido cubierto:";
             // 
             // grdDatos
             // 
@@ -130,182 +534,9 @@
             this.grdDatos.MultiSelect = false;
             this.grdDatos.Name = "grdDatos";
             this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDatos.Size = new System.Drawing.Size(608, 319);
+            this.grdDatos.Size = new System.Drawing.Size(608, 330);
             this.grdDatos.TabIndex = 12;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtPagoIntMoratorios);
-            this.groupBox1.Controls.Add(this.lblMensaje);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.txtComiAplicacion);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtInteresCapVenc);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtInteresCubierto);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtPagoCapital);
-            this.groupBox1.Location = new System.Drawing.Point(13, 142);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(353, 229);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Dispersión";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 153);
-            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(140, 17);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Intereses moratorios:";
-            // 
-            // txtPagoIntMoratorios
-            // 
-            this.txtPagoIntMoratorios.DecimalPlaces = 6;
-            this.txtPagoIntMoratorios.Location = new System.Drawing.Point(188, 151);
-            this.txtPagoIntMoratorios.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtPagoIntMoratorios.Name = "txtPagoIntMoratorios";
-            this.txtPagoIntMoratorios.Size = new System.Drawing.Size(150, 23);
-            this.txtPagoIntMoratorios.TabIndex = 8;
-            this.txtPagoIntMoratorios.ValueChanged += new System.EventHandler(this.txtPagoIntMoratorios_ValueChanged);
-            // 
-            // lblMensaje
-            // 
-            this.lblMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
-            this.lblMensaje.Location = new System.Drawing.Point(11, 177);
-            this.lblMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(327, 37);
-            this.lblMensaje.TabIndex = 19;
-            this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblMensaje.Visible = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 124);
-            this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(172, 17);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Comisión por aplicación:";
-            // 
-            // txtComiAplicacion
-            // 
-            this.txtComiAplicacion.DecimalPlaces = 6;
-            this.txtComiAplicacion.Location = new System.Drawing.Point(188, 122);
-            this.txtComiAplicacion.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtComiAplicacion.Name = "txtComiAplicacion";
-            this.txtComiAplicacion.Size = new System.Drawing.Size(150, 23);
-            this.txtComiAplicacion.TabIndex = 7;
-            this.txtComiAplicacion.ValueChanged += new System.EventHandler(this.txtComiAplicacion_ValueChanged);
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(8, 82);
-            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(172, 35);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Interés sobre capital vencido cubierto:";
-            // 
-            // txtInteresCapVenc
-            // 
-            this.txtInteresCapVenc.DecimalPlaces = 6;
-            this.txtInteresCapVenc.Location = new System.Drawing.Point(188, 80);
-            this.txtInteresCapVenc.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtInteresCapVenc.Name = "txtInteresCapVenc";
-            this.txtInteresCapVenc.Size = new System.Drawing.Size(150, 23);
-            this.txtInteresCapVenc.TabIndex = 6;
-            this.txtInteresCapVenc.ValueChanged += new System.EventHandler(this.txtInteresCapVenc_ValueChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 53);
-            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 17);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Interés cubierto:";
-            // 
-            // txtInteresCubierto
-            // 
-            this.txtInteresCubierto.DecimalPlaces = 6;
-            this.txtInteresCubierto.Location = new System.Drawing.Point(188, 51);
-            this.txtInteresCubierto.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtInteresCubierto.Name = "txtInteresCubierto";
-            this.txtInteresCubierto.Size = new System.Drawing.Size(150, 23);
-            this.txtInteresCubierto.TabIndex = 5;
-            this.txtInteresCubierto.ValueChanged += new System.EventHandler(this.txtInteresCubierto_ValueChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 24);
-            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 17);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Pago a capital:";
-            // 
-            // txtPagoCapital
-            // 
-            this.txtPagoCapital.DecimalPlaces = 6;
-            this.txtPagoCapital.Location = new System.Drawing.Point(188, 22);
-            this.txtPagoCapital.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtPagoCapital.Name = "txtPagoCapital";
-            this.txtPagoCapital.Size = new System.Drawing.Size(150, 23);
-            this.txtPagoCapital.TabIndex = 4;
-            this.txtPagoCapital.ValueChanged += new System.EventHandler(this.txtPagoCapital_ValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 115);
-            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(146, 17);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Monto total a pagar:";
-            // 
-            // txtMontoTotal
-            // 
-            this.txtMontoTotal.DecimalPlaces = 6;
-            this.txtMontoTotal.Location = new System.Drawing.Point(165, 113);
-            this.txtMontoTotal.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtMontoTotal.Name = "txtMontoTotal";
-            this.txtMontoTotal.Size = new System.Drawing.Size(201, 23);
-            this.txtMontoTotal.TabIndex = 3;
-            this.txtMontoTotal.ValueChanged += new System.EventHandler(this.txtMontoTotal_ValueChanged);
+            this.grdDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDatos_CellEnter);
             // 
             // label4
             // 
@@ -339,8 +570,9 @@
             // 
             // btnCrear
             // 
+            this.btnCrear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCrear.Enabled = false;
-            this.btnCrear.Location = new System.Drawing.Point(201, 378);
+            this.btnCrear.Location = new System.Drawing.Point(201, 569);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(165, 25);
@@ -352,7 +584,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 89);
+            this.label3.Location = new System.Drawing.Point(11, 84);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 17);
@@ -369,17 +601,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Introduzca los valores requeridos:";
             // 
-            // tabEstadisticas
-            // 
-            this.tabEstadisticas.Location = new System.Drawing.Point(4, 26);
-            this.tabEstadisticas.Margin = new System.Windows.Forms.Padding(5);
-            this.tabEstadisticas.Name = "tabEstadisticas";
-            this.tabEstadisticas.Padding = new System.Windows.Forms.Padding(5);
-            this.tabEstadisticas.Size = new System.Drawing.Size(988, 419);
-            this.tabEstadisticas.TabIndex = 1;
-            this.tabEstadisticas.Text = "Estadísticas";
-            this.tabEstadisticas.UseVisualStyleBackColor = true;
-            // 
             // pnlProgreso
             // 
             this.pnlProgreso.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -390,7 +611,7 @@
             this.pnlProgreso.Controls.Add(this.label2);
             this.pnlProgreso.Location = new System.Drawing.Point(3000, 3000);
             this.pnlProgreso.Name = "pnlProgreso";
-            this.pnlProgreso.Size = new System.Drawing.Size(604, 120);
+            this.pnlProgreso.Size = new System.Drawing.Size(604, 316);
             this.pnlProgreso.TabIndex = 2;
             this.pnlProgreso.Visible = false;
             // 
@@ -399,7 +620,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(254, 135);
+            this.label2.Location = new System.Drawing.Point(254, 233);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 16);
             this.label2.TabIndex = 0;
@@ -411,15 +632,67 @@
             this.wkr01.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr01_DoWork);
             this.wkr01.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr01_RunWorkerCompleted);
             // 
+            // grdDetalle
+            // 
+            this.grdDetalle.AllowUserToAddRows = false;
+            this.grdDetalle.AllowUserToDeleteRows = false;
+            this.grdDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDetalle.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdDetalle.Location = new System.Drawing.Point(372, 388);
+            this.grdDetalle.MultiSelect = false;
+            this.grdDetalle.Name = "grdDetalle";
+            this.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdDetalle.Size = new System.Drawing.Size(608, 178);
+            this.grdDetalle.TabIndex = 25;
+            // 
+            // mnuRegistroPago
+            // 
+            this.mnuRegistroPago.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuHerramientasPago});
+            this.mnuRegistroPago.Location = new System.Drawing.Point(0, 0);
+            this.mnuRegistroPago.Name = "mnuRegistroPago";
+            this.mnuRegistroPago.Size = new System.Drawing.Size(1024, 24);
+            this.mnuRegistroPago.TabIndex = 3;
+            this.mnuRegistroPago.Text = "menuStrip1";
+            // 
+            // mnuHerramientasPago
+            // 
+            this.mnuHerramientasPago.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuExportarSaldos,
+            this.mnuExportarDetalle});
+            this.mnuHerramientasPago.Name = "mnuHerramientasPago";
+            this.mnuHerramientasPago.Size = new System.Drawing.Size(136, 20);
+            this.mnuHerramientasPago.Text = "&Herramientas de pago";
+            // 
+            // mnuExportarSaldos
+            // 
+            this.mnuExportarSaldos.Name = "mnuExportarSaldos";
+            this.mnuExportarSaldos.Size = new System.Drawing.Size(239, 22);
+            this.mnuExportarSaldos.Text = "Exportar &saldos a Excel";
+            this.mnuExportarSaldos.Click += new System.EventHandler(this.mnuExportarSaldos_Click);
+            // 
+            // mnuExportarDetalle
+            // 
+            this.mnuExportarDetalle.Name = "mnuExportarDetalle";
+            this.mnuExportarDetalle.Size = new System.Drawing.Size(239, 22);
+            this.mnuExportarDetalle.Text = "Exportar &detalle de pago a Excel";
+            this.mnuExportarDetalle.Click += new System.EventHandler(this.mnuExportarDetalle_Click);
+            // 
             // frmRegistroPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 477);
+            this.ClientSize = new System.Drawing.Size(1024, 673);
             this.Controls.Add(this.pnlProgreso);
             this.Controls.Add(this.tab01);
+            this.Controls.Add(this.mnuRegistroPago);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenuStrip = this.mnuRegistroPago;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(16, 538);
             this.Name = "frmRegistroPago";
             this.Text = "Registrar pago para créditos puente";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRegistroPago_FormClosing);
@@ -427,18 +700,31 @@
             this.tab01.ResumeLayout(false);
             this.tabCrear.ResumeLayout(false);
             this.tabCrear.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPagoIntMoratorios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtComiAplicacion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCapVenc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCubierto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPagoCapital)).EndInit();
+            this.tabPagos.ResumeLayout(false);
+            this.tabP01.ResumeLayout(false);
+            this.tabP01.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMontoTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPagoCapital)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPagoIntMoratorios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCubierto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCapVenc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtComiAplicacion)).EndInit();
+            this.tabP02.ResumeLayout(false);
+            this.tabP02.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQMontoTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQPagoCapital)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQPagoIntMoratorios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCubierto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCapVenc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQComiAplicacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
             this.pnlProgreso.ResumeLayout(false);
             this.pnlProgreso.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).EndInit();
+            this.mnuRegistroPago.ResumeLayout(false);
+            this.mnuRegistroPago.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -449,12 +735,10 @@
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabEstadisticas;
         private System.Windows.Forms.DateTimePicker dtpFechaPago;
         private System.Windows.Forms.Panel pnlProgreso;
         private System.ComponentModel.BackgroundWorker wkr01;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblMensaje;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown txtComiAplicacion;
@@ -471,6 +755,28 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown txtPagoIntMoratorios;
         private System.Windows.Forms.DataGridView grdDatos;
-        private System.Windows.Forms.Button btnExportarExcel;
+        private System.Windows.Forms.TabControl tabPagos;
+        private System.Windows.Forms.TabPage tabP01;
+        private System.Windows.Forms.TabPage tabP02;
+        private System.Windows.Forms.NumericUpDown txtQMontoTotal;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown txtQPagoCapital;
+        private System.Windows.Forms.NumericUpDown txtQPagoIntMoratorios;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown txtQInteresCubierto;
+        private System.Windows.Forms.Label lblQMensaje;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.NumericUpDown txtQInteresCapVenc;
+        private System.Windows.Forms.NumericUpDown txtQComiAplicacion;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cboTipoPago;
+        private System.Windows.Forms.DataGridView grdDetalle;
+        private System.Windows.Forms.MenuStrip mnuRegistroPago;
+        private System.Windows.Forms.ToolStripMenuItem mnuHerramientasPago;
+        private System.Windows.Forms.ToolStripMenuItem mnuExportarSaldos;
+        private System.Windows.Forms.ToolStripMenuItem mnuExportarDetalle;
     }
 }

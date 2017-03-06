@@ -49,12 +49,15 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.wkr01 = new System.ComponentModel.BackgroundWorker();
+            this.grdDetalle = new System.Windows.Forms.DataGridView();
+            this.btnExportarDet = new System.Windows.Forms.Button();
             this.tab01.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.pnlProgreso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
             this.SuspendLayout();
             // 
             // tab01
@@ -72,6 +75,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.grdDetalle);
             this.tabPage1.Controls.Add(this.grdDatos);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
@@ -97,13 +101,15 @@
             this.grdDatos.MultiSelect = false;
             this.grdDatos.Name = "grdDatos";
             this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDatos.Size = new System.Drawing.Size(747, 418);
+            this.grdDatos.Size = new System.Drawing.Size(747, 234);
             this.grdDatos.TabIndex = 13;
+            this.grdDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDatos_CellEnter);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.btnExportarDet);
             this.groupBox1.Controls.Add(this.chkUsarFechaFinal);
             this.groupBox1.Controls.Add(this.dtpFechaFinal);
             this.groupBox1.Controls.Add(this.label1);
@@ -187,7 +193,7 @@
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(218, 23);
             this.btnExportar.TabIndex = 8;
-            this.btnExportar.Text = "Exportar a Excel";
+            this.btnExportar.Text = "Exportar saldos a Excel";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
@@ -280,6 +286,32 @@
             this.wkr01.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr01_DoWork);
             this.wkr01.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr01_RunWorkerCompleted);
             // 
+            // grdDetalle
+            // 
+            this.grdDetalle.AllowUserToAddRows = false;
+            this.grdDetalle.AllowUserToDeleteRows = false;
+            this.grdDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDetalle.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdDetalle.Location = new System.Drawing.Point(248, 256);
+            this.grdDetalle.MultiSelect = false;
+            this.grdDetalle.Name = "grdDetalle";
+            this.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdDetalle.Size = new System.Drawing.Size(747, 178);
+            this.grdDetalle.TabIndex = 26;
+            // 
+            // btnExportarDet
+            // 
+            this.btnExportarDet.Location = new System.Drawing.Point(11, 248);
+            this.btnExportarDet.Name = "btnExportarDet";
+            this.btnExportarDet.Size = new System.Drawing.Size(218, 23);
+            this.btnExportarDet.TabIndex = 16;
+            this.btnExportarDet.Text = "Exportar detalle a Excel";
+            this.btnExportarDet.UseVisualStyleBackColor = true;
+            this.btnExportarDet.Click += new System.EventHandler(this.btnExportarDet_Click);
+            // 
             // frmHistCred
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -290,7 +322,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmHistCred";
-            this.Text = "Histórico de créditos puente";
+            this.Text = "Consultar historial de créditos puente";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHistCred_FormClosing);
             this.Load += new System.EventHandler(this.frmHistCred_Load);
             this.tab01.ResumeLayout(false);
@@ -301,6 +333,7 @@
             this.pnlProgreso.ResumeLayout(false);
             this.pnlProgreso.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -327,5 +360,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.ComponentModel.BackgroundWorker wkr01;
+        private System.Windows.Forms.DataGridView grdDetalle;
+        private System.Windows.Forms.Button btnExportarDet;
     }
 }

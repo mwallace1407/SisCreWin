@@ -12,6 +12,24 @@ namespace SisCreWin.BD
     public class clsBD
     {
         #region ProcedimientosBase
+        public static BaseConectada ObtenerBaseConectada()
+        {
+            BaseConectada vBase = new BaseConectada(string.Empty, string.Empty);
+
+            try
+            {
+                if (SisCreWin.Sistema.Global.OverrideCnx == string.Empty)
+                    SisCreWin.Sistema.Global.OverrideCnx = clsGeneral.BDCnx;
+                
+                SqlConnectionStringBuilder cnxDet = new SqlConnectionStringBuilder(SisCreWin.Sistema.Global.OverrideCnx);
+
+                vBase.BaseDatos = cnxDet.InitialCatalog;
+                vBase.Detalle = "Servidor: " + cnxDet.DataSource + Environment.NewLine + "Usuario: " + cnxDet.UserID;
+            }
+            catch (Exception ex){ string s = ex.Message; }
+
+            return vBase;
+        }
         private static ResultadoStored_Str EjecutarStored_Str(string Stored, List<SqlParameter> Params, string ColumnaResultado, bool DevolverError = true, int TimeOut = 0)
         {
             ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
@@ -20,7 +38,7 @@ namespace SisCreWin.BD
 
             try
             {
-                cn = new SqlConnection(clsGeneral.BDCnx);
+                cn = new SqlConnection(SisCreWin.Sistema.Global.OverrideCnx);
                 cmd = new SqlCommand(Stored.ToString(), cn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -63,7 +81,7 @@ namespace SisCreWin.BD
 
             try
             {
-                cn = new SqlConnection(clsGeneral.BDCnx);
+                cn = new SqlConnection(SisCreWin.Sistema.Global.OverrideCnx);
                 cmd = new SqlCommand(Stored.ToString(), cn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -99,7 +117,7 @@ namespace SisCreWin.BD
 
             try
             {
-                cn = new SqlConnection(clsGeneral.BDCnx);
+                cn = new SqlConnection(SisCreWin.Sistema.Global.OverrideCnx);
                 cmd = new SqlCommand(Stored.ToString(), cn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -135,7 +153,7 @@ namespace SisCreWin.BD
 
             try
             {
-                cn = new SqlConnection(clsGeneral.BDCnx);
+                cn = new SqlConnection(SisCreWin.Sistema.Global.OverrideCnx);
                 cmd = new SqlCommand(Stored.ToString(), cn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -178,7 +196,7 @@ namespace SisCreWin.BD
 
             try
             {
-                cn = new SqlConnection(clsGeneral.BDCnx);
+                cn = new SqlConnection(SisCreWin.Sistema.Global.OverrideCnx);
                 cmd = new SqlCommand(Stored.ToString(), cn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -222,7 +240,7 @@ namespace SisCreWin.BD
 
             try
             {
-                cn = new SqlConnection(clsGeneral.BDCnx);
+                cn = new SqlConnection(SisCreWin.Sistema.Global.OverrideCnx);
                 cmd = new SqlCommand(Stored.ToString(), cn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -1044,6 +1062,76 @@ namespace SisCreWin.BD
             return Resultado;
         }
         //!Origen_Creditos_Puente
+        //TiposPagoPuentes
+        public static ResultadoStored_DT Catalogos_C_TiposPagoPuentes()
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Catalogos_C_TiposPagoPuentes, null);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Int Catalogos_I_TiposPagoPuentes(clsGeneral.TiposPagoPuentes TP)
+        {
+            ResultadoStored_Int Resultado = new ResultadoStored_Int(0, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PTP_Descripcion", SqlDbType.VarChar);
+            param.Value = TP.PTP_Descripcion;
+            paramC.Add(param);
+            param = new SqlParameter("@PTP_Orden", SqlDbType.Int);
+            param.Value = TP.PTP_Orden;
+            paramC.Add(param);
+            param = new SqlParameter("@PTP_Activo", SqlDbType.Bit);
+            param.Value = TP.PTP_Activo;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_Int(CatalogoStoreds.Catalogos_I_TiposPagoPuentes, paramC, "MensajeBD");
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Catalogos_U_TiposPagoPuentes(clsGeneral.TiposPagoPuentes TP)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PTP_Id", SqlDbType.Int);
+            param.Value = TP.PTP_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@PTP_Descripcion", SqlDbType.VarChar);
+            param.Value = TP.PTP_Descripcion;
+            paramC.Add(param);
+            param = new SqlParameter("@PTP_Orden", SqlDbType.Int);
+            param.Value = TP.PTP_Orden;
+            paramC.Add(param);
+            param = new SqlParameter("@PTP_Activo", SqlDbType.Money);
+            param.Value = TP.PTP_Activo;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Catalogos_U_TiposPagoPuentes, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Catalogos_C_TiposPagoPuentesBitacora(int PTP_Id)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PTP_Id", SqlDbType.Int);
+            param.Value = PTP_Id;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_Str(CatalogoStoreds.Catalogos_C_TiposPagoPuentesBitacora, paramC, "ColXML");
+
+            return Resultado;
+        }
+        //!TiposPagoPuentes
         #endregion Catalogos
         #region Buro
         //Puentes
@@ -1368,7 +1456,7 @@ namespace SisCreWin.BD
             return Resultado;
         }
 
-        public static ResultadoStored_Str Puentes_M_RegistrarPago(clsGeneral.PuentesPagos Puente)
+        public static ResultadoStored_Str Puentes_M_RegistrarPago(clsGeneral.PuentesPagos Puente, clsGeneral.PuentesPagos PuenteQ)
         {
             ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
             SqlParameter param;
@@ -1397,6 +1485,25 @@ namespace SisCreWin.BD
             paramC.Add(param);
             param = new SqlParameter("@PHP_PagoIntMoratorios", SqlDbType.Money);
             param.Value = Puente.PHP_PagoIntMoratorios;
+            paramC.Add(param);
+            //Quitas y quebrantos
+            param = new SqlParameter("@PTP_Id", SqlDbType.Money);
+            param.Value = PuenteQ.PTP_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_QPagoCapital", SqlDbType.Money);
+            param.Value = PuenteQ.PHP_PagoCapital;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_QInteresCubierto", SqlDbType.Money);
+            param.Value = PuenteQ.PHP_InteresCubierto;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_QInteresCapVenc", SqlDbType.Money);
+            param.Value = PuenteQ.PHP_InteresCapVenc;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_QComiAplicacion", SqlDbType.Money);
+            param.Value = PuenteQ.PHP_ComiAplicacion;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_QPagoIntMoratorios", SqlDbType.Money);
+            param.Value = PuenteQ.PHP_PagoIntMoratorios;
             paramC.Add(param);
 
             Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Puentes_M_RegistrarPago, paramC);
@@ -1568,6 +1675,33 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+        
+        public static ResultadoStored_DT Puentes_C_TiposPago()
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_TiposPago, null);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Puentes_C_HistoricoDePago(int PHP_NumeroPrestamo, DateTime PHP_FechaPago)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PHP_NumeroPrestamo", SqlDbType.Int);
+            param.Value = PHP_NumeroPrestamo;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago", SqlDbType.DateTime);
+            param.Value = PHP_FechaPago;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_HistoricoDePago, paramC);
+
+            return Resultado;
+        }
         //!Operaciones_Puentes
         #endregion Puentes
         #endregion Negocio
@@ -1640,6 +1774,18 @@ namespace SisCreWin.BD
             Archivo = vArchivo;
             Error = vError;
             HayError = vHayError;
+        }
+    }
+
+    public struct BaseConectada
+    {
+        public string BaseDatos;
+        public string Detalle;
+
+        public BaseConectada(string vBaseDatos, string vDetalle)
+        {
+            BaseDatos = vBaseDatos;
+            Detalle = vDetalle;
         }
     }
     #endregion Modelos

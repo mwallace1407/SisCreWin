@@ -63,6 +63,36 @@ namespace SisCreWin.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap att {
+            get {
+                object obj = ResourceManager.GetObject("att", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap database_configuration_590 {
+            get {
+                object obj = ResourceManager.GetObject("database-configuration-590", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap disk_utility_5 {
+            get {
+                object obj = ResourceManager.GetObject("disk-utility-5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap DivBackA {
             get {
                 object obj = ResourceManager.GetObject("DivBackA", resourceCulture);
@@ -76,6 +106,16 @@ namespace SisCreWin.Properties {
         public static System.Drawing.Bitmap DivBackA_big {
             get {
                 object obj = ResourceManager.GetObject("DivBackA_big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap err {
+            get {
+                object obj = ResourceManager.GetObject("err", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,6 +156,16 @@ namespace SisCreWin.Properties {
         public static System.Drawing.Bitmap help1600_s {
             get {
                 object obj = ResourceManager.GetObject("help1600_s", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap inf {
+            get {
+                object obj = ResourceManager.GetObject("inf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

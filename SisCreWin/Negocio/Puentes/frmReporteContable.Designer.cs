@@ -38,13 +38,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboFechasGen = new System.Windows.Forms.ComboBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnExportarRExcel = new System.Windows.Forms.Button();
-            this.btnAyudaP = new System.Windows.Forms.Button();
-            this.gbFiltros = new System.Windows.Forms.GroupBox();
             this.pnlDetalle = new System.Windows.Forms.Panel();
             this.btnExportarDetalle = new System.Windows.Forms.Button();
             this.grdDatosDet = new System.Windows.Forms.DataGridView();
             this.btnCerrarPanel = new System.Windows.Forms.Button();
+            this.btnExportarRExcel = new System.Windows.Forms.Button();
+            this.btnAyudaP = new System.Windows.Forms.Button();
+            this.gbFiltros = new System.Windows.Forms.GroupBox();
             this.chkP = new System.Windows.Forms.CheckBox();
             this.cboFechas = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -79,9 +79,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.gbFiltros.SuspendLayout();
             this.pnlDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatosDet)).BeginInit();
+            this.gbFiltros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTopSel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatosR)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -212,55 +212,6 @@
             this.tabPage1.Text = "Consultar cierres generados";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // btnExportarRExcel
-            // 
-            this.btnExportarRExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportarRExcel.BackgroundImage = global::SisCreWin.Properties.Resources.xlsIcon_32;
-            this.btnExportarRExcel.Location = new System.Drawing.Point(606, 8);
-            this.btnExportarRExcel.Name = "btnExportarRExcel";
-            this.btnExportarRExcel.Size = new System.Drawing.Size(32, 32);
-            this.btnExportarRExcel.TabIndex = 12;
-            this.tip01.SetToolTip(this.btnExportarRExcel, "Exportar a Excel");
-            this.btnExportarRExcel.UseVisualStyleBackColor = true;
-            this.btnExportarRExcel.Click += new System.EventHandler(this.btnExportarRExcel_Click);
-            // 
-            // btnAyudaP
-            // 
-            this.btnAyudaP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAyudaP.BackgroundImage = global::SisCreWin.Properties.Resources.help1600_s;
-            this.btnAyudaP.Location = new System.Drawing.Point(574, 8);
-            this.btnAyudaP.Name = "btnAyudaP";
-            this.btnAyudaP.Size = new System.Drawing.Size(32, 32);
-            this.btnAyudaP.TabIndex = 11;
-            this.btnAyudaP.UseVisualStyleBackColor = true;
-            this.btnAyudaP.Click += new System.EventHandler(this.btnAyudaP_Click);
-            // 
-            // gbFiltros
-            // 
-            this.gbFiltros.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbFiltros.Controls.Add(this.chkP);
-            this.gbFiltros.Controls.Add(this.cboFechas);
-            this.gbFiltros.Controls.Add(this.label10);
-            this.gbFiltros.Controls.Add(this.chkU);
-            this.gbFiltros.Controls.Add(this.chkFF);
-            this.gbFiltros.Controls.Add(this.chkFI);
-            this.gbFiltros.Controls.Add(this.btnProcesar);
-            this.gbFiltros.Controls.Add(this.cboUsuarios);
-            this.gbFiltros.Controls.Add(this.label4);
-            this.gbFiltros.Controls.Add(this.dtpFechaFin);
-            this.gbFiltros.Controls.Add(this.label6);
-            this.gbFiltros.Controls.Add(this.dtpFechaIni);
-            this.gbFiltros.Controls.Add(this.label7);
-            this.gbFiltros.Controls.Add(this.txtTopSel);
-            this.gbFiltros.Controls.Add(this.label8);
-            this.gbFiltros.Location = new System.Drawing.Point(644, 33);
-            this.gbFiltros.Name = "gbFiltros";
-            this.gbFiltros.Size = new System.Drawing.Size(340, 408);
-            this.gbFiltros.TabIndex = 10;
-            this.gbFiltros.TabStop = false;
-            this.gbFiltros.Text = "Filtros";
-            // 
             // pnlDetalle
             // 
             this.pnlDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -312,6 +263,55 @@
             this.btnCerrarPanel.Text = "Cerrar";
             this.btnCerrarPanel.UseVisualStyleBackColor = true;
             this.btnCerrarPanel.Click += new System.EventHandler(this.btnCerrarPanel_Click);
+            // 
+            // btnExportarRExcel
+            // 
+            this.btnExportarRExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportarRExcel.BackgroundImage = global::SisCreWin.Properties.Resources.xlsIcon_32;
+            this.btnExportarRExcel.Location = new System.Drawing.Point(606, 8);
+            this.btnExportarRExcel.Name = "btnExportarRExcel";
+            this.btnExportarRExcel.Size = new System.Drawing.Size(32, 32);
+            this.btnExportarRExcel.TabIndex = 12;
+            this.tip01.SetToolTip(this.btnExportarRExcel, "Exportar a Excel");
+            this.btnExportarRExcel.UseVisualStyleBackColor = true;
+            this.btnExportarRExcel.Click += new System.EventHandler(this.btnExportarRExcel_Click);
+            // 
+            // btnAyudaP
+            // 
+            this.btnAyudaP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAyudaP.BackgroundImage = global::SisCreWin.Properties.Resources.help1600_s;
+            this.btnAyudaP.Location = new System.Drawing.Point(574, 8);
+            this.btnAyudaP.Name = "btnAyudaP";
+            this.btnAyudaP.Size = new System.Drawing.Size(32, 32);
+            this.btnAyudaP.TabIndex = 11;
+            this.btnAyudaP.UseVisualStyleBackColor = true;
+            this.btnAyudaP.Click += new System.EventHandler(this.btnAyudaP_Click);
+            // 
+            // gbFiltros
+            // 
+            this.gbFiltros.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbFiltros.Controls.Add(this.chkP);
+            this.gbFiltros.Controls.Add(this.cboFechas);
+            this.gbFiltros.Controls.Add(this.label10);
+            this.gbFiltros.Controls.Add(this.chkU);
+            this.gbFiltros.Controls.Add(this.chkFF);
+            this.gbFiltros.Controls.Add(this.chkFI);
+            this.gbFiltros.Controls.Add(this.btnProcesar);
+            this.gbFiltros.Controls.Add(this.cboUsuarios);
+            this.gbFiltros.Controls.Add(this.label4);
+            this.gbFiltros.Controls.Add(this.dtpFechaFin);
+            this.gbFiltros.Controls.Add(this.label6);
+            this.gbFiltros.Controls.Add(this.dtpFechaIni);
+            this.gbFiltros.Controls.Add(this.label7);
+            this.gbFiltros.Controls.Add(this.txtTopSel);
+            this.gbFiltros.Controls.Add(this.label8);
+            this.gbFiltros.Location = new System.Drawing.Point(644, 33);
+            this.gbFiltros.Name = "gbFiltros";
+            this.gbFiltros.Size = new System.Drawing.Size(340, 408);
+            this.gbFiltros.TabIndex = 10;
+            this.gbFiltros.TabStop = false;
+            this.gbFiltros.Text = "Filtros";
             // 
             // chkP
             // 
@@ -620,7 +620,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(835, 459);
             this.Name = "frmReporteContable";
-            this.Text = "Cierre / reporte mensual de créditos puente";
+            this.Text = "Generar / consultar cierre contable mensual de créditos puente";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReporteContable_FormClosing);
             this.Load += new System.EventHandler(this.frmReporteContable_Load);
             this.tab01.ResumeLayout(false);
@@ -630,10 +630,10 @@
             this.groupBox2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.gbFiltros.ResumeLayout(false);
-            this.gbFiltros.PerformLayout();
             this.pnlDetalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdDatosDet)).EndInit();
+            this.gbFiltros.ResumeLayout(false);
+            this.gbFiltros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTopSel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatosR)).EndInit();
             this.tabPage3.ResumeLayout(false);

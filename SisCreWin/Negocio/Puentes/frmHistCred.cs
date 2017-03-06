@@ -119,6 +119,34 @@ namespace SisCreWin.Negocio.Puentes
             }
         }
 
+        private void ExportarDetalle()
+        {
+            ResultadoExport exp = new ResultadoExport();
+            DataTable dt = new DataTable();
+            dt = (DataTable)grdDetalle.DataSource;
+
+            exp = clsBD.ExportarExcel(dt);
+
+            if (!exp.HayError)
+            {
+                try
+                {
+                    if (System.IO.File.Exists(exp.Archivo))
+                        System.Diagnostics.Process.Start(exp.Archivo);
+                    else
+                        MessageBox.Show("No existe el archivo especificado", "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void Procesar()
         {
             NumeroPrestamo = (chkUsarCredito.Checked) ? (int?)cboNumeroPrestamo.SelectedValue : null;
@@ -153,6 +181,12 @@ namespace SisCreWin.Negocio.Puentes
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
+            if(grdDatos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar", "Exportar a Excel", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             Archivo = string.Empty;
             tipoProceso = TipoProceso.Extraccion;
             Procesar();
@@ -222,6 +256,42 @@ namespace SisCreWin.Negocio.Puentes
             {
                 e.Cancel = true;
             }
+        }
+
+        private void grdDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ResultadoStored_DT Resultado = new ResultadoStored_DT();
+                DateTime FechaPago = clsGeneral.ObtieneFecha(grdDatos[0, e.RowIndex].Value.ToString());
+                int NumeroPrestamo = (int)grdDatos[1, e.RowIndex].Value;
+
+                Resultado = clsBD.Puentes_C_HistoricoDePago(NumeroPrestamo, FechaPago);
+
+                if (!Resultado.HayError)
+                {
+                    grdDetalle.DataSource = Resultado.Resultado;
+                }
+                else
+                {
+                    MessageBox.Show(Resultado.Error, "Error al obtener detalle de pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al procesar detalle de pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnExportarDet_Click(object sender, EventArgs e)
+        {
+            if (grdDetalle.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar", "Exportar a Excel", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            ExportarDetalle();
         }
         #endregion Eventos
     }

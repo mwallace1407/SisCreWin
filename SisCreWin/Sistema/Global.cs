@@ -11,6 +11,8 @@ namespace SisCreWin.Sistema
         private static int vUsr_Id = 0;
         private static bool vProcesosPendientes = false;
         private static string vUsuario = string.Empty;
+        private static string vCnx = string.Empty;
+        private static string vBaseCnx = string.Empty;
 
         public static int Usr_Id
         {
@@ -28,6 +30,18 @@ namespace SisCreWin.Sistema
         {
             get { return vUsuario; }
             set { vUsuario = value; }
+        }
+
+        public static string OverrideCnx
+        {
+            get { return vCnx; }
+            set { vCnx = value; }
+        }
+
+        public static string BaseConectada
+        {
+            get { return vBaseCnx; }
+            set { vBaseCnx = value; }
         }
     }
 }
