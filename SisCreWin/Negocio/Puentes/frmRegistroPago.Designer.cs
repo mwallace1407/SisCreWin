@@ -76,6 +76,8 @@
             this.mnuHerramientasPago = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExportarSaldos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExportarDetalle = new System.Windows.Forms.ToolStripMenuItem();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             this.tabPagos.SuspendLayout();
@@ -114,6 +116,8 @@
             // 
             // tabCrear
             // 
+            this.tabCrear.Controls.Add(this.label19);
+            this.tabCrear.Controls.Add(this.label18);
             this.tabCrear.Controls.Add(this.grdDetalle);
             this.tabCrear.Controls.Add(this.label14);
             this.tabCrear.Controls.Add(this.cboTipoPago);
@@ -534,7 +538,7 @@
             this.grdDatos.MultiSelect = false;
             this.grdDatos.Name = "grdDatos";
             this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDatos.Size = new System.Drawing.Size(608, 330);
+            this.grdDatos.Size = new System.Drawing.Size(608, 313);
             this.grdDatos.TabIndex = 12;
             this.grdDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDatos_CellEnter);
             // 
@@ -681,6 +685,27 @@
             this.mnuExportarDetalle.Text = "Exportar &detalle de pago a Excel";
             this.mnuExportarDetalle.Click += new System.EventHandler(this.mnuExportarDetalle_Click);
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(369, 32);
+            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 17);
+            this.label18.TabIndex = 26;
+            this.label18.Text = "Saldos:";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(369, 368);
+            this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(58, 17);
+            this.label19.TabIndex = 27;
+            this.label19.Text = "Detalle:";
+            // 
             // frmRegistroPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -778,5 +803,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuHerramientasPago;
         private System.Windows.Forms.ToolStripMenuItem mnuExportarSaldos;
         private System.Windows.Forms.ToolStripMenuItem mnuExportarDetalle;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }
