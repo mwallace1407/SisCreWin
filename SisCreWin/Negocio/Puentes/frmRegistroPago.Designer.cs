@@ -72,12 +72,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.wkr01 = new System.ComponentModel.BackgroundWorker();
             this.grdDetalle = new System.Windows.Forms.DataGridView();
-            this.mnuRegistroPago = new System.Windows.Forms.MenuStrip();
-            this.mnuHerramientasPago = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExportarSaldos = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExportarDetalle = new System.Windows.Forms.ToolStripMenuItem();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.btnExportarDet = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             this.tabPagos.SuspendLayout();
@@ -98,7 +96,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.pnlProgreso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
-            this.mnuRegistroPago.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab01
@@ -107,15 +104,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab01.Controls.Add(this.tabCrear);
-            this.tab01.Location = new System.Drawing.Point(14, 29);
+            this.tab01.Location = new System.Drawing.Point(14, 14);
             this.tab01.Margin = new System.Windows.Forms.Padding(5);
             this.tab01.Name = "tab01";
             this.tab01.SelectedIndex = 0;
-            this.tab01.Size = new System.Drawing.Size(996, 630);
+            this.tab01.Size = new System.Drawing.Size(996, 645);
             this.tab01.TabIndex = 1;
             // 
             // tabCrear
             // 
+            this.tabCrear.Controls.Add(this.btnExportarDet);
+            this.tabCrear.Controls.Add(this.btnExportar);
             this.tabCrear.Controls.Add(this.label19);
             this.tabCrear.Controls.Add(this.label18);
             this.tabCrear.Controls.Add(this.grdDetalle);
@@ -133,7 +132,7 @@
             this.tabCrear.Margin = new System.Windows.Forms.Padding(5);
             this.tabCrear.Name = "tabCrear";
             this.tabCrear.Padding = new System.Windows.Forms.Padding(5);
-            this.tabCrear.Size = new System.Drawing.Size(988, 600);
+            this.tabCrear.Size = new System.Drawing.Size(988, 615);
             this.tabCrear.TabIndex = 0;
             this.tabCrear.Text = "Crear";
             this.tabCrear.UseVisualStyleBackColor = true;
@@ -155,20 +154,19 @@
             this.cboTipoPago.Location = new System.Drawing.Point(165, 113);
             this.cboTipoPago.Name = "cboTipoPago";
             this.cboTipoPago.Size = new System.Drawing.Size(201, 25);
-            this.cboTipoPago.TabIndex = 23;
+            this.cboTipoPago.TabIndex = 2;
             this.cboTipoPago.SelectedIndexChanged += new System.EventHandler(this.cboTipoPago_SelectedIndexChanged);
+            this.cboTipoPago.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboTipoPago_KeyDown);
             // 
             // tabPagos
             // 
-            this.tabPagos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.tabPagos.Controls.Add(this.tabP01);
             this.tabPagos.Controls.Add(this.tabP02);
-            this.tabPagos.Location = new System.Drawing.Point(14, 142);
+            this.tabPagos.Location = new System.Drawing.Point(14, 144);
             this.tabPagos.Name = "tabPagos";
             this.tabPagos.SelectedIndex = 0;
-            this.tabPagos.Size = new System.Drawing.Size(352, 424);
-            this.tabPagos.TabIndex = 22;
+            this.tabPagos.Size = new System.Drawing.Size(352, 275);
+            this.tabPagos.TabIndex = 3;
             // 
             // tabP01
             // 
@@ -188,7 +186,7 @@
             this.tabP01.Location = new System.Drawing.Point(4, 26);
             this.tabP01.Name = "tabP01";
             this.tabP01.Padding = new System.Windows.Forms.Padding(3);
-            this.tabP01.Size = new System.Drawing.Size(344, 394);
+            this.tabP01.Size = new System.Drawing.Size(344, 245);
             this.tabP01.TabIndex = 0;
             this.tabP01.Text = "Normal";
             this.tabP01.UseVisualStyleBackColor = true;
@@ -205,7 +203,9 @@
             this.txtMontoTotal.Name = "txtMontoTotal";
             this.txtMontoTotal.Size = new System.Drawing.Size(150, 23);
             this.txtMontoTotal.TabIndex = 3;
+            this.txtMontoTotal.ThousandsSeparator = true;
             this.txtMontoTotal.ValueChanged += new System.EventHandler(this.txtMontoTotal_ValueChanged);
+            this.txtMontoTotal.Enter += new System.EventHandler(this.txtMontoTotal_Enter);
             // 
             // label10
             // 
@@ -239,7 +239,9 @@
             this.txtPagoCapital.Name = "txtPagoCapital";
             this.txtPagoCapital.Size = new System.Drawing.Size(150, 23);
             this.txtPagoCapital.TabIndex = 4;
+            this.txtPagoCapital.ThousandsSeparator = true;
             this.txtPagoCapital.ValueChanged += new System.EventHandler(this.txtPagoCapital_ValueChanged);
+            this.txtPagoCapital.Enter += new System.EventHandler(this.txtPagoCapital_Enter);
             // 
             // txtPagoIntMoratorios
             // 
@@ -253,7 +255,9 @@
             this.txtPagoIntMoratorios.Name = "txtPagoIntMoratorios";
             this.txtPagoIntMoratorios.Size = new System.Drawing.Size(150, 23);
             this.txtPagoIntMoratorios.TabIndex = 8;
+            this.txtPagoIntMoratorios.ThousandsSeparator = true;
             this.txtPagoIntMoratorios.ValueChanged += new System.EventHandler(this.txtPagoIntMoratorios_ValueChanged);
+            this.txtPagoIntMoratorios.Enter += new System.EventHandler(this.txtPagoIntMoratorios_Enter);
             // 
             // label6
             // 
@@ -277,12 +281,14 @@
             this.txtInteresCubierto.Name = "txtInteresCubierto";
             this.txtInteresCubierto.Size = new System.Drawing.Size(150, 23);
             this.txtInteresCubierto.TabIndex = 5;
+            this.txtInteresCubierto.ThousandsSeparator = true;
             this.txtInteresCubierto.ValueChanged += new System.EventHandler(this.txtInteresCubierto_ValueChanged);
+            this.txtInteresCubierto.Enter += new System.EventHandler(this.txtInteresCubierto_Enter);
             // 
             // lblMensaje
             // 
             this.lblMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
-            this.lblMensaje.Location = new System.Drawing.Point(11, 192);
+            this.lblMensaje.Location = new System.Drawing.Point(11, 196);
             this.lblMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(327, 37);
@@ -322,7 +328,9 @@
             this.txtInteresCapVenc.Name = "txtInteresCapVenc";
             this.txtInteresCapVenc.Size = new System.Drawing.Size(150, 23);
             this.txtInteresCapVenc.TabIndex = 6;
+            this.txtInteresCapVenc.ThousandsSeparator = true;
             this.txtInteresCapVenc.ValueChanged += new System.EventHandler(this.txtInteresCapVenc_ValueChanged);
+            this.txtInteresCapVenc.Enter += new System.EventHandler(this.txtInteresCapVenc_Enter);
             // 
             // txtComiAplicacion
             // 
@@ -336,7 +344,9 @@
             this.txtComiAplicacion.Name = "txtComiAplicacion";
             this.txtComiAplicacion.Size = new System.Drawing.Size(150, 23);
             this.txtComiAplicacion.TabIndex = 7;
+            this.txtComiAplicacion.ThousandsSeparator = true;
             this.txtComiAplicacion.ValueChanged += new System.EventHandler(this.txtComiAplicacion_ValueChanged);
+            this.txtComiAplicacion.Enter += new System.EventHandler(this.txtComiAplicacion_Enter);
             // 
             // label8
             // 
@@ -365,7 +375,7 @@
             this.tabP02.Location = new System.Drawing.Point(4, 26);
             this.tabP02.Name = "tabP02";
             this.tabP02.Padding = new System.Windows.Forms.Padding(3);
-            this.tabP02.Size = new System.Drawing.Size(344, 235);
+            this.tabP02.Size = new System.Drawing.Size(344, 245);
             this.tabP02.TabIndex = 1;
             this.tabP02.Text = "Quita / Quebranto";
             this.tabP02.UseVisualStyleBackColor = true;
@@ -382,7 +392,9 @@
             this.txtQMontoTotal.Name = "txtQMontoTotal";
             this.txtQMontoTotal.Size = new System.Drawing.Size(150, 23);
             this.txtQMontoTotal.TabIndex = 3;
+            this.txtQMontoTotal.ThousandsSeparator = true;
             this.txtQMontoTotal.ValueChanged += new System.EventHandler(this.txtQMontoTotal_ValueChanged);
+            this.txtQMontoTotal.Enter += new System.EventHandler(this.txtQMontoTotal_Enter);
             // 
             // label11
             // 
@@ -416,7 +428,9 @@
             this.txtQPagoCapital.Name = "txtQPagoCapital";
             this.txtQPagoCapital.Size = new System.Drawing.Size(150, 23);
             this.txtQPagoCapital.TabIndex = 4;
+            this.txtQPagoCapital.ThousandsSeparator = true;
             this.txtQPagoCapital.ValueChanged += new System.EventHandler(this.txtQPagoCapital_ValueChanged);
+            this.txtQPagoCapital.Enter += new System.EventHandler(this.txtQPagoCapital_Enter);
             // 
             // txtQPagoIntMoratorios
             // 
@@ -430,7 +444,9 @@
             this.txtQPagoIntMoratorios.Name = "txtQPagoIntMoratorios";
             this.txtQPagoIntMoratorios.Size = new System.Drawing.Size(150, 23);
             this.txtQPagoIntMoratorios.TabIndex = 8;
+            this.txtQPagoIntMoratorios.ThousandsSeparator = true;
             this.txtQPagoIntMoratorios.ValueChanged += new System.EventHandler(this.txtQPagoIntMoratorios_ValueChanged);
+            this.txtQPagoIntMoratorios.Enter += new System.EventHandler(this.txtQPagoIntMoratorios_Enter);
             // 
             // label13
             // 
@@ -454,12 +470,14 @@
             this.txtQInteresCubierto.Name = "txtQInteresCubierto";
             this.txtQInteresCubierto.Size = new System.Drawing.Size(150, 23);
             this.txtQInteresCubierto.TabIndex = 5;
+            this.txtQInteresCubierto.ThousandsSeparator = true;
             this.txtQInteresCubierto.ValueChanged += new System.EventHandler(this.txtQInteresCubierto_ValueChanged);
+            this.txtQInteresCubierto.Enter += new System.EventHandler(this.txtQInteresCubierto_Enter);
             // 
             // lblQMensaje
             // 
             this.lblQMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
-            this.lblQMensaje.Location = new System.Drawing.Point(11, 192);
+            this.lblQMensaje.Location = new System.Drawing.Point(11, 196);
             this.lblQMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblQMensaje.Name = "lblQMensaje";
             this.lblQMensaje.Size = new System.Drawing.Size(327, 37);
@@ -499,7 +517,9 @@
             this.txtQInteresCapVenc.Name = "txtQInteresCapVenc";
             this.txtQInteresCapVenc.Size = new System.Drawing.Size(150, 23);
             this.txtQInteresCapVenc.TabIndex = 6;
+            this.txtQInteresCapVenc.ThousandsSeparator = true;
             this.txtQInteresCapVenc.ValueChanged += new System.EventHandler(this.txtQInteresCapVenc_ValueChanged);
+            this.txtQInteresCapVenc.Enter += new System.EventHandler(this.txtQInteresCapVenc_Enter);
             // 
             // txtQComiAplicacion
             // 
@@ -513,7 +533,9 @@
             this.txtQComiAplicacion.Name = "txtQComiAplicacion";
             this.txtQComiAplicacion.Size = new System.Drawing.Size(150, 23);
             this.txtQComiAplicacion.TabIndex = 7;
+            this.txtQComiAplicacion.ThousandsSeparator = true;
             this.txtQComiAplicacion.ValueChanged += new System.EventHandler(this.txtQComiAplicacion_ValueChanged);
+            this.txtQComiAplicacion.Enter += new System.EventHandler(this.txtQComiAplicacion_Enter);
             // 
             // label17
             // 
@@ -538,7 +560,7 @@
             this.grdDatos.MultiSelect = false;
             this.grdDatos.Name = "grdDatos";
             this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDatos.Size = new System.Drawing.Size(608, 313);
+            this.grdDatos.Size = new System.Drawing.Size(608, 351);
             this.grdDatos.TabIndex = 12;
             this.grdDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDatos_CellEnter);
             // 
@@ -559,7 +581,7 @@
             this.cboNumeroPrestamo.Location = new System.Drawing.Point(165, 52);
             this.cboNumeroPrestamo.Name = "cboNumeroPrestamo";
             this.cboNumeroPrestamo.Size = new System.Drawing.Size(201, 25);
-            this.cboNumeroPrestamo.TabIndex = 2;
+            this.cboNumeroPrestamo.TabIndex = 0;
             this.cboNumeroPrestamo.SelectedIndexChanged += new System.EventHandler(this.cboNumeroPrestamo_SelectedIndexChanged);
             // 
             // dtpFechaPago
@@ -576,10 +598,10 @@
             // 
             this.btnCrear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCrear.Enabled = false;
-            this.btnCrear.Location = new System.Drawing.Point(201, 569);
+            this.btnCrear.Location = new System.Drawing.Point(165, 426);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4);
             this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(165, 25);
+            this.btnCrear.Size = new System.Drawing.Size(201, 25);
             this.btnCrear.TabIndex = 9;
             this.btnCrear.Text = "Registrar pago";
             this.btnCrear.UseVisualStyleBackColor = true;
@@ -645,45 +667,12 @@
             this.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdDetalle.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.grdDetalle.Location = new System.Drawing.Point(372, 388);
+            this.grdDetalle.Location = new System.Drawing.Point(372, 426);
             this.grdDetalle.MultiSelect = false;
             this.grdDetalle.Name = "grdDetalle";
             this.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDetalle.Size = new System.Drawing.Size(608, 178);
+            this.grdDetalle.Size = new System.Drawing.Size(608, 181);
             this.grdDetalle.TabIndex = 25;
-            // 
-            // mnuRegistroPago
-            // 
-            this.mnuRegistroPago.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuHerramientasPago});
-            this.mnuRegistroPago.Location = new System.Drawing.Point(0, 0);
-            this.mnuRegistroPago.Name = "mnuRegistroPago";
-            this.mnuRegistroPago.Size = new System.Drawing.Size(1024, 24);
-            this.mnuRegistroPago.TabIndex = 3;
-            this.mnuRegistroPago.Text = "menuStrip1";
-            // 
-            // mnuHerramientasPago
-            // 
-            this.mnuHerramientasPago.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuExportarSaldos,
-            this.mnuExportarDetalle});
-            this.mnuHerramientasPago.Name = "mnuHerramientasPago";
-            this.mnuHerramientasPago.Size = new System.Drawing.Size(136, 20);
-            this.mnuHerramientasPago.Text = "&Herramientas de pago";
-            // 
-            // mnuExportarSaldos
-            // 
-            this.mnuExportarSaldos.Name = "mnuExportarSaldos";
-            this.mnuExportarSaldos.Size = new System.Drawing.Size(239, 22);
-            this.mnuExportarSaldos.Text = "Exportar &saldos a Excel";
-            this.mnuExportarSaldos.Click += new System.EventHandler(this.mnuExportarSaldos_Click);
-            // 
-            // mnuExportarDetalle
-            // 
-            this.mnuExportarDetalle.Name = "mnuExportarDetalle";
-            this.mnuExportarDetalle.Size = new System.Drawing.Size(239, 22);
-            this.mnuExportarDetalle.Text = "Exportar &detalle de pago a Excel";
-            this.mnuExportarDetalle.Click += new System.EventHandler(this.mnuExportarDetalle_Click);
             // 
             // label18
             // 
@@ -699,12 +688,34 @@
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(369, 368);
+            this.label19.Location = new System.Drawing.Point(369, 406);
             this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(58, 17);
             this.label19.TabIndex = 27;
             this.label19.Text = "Detalle:";
+            // 
+            // btnExportarDet
+            // 
+            this.btnExportarDet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportarDet.Location = new System.Drawing.Point(165, 487);
+            this.btnExportarDet.Name = "btnExportarDet";
+            this.btnExportarDet.Size = new System.Drawing.Size(201, 23);
+            this.btnExportarDet.TabIndex = 11;
+            this.btnExportarDet.Text = "Exportar detalle a Excel";
+            this.btnExportarDet.UseVisualStyleBackColor = true;
+            this.btnExportarDet.Click += new System.EventHandler(this.btnExportarDet_Click);
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportar.Location = new System.Drawing.Point(165, 458);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(201, 23);
+            this.btnExportar.TabIndex = 10;
+            this.btnExportar.Text = "Exportar saldos a Excel";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // frmRegistroPago
             // 
@@ -713,9 +724,8 @@
             this.ClientSize = new System.Drawing.Size(1024, 673);
             this.Controls.Add(this.pnlProgreso);
             this.Controls.Add(this.tab01);
-            this.Controls.Add(this.mnuRegistroPago);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainMenuStrip = this.mnuRegistroPago;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(16, 538);
             this.Name = "frmRegistroPago";
@@ -746,10 +756,7 @@
             this.pnlProgreso.ResumeLayout(false);
             this.pnlProgreso.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).EndInit();
-            this.mnuRegistroPago.ResumeLayout(false);
-            this.mnuRegistroPago.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -799,11 +806,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cboTipoPago;
         private System.Windows.Forms.DataGridView grdDetalle;
-        private System.Windows.Forms.MenuStrip mnuRegistroPago;
-        private System.Windows.Forms.ToolStripMenuItem mnuHerramientasPago;
-        private System.Windows.Forms.ToolStripMenuItem mnuExportarSaldos;
-        private System.Windows.Forms.ToolStripMenuItem mnuExportarDetalle;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnExportarDet;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

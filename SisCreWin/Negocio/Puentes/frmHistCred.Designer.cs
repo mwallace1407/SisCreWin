@@ -311,7 +311,7 @@
             this.btnExportarDet.Location = new System.Drawing.Point(11, 248);
             this.btnExportarDet.Name = "btnExportarDet";
             this.btnExportarDet.Size = new System.Drawing.Size(218, 23);
-            this.btnExportarDet.TabIndex = 16;
+            this.btnExportarDet.TabIndex = 9;
             this.btnExportarDet.Text = "Exportar detalle a Excel";
             this.btnExportarDet.UseVisualStyleBackColor = true;
             this.btnExportarDet.Click += new System.EventHandler(this.btnExportarDet_Click);

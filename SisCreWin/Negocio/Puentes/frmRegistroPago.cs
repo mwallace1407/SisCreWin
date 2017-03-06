@@ -395,9 +395,8 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show(ex.Message, "Error al procesar detalle de pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion Eventos
 
-        private void mnuExportarSaldos_Click(object sender, EventArgs e)
+        private void btnExportar_Click(object sender, EventArgs e)
         {
             if ((int)cboNumeroPrestamo.SelectedValue > 0)
             {
@@ -413,7 +412,7 @@ namespace SisCreWin.Negocio.Puentes
             //System.Diagnostics.Process.Start(lblArchivo.Text);
         }
 
-        private void mnuExportarDetalle_Click(object sender, EventArgs e)
+        private void btnExportarDet_Click(object sender, EventArgs e)
         {
             if (grdDetalle.Rows.Count == 0)
             {
@@ -423,5 +422,72 @@ namespace SisCreWin.Negocio.Puentes
 
             ExportarDetalle();
         }
+
+        private void cboTipoPago_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+                txtMontoTotal.Focus();
+        }
+
+        private void txtMontoTotal_Enter(object sender, EventArgs e)
+        {
+            txtMontoTotal.Select(0, txtMontoTotal.Text.Length);
+        }
+
+        private void txtPagoCapital_Enter(object sender, EventArgs e)
+        {
+            txtPagoCapital.Select(0, txtPagoCapital.Text.Length);
+        }
+
+        private void txtInteresCubierto_Enter(object sender, EventArgs e)
+        {
+            txtInteresCubierto.Select(0, txtInteresCubierto.Text.Length);
+        }
+
+        private void txtInteresCapVenc_Enter(object sender, EventArgs e)
+        {
+            txtInteresCapVenc.Select(0, txtInteresCapVenc.Text.Length);
+        }
+
+        private void txtComiAplicacion_Enter(object sender, EventArgs e)
+        {
+            txtComiAplicacion.Select(0, txtComiAplicacion.Text.Length);
+        }
+
+        private void txtPagoIntMoratorios_Enter(object sender, EventArgs e)
+        {
+            txtPagoIntMoratorios.Select(0, txtPagoIntMoratorios.Text.Length);
+        }
+
+        private void txtQMontoTotal_Enter(object sender, EventArgs e)
+        {
+            txtQMontoTotal.Select(0, txtQMontoTotal.Text.Length);
+        }
+
+        private void txtQPagoCapital_Enter(object sender, EventArgs e)
+        {
+            txtQPagoCapital.Select(0, txtQPagoCapital.Text.Length);
+        }
+
+        private void txtQInteresCubierto_Enter(object sender, EventArgs e)
+        {
+            txtQInteresCubierto.Select(0, txtQInteresCubierto.Text.Length);
+        }
+
+        private void txtQInteresCapVenc_Enter(object sender, EventArgs e)
+        {
+            txtQInteresCapVenc.Select(0, txtQInteresCapVenc.Text.Length);
+        }
+
+        private void txtQComiAplicacion_Enter(object sender, EventArgs e)
+        {
+            txtQComiAplicacion.Select(0, txtQComiAplicacion.Text.Length);
+        }
+
+        private void txtQPagoIntMoratorios_Enter(object sender, EventArgs e)
+        {
+            txtQPagoIntMoratorios.Select(0, txtQPagoIntMoratorios.Text.Length);
+        }
+        #endregion Eventos
     }
 }
