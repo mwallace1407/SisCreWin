@@ -52,6 +52,12 @@ namespace SisCreWin.Negocio.Puentes
                 txtMontoTotal.Value = 0;
                 txtPagoCapital.Value = 0;
                 txtPagoIntMoratorios.Value = 0;
+                txtQComiAplicacion.Value = 0;
+                txtQInteresCapVenc.Value = 0;
+                txtQInteresCubierto.Value = 0;
+                txtQMontoTotal.Value = 0;
+                txtQPagoCapital.Value = 0;
+                txtQPagoIntMoratorios.Value = 0;
                 btnCrear.Enabled = false;
             }
             else
@@ -211,11 +217,6 @@ namespace SisCreWin.Negocio.Puentes
         }
         #endregion Metodos
         #region Eventos
-        private void tab01_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmRegistroPago_Load(object sender, EventArgs e)
         {
             ValoresIniciales();

@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -116,6 +116,12 @@
     </Compile>
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplash.Designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\clsCatalogosFijos.cs" />
     <Compile Include="Modelo\clsGeneral.cs" />
@@ -250,6 +256,9 @@
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Buro\frmHistPuentes.resx">
       <DependentUpon>frmHistPuentes.cs</DependentUpon>
     </EmbeddedResource>
@@ -376,6 +385,8 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Icono.ico" />
+    <None Include="Resources\splash_screen_animated_frame1.png" />
+    <None Include="Resources\splash_screen_animated_fast_1loop.gif" />
     <None Include="Resources\inf.png" />
     <None Include="Resources\err.png" />
     <None Include="Resources\att.png" />

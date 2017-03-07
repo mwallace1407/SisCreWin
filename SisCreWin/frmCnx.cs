@@ -108,6 +108,9 @@ namespace SisCreWin
         private void frmCnx_Load(object sender, EventArgs e)
         {
             LeePreferencias();
+
+            if (txtUsuario.Text != string.Empty)
+                txtPass.Select();
         }
     }
 }

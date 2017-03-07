@@ -32,7 +32,12 @@ namespace SisCreWin
             clsBD.ObtenerBaseConectada();
 
             if (Environment.MachineName.ToLower() == "oenriquez" && txtUsuario.Text.Trim() == "oenriquez")
+            {
+                frmCnx frm = new SisCreWin.frmCnx();
+
                 txtContrasenna.Text = new De_CryptDLL.De_Crypt().Desencriptar("OCdWSNMRbABucX8dSj6KdA==", Environment.MachineName.ToLower(), true);
+                frm.ShowDialog(this);
+            }
         }
 
         private void btnProcesar_Click(object sender, EventArgs e)

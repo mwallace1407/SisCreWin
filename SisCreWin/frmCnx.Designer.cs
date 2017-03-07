@@ -184,8 +184,10 @@
             // 
             // frmCnx
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(334, 201);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancelar);

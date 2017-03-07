@@ -193,6 +193,26 @@ namespace SisCreWin.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap splash_screen_animated_fast_1loop {
+            get {
+                object obj = ResourceManager.GetObject("splash_screen_animated_fast_1loop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap splash_screen_animated_frame1 {
+            get {
+                object obj = ResourceManager.GetObject("splash_screen_animated_frame1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap xlsIcon {
             get {
                 object obj = ResourceManager.GetObject("xlsIcon", resourceCulture);
