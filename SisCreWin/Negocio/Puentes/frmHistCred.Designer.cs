@@ -30,9 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tab01 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabSaldos = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.grdDetalle = new System.Windows.Forms.DataGridView();
             this.grdDatos = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExportarDet = new System.Windows.Forms.Button();
             this.chkUsarFechaFinal = new System.Windows.Forms.CheckBox();
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,17 +53,31 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.wkr01 = new System.ComponentModel.BackgroundWorker();
-            this.grdDetalle = new System.Windows.Forms.DataGridView();
-            this.btnExportarDet = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.tabPagos = new System.Windows.Forms.TabPage();
+            this.grdPDatos = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkPUsarFechaFinal = new System.Windows.Forms.CheckBox();
+            this.dtpPFechaFinal = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.chkPUsarFechaInicial = new System.Windows.Forms.CheckBox();
+            this.chkPUsarCredito = new System.Windows.Forms.CheckBox();
+            this.btnPExportar = new System.Windows.Forms.Button();
+            this.btnPVisualizar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dtpPFechaInicial = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cboPNumeroPrestamo = new System.Windows.Forms.ComboBox();
+            this.wkr02 = new System.ComponentModel.BackgroundWorker();
             this.tab01.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabSaldos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.pnlProgreso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
+            this.tabPagos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPDatos)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab01
@@ -67,7 +85,8 @@
             this.tab01.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tab01.Controls.Add(this.tabPage1);
+            this.tab01.Controls.Add(this.tabSaldos);
+            this.tab01.Controls.Add(this.tabPagos);
             this.tab01.Location = new System.Drawing.Point(16, 16);
             this.tab01.Margin = new System.Windows.Forms.Padding(4);
             this.tab01.Name = "tab01";
@@ -75,21 +94,58 @@
             this.tab01.Size = new System.Drawing.Size(1010, 537);
             this.tab01.TabIndex = 0;
             // 
-            // tabPage1
+            // tabSaldos
             // 
-            this.tabPage1.Controls.Add(this.label19);
-            this.tabPage1.Controls.Add(this.label18);
-            this.tabPage1.Controls.Add(this.grdDetalle);
-            this.tabPage1.Controls.Add(this.grdDatos);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 26);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1002, 507);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Búsqueda";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabSaldos.Controls.Add(this.label19);
+            this.tabSaldos.Controls.Add(this.label18);
+            this.tabSaldos.Controls.Add(this.grdDetalle);
+            this.tabSaldos.Controls.Add(this.grdDatos);
+            this.tabSaldos.Controls.Add(this.groupBox1);
+            this.tabSaldos.Location = new System.Drawing.Point(4, 26);
+            this.tabSaldos.Margin = new System.Windows.Forms.Padding(4);
+            this.tabSaldos.Name = "tabSaldos";
+            this.tabSaldos.Padding = new System.Windows.Forms.Padding(4);
+            this.tabSaldos.Size = new System.Drawing.Size(1002, 507);
+            this.tabSaldos.TabIndex = 0;
+            this.tabSaldos.Text = "Saldos";
+            this.tabSaldos.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(245, 302);
+            this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(58, 17);
+            this.label19.TabIndex = 28;
+            this.label19.Text = "Detalle:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(245, 7);
+            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 17);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "Saldos:";
+            // 
+            // grdDetalle
+            // 
+            this.grdDetalle.AllowUserToAddRows = false;
+            this.grdDetalle.AllowUserToDeleteRows = false;
+            this.grdDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDetalle.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdDetalle.Location = new System.Drawing.Point(248, 322);
+            this.grdDetalle.MultiSelect = false;
+            this.grdDetalle.Name = "grdDetalle";
+            this.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdDetalle.Size = new System.Drawing.Size(747, 178);
+            this.grdDetalle.TabIndex = 26;
             // 
             // grdDatos
             // 
@@ -131,6 +187,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parámetros";
+            // 
+            // btnExportarDet
+            // 
+            this.btnExportarDet.Location = new System.Drawing.Point(11, 248);
+            this.btnExportarDet.Name = "btnExportarDet";
+            this.btnExportarDet.Size = new System.Drawing.Size(218, 23);
+            this.btnExportarDet.TabIndex = 9;
+            this.btnExportarDet.Text = "Exportar detalle a Excel";
+            this.btnExportarDet.UseVisualStyleBackColor = true;
+            this.btnExportarDet.Click += new System.EventHandler(this.btnExportarDet_Click);
             // 
             // chkUsarFechaFinal
             // 
@@ -290,52 +356,177 @@
             this.wkr01.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr01_DoWork);
             this.wkr01.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr01_RunWorkerCompleted);
             // 
-            // grdDetalle
+            // tabPagos
             // 
-            this.grdDetalle.AllowUserToAddRows = false;
-            this.grdDetalle.AllowUserToDeleteRows = false;
-            this.grdDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabPagos.Controls.Add(this.grdPDatos);
+            this.tabPagos.Controls.Add(this.groupBox2);
+            this.tabPagos.Location = new System.Drawing.Point(4, 26);
+            this.tabPagos.Name = "tabPagos";
+            this.tabPagos.Size = new System.Drawing.Size(1002, 507);
+            this.tabPagos.TabIndex = 1;
+            this.tabPagos.Text = "Pagos";
+            this.tabPagos.UseVisualStyleBackColor = true;
+            // 
+            // grdPDatos
+            // 
+            this.grdPDatos.AllowUserToAddRows = false;
+            this.grdPDatos.AllowUserToDeleteRows = false;
+            this.grdPDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdDetalle.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.grdDetalle.Location = new System.Drawing.Point(248, 322);
-            this.grdDetalle.MultiSelect = false;
-            this.grdDetalle.Name = "grdDetalle";
-            this.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDetalle.Size = new System.Drawing.Size(747, 178);
-            this.grdDetalle.TabIndex = 26;
+            this.grdPDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdPDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdPDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdPDatos.Location = new System.Drawing.Point(248, 15);
+            this.grdPDatos.MultiSelect = false;
+            this.grdPDatos.Name = "grdPDatos";
+            this.grdPDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdPDatos.Size = new System.Drawing.Size(747, 485);
+            this.grdPDatos.TabIndex = 15;
             // 
-            // btnExportarDet
+            // groupBox2
             // 
-            this.btnExportarDet.Location = new System.Drawing.Point(11, 248);
-            this.btnExportarDet.Name = "btnExportarDet";
-            this.btnExportarDet.Size = new System.Drawing.Size(218, 23);
-            this.btnExportarDet.TabIndex = 9;
-            this.btnExportarDet.Text = "Exportar detalle a Excel";
-            this.btnExportarDet.UseVisualStyleBackColor = true;
-            this.btnExportarDet.Click += new System.EventHandler(this.btnExportarDet_Click);
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.chkPUsarFechaFinal);
+            this.groupBox2.Controls.Add(this.dtpPFechaFinal);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.chkPUsarFechaInicial);
+            this.groupBox2.Controls.Add(this.chkPUsarCredito);
+            this.groupBox2.Controls.Add(this.btnPExportar);
+            this.groupBox2.Controls.Add(this.btnPVisualizar);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.dtpPFechaInicial);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.cboPNumeroPrestamo);
+            this.groupBox2.Location = new System.Drawing.Point(7, 7);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(235, 493);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Parámetros";
             // 
-            // label18
+            // chkPUsarFechaFinal
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(245, 7);
-            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(53, 17);
-            this.label18.TabIndex = 27;
-            this.label18.Text = "Saldos:";
+            this.chkPUsarFechaFinal.AutoSize = true;
+            this.chkPUsarFechaFinal.Checked = true;
+            this.chkPUsarFechaFinal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPUsarFechaFinal.Location = new System.Drawing.Point(11, 134);
+            this.chkPUsarFechaFinal.Name = "chkPUsarFechaFinal";
+            this.chkPUsarFechaFinal.Size = new System.Drawing.Size(15, 14);
+            this.chkPUsarFechaFinal.TabIndex = 5;
+            this.tip01.SetToolTip(this.chkPUsarFechaFinal, "Usar fecha de movimiento");
+            this.chkPUsarFechaFinal.UseVisualStyleBackColor = true;
+            this.chkPUsarFechaFinal.CheckedChanged += new System.EventHandler(this.chkPUsarFechaFinal_CheckedChanged);
             // 
-            // label19
+            // dtpPFechaFinal
             // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(245, 302);
-            this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(58, 17);
-            this.label19.TabIndex = 28;
-            this.label19.Text = "Detalle:";
+            this.dtpPFechaFinal.CustomFormat = "dd/MM/yyyy";
+            this.dtpPFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPFechaFinal.Location = new System.Drawing.Point(11, 151);
+            this.dtpPFechaFinal.Name = "dtpPFechaFinal";
+            this.dtpPFechaFinal.Size = new System.Drawing.Size(218, 23);
+            this.dtpPFechaFinal.TabIndex = 6;
+            this.dtpPFechaFinal.ValueChanged += new System.EventHandler(this.dtpPFechaFinal_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(34, 132);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 17);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Fecha final:";
+            // 
+            // chkPUsarFechaInicial
+            // 
+            this.chkPUsarFechaInicial.AutoSize = true;
+            this.chkPUsarFechaInicial.Checked = true;
+            this.chkPUsarFechaInicial.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPUsarFechaInicial.Location = new System.Drawing.Point(11, 77);
+            this.chkPUsarFechaInicial.Name = "chkPUsarFechaInicial";
+            this.chkPUsarFechaInicial.Size = new System.Drawing.Size(15, 14);
+            this.chkPUsarFechaInicial.TabIndex = 3;
+            this.tip01.SetToolTip(this.chkPUsarFechaInicial, "Usar fecha de movimiento");
+            this.chkPUsarFechaInicial.UseVisualStyleBackColor = true;
+            this.chkPUsarFechaInicial.CheckedChanged += new System.EventHandler(this.chkPUsarFechaInicial_CheckedChanged);
+            // 
+            // chkPUsarCredito
+            // 
+            this.chkPUsarCredito.AutoSize = true;
+            this.chkPUsarCredito.Checked = true;
+            this.chkPUsarCredito.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPUsarCredito.Location = new System.Drawing.Point(11, 22);
+            this.chkPUsarCredito.Name = "chkPUsarCredito";
+            this.chkPUsarCredito.Size = new System.Drawing.Size(15, 14);
+            this.chkPUsarCredito.TabIndex = 1;
+            this.tip01.SetToolTip(this.chkPUsarCredito, "Usar número de crédito");
+            this.chkPUsarCredito.UseVisualStyleBackColor = true;
+            this.chkPUsarCredito.CheckedChanged += new System.EventHandler(this.chkPUsarCredito_CheckedChanged);
+            // 
+            // btnPExportar
+            // 
+            this.btnPExportar.Location = new System.Drawing.Point(11, 225);
+            this.btnPExportar.Name = "btnPExportar";
+            this.btnPExportar.Size = new System.Drawing.Size(218, 29);
+            this.btnPExportar.TabIndex = 8;
+            this.btnPExportar.Text = "Exportar pagos a Excel";
+            this.btnPExportar.UseVisualStyleBackColor = true;
+            this.btnPExportar.Click += new System.EventHandler(this.btnPExportar_Click);
+            // 
+            // btnPVisualizar
+            // 
+            this.btnPVisualizar.Location = new System.Drawing.Point(11, 190);
+            this.btnPVisualizar.Name = "btnPVisualizar";
+            this.btnPVisualizar.Size = new System.Drawing.Size(218, 29);
+            this.btnPVisualizar.TabIndex = 7;
+            this.btnPVisualizar.Text = "Visualizar";
+            this.btnPVisualizar.UseVisualStyleBackColor = true;
+            this.btnPVisualizar.Click += new System.EventHandler(this.btnPVisualizar_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(34, 20);
+            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(135, 17);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Número de crédito:";
+            // 
+            // dtpPFechaInicial
+            // 
+            this.dtpPFechaInicial.CustomFormat = "dd/MM/yyyy";
+            this.dtpPFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPFechaInicial.Location = new System.Drawing.Point(11, 94);
+            this.dtpPFechaInicial.Name = "dtpPFechaInicial";
+            this.dtpPFechaInicial.Size = new System.Drawing.Size(218, 23);
+            this.dtpPFechaInicial.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(34, 75);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 17);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Fecha inicial:";
+            // 
+            // cboPNumeroPrestamo
+            // 
+            this.cboPNumeroPrestamo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPNumeroPrestamo.FormattingEnabled = true;
+            this.cboPNumeroPrestamo.Location = new System.Drawing.Point(11, 39);
+            this.cboPNumeroPrestamo.Name = "cboPNumeroPrestamo";
+            this.cboPNumeroPrestamo.Size = new System.Drawing.Size(218, 25);
+            this.cboPNumeroPrestamo.TabIndex = 2;
+            // 
+            // wkr02
+            // 
+            this.wkr02.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr02_DoWork);
+            this.wkr02.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr02_RunWorkerCompleted);
             // 
             // frmHistCred
             // 
@@ -351,15 +542,19 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHistCred_FormClosing);
             this.Load += new System.EventHandler(this.frmHistCred_Load);
             this.tab01.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabSaldos.ResumeLayout(false);
+            this.tabSaldos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.pnlProgreso.ResumeLayout(false);
             this.pnlProgreso.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).EndInit();
+            this.tabPagos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdPDatos)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -367,7 +562,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tab01;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabSaldos;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpFechaInicial;
@@ -390,5 +585,20 @@
         private System.Windows.Forms.Button btnExportarDet;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TabPage tabPagos;
+        private System.Windows.Forms.DataGridView grdPDatos;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox chkPUsarFechaFinal;
+        private System.Windows.Forms.DateTimePicker dtpPFechaFinal;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chkPUsarFechaInicial;
+        private System.Windows.Forms.CheckBox chkPUsarCredito;
+        private System.Windows.Forms.Button btnPExportar;
+        private System.Windows.Forms.Button btnPVisualizar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dtpPFechaInicial;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cboPNumeroPrestamo;
+        private System.ComponentModel.BackgroundWorker wkr02;
     }
 }

@@ -929,7 +929,7 @@ namespace SisCreWin.BD
             param = new SqlParameter("@TIIE_Anno", SqlDbType.Int);
             param.Value = TIIE.TIIE_Anno;
             paramC.Add(param);
-            param = new SqlParameter("@TIIE_Valor", SqlDbType.Money);
+            param = new SqlParameter("@TIIE_Valor", SqlDbType.Decimal);
             param.Value = TIIE.TIIE_Valor;
             paramC.Add(param);
 
@@ -950,7 +950,7 @@ namespace SisCreWin.BD
             param = new SqlParameter("@TIIE_Anno", SqlDbType.Int);
             param.Value = TIIE.TIIE_Anno;
             paramC.Add(param);
-            param = new SqlParameter("@TIIE_Valor", SqlDbType.Money);
+            param = new SqlParameter("@TIIE_Valor", SqlDbType.Decimal);
             param.Value = TIIE.TIIE_Valor;
             paramC.Add(param);
 
@@ -1108,7 +1108,7 @@ namespace SisCreWin.BD
             param = new SqlParameter("@PTP_Orden", SqlDbType.Int);
             param.Value = TP.PTP_Orden;
             paramC.Add(param);
-            param = new SqlParameter("@PTP_Activo", SqlDbType.Money);
+            param = new SqlParameter("@PTP_Activo", SqlDbType.Bit);
             param.Value = TP.PTP_Activo;
             paramC.Add(param);
 
@@ -1471,39 +1471,45 @@ namespace SisCreWin.BD
             param = new SqlParameter("@PHP_NumeroPrestamo", SqlDbType.Int);
             param.Value = Puente.PHP_NumeroPrestamo;
             paramC.Add(param);
-            param = new SqlParameter("@PHP_PagoCapital", SqlDbType.Money);
+            param = new SqlParameter("@PHP_PagoCapital", SqlDbType.Decimal);
             param.Value = Puente.PHP_PagoCapital;
             paramC.Add(param);
-            param = new SqlParameter("@PHP_InteresCubierto", SqlDbType.Money);
+            param = new SqlParameter("@PHP_InteresCubierto", SqlDbType.Decimal);
             param.Value = Puente.PHP_InteresCubierto;
             paramC.Add(param);
-            param = new SqlParameter("@PHP_InteresCapVenc", SqlDbType.Money);
+            param = new SqlParameter("@PHP_InteresCapVenc", SqlDbType.Decimal);
             param.Value = Puente.PHP_InteresCapVenc;
             paramC.Add(param);
-            param = new SqlParameter("@PHP_ComiAplicacion", SqlDbType.Money);
+            param = new SqlParameter("@PHP_ComiAplicacion", SqlDbType.Decimal);
             param.Value = Puente.PHP_ComiAplicacion;
             paramC.Add(param);
-            param = new SqlParameter("@PHP_PagoIntMoratorios", SqlDbType.Money);
+            param = new SqlParameter("@PHP_PagoIntMoratorios", SqlDbType.Decimal);
             param.Value = Puente.PHP_PagoIntMoratorios;
             paramC.Add(param);
+            param = new SqlParameter("@PHP_Observaciones", SqlDbType.VarChar);
+            param.Value = Puente.PHP_Observaciones;
+            paramC.Add(param);
             //Quitas y quebrantos
-            param = new SqlParameter("@PTP_Id", SqlDbType.Money);
+            param = new SqlParameter("@PTP_Id", SqlDbType.Decimal);
             param.Value = PuenteQ.PTP_Id;
             paramC.Add(param);
-            param = new SqlParameter("@PHP_QPagoCapital", SqlDbType.Money);
+            param = new SqlParameter("@PHP_QPagoCapital", SqlDbType.Decimal);
             param.Value = PuenteQ.PHP_PagoCapital;
             paramC.Add(param);
-            param = new SqlParameter("@PHP_QInteresCubierto", SqlDbType.Money);
+            param = new SqlParameter("@PHP_QInteresCubierto", SqlDbType.Decimal);
             param.Value = PuenteQ.PHP_InteresCubierto;
             paramC.Add(param);
-            param = new SqlParameter("@PHP_QInteresCapVenc", SqlDbType.Money);
+            param = new SqlParameter("@PHP_QInteresCapVenc", SqlDbType.Decimal);
             param.Value = PuenteQ.PHP_InteresCapVenc;
             paramC.Add(param);
-            param = new SqlParameter("@PHP_QComiAplicacion", SqlDbType.Money);
+            param = new SqlParameter("@PHP_QComiAplicacion", SqlDbType.Decimal);
             param.Value = PuenteQ.PHP_ComiAplicacion;
             paramC.Add(param);
-            param = new SqlParameter("@PHP_QPagoIntMoratorios", SqlDbType.Money);
+            param = new SqlParameter("@PHP_QPagoIntMoratorios", SqlDbType.Decimal);
             param.Value = PuenteQ.PHP_PagoIntMoratorios;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_QObservaciones", SqlDbType.VarChar);
+            param.Value = PuenteQ.PHP_Observaciones;
             paramC.Add(param);
 
             Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Puentes_M_RegistrarPago, paramC);
@@ -1511,11 +1517,16 @@ namespace SisCreWin.BD
             return Resultado;
         }
 
-        public static ResultadoStored_DT Puentes_C_ObtenerPrestamos()
+        public static ResultadoStored_DT Puentes_C_ObtenerPrestamos(bool ObtenerTodos = false)
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
 
-            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_ObtenerPrestamos, null);
+            param = new SqlParameter("@ObtenerTodos", SqlDbType.Bit);
+            param.Value = ObtenerTodos;
+            paramC.Add(param);
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_ObtenerPrestamos, paramC);
 
             return Resultado;
         }
@@ -1699,6 +1710,41 @@ namespace SisCreWin.BD
             paramC.Add(param);
 
             Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_HistoricoDePago, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Puentes_C_ReporteDePagos(int? PHP_NumeroPrestamo, DateTime? PHP_FechaPago_Ini, DateTime? PHP_FechaPago_Fin)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PHP_NumeroPrestamo", SqlDbType.Int);
+            param.Value = PHP_NumeroPrestamo;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago_Ini", SqlDbType.DateTime);
+            param.Value = PHP_FechaPago_Ini;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago_Fin", SqlDbType.DateTime);
+            param.Value = PHP_FechaPago_Fin;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_ReporteDePagos, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Puentes_C_ObtenerSaldosParaLiquidar(int NumeroPrestamo)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@NumeroPrestamo", SqlDbType.Int);
+            param.Value = NumeroPrestamo;
+            paramC.Add(param);
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_ObtenerSaldosParaLiquidar, paramC);
 
             return Resultado;
         }

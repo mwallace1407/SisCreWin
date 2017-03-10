@@ -588,10 +588,11 @@ namespace SisCreWin.Modelo
             public decimal PHP_InteresCapVenc;
             public decimal PHP_ComiAplicacion;
             public decimal PHP_PagoIntMoratorios;
+            public string PHP_Observaciones;
 
             public PuentesPagos(int vUsr_Id, int vPTP_Id, DateTime vPHP_FechaPago, int vPHP_NumeroPrestamo, decimal vPHP_PagoCapital,
                 decimal vPHP_InteresCubierto, decimal vPHP_InteresCapVenc, decimal vPHP_ComiAplicacion, decimal vPHP_PagoIntMoratorios,
-                DateTime? vPHP_FechaCierre = null, DateTime? vPHP_Fecha = null, int vPHP_Id = 0, int vEP_Id = 1)
+                DateTime? vPHP_FechaCierre = null, DateTime? vPHP_Fecha = null, int vPHP_Id = 0, int vEP_Id = 1, string vPHP_Observaciones = "")
             {
                 PHP_Id = vPHP_Id;
                 Usr_Id = vUsr_Id;
@@ -606,6 +607,7 @@ namespace SisCreWin.Modelo
                 PHP_PagoIntMoratorios = vPHP_PagoIntMoratorios;
                 EP_Id = vEP_Id;
                 PTP_Id = vPTP_Id;
+                PHP_Observaciones = vPHP_Observaciones;
             }
         }
 

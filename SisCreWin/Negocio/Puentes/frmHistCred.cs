@@ -48,7 +48,18 @@ namespace SisCreWin.Negocio.Puentes
                 dtpFechaFinal.Value = clsGeneral.ObtieneFecha(Resultado.Resultado);
                 cboNumeroPrestamo.DisplayMember = "Descripcion";
                 cboNumeroPrestamo.ValueMember = "Valor";
-                cboNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos().Resultado;
+                cboNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos(true).Resultado;
+
+                //Pagos
+                dtpPFechaInicial.MinDate = new DateTime(2005, 01, 01);
+                dtpPFechaInicial.MaxDate = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                dtpPFechaInicial.Value = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                dtpPFechaFinal.MinDate = new DateTime(2005, 01, 01);
+                dtpPFechaFinal.MaxDate = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                dtpPFechaFinal.Value = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                cboPNumeroPrestamo.DisplayMember = "Descripcion";
+                cboPNumeroPrestamo.ValueMember = "Valor";
+                cboPNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos(true).Resultado;
             }
             else
             {
@@ -68,19 +79,38 @@ namespace SisCreWin.Negocio.Puentes
 
                 grdDatos.ClearSelection();
 
-                for (int w = 0; w < grdDatos.Rows.Count; w++)
-                {
-                    if (Convert.ToDateTime(grdDatos.Rows[w].Cells[0].Value).ToString("dd/MM/yyyy") == dtpFechaInicial.Value.ToString("dd/MM/yyyy"))
-                    {
-                        grdDatos.Rows[w].Selected = true;
-                        grdDatos.CurrentCell = grdDatos.Rows[w].Cells[0];
-                        break;
-                    }
-                }
+                //for (int w = 0; w < grdDatos.Rows.Count; w++)
+                //{
+                //    if (Convert.ToDateTime(grdDatos.Rows[w].Cells[0].Value).ToString("dd/MM/yyyy") == dtpFechaInicial.Value.ToString("dd/MM/yyyy"))
+                //    {
+                //        grdDatos.Rows[w].Selected = true;
+                //        grdDatos.CurrentCell = grdDatos.Rows[w].Cells[0];
+                //        break;
+                //    }
+                //}
             }
             else
             {
                 MessageBox.Show(ResultadoGrid.Error, "Error al obtener datos de créditos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CargarGridP()
+        {
+            if (!ResultadoGrid.HayError)
+            {
+                grdPDatos.DataSource = ResultadoGrid.Resultado;
+
+                for (int w = 0; w < grdPDatos.Columns.Count; w++)
+                {
+                    grdPDatos.Columns[w].ReadOnly = true;
+                }
+
+                grdPDatos.ClearSelection();
+            }
+            else
+            {
+                MessageBox.Show(ResultadoGrid.Error, "Error al obtener datos de pagos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -101,6 +131,41 @@ namespace SisCreWin.Negocio.Puentes
             paramC.Add(param);
 
             exp = clsBD.ExportarExcel(CatalogoStoreds.Puentes_C_MovimientosPrestamo, paramC);
+
+            if (!exp.HayError)
+            {
+                try
+                {
+                    Archivo = exp.Archivo;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ExportarP()
+        {
+            ResultadoExport exp = new ResultadoExport();
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PHP_NumeroPrestamo", SqlDbType.Int);
+            param.Value = NumeroPrestamo;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago_Ini", SqlDbType.DateTime);
+            param.Value = FechaIni;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago_Fin", SqlDbType.DateTime);
+            param.Value = FechaFin;
+            paramC.Add(param);
+
+            exp = clsBD.ExportarExcel(CatalogoStoreds.Puentes_C_ReporteDePagos, paramC);
 
             if (!exp.HayError)
             {
@@ -161,6 +226,22 @@ namespace SisCreWin.Negocio.Puentes
 
             wkr01.RunWorkerAsync();
         }
+
+        private void ProcesarP()
+        {
+            NumeroPrestamo = (chkPUsarCredito.Checked) ? (int?)cboPNumeroPrestamo.SelectedValue : null;
+            FechaIni = (chkPUsarFechaInicial.Checked) ? (DateTime?)dtpPFechaInicial.Value : null;
+            FechaFin = (chkPUsarFechaFinal.Checked) ? (DateTime?)dtpPFechaFinal.Value : null;
+
+            pnlProgreso.Size = new Size(this.Width - 6, this.Height - 6);
+            pnlProgreso.Location = new Point(3, 3);
+            pnlProgreso.Visible = true;
+            EnProceso = true;
+            Sistema.Global.ProcesosPendientes = true;
+
+            wkr02.RunWorkerAsync();
+        }
+
         public frmHistCred()
         {
             InitializeComponent();
@@ -294,5 +375,85 @@ namespace SisCreWin.Negocio.Puentes
             ExportarDetalle();
         }
         #endregion Eventos
+
+        private void chkPUsarCredito_CheckedChanged(object sender, EventArgs e)
+        {
+            cboPNumeroPrestamo.Enabled = chkPUsarCredito.Checked;
+        }
+
+        private void chkPUsarFechaInicial_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpPFechaInicial.Enabled = chkPUsarFechaInicial.Checked;
+        }
+
+        private void chkPUsarFechaFinal_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpPFechaInicial.MaxDate = clsGeneral.ObtieneFecha(dtpPFechaFinal.Value.ToString("dd/MM/yyyy"));
+
+            if (dtpPFechaFinal.Value < dtpPFechaInicial.Value)
+                dtpPFechaInicial.Value = dtpPFechaInicial.MaxDate;
+        }
+
+        private void dtpPFechaFinal_ValueChanged(object sender, EventArgs e)
+        {
+            dtpPFechaInicial.MaxDate = clsGeneral.ObtieneFecha(dtpPFechaFinal.Value.ToString("dd/MM/yyyy"));
+
+            if (dtpPFechaFinal.Value < dtpPFechaInicial.Value)
+                dtpPFechaInicial.Value = dtpPFechaInicial.MaxDate;
+        }
+
+        private void btnPVisualizar_Click(object sender, EventArgs e)
+        {
+            tipoProceso = TipoProceso.Visualizacion;
+            ProcesarP();
+        }
+
+        private void btnPExportar_Click(object sender, EventArgs e)
+        {
+            if (grdPDatos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar", "Exportar a Excel", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            Archivo = string.Empty;
+            tipoProceso = TipoProceso.Extraccion;
+            ProcesarP();
+        }
+
+        private void wkr02_DoWork(object sender, DoWorkEventArgs e)
+        {
+            ResultadoGrid = new BD.ResultadoStored_DT();
+            ResultadoGrid = clsBD.Puentes_C_ReporteDePagos(NumeroPrestamo, FechaIni, FechaFin);
+
+            if (tipoProceso == TipoProceso.Extraccion)
+                ExportarP();
+        }
+
+        private void wkr02_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (tipoProceso == TipoProceso.Visualizacion)
+            {
+                CargarGridP();
+            }
+            else
+            {
+                try
+                {
+                    if (System.IO.File.Exists(Archivo))
+                        System.Diagnostics.Process.Start(Archivo);
+                    else
+                        MessageBox.Show("No existe el archivo especificado", "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            pnlProgreso.Visible = false;
+            EnProceso = false;
+            Sistema.Global.ProcesosPendientes = false;
+        }
     }
 }

@@ -30,6 +30,11 @@
         {
             this.tab01 = new System.Windows.Forms.TabControl();
             this.tabCrear = new System.Windows.Forms.TabPage();
+            this.btnExportarDet = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.grdDetalle = new System.Windows.Forms.DataGridView();
             this.label14 = new System.Windows.Forms.Label();
             this.cboTipoPago = new System.Windows.Forms.ComboBox();
             this.tabPagos = new System.Windows.Forms.TabControl();
@@ -68,16 +73,31 @@
             this.btnCrear = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabHistorial = new System.Windows.Forms.TabPage();
+            this.grdPDatos = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkPUsarFechaFinal = new System.Windows.Forms.CheckBox();
+            this.dtpPFechaFinal = new System.Windows.Forms.DateTimePicker();
+            this.label20 = new System.Windows.Forms.Label();
+            this.chkPUsarFechaInicial = new System.Windows.Forms.CheckBox();
+            this.chkPUsarCredito = new System.Windows.Forms.CheckBox();
+            this.btnPExportar = new System.Windows.Forms.Button();
+            this.btnPVisualizar = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.dtpPFechaInicial = new System.Windows.Forms.DateTimePicker();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cboPNumeroPrestamo = new System.Windows.Forms.ComboBox();
             this.pnlProgreso = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.wkr01 = new System.ComponentModel.BackgroundWorker();
-            this.grdDetalle = new System.Windows.Forms.DataGridView();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.btnExportarDet = new System.Windows.Forms.Button();
-            this.btnExportar = new System.Windows.Forms.Button();
+            this.wkr02 = new System.ComponentModel.BackgroundWorker();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
+            this.txtQObservaciones = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
             this.tabPagos.SuspendLayout();
             this.tabP01.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMontoTotal)).BeginInit();
@@ -94,8 +114,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCapVenc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQComiAplicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
+            this.tabHistorial.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPDatos)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.pnlProgreso.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
             this.SuspendLayout();
             // 
             // tab01
@@ -104,6 +126,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab01.Controls.Add(this.tabCrear);
+            this.tab01.Controls.Add(this.tabHistorial);
             this.tab01.Location = new System.Drawing.Point(14, 14);
             this.tab01.Margin = new System.Windows.Forms.Padding(5);
             this.tab01.Name = "tab01";
@@ -134,8 +157,67 @@
             this.tabCrear.Padding = new System.Windows.Forms.Padding(5);
             this.tabCrear.Size = new System.Drawing.Size(988, 615);
             this.tabCrear.TabIndex = 0;
-            this.tabCrear.Text = "Crear";
+            this.tabCrear.Text = "Registrar pago";
             this.tabCrear.UseVisualStyleBackColor = true;
+            // 
+            // btnExportarDet
+            // 
+            this.btnExportarDet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportarDet.Location = new System.Drawing.Point(165, 584);
+            this.btnExportarDet.Name = "btnExportarDet";
+            this.btnExportarDet.Size = new System.Drawing.Size(201, 23);
+            this.btnExportarDet.TabIndex = 12;
+            this.btnExportarDet.Text = "Exportar detalle a Excel";
+            this.btnExportarDet.UseVisualStyleBackColor = true;
+            this.btnExportarDet.Click += new System.EventHandler(this.btnExportarDet_Click);
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportar.Location = new System.Drawing.Point(165, 555);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(201, 23);
+            this.btnExportar.TabIndex = 11;
+            this.btnExportar.Text = "Exportar saldos a Excel";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(369, 406);
+            this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(58, 17);
+            this.label19.TabIndex = 27;
+            this.label19.Text = "Detalle:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(369, 32);
+            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 17);
+            this.label18.TabIndex = 26;
+            this.label18.Text = "Saldos:";
+            // 
+            // grdDetalle
+            // 
+            this.grdDetalle.AllowUserToAddRows = false;
+            this.grdDetalle.AllowUserToDeleteRows = false;
+            this.grdDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDetalle.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdDetalle.Location = new System.Drawing.Point(372, 426);
+            this.grdDetalle.MultiSelect = false;
+            this.grdDetalle.Name = "grdDetalle";
+            this.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdDetalle.Size = new System.Drawing.Size(608, 181);
+            this.grdDetalle.TabIndex = 25;
             // 
             // label14
             // 
@@ -165,11 +247,13 @@
             this.tabPagos.Location = new System.Drawing.Point(14, 144);
             this.tabPagos.Name = "tabPagos";
             this.tabPagos.SelectedIndex = 0;
-            this.tabPagos.Size = new System.Drawing.Size(352, 275);
+            this.tabPagos.Size = new System.Drawing.Size(352, 372);
             this.tabPagos.TabIndex = 3;
             // 
             // tabP01
             // 
+            this.tabP01.Controls.Add(this.txtObservaciones);
+            this.tabP01.Controls.Add(this.label23);
             this.tabP01.Controls.Add(this.txtMontoTotal);
             this.tabP01.Controls.Add(this.label10);
             this.tabP01.Controls.Add(this.label5);
@@ -186,7 +270,7 @@
             this.tabP01.Location = new System.Drawing.Point(4, 26);
             this.tabP01.Name = "tabP01";
             this.tabP01.Padding = new System.Windows.Forms.Padding(3);
-            this.tabP01.Size = new System.Drawing.Size(344, 245);
+            this.tabP01.Size = new System.Drawing.Size(344, 342);
             this.tabP01.TabIndex = 0;
             this.tabP01.Text = "Normal";
             this.tabP01.UseVisualStyleBackColor = true;
@@ -210,7 +294,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 168);
+            this.label10.Location = new System.Drawing.Point(5, 168);
             this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(140, 17);
@@ -262,7 +346,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 39);
+            this.label6.Location = new System.Drawing.Point(5, 39);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 17);
@@ -288,10 +372,10 @@
             // lblMensaje
             // 
             this.lblMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
-            this.lblMensaje.Location = new System.Drawing.Point(11, 196);
+            this.lblMensaje.Location = new System.Drawing.Point(5, 299);
             this.lblMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(327, 37);
+            this.lblMensaje.Size = new System.Drawing.Size(333, 37);
             this.lblMensaje.TabIndex = 19;
             this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblMensaje.Visible = false;
@@ -299,7 +383,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 68);
+            this.label7.Location = new System.Drawing.Point(5, 68);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 17);
@@ -309,7 +393,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 139);
+            this.label9.Location = new System.Drawing.Point(5, 139);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(172, 17);
@@ -350,7 +434,7 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(8, 97);
+            this.label8.Location = new System.Drawing.Point(5, 97);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(172, 35);
@@ -359,6 +443,8 @@
             // 
             // tabP02
             // 
+            this.tabP02.Controls.Add(this.txtQObservaciones);
+            this.tabP02.Controls.Add(this.label24);
             this.tabP02.Controls.Add(this.txtQMontoTotal);
             this.tabP02.Controls.Add(this.label11);
             this.tabP02.Controls.Add(this.label12);
@@ -375,7 +461,7 @@
             this.tabP02.Location = new System.Drawing.Point(4, 26);
             this.tabP02.Name = "tabP02";
             this.tabP02.Padding = new System.Windows.Forms.Padding(3);
-            this.tabP02.Size = new System.Drawing.Size(344, 245);
+            this.tabP02.Size = new System.Drawing.Size(344, 342);
             this.tabP02.TabIndex = 1;
             this.tabP02.Text = "Quita / Quebranto";
             this.tabP02.UseVisualStyleBackColor = true;
@@ -399,7 +485,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 168);
+            this.label11.Location = new System.Drawing.Point(5, 168);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(140, 17);
@@ -451,7 +537,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 39);
+            this.label13.Location = new System.Drawing.Point(5, 39);
             this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(110, 17);
@@ -477,10 +563,10 @@
             // lblQMensaje
             // 
             this.lblQMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
-            this.lblQMensaje.Location = new System.Drawing.Point(11, 196);
+            this.lblQMensaje.Location = new System.Drawing.Point(5, 299);
             this.lblQMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblQMensaje.Name = "lblQMensaje";
-            this.lblQMensaje.Size = new System.Drawing.Size(327, 37);
+            this.lblQMensaje.Size = new System.Drawing.Size(333, 37);
             this.lblQMensaje.TabIndex = 33;
             this.lblQMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblQMensaje.Visible = false;
@@ -488,7 +574,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 68);
+            this.label15.Location = new System.Drawing.Point(5, 68);
             this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(111, 17);
@@ -498,7 +584,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 139);
+            this.label16.Location = new System.Drawing.Point(5, 139);
             this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(172, 17);
@@ -539,7 +625,7 @@
             // 
             // label17
             // 
-            this.label17.Location = new System.Drawing.Point(8, 97);
+            this.label17.Location = new System.Drawing.Point(5, 97);
             this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(172, 35);
@@ -598,11 +684,11 @@
             // 
             this.btnCrear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCrear.Enabled = false;
-            this.btnCrear.Location = new System.Drawing.Point(165, 426);
+            this.btnCrear.Location = new System.Drawing.Point(165, 523);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(201, 25);
-            this.btnCrear.TabIndex = 9;
+            this.btnCrear.TabIndex = 10;
             this.btnCrear.Text = "Registrar pago";
             this.btnCrear.UseVisualStyleBackColor = true;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
@@ -626,6 +712,170 @@
             this.label1.Size = new System.Drawing.Size(223, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Introduzca los valores requeridos:";
+            // 
+            // tabHistorial
+            // 
+            this.tabHistorial.Controls.Add(this.grdPDatos);
+            this.tabHistorial.Controls.Add(this.groupBox2);
+            this.tabHistorial.Location = new System.Drawing.Point(4, 26);
+            this.tabHistorial.Name = "tabHistorial";
+            this.tabHistorial.Size = new System.Drawing.Size(988, 615);
+            this.tabHistorial.TabIndex = 1;
+            this.tabHistorial.Text = "Historial de pagos";
+            this.tabHistorial.UseVisualStyleBackColor = true;
+            // 
+            // grdPDatos
+            // 
+            this.grdPDatos.AllowUserToAddRows = false;
+            this.grdPDatos.AllowUserToDeleteRows = false;
+            this.grdPDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdPDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdPDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdPDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdPDatos.Location = new System.Drawing.Point(244, 11);
+            this.grdPDatos.MultiSelect = false;
+            this.grdPDatos.Name = "grdPDatos";
+            this.grdPDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdPDatos.Size = new System.Drawing.Size(741, 601);
+            this.grdPDatos.TabIndex = 17;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.chkPUsarFechaFinal);
+            this.groupBox2.Controls.Add(this.dtpPFechaFinal);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.chkPUsarFechaInicial);
+            this.groupBox2.Controls.Add(this.chkPUsarCredito);
+            this.groupBox2.Controls.Add(this.btnPExportar);
+            this.groupBox2.Controls.Add(this.btnPVisualizar);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.dtpPFechaInicial);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.cboPNumeroPrestamo);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(235, 609);
+            this.groupBox2.TabIndex = 16;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Parámetros";
+            // 
+            // chkPUsarFechaFinal
+            // 
+            this.chkPUsarFechaFinal.AutoSize = true;
+            this.chkPUsarFechaFinal.Checked = true;
+            this.chkPUsarFechaFinal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPUsarFechaFinal.Location = new System.Drawing.Point(11, 134);
+            this.chkPUsarFechaFinal.Name = "chkPUsarFechaFinal";
+            this.chkPUsarFechaFinal.Size = new System.Drawing.Size(15, 14);
+            this.chkPUsarFechaFinal.TabIndex = 5;
+            this.chkPUsarFechaFinal.UseVisualStyleBackColor = true;
+            this.chkPUsarFechaFinal.CheckedChanged += new System.EventHandler(this.chkPUsarFechaFinal_CheckedChanged);
+            // 
+            // dtpPFechaFinal
+            // 
+            this.dtpPFechaFinal.CustomFormat = "dd/MM/yyyy";
+            this.dtpPFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPFechaFinal.Location = new System.Drawing.Point(11, 151);
+            this.dtpPFechaFinal.Name = "dtpPFechaFinal";
+            this.dtpPFechaFinal.Size = new System.Drawing.Size(218, 23);
+            this.dtpPFechaFinal.TabIndex = 6;
+            this.dtpPFechaFinal.ValueChanged += new System.EventHandler(this.dtpPFechaFinal_ValueChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(34, 132);
+            this.label20.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(82, 17);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "Fecha final:";
+            // 
+            // chkPUsarFechaInicial
+            // 
+            this.chkPUsarFechaInicial.AutoSize = true;
+            this.chkPUsarFechaInicial.Checked = true;
+            this.chkPUsarFechaInicial.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPUsarFechaInicial.Location = new System.Drawing.Point(11, 77);
+            this.chkPUsarFechaInicial.Name = "chkPUsarFechaInicial";
+            this.chkPUsarFechaInicial.Size = new System.Drawing.Size(15, 14);
+            this.chkPUsarFechaInicial.TabIndex = 3;
+            this.chkPUsarFechaInicial.UseVisualStyleBackColor = true;
+            this.chkPUsarFechaInicial.CheckedChanged += new System.EventHandler(this.chkPUsarFechaInicial_CheckedChanged);
+            // 
+            // chkPUsarCredito
+            // 
+            this.chkPUsarCredito.AutoSize = true;
+            this.chkPUsarCredito.Checked = true;
+            this.chkPUsarCredito.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPUsarCredito.Location = new System.Drawing.Point(11, 22);
+            this.chkPUsarCredito.Name = "chkPUsarCredito";
+            this.chkPUsarCredito.Size = new System.Drawing.Size(15, 14);
+            this.chkPUsarCredito.TabIndex = 1;
+            this.chkPUsarCredito.UseVisualStyleBackColor = true;
+            this.chkPUsarCredito.CheckedChanged += new System.EventHandler(this.chkPUsarCredito_CheckedChanged);
+            // 
+            // btnPExportar
+            // 
+            this.btnPExportar.Location = new System.Drawing.Point(11, 225);
+            this.btnPExportar.Name = "btnPExportar";
+            this.btnPExportar.Size = new System.Drawing.Size(218, 29);
+            this.btnPExportar.TabIndex = 8;
+            this.btnPExportar.Text = "Exportar pagos a Excel";
+            this.btnPExportar.UseVisualStyleBackColor = true;
+            this.btnPExportar.Click += new System.EventHandler(this.btnPExportar_Click);
+            // 
+            // btnPVisualizar
+            // 
+            this.btnPVisualizar.Location = new System.Drawing.Point(11, 190);
+            this.btnPVisualizar.Name = "btnPVisualizar";
+            this.btnPVisualizar.Size = new System.Drawing.Size(218, 29);
+            this.btnPVisualizar.TabIndex = 7;
+            this.btnPVisualizar.Text = "Visualizar";
+            this.btnPVisualizar.UseVisualStyleBackColor = true;
+            this.btnPVisualizar.Click += new System.EventHandler(this.btnPVisualizar_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(34, 20);
+            this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(135, 17);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "Número de crédito:";
+            // 
+            // dtpPFechaInicial
+            // 
+            this.dtpPFechaInicial.CustomFormat = "dd/MM/yyyy";
+            this.dtpPFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPFechaInicial.Location = new System.Drawing.Point(11, 94);
+            this.dtpPFechaInicial.Name = "dtpPFechaInicial";
+            this.dtpPFechaInicial.Size = new System.Drawing.Size(218, 23);
+            this.dtpPFechaInicial.TabIndex = 4;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(34, 75);
+            this.label22.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(92, 17);
+            this.label22.TabIndex = 11;
+            this.label22.Text = "Fecha inicial:";
+            // 
+            // cboPNumeroPrestamo
+            // 
+            this.cboPNumeroPrestamo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPNumeroPrestamo.FormattingEnabled = true;
+            this.cboPNumeroPrestamo.Location = new System.Drawing.Point(11, 39);
+            this.cboPNumeroPrestamo.Name = "cboPNumeroPrestamo";
+            this.cboPNumeroPrestamo.Size = new System.Drawing.Size(218, 25);
+            this.cboPNumeroPrestamo.TabIndex = 2;
             // 
             // pnlProgreso
             // 
@@ -658,64 +908,50 @@
             this.wkr01.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr01_DoWork);
             this.wkr01.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr01_RunWorkerCompleted);
             // 
-            // grdDetalle
+            // wkr02
             // 
-            this.grdDetalle.AllowUserToAddRows = false;
-            this.grdDetalle.AllowUserToDeleteRows = false;
-            this.grdDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdDetalle.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.grdDetalle.Location = new System.Drawing.Point(372, 426);
-            this.grdDetalle.MultiSelect = false;
-            this.grdDetalle.Name = "grdDetalle";
-            this.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDetalle.Size = new System.Drawing.Size(608, 181);
-            this.grdDetalle.TabIndex = 25;
+            this.wkr02.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr02_DoWork);
+            this.wkr02.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr02_RunWorkerCompleted);
             // 
-            // label18
+            // label23
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(369, 32);
-            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(53, 17);
-            this.label18.TabIndex = 26;
-            this.label18.Text = "Saldos:";
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(5, 198);
+            this.label23.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(107, 17);
+            this.label23.TabIndex = 22;
+            this.label23.Text = "Observaciones:";
             // 
-            // label19
+            // txtObservaciones
             // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(369, 406);
-            this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(58, 17);
-            this.label19.TabIndex = 27;
-            this.label19.Text = "Detalle:";
+            this.txtObservaciones.Location = new System.Drawing.Point(8, 218);
+            this.txtObservaciones.MaxLength = 500;
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtObservaciones.Size = new System.Drawing.Size(330, 78);
+            this.txtObservaciones.TabIndex = 9;
             // 
-            // btnExportarDet
+            // txtQObservaciones
             // 
-            this.btnExportarDet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportarDet.Location = new System.Drawing.Point(165, 487);
-            this.btnExportarDet.Name = "btnExportarDet";
-            this.btnExportarDet.Size = new System.Drawing.Size(201, 23);
-            this.btnExportarDet.TabIndex = 11;
-            this.btnExportarDet.Text = "Exportar detalle a Excel";
-            this.btnExportarDet.UseVisualStyleBackColor = true;
-            this.btnExportarDet.Click += new System.EventHandler(this.btnExportarDet_Click);
+            this.txtQObservaciones.Location = new System.Drawing.Point(8, 218);
+            this.txtQObservaciones.MaxLength = 500;
+            this.txtQObservaciones.Multiline = true;
+            this.txtQObservaciones.Name = "txtQObservaciones";
+            this.txtQObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtQObservaciones.Size = new System.Drawing.Size(330, 78);
+            this.txtQObservaciones.TabIndex = 9;
             // 
-            // btnExportar
+            // label24
             // 
-            this.btnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportar.Location = new System.Drawing.Point(165, 458);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(201, 23);
-            this.btnExportar.TabIndex = 10;
-            this.btnExportar.Text = "Exportar saldos a Excel";
-            this.btnExportar.UseVisualStyleBackColor = true;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(5, 198);
+            this.label24.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(107, 17);
+            this.label24.TabIndex = 35;
+            this.label24.Text = "Observaciones:";
             // 
             // frmRegistroPago
             // 
@@ -735,6 +971,7 @@
             this.tab01.ResumeLayout(false);
             this.tabCrear.ResumeLayout(false);
             this.tabCrear.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).EndInit();
             this.tabPagos.ResumeLayout(false);
             this.tabP01.ResumeLayout(false);
             this.tabP01.PerformLayout();
@@ -753,9 +990,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCapVenc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQComiAplicacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
+            this.tabHistorial.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdPDatos)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.pnlProgreso.ResumeLayout(false);
             this.pnlProgreso.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -810,5 +1050,24 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnExportarDet;
         private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.TabPage tabHistorial;
+        private System.Windows.Forms.DataGridView grdPDatos;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox chkPUsarFechaFinal;
+        private System.Windows.Forms.DateTimePicker dtpPFechaFinal;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckBox chkPUsarFechaInicial;
+        private System.Windows.Forms.CheckBox chkPUsarCredito;
+        private System.Windows.Forms.Button btnPExportar;
+        private System.Windows.Forms.Button btnPVisualizar;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.DateTimePicker dtpPFechaInicial;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox cboPNumeroPrestamo;
+        private System.ComponentModel.BackgroundWorker wkr02;
+        private System.Windows.Forms.TextBox txtObservaciones;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtQObservaciones;
+        private System.Windows.Forms.Label label24;
     }
 }

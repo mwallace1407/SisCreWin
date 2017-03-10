@@ -109,6 +109,8 @@ namespace SisCreWin.Modelo
         public static String Puentes_U_AutorizarRegeneracionCierreMensual { get { return "sp_Puentes_U_AutorizarRegeneracionCierreMensual"; } }
         public static String Puentes_C_TiposPago { get { return "sp_Puentes_C_TiposPago"; } }
         public static String Puentes_C_HistoricoDePago { get { return "sp_Puentes_C_HistoricoDePago"; } }
+        public static String Puentes_C_ReporteDePagos { get { return "sp_Puentes_C_ReporteDePagos"; } }
+        public static String Puentes_C_ObtenerSaldosParaLiquidar { get { return "sp_Puentes_C_ObtenerSaldosParaLiquidar"; } }
         //!Operaciones_Puentes
         #endregion Negocio
         #endregion Variables

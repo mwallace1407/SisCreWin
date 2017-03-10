@@ -16,12 +16,26 @@ namespace SisCreWin.Negocio.Puentes
 {
     public partial class frmRegistroPago : Form
     {
+        #region Enumeraciones
+        private enum TipoProceso
+        {
+            Visualizacion,
+            Extraccion
+        }
+        #endregion Enumeraciones
         #region Variables
         clsGeneral.PuentesPagos Puente;
         clsGeneral.PuentesPagos PuenteQ;
         string ErrorProceso = string.Empty;
         string ArchivoProceso = string.Empty;
         bool EnProceso = false;
+        //Pagos
+        ResultadoStored_DT ResultadoGrid = new ResultadoStored_DT();
+        int? NumeroPrestamo = null;
+        DateTime? FechaIni = null;
+        DateTime? FechaFin = null;
+        TipoProceso tipoProceso;
+        string Archivo;
         #endregion Variables
         #region Metodos
         public frmRegistroPago()
@@ -59,6 +73,18 @@ namespace SisCreWin.Negocio.Puentes
                 txtQPagoCapital.Value = 0;
                 txtQPagoIntMoratorios.Value = 0;
                 btnCrear.Enabled = false;
+                txtObservaciones.Text = string.Empty;
+                txtQObservaciones.Text = string.Empty;
+                //Pagos
+                dtpPFechaInicial.MinDate = new DateTime(2005, 01, 01);
+                dtpPFechaInicial.MaxDate = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                dtpPFechaInicial.Value = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                dtpPFechaFinal.MinDate = new DateTime(2005, 01, 01);
+                dtpPFechaFinal.MaxDate = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                dtpPFechaFinal.Value = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                cboPNumeroPrestamo.DisplayMember = "Descripcion";
+                cboPNumeroPrestamo.ValueMember = "Valor";
+                cboPNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos().Resultado;
             }
             else
             {
@@ -158,6 +184,57 @@ namespace SisCreWin.Negocio.Puentes
             {
                 MessageBox.Show(Resultado.Error, "Error al obtener datos de créditos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            txtQMontoTotal.Enabled = true;
+            txtQPagoCapital.Enabled = true;
+            txtQInteresCubierto.Enabled = true;
+            txtQInteresCapVenc.Enabled = true;
+            txtQComiAplicacion.Enabled = true;
+            txtQPagoIntMoratorios.Enabled = true;
+            dtpFechaPago.Enabled = true;
+            clsGeneral.EnableTab(tabP01, true);
+
+            txtMontoTotal.Value = 0;
+            txtPagoCapital.Value = 0;
+            txtInteresCubierto.Value = 0;
+            txtInteresCapVenc.Value = 0;
+            txtComiAplicacion.Value = 0;
+            txtPagoIntMoratorios.Value = 0;
+            txtObservaciones.Text = string.Empty;
+
+            txtQMontoTotal.Value = 0;
+            txtQPagoCapital.Value = 0;
+            txtQInteresCubierto.Value = 0;
+            txtQInteresCapVenc.Value = 0;
+            txtQComiAplicacion.Value = 0;
+            txtQPagoIntMoratorios.Value = 0;
+            txtQObservaciones.Text = string.Empty;
+
+            if (cboTipoPago.Text == "Normal")
+            {
+                clsGeneral.EnableTab(tabP02, false);
+                tabPagos.SelectedIndex = 0;
+                Valida();
+            }
+            else
+            {
+                clsGeneral.EnableTab(tabP02, true);
+
+                switch (cboTipoPago.Text.ToLowerInvariant())
+                {
+                    case "dación":
+                        CargarSaldos((int)cboNumeroPrestamo.SelectedValue);
+                        break;
+                    case "adjudicación":
+                        CargarSaldos((int)cboNumeroPrestamo.SelectedValue);
+                        break;
+                    default:
+                        break;
+
+                }
+
+                ValidaQ();
+            }
         }
 
         private void ExportarSaldos()
@@ -215,6 +292,150 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ProcesarP()
+        {
+            NumeroPrestamo = (chkPUsarCredito.Checked) ? (int?)cboPNumeroPrestamo.SelectedValue : null;
+            FechaIni = (chkPUsarFechaInicial.Checked) ? (DateTime?)dtpPFechaInicial.Value : null;
+            FechaFin = (chkPUsarFechaFinal.Checked) ? (DateTime?)dtpPFechaFinal.Value : null;
+
+            pnlProgreso.Size = new Size(this.Width - 6, this.Height - 6);
+            pnlProgreso.Location = new Point(3, 3);
+            pnlProgreso.Visible = true;
+            EnProceso = true;
+            Sistema.Global.ProcesosPendientes = true;
+
+            wkr02.RunWorkerAsync();
+        }
+
+        private void ExportarP()
+        {
+            ResultadoExport exp = new ResultadoExport();
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PHP_NumeroPrestamo", SqlDbType.Int);
+            param.Value = NumeroPrestamo;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago_Ini", SqlDbType.DateTime);
+            param.Value = FechaIni;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago_Fin", SqlDbType.DateTime);
+            param.Value = FechaFin;
+            paramC.Add(param);
+
+            exp = clsBD.ExportarExcel(CatalogoStoreds.Puentes_C_ReporteDePagos, paramC);
+
+            if (!exp.HayError)
+            {
+                try
+                {
+                    Archivo = exp.Archivo;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CargarGridP()
+        {
+            if (!ResultadoGrid.HayError)
+            {
+                grdPDatos.DataSource = ResultadoGrid.Resultado;
+
+                for (int w = 0; w < grdPDatos.Columns.Count; w++)
+                {
+                    grdPDatos.Columns[w].ReadOnly = true;
+                }
+
+                grdPDatos.ClearSelection();
+            }
+            else
+            {
+                MessageBox.Show(ResultadoGrid.Error, "Error al obtener datos de pagos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private int ValidaMontos(ref NumericUpDown ctrl, object Valor)
+        {
+            int Res = 0;
+
+            try
+            {
+                if ((decimal)Valor >= 0)
+                    ctrl.Value = (decimal)Valor;
+                else
+                    Res = 1;
+            }
+            catch
+            {
+                Res = 1;
+            }
+
+            return Res;
+        }
+
+        private void CargarSaldos(int NumeroPrestamo)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT();
+
+            Resultado = clsBD.Puentes_C_ObtenerSaldosParaLiquidar(NumeroPrestamo);
+            txtQMontoTotal.Enabled = false;
+            txtQPagoCapital.Enabled = false;
+            txtQInteresCubierto.Enabled = false;
+            txtQInteresCapVenc.Enabled = false;
+            txtQComiAplicacion.Enabled = false;
+            txtQPagoIntMoratorios.Enabled = false;
+            dtpFechaPago.Enabled = false;
+            txtComiAplicacion.Value = 0;
+            txtInteresCapVenc.Value = 0;
+            txtInteresCubierto.Value = 0;
+            txtMontoTotal.Value = 0;
+            txtPagoCapital.Value = 0;
+            txtPagoIntMoratorios.Value = 0;
+            clsGeneral.EnableTab(tabP01, false);
+            tabPagos.SelectedIndex = 1;
+
+            if (!Resultado.HayError)
+            {
+                if (Resultado.Resultado.Rows.Count > 0)
+                {
+                    int HayNegativos = 0;
+
+                    dtpFechaPago.Value = (DateTime)Resultado.Resultado.Rows[0]["FechaMax"];
+                    HayNegativos += ValidaMontos(ref txtQPagoCapital, (decimal)Resultado.Resultado.Rows[0]["SCP_CAPITAL"]);
+                    HayNegativos += ValidaMontos(ref txtQInteresCubierto, (decimal)Resultado.Resultado.Rows[0]["SCP_TOTAL_INTERESES"]);
+                    HayNegativos += ValidaMontos(ref txtQInteresCapVenc, (decimal)Resultado.Resultado.Rows[0]["SCP_INT_ORD_S_CAPVENC"]);
+                    HayNegativos += ValidaMontos(ref txtQComiAplicacion, (decimal)Resultado.Resultado.Rows[0]["SCP_CUOTA_RENOV_COM_PROR"]);
+                    HayNegativos += ValidaMontos(ref txtQPagoIntMoratorios, (decimal)Resultado.Resultado.Rows[0]["SCP_INT_MORATORIOS"]);
+
+                    if (HayNegativos == 0)
+                    {
+                        txtQMontoTotal.Value = txtQPagoCapital.Value + txtQInteresCubierto.Value + txtQInteresCapVenc.Value +
+                            txtQComiAplicacion.Value + txtQPagoIntMoratorios.Value;
+                    }
+                    else
+                    {
+                        btnCrear.Enabled = false;
+                        MessageBox.Show("Existen saldos con montos incorrectos que impiden hacer un registro del tipo de pago seleccionado. Revise por favor", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No hay registros para el crédito", "Saldos del crédito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show(Resultado.Error, "Error al obtener saldos del crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion Metodos
         #region Eventos
         private void frmRegistroPago_Load(object sender, EventArgs e)
@@ -226,14 +447,23 @@ namespace SisCreWin.Negocio.Puentes
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            if (txtMontoTotal.Value == 0)
+            if (txtMontoTotal.Value == 0 && (int)cboTipoPago.SelectedValue == 1)
             {
-                if (MessageBox.Show("¿Está a punto de registrar un pago en CEROS para el crédito " + cboNumeroPrestamo.Text + "?" + Environment.NewLine + "Está función se considera sólo para hacer una reconstrucción de créditos", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                if (MessageBox.Show("Está a punto de registrar un pago normal en CEROS para el crédito " + cboNumeroPrestamo.Text + Environment.NewLine + "Está función se considera sólo para hacer una reconstrucción de créditos. ¿Desea continuar?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
 
-            if (MessageBox.Show("¿Está seguro de realizar el pago para el crédito " + cboNumeroPrestamo.Text + "?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                return;
+            if (dtpFechaPago.Value < dtpFechaPago.MaxDate)
+            {
+                if (MessageBox.Show("El sistema reconstruirá los registros posteriores a la fecha seleccionada, eliminando movimientos y pagos realizados hasta alcanzar la fecha del mismo. ¿Desea continuar?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    return;
+            }
+
+            if (dtpFechaPago.Value == dtpFechaPago.MaxDate)
+            {
+                if (MessageBox.Show("¿Está seguro de realizar el pago para el crédito " + cboNumeroPrestamo.Text + "?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    return;
+            }
 
             pnlProgreso.Size = new Size(this.Width - 6, this.Height - 6);
             pnlProgreso.Location = new Point(3, 3);
@@ -241,8 +471,8 @@ namespace SisCreWin.Negocio.Puentes
             ErrorProceso = string.Empty;
             EnProceso = true;
             Sistema.Global.ProcesosPendientes = true;
-            Puente = new clsGeneral.PuentesPagos(Sistema.Global.Usr_Id, Convert.ToInt32(cboTipoPago.SelectedValue), dtpFechaPago.Value, Convert.ToInt32(cboNumeroPrestamo.Text), txtPagoCapital.Value, txtInteresCubierto.Value, txtInteresCapVenc.Value, txtComiAplicacion.Value, txtPagoIntMoratorios.Value);
-            PuenteQ = new clsGeneral.PuentesPagos(Sistema.Global.Usr_Id, Convert.ToInt32(cboTipoPago.SelectedValue), dtpFechaPago.Value, Convert.ToInt32(cboNumeroPrestamo.Text), txtQPagoCapital.Value, txtQInteresCubierto.Value, txtQInteresCapVenc.Value, txtQComiAplicacion.Value, txtQPagoIntMoratorios.Value);
+            Puente = new clsGeneral.PuentesPagos(Sistema.Global.Usr_Id, Convert.ToInt32(cboTipoPago.SelectedValue), dtpFechaPago.Value, Convert.ToInt32(cboNumeroPrestamo.Text), txtPagoCapital.Value, txtInteresCubierto.Value, txtInteresCapVenc.Value, txtComiAplicacion.Value, txtPagoIntMoratorios.Value, vPHP_Observaciones: txtObservaciones.Text.Trim());
+            PuenteQ = new clsGeneral.PuentesPagos(Sistema.Global.Usr_Id, Convert.ToInt32(cboTipoPago.SelectedValue), dtpFechaPago.Value, Convert.ToInt32(cboNumeroPrestamo.Text), txtQPagoCapital.Value, txtQInteresCubierto.Value, txtQInteresCapVenc.Value, txtQComiAplicacion.Value, txtQPagoIntMoratorios.Value, vPHP_Observaciones: txtQObservaciones.Text.Trim());
             wkr01.RunWorkerAsync();
         }
 
@@ -322,24 +552,9 @@ namespace SisCreWin.Negocio.Puentes
                 CargarGrid();
         }
 
-        private void btnExportarExcel_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void cboTipoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboTipoPago.Text == "Normal")
-            {
-                clsGeneral.EnableTab(tabP02, false);
-                tabPagos.SelectedIndex = 0;
-                Valida();
-            }
-            else
-            {
-                clsGeneral.EnableTab(tabP02, true);
-                ValidaQ();
-            }
+            CargarGrid();
         }
 
         private void txtQMontoTotal_ValueChanged(object sender, EventArgs e)
@@ -490,5 +705,85 @@ namespace SisCreWin.Negocio.Puentes
             txtQPagoIntMoratorios.Select(0, txtQPagoIntMoratorios.Text.Length);
         }
         #endregion Eventos
+
+        private void chkPUsarCredito_CheckedChanged(object sender, EventArgs e)
+        {
+            cboPNumeroPrestamo.Enabled = chkPUsarCredito.Checked;
+        }
+
+        private void chkPUsarFechaInicial_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpPFechaInicial.Enabled = chkPUsarFechaInicial.Checked;
+        }
+
+        private void chkPUsarFechaFinal_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpPFechaInicial.MaxDate = clsGeneral.ObtieneFecha(dtpPFechaFinal.Value.ToString("dd/MM/yyyy"));
+
+            if (dtpPFechaFinal.Value < dtpPFechaInicial.Value)
+                dtpPFechaInicial.Value = dtpPFechaInicial.MaxDate;
+        }
+
+        private void dtpPFechaFinal_ValueChanged(object sender, EventArgs e)
+        {
+            dtpPFechaInicial.MaxDate = clsGeneral.ObtieneFecha(dtpPFechaFinal.Value.ToString("dd/MM/yyyy"));
+
+            if (dtpPFechaFinal.Value < dtpPFechaInicial.Value)
+                dtpPFechaInicial.Value = dtpPFechaInicial.MaxDate;
+        }
+
+        private void btnPVisualizar_Click(object sender, EventArgs e)
+        {
+            tipoProceso = TipoProceso.Visualizacion;
+            ProcesarP();
+        }
+
+        private void btnPExportar_Click(object sender, EventArgs e)
+        {
+            if (grdPDatos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar", "Exportar a Excel", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            Archivo = string.Empty;
+            tipoProceso = TipoProceso.Extraccion;
+            ProcesarP();
+        }
+
+        private void wkr02_DoWork(object sender, DoWorkEventArgs e)
+        {
+            ResultadoGrid = new BD.ResultadoStored_DT();
+            ResultadoGrid = clsBD.Puentes_C_ReporteDePagos(NumeroPrestamo, FechaIni, FechaFin);
+
+            if (tipoProceso == TipoProceso.Extraccion)
+                ExportarP();
+        }
+
+        private void wkr02_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (tipoProceso == TipoProceso.Visualizacion)
+            {
+                CargarGridP();
+            }
+            else
+            {
+                try
+                {
+                    if (System.IO.File.Exists(Archivo))
+                        System.Diagnostics.Process.Start(Archivo);
+                    else
+                        MessageBox.Show("No existe el archivo especificado", "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            pnlProgreso.Visible = false;
+            EnProceso = false;
+            Sistema.Global.ProcesosPendientes = false;
+        }
     }
 }
