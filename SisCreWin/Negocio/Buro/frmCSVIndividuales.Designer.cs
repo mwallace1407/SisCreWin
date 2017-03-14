@@ -40,15 +40,28 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pnlProgreso = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.wkr01 = new System.ComponentModel.BackgroundWorker();
             this.fbd01 = new System.Windows.Forms.FolderBrowserDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabCargar = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnExaminar = new System.Windows.Forms.Button();
+            this.wkr02 = new System.ComponentModel.BackgroundWorker();
+            this.ofd01 = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblClave = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblTotalReg = new System.Windows.Forms.Label();
+            this.btnCargarDatos = new System.Windows.Forms.Button();
+            this.wkr03 = new System.ComponentModel.BackgroundWorker();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             this.tabRecrear.SuspendLayout();
             this.pnlProgreso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabCargar.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab01
@@ -58,6 +71,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab01.Controls.Add(this.tabCrear);
             this.tab01.Controls.Add(this.tabRecrear);
+            this.tab01.Controls.Add(this.tabCargar);
             this.tab01.Location = new System.Drawing.Point(14, 14);
             this.tab01.Margin = new System.Windows.Forms.Padding(5);
             this.tab01.Name = "tab01";
@@ -188,6 +202,17 @@
             this.pnlProgreso.TabIndex = 2;
             this.pnlProgreso.Visible = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::SisCreWin.Properties.Resources.gears_animated_t;
+            this.pictureBox1.Location = new System.Drawing.Point(35, 29);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(144, 144);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -209,16 +234,104 @@
             // 
             this.fbd01.Description = "Seleccione una carpeta para depositar el archivo";
             // 
-            // pictureBox1
+            // tabCargar
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::SisCreWin.Properties.Resources.gears_animated_t;
-            this.pictureBox1.Location = new System.Drawing.Point(35, 29);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(144, 144);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.tabCargar.Controls.Add(this.btnCargarDatos);
+            this.tabCargar.Controls.Add(this.groupBox1);
+            this.tabCargar.Controls.Add(this.btnExaminar);
+            this.tabCargar.Controls.Add(this.label6);
+            this.tabCargar.Location = new System.Drawing.Point(4, 26);
+            this.tabCargar.Name = "tabCargar";
+            this.tabCargar.Size = new System.Drawing.Size(743, 311);
+            this.tabCargar.TabIndex = 2;
+            this.tabCargar.Text = "Cargar CSV";
+            this.tabCargar.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 26);
+            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(281, 17);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Seleccione el archivo que desea importar:";
+            // 
+            // btnExaminar
+            // 
+            this.btnExaminar.Location = new System.Drawing.Point(300, 22);
+            this.btnExaminar.Name = "btnExaminar";
+            this.btnExaminar.Size = new System.Drawing.Size(92, 25);
+            this.btnExaminar.TabIndex = 9;
+            this.btnExaminar.Text = "Examinar...";
+            this.btnExaminar.UseVisualStyleBackColor = true;
+            this.btnExaminar.Click += new System.EventHandler(this.btnExaminar_Click);
+            // 
+            // wkr02
+            // 
+            this.wkr02.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr02_DoWork);
+            this.wkr02.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr02_RunWorkerCompleted);
+            // 
+            // ofd01
+            // 
+            this.ofd01.DefaultExt = "*.cvs";
+            this.ofd01.Filter = "Archivos CSV|*.csv";
+            this.ofd01.Title = "Seleccione el archivo a cargar";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblTotalReg);
+            this.groupBox1.Controls.Add(this.lblFecha);
+            this.groupBox1.Controls.Add(this.lblClave);
+            this.groupBox1.Location = new System.Drawing.Point(14, 53);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(378, 83);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Resumen del archivo CSV seleccionado:";
+            // 
+            // lblClave
+            // 
+            this.lblClave.AutoSize = true;
+            this.lblClave.Location = new System.Drawing.Point(6, 22);
+            this.lblClave.Name = "lblClave";
+            this.lblClave.Size = new System.Drawing.Size(80, 17);
+            this.lblClave.TabIndex = 0;
+            this.lblClave.Text = "Clave: N/A";
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Location = new System.Drawing.Point(6, 39);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(80, 17);
+            this.lblFecha.TabIndex = 1;
+            this.lblFecha.Text = "Fecha: N/A";
+            // 
+            // lblTotalReg
+            // 
+            this.lblTotalReg.AutoSize = true;
+            this.lblTotalReg.Location = new System.Drawing.Point(6, 56);
+            this.lblTotalReg.Name = "lblTotalReg";
+            this.lblTotalReg.Size = new System.Drawing.Size(149, 17);
+            this.lblTotalReg.TabIndex = 2;
+            this.lblTotalReg.Text = "Total de registros: N/A";
+            // 
+            // btnCargarDatos
+            // 
+            this.btnCargarDatos.Enabled = false;
+            this.btnCargarDatos.Location = new System.Drawing.Point(280, 142);
+            this.btnCargarDatos.Name = "btnCargarDatos";
+            this.btnCargarDatos.Size = new System.Drawing.Size(112, 25);
+            this.btnCargarDatos.TabIndex = 11;
+            this.btnCargarDatos.Text = "Cargar datos";
+            this.btnCargarDatos.UseVisualStyleBackColor = true;
+            this.btnCargarDatos.Click += new System.EventHandler(this.btnCargarDatos_Click);
+            // 
+            // wkr03
+            // 
+            this.wkr03.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr03_DoWork);
+            this.wkr03.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr03_RunWorkerCompleted);
             // 
             // frmCSVIndividuales
             // 
@@ -241,6 +354,10 @@
             this.pnlProgreso.ResumeLayout(false);
             this.pnlProgreso.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabCargar.ResumeLayout(false);
+            this.tabCargar.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -263,5 +380,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabPage tabCargar;
+        private System.Windows.Forms.Button btnExaminar;
+        private System.Windows.Forms.Label label6;
+        private System.ComponentModel.BackgroundWorker wkr02;
+        private System.Windows.Forms.OpenFileDialog ofd01;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblTotalReg;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Label lblClave;
+        private System.Windows.Forms.Button btnCargarDatos;
+        private System.ComponentModel.BackgroundWorker wkr03;
     }
 }

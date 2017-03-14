@@ -1411,6 +1411,35 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
+        public static ResultadoStored_DT Buro_C_PeriodosExistentesIndividuales()
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Buro_C_PeriodosExistentesIndividuales, null);
+
+            return Resultado;
+        }
+
+        public static string Buro_I_InsercionMasivaIndividuales(ref DataTable dtCSV)
+        {
+            string Resultado = string.Empty;
+
+            try
+            {
+                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(SisCreWin.Sistema.Global.OverrideCnx))
+                {
+                    bulkCopy.DestinationTableName = "dbo.Buro_Creditos_Individuales";
+                    bulkCopy.WriteToServer(dtCSV);
+                }
+            }
+            catch(Exception ex)
+            {
+                Resultado = ex.Message;
+            }
+
+            return Resultado;
+        }
         //!Individuales
         public static ResultadoStored_Str Buro_M_Documentos(clsGeneral.BuroDocumentos Buro)
         {

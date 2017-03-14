@@ -78,6 +78,7 @@ namespace SisCreWin.Modelo
         public static String Buro_C_HistoricoIndividuales { get { return "sp_Buro_C_HistoricoIndividuales"; } }
         public static String Buro_C_HistoricoIndDatos { get { return "sp_Buro_C_HistoricoIndDatos"; } }
         public static String Buro_C_PeriodosDisponiblesIndividuales { get { return "sp_Buro_C_PeriodosDisponiblesIndividuales"; } }
+        public static String Buro_C_PeriodosExistentesIndividuales { get { return "sp_Buro_C_PeriodosExistentesIndividuales"; } }
         public static String Buro_M_Documentos { get { return "sp_Buro_M_Documentos"; } }
         public static String Buro_U_AutorizarRecreacion { get { return "sp_Buro_U_AutorizarRecreacion"; } }
         //!Buro
