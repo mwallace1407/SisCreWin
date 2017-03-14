@@ -66,7 +66,9 @@ namespace SisCreWin
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Global.OverrideCnx = string.Empty;
+            if (Environment.MachineName.ToLower() != "oenriquez")
+                Global.OverrideCnx = string.Empty;
+
             this.Close();
         }
 

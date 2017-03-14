@@ -37,6 +37,41 @@ namespace SisCreWin.Negocio.Catalogos
             }
         }
 
+        private void ValoresIniciales()
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT();
+
+            txtIngAnno.Maximum = DateTime.Now.Year;
+            txtIngMes.Maximum = DateTime.Now.AddMonths(-1).Month;
+            Resultado = clsBD.Catalogos_C_ObtenerTIIEMaxima();
+
+            if (!Resultado.HayError)
+            {
+                DateTime dtTM = new DateTime((int)Resultado.Resultado.Rows[0]["Anno"], (int)Resultado.Resultado.Rows[0]["Mes"], 1);
+                DateTime Control = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
+                dtTM = dtTM.AddMonths(1);
+
+                if (Control > dtTM)
+                {
+                    txtIngAnno.Value = (int)Resultado.Resultado.Rows[0]["Anno"];
+                    txtIngMes.Value = ((int)Resultado.Resultado.Rows[0]["Mes"]) + 1;
+                    txtIngValor.Select();
+                }
+                else
+                {
+                    txtIngAnno.Value = (int)Resultado.Resultado.Rows[0]["Anno"];
+                    txtIngMes.Value = (int)Resultado.Resultado.Rows[0]["Mes"];
+                    txtIngValor.Select();
+                    MessageBox.Show("Se han registrado todos los valores TIIE para los periodos disponibles", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show(Resultado.Error, "Error al obtener TIIE máxima", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public frmTIIE()
         {
             InitializeComponent();
@@ -50,6 +85,13 @@ namespace SisCreWin.Negocio.Catalogos
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Catalogos_I_TIIE, vBit_DatosPrevios: null);
             clsGeneral.TIIE TIIE = new clsGeneral.TIIE((int)txtIngMes.Value, (int)txtIngAnno.Value, txtIngValor.Value);
 
+            if (clsBD.Catalogos_C_TIIEVerificarExistente(TIIE).Resultado > 0)
+            {
+                MessageBox.Show("Ya existe un valor registrado para el periodo, será dirigido a la pestaña donde puede modificarlo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tab01.SelectedIndex = 1;
+                return;
+            }
+
             Resultado = clsBD.Catalogos_I_TIIE(TIIE);
 
             if (!Resultado.HayError)
@@ -61,12 +103,9 @@ namespace SisCreWin.Negocio.Catalogos
                     ResultadoS = clsBD.Catalogos_C_TIIEBitacora(TIIE);
                     Bitacora.Bit_DatosPrevios = clsGeneral.Zip(ResultadoS.Resultado);
                     clsBD.Bitacoras_I_MovimientosSistema(Bitacora);
-                    MessageBox.Show("Se ha agregado un registro para TIIE.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtIngAnno.Maximum = DateTime.Now.Year;
-                    txtIngAnno.Value = DateTime.Now.Year;
-                    txtIngMes.Value = DateTime.Now.Month;
+                    MessageBox.Show("Se ha agregado un registro para TIIE", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtIngValor.Value = 0;
-                    txtIngAnno.Focus();
+                    ValoresIniciales();
                 }
                 else
                 {
@@ -81,7 +120,11 @@ namespace SisCreWin.Negocio.Catalogos
 
         private void tab01_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tab01.SelectedIndex == 1)
+            if (tab01.SelectedIndex == 0)
+            {
+                ValoresIniciales();
+            }
+            else if (tab01.SelectedIndex == 1)
             {
                 CargarGrid();
             }
@@ -163,21 +206,25 @@ namespace SisCreWin.Negocio.Catalogos
 
         private void frmTIIE_Load(object sender, EventArgs e)
         {
-            txtIngAnno.Maximum = DateTime.Now.Year;
-            txtIngAnno.Value = DateTime.Now.Year;
-            txtIngMes.Value = DateTime.Now.Month;
+            ValoresIniciales();
         }
 
         private void txtIngAnno_ValueChanged(object sender, EventArgs e)
         {
             if(txtIngAnno.Value == txtIngAnno.Maximum)
             {
-                txtIngMes.Maximum = DateTime.Now.Month;
+                txtIngMes.Maximum = DateTime.Now.AddMonths(-1).Month;
             }
             else
             {
                 txtIngMes.Maximum = 12;
             }
+        }
+
+        private void chkAuto_CheckedChanged(object sender, EventArgs e)
+        {
+            txtIngAnno.Enabled = !chkAuto.Checked;
+            txtIngMes.Enabled = !chkAuto.Checked;
         }
         #endregion Eventos
     }

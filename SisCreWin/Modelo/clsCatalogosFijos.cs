@@ -86,6 +86,8 @@ namespace SisCreWin.Modelo
         public static String Catalogos_I_TIIE { get { return "sp_Catalogos_I_TIIE"; } }
         public static String Catalogos_U_TIIE { get { return "sp_Catalogos_U_TIIE"; } }
         public static String Catalogos_C_TIIEBitacora { get { return "sp_Catalogos_C_TIIEBitacora"; } }
+        public static String Catalogos_C_ObtenerTIIEMaxima { get { return "sp_Catalogos_C_ObtenerTIIEMaxima"; } }
+        public static String Catalogos_C_TIIEVerificarExistente { get { return "sp_Catalogos_C_TIIEVerificarExistente"; } }
         //!TIIE
         //Origen_Creditos_Puente
         public static String Catalogos_C_OrigenCreditosPuente { get { return "sp_Catalogos_C_OrigenCreditosPuente"; } }
@@ -144,6 +146,7 @@ namespace SisCreWin.Modelo
         public static int Puentes_Historico { get { return 15; } }
         public static int Puentes_ReporteContable { get { return 19; } }
         public static int Puentes_RegenerarCierreMensual { get { return 20; } }
+        public static int Puentes_GenerarCierreMensual { get { return 22; } }
         #endregion Negocio
         #endregion Variables
     }

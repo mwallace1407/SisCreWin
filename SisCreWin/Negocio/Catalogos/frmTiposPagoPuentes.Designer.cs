@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.tab01 = new System.Windows.Forms.TabControl();
             this.tabCrear = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtIngOrden = new System.Windows.Forms.NumericUpDown();
             this.chkIngActivo = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.btnCrearModulo = new System.Windows.Forms.Button();
@@ -40,6 +42,8 @@
             this.tabModificar = new System.Windows.Forms.TabPage();
             this.btnExportarExcel = new System.Windows.Forms.Button();
             this.gbDatos = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtModOrden = new System.Windows.Forms.NumericUpDown();
             this.txtModId = new System.Windows.Forms.TextBox();
             this.chkModActivo = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,17 +55,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
             this.sfd01 = new System.Windows.Forms.SaveFileDialog();
-            this.txtIngOrden = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtModOrden = new System.Windows.Forms.NumericUpDown();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIngOrden)).BeginInit();
             this.tabModificar.SuspendLayout();
             this.gbDatos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngOrden)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModOrden)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.SuspendLayout();
             // 
             // tab01
@@ -97,6 +97,28 @@
             this.tabCrear.TabIndex = 0;
             this.tabCrear.Text = "Crear";
             this.tabCrear.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 73);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 17);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Orden para mostrar:";
+            // 
+            // txtIngOrden
+            // 
+            this.txtIngOrden.Location = new System.Drawing.Point(154, 71);
+            this.txtIngOrden.Name = "txtIngOrden";
+            this.txtIngOrden.Size = new System.Drawing.Size(252, 23);
+            this.txtIngOrden.TabIndex = 18;
+            this.txtIngOrden.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // chkIngActivo
             // 
@@ -206,6 +228,28 @@
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Promotor seleccionado:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 86);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(140, 17);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "Orden para mostrar:";
+            // 
+            // txtModOrden
+            // 
+            this.txtModOrden.Location = new System.Drawing.Point(168, 84);
+            this.txtModOrden.Name = "txtModOrden";
+            this.txtModOrden.Size = new System.Drawing.Size(252, 23);
+            this.txtModOrden.TabIndex = 23;
+            this.txtModOrden.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // txtModId
             // 
             this.txtModId.Location = new System.Drawing.Point(168, 23);
@@ -309,50 +353,6 @@
             this.sfd01.DefaultExt = "*.xlsx";
             this.sfd01.Filter = "Archivos de Excel|*.xlsx";
             // 
-            // txtIngOrden
-            // 
-            this.txtIngOrden.Location = new System.Drawing.Point(154, 71);
-            this.txtIngOrden.Name = "txtIngOrden";
-            this.txtIngOrden.Size = new System.Drawing.Size(252, 23);
-            this.txtIngOrden.TabIndex = 18;
-            this.txtIngOrden.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 73);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 17);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Orden para mostrar:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 86);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(140, 17);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "Orden para mostrar:";
-            // 
-            // txtModOrden
-            // 
-            this.txtModOrden.Location = new System.Drawing.Point(168, 84);
-            this.txtModOrden.Name = "txtModOrden";
-            this.txtModOrden.Size = new System.Drawing.Size(252, 23);
-            this.txtModOrden.TabIndex = 23;
-            this.txtModOrden.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // frmTiposPagoPuentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -363,16 +363,17 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTiposPagoPuentes";
             this.Text = "Administración de tipos de pago para puentes";
+            this.Load += new System.EventHandler(this.frmTiposPagoPuentes_Load);
             this.tab01.ResumeLayout(false);
             this.tabCrear.ResumeLayout(false);
             this.tabCrear.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIngOrden)).EndInit();
             this.tabModificar.ResumeLayout(false);
             this.tabModificar.PerformLayout();
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIngOrden)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtModOrden)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -344,6 +344,19 @@ namespace SisCreWin.Modelo
         {
             foreach (Control ctl in page.Controls) ctl.Enabled = enable;
         }
+
+        public static void FormatoResaltadoGrid(ref DataGridView Grid, string Campo, string Valor)
+        {
+            for (int w = 0; w < Grid.Rows.Count; w++)
+            {
+                DataGridViewRow dr = Grid.Rows[w];
+
+                if (dr.Cells[Campo].Value.ToString() == Valor)
+                {
+                    Grid.Rows[w].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(255, 204, 204);
+                }
+            }
+        }
         #endregion Metodos
         #region Modelos
         #region Sistema

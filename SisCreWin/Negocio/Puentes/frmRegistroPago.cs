@@ -84,7 +84,7 @@ namespace SisCreWin.Negocio.Puentes
                 dtpPFechaFinal.Value = clsGeneral.ObtieneFecha(Resultado.Resultado);
                 cboPNumeroPrestamo.DisplayMember = "Descripcion";
                 cboPNumeroPrestamo.ValueMember = "Valor";
-                cboPNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos().Resultado;
+                cboPNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos(true).Resultado;
             }
             else
             {

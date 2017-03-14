@@ -28,7 +28,7 @@ namespace SisCreWin
             Cred = clsSeguridad.ObtenerUsuarioActual();
             txtUsuario.Text = Cred.Usuario;
             txtDominio.Text = Cred.Dominio;
-            txtContrasenna.Focus();
+            txtContrasenna.Select();
             clsBD.ObtenerBaseConectada();
 
             if (Environment.MachineName.ToLower() == "oenriquez" && txtUsuario.Text.Trim() == "oenriquez")
@@ -36,6 +36,13 @@ namespace SisCreWin
                 frmCnx frm = new SisCreWin.frmCnx();
 
                 txtContrasenna.Text = new De_CryptDLL.De_Crypt().Desencriptar("OCdWSNMRbABucX8dSj6KdA==", Environment.MachineName.ToLower(), true);
+                frm.ShowDialog(this);
+            }
+
+            if (Environment.MachineName.ToLower() == "ibecerra2" && txtUsuario.Text.Trim() == "ibecerra")
+            {
+                frmCnx frm = new SisCreWin.frmCnx();
+
                 frm.ShowDialog(this);
             }
         }
@@ -58,6 +65,15 @@ namespace SisCreWin
                     if (Resultado.Resultado > 0)
                     {
                         frmMain frm = new frmMain();
+
+                        if ((Environment.MachineName.ToLower() == "oenriquez" && txtUsuario.Text.Trim() == "oenriquez") || (Environment.MachineName.ToLower() == "ibecerra2" && txtUsuario.Text.Trim() == "ibecerra"))
+                        {
+                            if (clsBD.ObtenerBaseConectada().BaseDatos == "BD_ADMIN_CREDIT_BIM")
+                            {
+                                if (MessageBox.Show("Estás a pundo de entrar en ambiente PRODUCTIVO. ¿Deseas continuar?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                                    return;
+                            }
+                        }
 
                         Global.Usr_Id = Resultado.Resultado;
                         Global.Usuario = txtUsuario.Text.Trim();

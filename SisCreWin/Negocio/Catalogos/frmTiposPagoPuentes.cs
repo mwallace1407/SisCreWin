@@ -32,6 +32,8 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[1].ReadOnly = true;
                 grdDatos.Columns[2].ReadOnly = true;
                 grdDatos.Columns[3].ReadOnly = true;
+
+                clsGeneral.FormatoResaltadoGrid(ref grdDatos, "PTP_Activo", "N");
             }
             else
             {
@@ -165,6 +167,11 @@ namespace SisCreWin.Negocio.Catalogos
             }
 
             //System.Diagnostics.Process.Start(lblArchivo.Text);
+        }
+
+        private void frmTiposPagoPuentes_Load(object sender, EventArgs e)
+        {
+
         }
         #endregion Eventos
     }

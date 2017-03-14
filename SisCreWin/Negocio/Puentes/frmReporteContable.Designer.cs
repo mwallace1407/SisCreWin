@@ -30,6 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tab01 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.grdPDatos = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkPUsarFechaFinal = new System.Windows.Forms.CheckBox();
+            this.dtpPFechaFinal = new System.Windows.Forms.DateTimePicker();
+            this.chkPUsarFechaInicial = new System.Windows.Forms.CheckBox();
+            this.btnPExportar = new System.Windows.Forms.Button();
+            this.btnPVisualizar = new System.Windows.Forms.Button();
+            this.dtpPFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grdDatos = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -74,7 +83,11 @@
             this.wkr02 = new System.ComponentModel.BackgroundWorker();
             this.wkr03 = new System.ComponentModel.BackgroundWorker();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
+            this.wkr04 = new System.ComponentModel.BackgroundWorker();
             this.tab01.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPDatos)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -94,6 +107,7 @@
             this.tab01.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tab01.Controls.Add(this.tabPage4);
             this.tab01.Controls.Add(this.tabPage2);
             this.tab01.Controls.Add(this.tabPage1);
             this.tab01.Controls.Add(this.tabPage3);
@@ -104,6 +118,118 @@
             this.tab01.Size = new System.Drawing.Size(1001, 479);
             this.tab01.TabIndex = 1;
             this.tab01.SelectedIndexChanged += new System.EventHandler(this.tab01_SelectedIndexChanged);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.grdPDatos);
+            this.tabPage4.Controls.Add(this.groupBox1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(993, 449);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Reporte contable";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // grdPDatos
+            // 
+            this.grdPDatos.AllowUserToAddRows = false;
+            this.grdPDatos.AllowUserToDeleteRows = false;
+            this.grdPDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdPDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdPDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdPDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdPDatos.Location = new System.Drawing.Point(244, 11);
+            this.grdPDatos.MultiSelect = false;
+            this.grdPDatos.Name = "grdPDatos";
+            this.grdPDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdPDatos.Size = new System.Drawing.Size(746, 435);
+            this.grdPDatos.TabIndex = 17;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.chkPUsarFechaFinal);
+            this.groupBox1.Controls.Add(this.dtpPFechaFinal);
+            this.groupBox1.Controls.Add(this.chkPUsarFechaInicial);
+            this.groupBox1.Controls.Add(this.btnPExportar);
+            this.groupBox1.Controls.Add(this.btnPVisualizar);
+            this.groupBox1.Controls.Add(this.dtpPFechaInicial);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(235, 443);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Parámetros";
+            // 
+            // chkPUsarFechaFinal
+            // 
+            this.chkPUsarFechaFinal.AutoSize = true;
+            this.chkPUsarFechaFinal.Checked = true;
+            this.chkPUsarFechaFinal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPUsarFechaFinal.Location = new System.Drawing.Point(6, 79);
+            this.chkPUsarFechaFinal.Name = "chkPUsarFechaFinal";
+            this.chkPUsarFechaFinal.Size = new System.Drawing.Size(97, 21);
+            this.chkPUsarFechaFinal.TabIndex = 3;
+            this.chkPUsarFechaFinal.Text = "Fecha final";
+            this.tip01.SetToolTip(this.chkPUsarFechaFinal, "Usar fecha de movimiento");
+            this.chkPUsarFechaFinal.UseVisualStyleBackColor = true;
+            this.chkPUsarFechaFinal.CheckedChanged += new System.EventHandler(this.chkPUsarFechaFinal_CheckedChanged);
+            // 
+            // dtpPFechaFinal
+            // 
+            this.dtpPFechaFinal.CustomFormat = "dd/MM/yyyy";
+            this.dtpPFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPFechaFinal.Location = new System.Drawing.Point(6, 106);
+            this.dtpPFechaFinal.Name = "dtpPFechaFinal";
+            this.dtpPFechaFinal.Size = new System.Drawing.Size(223, 23);
+            this.dtpPFechaFinal.TabIndex = 4;
+            this.dtpPFechaFinal.ValueChanged += new System.EventHandler(this.dtpPFechaFinal_ValueChanged);
+            // 
+            // chkPUsarFechaInicial
+            // 
+            this.chkPUsarFechaInicial.AutoSize = true;
+            this.chkPUsarFechaInicial.Checked = true;
+            this.chkPUsarFechaInicial.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPUsarFechaInicial.Location = new System.Drawing.Point(6, 22);
+            this.chkPUsarFechaInicial.Name = "chkPUsarFechaInicial";
+            this.chkPUsarFechaInicial.Size = new System.Drawing.Size(107, 21);
+            this.chkPUsarFechaInicial.TabIndex = 1;
+            this.chkPUsarFechaInicial.Text = "Fecha inicial";
+            this.tip01.SetToolTip(this.chkPUsarFechaInicial, "Usar fecha de movimiento");
+            this.chkPUsarFechaInicial.UseVisualStyleBackColor = true;
+            this.chkPUsarFechaInicial.CheckedChanged += new System.EventHandler(this.chkPUsarFechaInicial_CheckedChanged);
+            // 
+            // btnPExportar
+            // 
+            this.btnPExportar.Location = new System.Drawing.Point(6, 170);
+            this.btnPExportar.Name = "btnPExportar";
+            this.btnPExportar.Size = new System.Drawing.Size(223, 29);
+            this.btnPExportar.TabIndex = 6;
+            this.btnPExportar.Text = "Exportar reporte a Excel";
+            this.btnPExportar.UseVisualStyleBackColor = true;
+            this.btnPExportar.Click += new System.EventHandler(this.btnPExportar_Click);
+            // 
+            // btnPVisualizar
+            // 
+            this.btnPVisualizar.Location = new System.Drawing.Point(6, 135);
+            this.btnPVisualizar.Name = "btnPVisualizar";
+            this.btnPVisualizar.Size = new System.Drawing.Size(223, 29);
+            this.btnPVisualizar.TabIndex = 5;
+            this.btnPVisualizar.Text = "Visualizar";
+            this.btnPVisualizar.UseVisualStyleBackColor = true;
+            this.btnPVisualizar.Click += new System.EventHandler(this.btnPVisualizar_Click);
+            // 
+            // dtpPFechaInicial
+            // 
+            this.dtpPFechaInicial.CustomFormat = "dd/MM/yyyy";
+            this.dtpPFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPFechaInicial.Location = new System.Drawing.Point(6, 49);
+            this.dtpPFechaInicial.Name = "dtpPFechaInicial";
+            this.dtpPFechaInicial.Size = new System.Drawing.Size(223, 23);
+            this.dtpPFechaInicial.TabIndex = 2;
             // 
             // tabPage2
             // 
@@ -609,6 +735,11 @@
             this.wkr03.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr03_DoWork);
             this.wkr03.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr03_RunWorkerCompleted);
             // 
+            // wkr04
+            // 
+            this.wkr04.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr04_DoWork);
+            this.wkr04.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr04_RunWorkerCompleted);
+            // 
             // frmReporteContable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -624,6 +755,10 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReporteContable_FormClosing);
             this.Load += new System.EventHandler(this.frmReporteContable_Load);
             this.tab01.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdPDatos)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -692,5 +827,15 @@
         private System.Windows.Forms.DataGridView grdDatosDet;
         private System.Windows.Forms.Button btnCerrarPanel;
         private System.Windows.Forms.Button btnExportarDetalle;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView grdPDatos;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chkPUsarFechaFinal;
+        private System.Windows.Forms.DateTimePicker dtpPFechaFinal;
+        private System.Windows.Forms.CheckBox chkPUsarFechaInicial;
+        private System.Windows.Forms.Button btnPExportar;
+        private System.Windows.Forms.Button btnPVisualizar;
+        private System.Windows.Forms.DateTimePicker dtpPFechaInicial;
+        private System.ComponentModel.BackgroundWorker wkr04;
     }
 }

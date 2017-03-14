@@ -53,6 +53,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
             this.sfd01 = new System.Windows.Forms.SaveFileDialog();
+            this.chkAuto = new System.Windows.Forms.CheckBox();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngValor)).BeginInit();
@@ -81,6 +82,7 @@
             // 
             // tabCrear
             // 
+            this.tabCrear.Controls.Add(this.chkAuto);
             this.tabCrear.Controls.Add(this.txtIngValor);
             this.tabCrear.Controls.Add(this.label7);
             this.tabCrear.Controls.Add(this.txtIngMes);
@@ -101,7 +103,7 @@
             // txtIngValor
             // 
             this.txtIngValor.DecimalPlaces = 4;
-            this.txtIngValor.Location = new System.Drawing.Point(61, 100);
+            this.txtIngValor.Location = new System.Drawing.Point(61, 125);
             this.txtIngValor.Name = "txtIngValor";
             this.txtIngValor.Size = new System.Drawing.Size(252, 23);
             this.txtIngValor.TabIndex = 3;
@@ -109,7 +111,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 102);
+            this.label7.Location = new System.Drawing.Point(8, 127);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 17);
@@ -118,7 +120,8 @@
             // 
             // txtIngMes
             // 
-            this.txtIngMes.Location = new System.Drawing.Point(61, 71);
+            this.txtIngMes.Enabled = false;
+            this.txtIngMes.Location = new System.Drawing.Point(61, 96);
             this.txtIngMes.Maximum = new decimal(new int[] {
             12,
             0,
@@ -141,7 +144,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 73);
+            this.label6.Location = new System.Drawing.Point(8, 98);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 17);
@@ -150,7 +153,8 @@
             // 
             // txtIngAnno
             // 
-            this.txtIngAnno.Location = new System.Drawing.Point(61, 42);
+            this.txtIngAnno.Enabled = false;
+            this.txtIngAnno.Location = new System.Drawing.Point(61, 67);
             this.txtIngAnno.Maximum = new decimal(new int[] {
             2100,
             0,
@@ -173,7 +177,7 @@
             // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(61, 129);
+            this.btnCrear.Location = new System.Drawing.Point(61, 154);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(252, 24);
             this.btnCrear.TabIndex = 4;
@@ -184,7 +188,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 44);
+            this.label3.Location = new System.Drawing.Point(8, 69);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 17);
@@ -349,6 +353,19 @@
             this.sfd01.DefaultExt = "*.xlsx";
             this.sfd01.Filter = "Archivos de Excel|*.xlsx";
             // 
+            // chkAuto
+            // 
+            this.chkAuto.AutoSize = true;
+            this.chkAuto.Checked = true;
+            this.chkAuto.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAuto.Location = new System.Drawing.Point(61, 40);
+            this.chkAuto.Name = "chkAuto";
+            this.chkAuto.Size = new System.Drawing.Size(329, 21);
+            this.chkAuto.TabIndex = 22;
+            this.chkAuto.Text = "Obtener automáticamente el periodo faltante";
+            this.chkAuto.UseVisualStyleBackColor = true;
+            this.chkAuto.CheckedChanged += new System.EventHandler(this.chkAuto_CheckedChanged);
+            // 
             // frmTIIE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -402,5 +419,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtModMes;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chkAuto;
     }
 }

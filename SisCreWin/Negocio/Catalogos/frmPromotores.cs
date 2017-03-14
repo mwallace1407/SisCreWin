@@ -19,7 +19,7 @@ namespace SisCreWin.Negocio.Catalogos
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT();
 
-            Resultado = clsBD.Catalogos_C_Promotores();
+            Resultado = clsBD.Catalogos_C_Promotores(true);
 
             if (!Resultado.HayError)
             {
@@ -30,6 +30,8 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[0].ReadOnly = true;
                 grdDatos.Columns[1].ReadOnly = true;
                 grdDatos.Columns[2].ReadOnly = true;
+
+                clsGeneral.FormatoResaltadoGrid(ref grdDatos, "Prom_Activo", "N");
             }
             else
             {

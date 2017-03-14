@@ -725,11 +725,17 @@ namespace SisCreWin.BD
         #region Negocio
         #region Catalogos
         //Promotores
-        public static ResultadoStored_DT Catalogos_C_Promotores()
+        public static ResultadoStored_DT Catalogos_C_Promotores(bool ObtenerTodos = false)
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
 
-            Resultado = EjecutarStored_DT(CatalogoStoreds.Catalogos_C_Promotores, null);
+            param = new SqlParameter("@ObtenerTodos", SqlDbType.Bit);
+            param.Value = ObtenerTodos;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Catalogos_C_Promotores, paramC);
 
             return Resultado;
         }
@@ -789,11 +795,17 @@ namespace SisCreWin.BD
         }
         //!Promotores
         //Proyectos
-        public static ResultadoStored_DT Catalogos_C_Proyectos()
+        public static ResultadoStored_DT Catalogos_C_Proyectos(bool ObtenerTodos = false)
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
 
-            Resultado = EjecutarStored_DT(CatalogoStoreds.Catalogos_C_Proyectos, null);
+            param = new SqlParameter("@ObtenerTodos", SqlDbType.Bit);
+            param.Value = ObtenerTodos;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Catalogos_C_Proyectos, paramC);
 
             return Resultado;
         }
@@ -973,6 +985,33 @@ namespace SisCreWin.BD
             paramC.Add(param);
 
             Resultado = EjecutarStored_Str(CatalogoStoreds.Catalogos_C_TIIEBitacora, paramC, "ColXML");
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Catalogos_C_ObtenerTIIEMaxima()
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Catalogos_C_ObtenerTIIEMaxima, null);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Int Catalogos_C_TIIEVerificarExistente(clsGeneral.TIIE TIIE)
+        {
+            ResultadoStored_Int Resultado = new ResultadoStored_Int(0, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@TIIE_Mes", SqlDbType.Int);
+            param.Value = TIIE.TIIE_Mes;
+            paramC.Add(param);
+            param = new SqlParameter("@TIIE_Anno", SqlDbType.Int);
+            param.Value = TIIE.TIIE_Anno;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_Int(CatalogoStoreds.Catalogos_C_TIIEVerificarExistente, paramC, "MensajeBD");
 
             return Resultado;
         }
@@ -1567,14 +1606,17 @@ namespace SisCreWin.BD
             return Resultado;
         }
 
-        public static ResultadoStored_DT Puentes_C_ReporteContableMensual(DateTime? SCP_Fecha)
+        public static ResultadoStored_DT Puentes_C_ReporteContableMensual(DateTime? Fecha_Ini, DateTime? Fecha_Fin)
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
             SqlParameter param;
             List<SqlParameter> paramC = new List<SqlParameter>();
             
-            param = new SqlParameter("@SCP_Fecha", SqlDbType.DateTime);
-            param.Value = SCP_Fecha;
+            param = new SqlParameter("@Fecha_Ini", SqlDbType.DateTime);
+            param.Value = Fecha_Ini;
+            paramC.Add(param);
+            param = new SqlParameter("@Fecha_Fin", SqlDbType.DateTime);
+            param.Value = Fecha_Fin;
             paramC.Add(param);
 
             Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_ReporteContableMensual, paramC);

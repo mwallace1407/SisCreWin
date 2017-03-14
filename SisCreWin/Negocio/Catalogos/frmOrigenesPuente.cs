@@ -41,6 +41,8 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[5].ReadOnly = true;
                 grdDatos.Columns[6].ReadOnly = true;
                 grdDatos.Columns[6].Visible = false;
+
+                clsGeneral.FormatoResaltadoGrid(ref grdDatos, "OCP_Estado", "LIQUIDADO");
             }
             else
             {
@@ -60,6 +62,8 @@ namespace SisCreWin.Negocio.Catalogos
                 cboIngProyectos.ValueMember = "Prom_Id";
                 cboIngProyectos.DataSource = Resultado.Resultado;
 
+                Resultado = new BD.ResultadoStored_DT();
+                Resultado = clsBD.Catalogos_C_Proyectos(true);
                 cboModProyectos.DisplayMember = "Prom_Nombre";
                 cboModProyectos.ValueMember = "Prom_Id";
                 cboModProyectos.DataSource = Resultado.Resultado;

@@ -39,13 +39,18 @@ namespace SisCreWin.Negocio.Puentes
         }
         #endregion Enumeraciones
         #region Metodos
-        private void CargaValoresIniciales()
+        private void ValoresIniciales()
         {
             txtTopSel.Value = 100;
             dtpFechaFin.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.AddDays(1).ToString("dd/MM/yyyy")).AddMilliseconds(-1);
             dtpFechaFin.Value = dtpFechaFin.MaxDate;
             dtpFechaIni.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.ToString("dd/MM/yyyy"));
             dtpFechaIni.Value = dtpFechaIni.MaxDate;
+
+            dtpPFechaFinal.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.AddDays(1).ToString("dd/MM/yyyy")).AddMilliseconds(-1);
+            dtpPFechaFinal.Value = dtpPFechaFinal.MaxDate;
+            dtpPFechaInicial.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.ToString("dd/MM/yyyy"));
+            dtpPFechaInicial.Value = dtpPFechaInicial.MaxDate;
 
             cboUsuarios.DisplayMember = "Usr_Nombre";
             cboUsuarios.ValueMember = "Usr_Id";
@@ -63,7 +68,7 @@ namespace SisCreWin.Negocio.Puentes
             cboCierresGenerados.ValueMember = "Valor";
             cboCierresGenerados.DataSource = clsBD.Puentes_C_ObtenerFechasCierre(true).Resultado;
 
-            if (tab01.SelectedIndex == 0)
+            if (tab01.SelectedIndex == 1)
             {
                 if (cboFechasGen.Items.Count == 0)
                 {
@@ -76,7 +81,7 @@ namespace SisCreWin.Negocio.Puentes
                 }
             }
 
-            if (tab01.SelectedIndex == 1)
+            if (tab01.SelectedIndex == 2)
             {
                 if (cboFechas.Items.Count == 0)
                 {
@@ -89,7 +94,7 @@ namespace SisCreWin.Negocio.Puentes
                 }
             }
 
-            if (tab01.SelectedIndex == 2)
+            if (tab01.SelectedIndex == 3)
             {
                 if (cboCierresGenerados.Items.Count == 0)
                 {
@@ -110,6 +115,8 @@ namespace SisCreWin.Negocio.Puentes
         private void Procesar()
         {
             Fecha = (DateTime?)cboFechasGen.SelectedValue;
+            Fecha_Ini = new DateTime(Fecha.Value.Year, Fecha.Value.Month, 1);
+            Fecha_Fin = Fecha_Ini.Value.AddMonths(1).AddMilliseconds(-1);
 
             pnlProgreso.Size = new Size(this.Width - 6, this.Height - 6);
             pnlProgreso.Location = new Point(3, 3);
@@ -123,6 +130,8 @@ namespace SisCreWin.Negocio.Puentes
         private void ProcesarGen()
         {
             Fecha = (DateTime?)cboFechasGen.SelectedValue;
+            Fecha_Ini = new DateTime(Fecha.Value.Year, Fecha.Value.Month, 1);
+            Fecha_Fin = Fecha_Ini.Value.AddMonths(1).AddMilliseconds(-1);
 
             pnlProgreso.Size = new Size(this.Width - 6, this.Height - 6);
             pnlProgreso.Location = new Point(3, 3);
@@ -195,9 +204,12 @@ namespace SisCreWin.Negocio.Puentes
             ResultadoExport exp = new ResultadoExport();
             SqlParameter param;
             List<SqlParameter> paramC = new List<SqlParameter>();
-            
-            param = new SqlParameter("@SCP_Fecha", SqlDbType.DateTime);
-            param.Value = Fecha;
+
+            param = new SqlParameter("@Fecha_Ini", SqlDbType.DateTime);
+            param.Value = Fecha_Ini;
+            paramC.Add(param);
+            param = new SqlParameter("@Fecha_Fin", SqlDbType.DateTime);
+            param.Value = Fecha_Fin;
             paramC.Add(param);
 
             exp = clsBD.ExportarExcel(CatalogoStoreds.Puentes_C_ReporteContableMensual, paramC);
@@ -303,11 +315,76 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show(ResultadoGrid.Error, "Error al obtener datos de cierres generados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ProcesarP()
+        {
+            Fecha_Ini = (chkPUsarFechaInicial.Checked) ? (DateTime?)dtpPFechaInicial.Value : null;
+            Fecha_Fin = (chkPUsarFechaFinal.Checked) ? (DateTime?)dtpPFechaFinal.Value : null;
+
+            pnlProgreso.Size = new Size(this.Width - 6, this.Height - 6);
+            pnlProgreso.Location = new Point(3, 3);
+            pnlProgreso.Visible = true;
+            EnProceso = true;
+            Sistema.Global.ProcesosPendientes = true;
+
+            wkr04.RunWorkerAsync();
+        }
+
+        private void ExportarP()
+        {
+            ResultadoExport exp = new ResultadoExport();
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+            
+            param = new SqlParameter("@Fecha_Ini", SqlDbType.DateTime);
+            param.Value = Fecha_Ini;
+            paramC.Add(param);
+            param = new SqlParameter("@Fecha_Fin", SqlDbType.DateTime);
+            param.Value = Fecha_Fin;
+            paramC.Add(param);
+
+            exp = clsBD.ExportarExcel(CatalogoStoreds.Puentes_C_ReporteContableMensual, paramC);
+
+            if (!exp.HayError)
+            {
+                try
+                {
+                    Archivo = exp.Archivo;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CargarGridP()
+        {
+            if (!ResultadoGrid.HayError)
+            {
+                grdPDatos.DataSource = ResultadoGrid.Resultado;
+
+                for (int w = 0; w < grdPDatos.Columns.Count; w++)
+                {
+                    grdPDatos.Columns[w].ReadOnly = true;
+                }
+
+                grdPDatos.ClearSelection();
+            }
+            else
+            {
+                MessageBox.Show(ResultadoGrid.Error, "Error al obtener el reporte", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion Metodos
         #region Eventos
         private void frmReporteContable_Load(object sender, EventArgs e)
         {
-            CargaValoresIniciales();
+            ValoresIniciales();
         }
 
         private void btnVisualizar_Click(object sender, EventArgs e)
@@ -318,7 +395,7 @@ namespace SisCreWin.Negocio.Puentes
         private void wkr01_DoWork(object sender, DoWorkEventArgs e)
         {
             ResultadoGrid = new BD.ResultadoStored_DT();
-            ResultadoGrid = clsBD.Puentes_C_ReporteContableMensual(Fecha);
+            ResultadoGrid = clsBD.Puentes_C_ReporteContableMensual(Fecha_Ini, Fecha_Fin);
 
             if (tipoProceso == TipoProceso.Extraccion)
                 Exportar();
@@ -361,7 +438,9 @@ namespace SisCreWin.Negocio.Puentes
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             ErrorProceso = string.Empty;
-            ProcesarGen();
+
+            if (MessageBox.Show("¿Está seguro de realizar el cierre contable?" + Environment.NewLine + "Este es un procedimiento que no tiene reverso", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                ProcesarGen();
         }
         
         private void wkr02_DoWork(object sender, DoWorkEventArgs e)
@@ -370,7 +449,7 @@ namespace SisCreWin.Negocio.Puentes
 
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Puentes_M_CierreMensual, vBit_DatosPrevios: clsGeneral.Zip("Parámetros: Periodo = " + Fecha.Value.ToString("MMyyyy")));
             ResultadoGrid = new BD.ResultadoStored_DT();
-            ResultadoGrid = clsBD.Puentes_C_ReporteContableMensual(Fecha);
+            ResultadoGrid = clsBD.Puentes_C_ReporteContableMensual(Fecha_Ini, Fecha_Fin);
 
             if(!ResultadoGrid.HayError)
             {
@@ -394,7 +473,7 @@ namespace SisCreWin.Negocio.Puentes
             pnlProgreso.Visible = false;
             EnProceso = false;
             Sistema.Global.ProcesosPendientes = false;
-            CargaValoresIniciales();
+            ValoresIniciales();
 
             if (ErrorProceso != string.Empty)
                 MessageBox.Show(ErrorProceso, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -404,13 +483,25 @@ namespace SisCreWin.Negocio.Puentes
 
         private void tab01_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargaValoresIniciales();
+            ValoresIniciales();
 
-            if (tab01.SelectedIndex == 2)
+            if (tab01.SelectedIndex == 3)
             {
                 clsGeneral.RespuestaAcceso Respuesta = new Modelo.clsGeneral.RespuestaAcceso();
 
                 Respuesta = clsGeneral.ValidarAccesoUsuario(Sistema.Global.Usr_Id, CatalogoModulos.Puentes_RegenerarCierreMensual);
+
+                if (!Respuesta.Permitido)
+                {
+                    MessageBox.Show(Respuesta.Mensaje, Respuesta.Titulo, MessageBoxButtons.OK, Respuesta.MsgIcon);
+                    tab01.SelectedIndex = 0;
+                }
+            }
+            else if (tab01.SelectedIndex == 1)
+            {
+                clsGeneral.RespuestaAcceso Respuesta = new Modelo.clsGeneral.RespuestaAcceso();
+
+                Respuesta = clsGeneral.ValidarAccesoUsuario(Sistema.Global.Usr_Id, CatalogoModulos.Puentes_GenerarCierreMensual);
 
                 if (!Respuesta.Permitido)
                 {
@@ -602,7 +693,7 @@ namespace SisCreWin.Negocio.Puentes
 
                 if (!Resultado.HayError)
                 {
-                    CargaValoresIniciales();
+                    ValoresIniciales();
                     MessageBox.Show("Se ha autorizado el reproceso del cierre", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -612,5 +703,80 @@ namespace SisCreWin.Negocio.Puentes
             }
         }
         #endregion Eventos
+
+        private void chkPUsarFechaInicial_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpPFechaInicial.Enabled = chkPUsarFechaInicial.Checked;
+        }
+
+        private void chkPUsarFechaFinal_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpPFechaInicial.MaxDate = clsGeneral.ObtieneFecha(dtpPFechaFinal.Value.ToString("dd/MM/yyyy"));
+
+            if (dtpPFechaFinal.Value < dtpPFechaInicial.Value)
+                dtpPFechaInicial.Value = dtpPFechaInicial.MaxDate;
+        }
+
+        private void dtpPFechaFinal_ValueChanged(object sender, EventArgs e)
+        {
+            dtpPFechaInicial.MaxDate = clsGeneral.ObtieneFecha(dtpPFechaFinal.Value.ToString("dd/MM/yyyy"));
+
+            if (dtpPFechaFinal.Value < dtpPFechaInicial.Value)
+                dtpPFechaInicial.Value = dtpPFechaInicial.MaxDate;
+        }
+
+        private void btnPVisualizar_Click(object sender, EventArgs e)
+        {
+            tipoProceso = TipoProceso.Visualizacion;
+            ProcesarP();
+        }
+
+        private void btnPExportar_Click(object sender, EventArgs e)
+        {
+            if (grdPDatos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar", "Exportar a Excel", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            Archivo = string.Empty;
+            tipoProceso = TipoProceso.Extraccion;
+            ProcesarP();
+        }
+
+        private void wkr04_DoWork(object sender, DoWorkEventArgs e)
+        {
+            ResultadoGrid = new BD.ResultadoStored_DT();
+            ResultadoGrid = clsBD.Puentes_C_ReporteContableMensual(Fecha_Ini, Fecha_Fin);
+
+            if (tipoProceso == TipoProceso.Extraccion)
+                ExportarP();
+        }
+
+        private void wkr04_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (tipoProceso == TipoProceso.Visualizacion)
+            {
+                CargarGridP();
+            }
+            else
+            {
+                try
+                {
+                    if (System.IO.File.Exists(Archivo))
+                        System.Diagnostics.Process.Start(Archivo);
+                    else
+                        MessageBox.Show("No existe el archivo especificado", "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            pnlProgreso.Visible = false;
+            EnProceso = false;
+            Sistema.Global.ProcesosPendientes = false;
+        }
     }
 }

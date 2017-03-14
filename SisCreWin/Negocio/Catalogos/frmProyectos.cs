@@ -19,7 +19,7 @@ namespace SisCreWin.Negocio.Catalogos
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT();
 
-            Resultado = clsBD.Catalogos_C_Proyectos();
+            Resultado = clsBD.Catalogos_C_Proyectos(true);
 
             if (!Resultado.HayError)
             {
@@ -51,6 +51,8 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[11].ReadOnly = true;
                 grdDatos.Columns[12].ReadOnly = true;
                 grdDatos.Columns[1].Visible = false;
+
+                clsGeneral.FormatoResaltadoGrid(ref grdDatos, "Proy_Activo", "N");
             }
             else
             {
@@ -68,6 +70,8 @@ namespace SisCreWin.Negocio.Catalogos
             cboIngPromotor.DisplayMember = "Prom_Nombre";
             cboIngPromotor.DataSource = Resultado.Resultado;
 
+            Resultado = new ResultadoStored_DT();
+            Resultado = clsBD.Catalogos_C_Promotores(true);
             cboModPromotor.ValueMember = "Prom_Id";
             cboModPromotor.DisplayMember = "Prom_Nombre";
             cboModPromotor.DataSource = Resultado.Resultado;
