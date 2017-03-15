@@ -202,12 +202,17 @@ namespace SisCreWin
         #region Eventos
         private void frmMain_Load(object sender, EventArgs e)
         {
+            BaseConectada baseC = clsBD.ObtenerBaseConectada();
+            DatosStatusBar sb = clsBD.Negocio_C_FechasDelSistema();
+
             this.Text = this.Text + " - " + Global.Usuario;
             tmrMtto.Enabled = true;
             tmrMtto.Start();
             ProcesarFecuentes();
-            stBaseConectada.Text = clsBD.ObtenerBaseConectada().BaseDatos;
-            stBaseConectada.ToolTipText = clsBD.ObtenerBaseConectada().Detalle;
+            stBaseConectada.Text = baseC.BaseDatos;
+            stBaseConectada.ToolTipText = baseC.Detalle;
+            stFechasSistema.Text = sb.Titulo;
+            stFechasSistema.ToolTipText = sb.Detalle;
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -356,6 +361,11 @@ namespace SisCreWin
         {
             base.OnSizeChanged(e);
             this.Refresh();
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
         #endregion Eventos
     }

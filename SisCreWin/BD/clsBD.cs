@@ -723,6 +723,32 @@ namespace SisCreWin.BD
         #endregion General
         #endregion Sistema
         #region Negocio
+        #region General
+        public static DatosStatusBar Negocio_C_FechasDelSistema()
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            DatosStatusBar sb = new DatosStatusBar();
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Negocio_C_FechasDelSistema, null);
+            sb.Titulo = "Fechas del sistema";
+
+            if (!Resultado.HayError)
+            {
+                sb.Detalle = string.Empty;
+
+                for (int w = 0; w < Resultado.Resultado.Columns.Count; w++)
+                {
+                    sb.Detalle += Resultado.Resultado.Columns[w].ColumnName + ": " + Resultado.Resultado.Rows[0][w].ToString() + Environment.NewLine;
+                }
+            }
+            else
+            {
+                sb.Detalle = Resultado.Error;
+            }
+
+            return sb;
+        }
+        #endregion General
         #region Catalogos
         //Promotores
         public static ResultadoStored_DT Catalogos_C_Promotores(bool ObtenerTodos = false)
@@ -1902,6 +1928,18 @@ namespace SisCreWin.BD
         public BaseConectada(string vBaseDatos, string vDetalle)
         {
             BaseDatos = vBaseDatos;
+            Detalle = vDetalle;
+        }
+    }
+
+    public struct DatosStatusBar
+    {
+        public string Titulo;
+        public string Detalle;
+
+        public DatosStatusBar(string vTitulo, string vDetalle)
+        {
+            Titulo = vTitulo;
             Detalle = vDetalle;
         }
     }

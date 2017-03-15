@@ -79,6 +79,7 @@
             this.stBaseConectada = new System.Windows.Forms.ToolStripStatusLabel();
             this.stMantenimiento = new System.Windows.Forms.ToolStripStatusLabel();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
+            this.stFechasSistema = new System.Windows.Forms.ToolStripStatusLabel();
             this.mnuMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -433,6 +434,7 @@
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stFechasSistema,
             this.stBaseConectada,
             this.stMantenimiento});
             this.statusStrip1.Location = new System.Drawing.Point(0, 725);
@@ -442,6 +444,7 @@
             this.statusStrip1.Size = new System.Drawing.Size(1300, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
             // stBaseConectada
             // 
@@ -459,6 +462,13 @@
             this.stMantenimiento.Size = new System.Drawing.Size(414, 17);
             this.stMantenimiento.Text = "El sistema se encuentra en mantenimiento. Espere por favor.";
             this.stMantenimiento.Visible = false;
+            // 
+            // stFechasSistema
+            // 
+            this.stFechasSistema.Image = global::SisCreWin.Properties.Resources.calendario_icon_32;
+            this.stFechasSistema.Name = "stFechasSistema";
+            this.stFechasSistema.Size = new System.Drawing.Size(144, 17);
+            this.stFechasSistema.Text = "Fechas del sistema";
             // 
             // frmMain
             // 
@@ -541,5 +551,6 @@
         private System.Windows.Forms.ToolTip tip01;
         private System.Windows.Forms.ToolStripMenuItem mnuTiposPagoPuentes;
         private System.Windows.Forms.ToolStripStatusLabel stBaseConectada;
+        private System.Windows.Forms.ToolStripStatusLabel stFechasSistema;
     }
 }

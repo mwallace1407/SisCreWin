@@ -49,6 +49,9 @@ namespace SisCreWin.Modelo
         //!General
         #endregion Sistema
         #region Negocio
+        //General
+        public static String Negocio_C_FechasDelSistema { get { return "sp_Negocio_C_FechasDelSistema"; } }
+        //!General
         //Promotores
         public static String Catalogos_C_Promotores { get { return "sp_Catalogos_C_Promotores"; } }
         public static String Catalogos_I_Promotores { get { return "sp_Catalogos_I_Promotores"; } }

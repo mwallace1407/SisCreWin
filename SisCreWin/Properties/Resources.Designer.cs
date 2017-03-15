@@ -73,6 +73,16 @@ namespace SisCreWin.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap calendario_icon_32 {
+            get {
+                object obj = ResourceManager.GetObject("calendario_icon_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap database_configuration_590 {
             get {
                 object obj = ResourceManager.GetObject("database-configuration-590", resourceCulture);

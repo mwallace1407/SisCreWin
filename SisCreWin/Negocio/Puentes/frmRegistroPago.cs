@@ -16,19 +16,13 @@ namespace SisCreWin.Negocio.Puentes
 {
     public partial class frmRegistroPago : Form
     {
-        #region Enumeraciones
-        private enum TipoProceso
-        {
-            Visualizacion,
-            Extraccion
-        }
-        #endregion Enumeraciones
         #region Variables
         clsGeneral.PuentesPagos Puente;
         clsGeneral.PuentesPagos PuenteQ;
         string ErrorProceso = string.Empty;
         string ArchivoProceso = string.Empty;
         bool EnProceso = false;
+        int NumeroPrestamoAnt = 0;
         //Pagos
         ResultadoStored_DT ResultadoGrid = new ResultadoStored_DT();
         int? NumeroPrestamo = null;
@@ -37,10 +31,34 @@ namespace SisCreWin.Negocio.Puentes
         TipoProceso tipoProceso;
         string Archivo;
         #endregion Variables
+        #region Enumeraciones
+        private enum TipoProceso
+        {
+            Visualizacion,
+            Extraccion
+        }
+        #endregion Enumeraciones
         #region Metodos
         public frmRegistroPago()
         {
             InitializeComponent();
+        }
+
+        private bool ExisteEnCombo(string Valor, ref ComboBox cbo)
+        {
+            bool Existe = false;
+
+            for (int w = 0; w < cbo.Items.Count; w++)
+            {
+                string ddd = cbo.GetItemText(cbo.Items[w]);
+                if (cbo.GetItemText(cbo.Items[w]) == Valor)
+                {
+                    Existe = true;
+                    break;
+                }
+            }
+
+            return Existe;
         }
 
         private void ValoresIniciales()
@@ -57,6 +75,7 @@ namespace SisCreWin.Negocio.Puentes
                 cboNumeroPrestamo.DisplayMember = "Descripcion";
                 cboNumeroPrestamo.ValueMember = "Valor";
                 cboNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos().Resultado;
+                cboNumeroPrestamo.SelectedValue = 277607;
                 cboTipoPago.DisplayMember = "Descripcion";
                 cboTipoPago.ValueMember = "Valor";
                 cboTipoPago.DataSource = clsBD.Puentes_C_TiposPago().Resultado;
@@ -219,6 +238,7 @@ namespace SisCreWin.Negocio.Puentes
             else
             {
                 clsGeneral.EnableTab(tabP02, true);
+                tabPagos.SelectedIndex = 1;
 
                 switch (cboTipoPago.Text.ToLowerInvariant())
                 {
@@ -471,6 +491,7 @@ namespace SisCreWin.Negocio.Puentes
             ErrorProceso = string.Empty;
             EnProceso = true;
             Sistema.Global.ProcesosPendientes = true;
+            NumeroPrestamoAnt = Convert.ToInt32(cboNumeroPrestamo.Text);
             Puente = new clsGeneral.PuentesPagos(Sistema.Global.Usr_Id, Convert.ToInt32(cboTipoPago.SelectedValue), dtpFechaPago.Value, Convert.ToInt32(cboNumeroPrestamo.Text), txtPagoCapital.Value, txtInteresCubierto.Value, txtInteresCapVenc.Value, txtComiAplicacion.Value, txtPagoIntMoratorios.Value, vPHP_Observaciones: txtObservaciones.Text.Trim());
             PuenteQ = new clsGeneral.PuentesPagos(Sistema.Global.Usr_Id, Convert.ToInt32(cboTipoPago.SelectedValue), dtpFechaPago.Value, Convert.ToInt32(cboNumeroPrestamo.Text), txtQPagoCapital.Value, txtQInteresCubierto.Value, txtQInteresCapVenc.Value, txtQComiAplicacion.Value, txtQPagoIntMoratorios.Value, vPHP_Observaciones: txtQObservaciones.Text.Trim());
             wkr01.RunWorkerAsync();
@@ -500,6 +521,15 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show("Se han realizado los movimientos de aplicación de pago.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             ValoresIniciales();
+            
+            if (cboNumeroPrestamo.FindString(NumeroPrestamoAnt.ToString()) >= 0)
+            {
+                cboNumeroPrestamo.SelectedValue = NumeroPrestamoAnt;
+            }
+            else
+            {
+                MessageBox.Show("El número de crédito procesado (" + NumeroPrestamoAnt.ToString() + ") no se encuentra en el listado. Esto puede deberse a que se encuentra liquidado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void frmRegistroPago_FormClosing(object sender, FormClosingEventArgs e)
