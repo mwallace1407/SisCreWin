@@ -1845,6 +1845,24 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
+        public static ResultadoStored_DT Puentes_C_CarteraFechaDeterminada(DateTime? Fecha_Ini, DateTime? Fecha_Fin)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@Fecha_Ini", SqlDbType.DateTime);
+            param.Value = Fecha_Ini;
+            paramC.Add(param);
+            param = new SqlParameter("@Fecha_Fin", SqlDbType.DateTime);
+            param.Value = Fecha_Fin;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_CarteraFechaDeterminada, paramC);
+
+            return Resultado;
+        }
         //!Operaciones_Puentes
         #endregion Puentes
         #endregion Negocio

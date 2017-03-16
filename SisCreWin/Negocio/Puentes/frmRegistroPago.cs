@@ -75,7 +75,6 @@ namespace SisCreWin.Negocio.Puentes
                 cboNumeroPrestamo.DisplayMember = "Descripcion";
                 cboNumeroPrestamo.ValueMember = "Valor";
                 cboNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos().Resultado;
-                cboNumeroPrestamo.SelectedValue = 277607;
                 cboTipoPago.DisplayMember = "Descripcion";
                 cboTipoPago.ValueMember = "Valor";
                 cboTipoPago.DataSource = clsBD.Puentes_C_TiposPago().Resultado;
@@ -572,7 +571,7 @@ namespace SisCreWin.Negocio.Puentes
 
         private void cboNumeroPrestamo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((int)cboNumeroPrestamo.SelectedValue > 0)
+            if (cboNumeroPrestamo.Items.Count > 0 && (int)cboNumeroPrestamo.SelectedValue > 0)
                 CargarGrid();
         }
 

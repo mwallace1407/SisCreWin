@@ -34,7 +34,7 @@ namespace SisCreWin.Negocio.Buro
 
             txtTopSel.Value = 100;
             txtIdentificador.Value = Convert.ToInt32(clsGeneral.ObtieneFecha("01" + "/" + DateTime.Now.AddMonths(-1).ToString("MM/yyyy")).ToString("yyyyMM"));
-            dtpFechaFin.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.AddDays(1).ToString("dd/MM/yyyy")).AddMilliseconds(-1);
+            dtpFechaFin.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.AddDays(1).ToString("dd/MM/yyyy")).AddMilliseconds(-2);
             dtpFechaFin.Value = dtpFechaFin.MaxDate;
             dtpFechaIni.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.ToString("dd/MM/yyyy"));
             dtpFechaIni.Value = dtpFechaIni.MaxDate;

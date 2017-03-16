@@ -128,10 +128,13 @@ namespace SisCreWin
                     frmGen = new frmReporteContable();
                     break;
                 case 20:
-                    frmGen = new frmReporteContable();
+                    frmGen = new frmCierreMensual();
                     break;
                 case 21:
                     frmGen = new frmTiposPagoPuentes();
+                    break;
+                case 22:
+                    frmGen = new frmCierreMensual();
                     break;
                 default:
                     break;
@@ -225,6 +228,35 @@ namespace SisCreWin
             {
                 Application.Exit();
             }
+        }
+
+        private void tmrMtto_Tick(object sender, EventArgs e)
+        {
+            if (clsGeneral.SistemaEnMantenimiento(Global.Usr_Id))
+            {
+                this.Enabled = false;
+                stMantenimiento.Visible = true;
+            }
+            else
+            {
+                //foreach (Form frm in this.MdiChildren)
+                //{
+                //    frm.Enabled = true;
+                //}
+                this.Enabled = true;
+                stMantenimiento.Visible = false;
+            }
+        }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+            this.Refresh();
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
         
         #region Menu
@@ -330,43 +362,24 @@ namespace SisCreWin
 
         private void mnuRptContaPuentes_Click(object sender, EventArgs e)
         {
-            AbrirVentana(CatalogoModulos.Puentes_ReporteContable);
+            AbrirVentana(CatalogoModulos.Puentes_GenerarCierreMensual);
         }
 
         private void mnuTiposPagoPuentes_Click(object sender, EventArgs e)
         {
             AbrirVentana(CatalogoModulos.Catalogos_TiposPagoPuentes_ABC);
         }
+
+        private void mnuConsultarCartera_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Puentes_ReporteContable);
+        }
         #endregion Menu
-
-        private void tmrMtto_Tick(object sender, EventArgs e)
-        {
-            if (clsGeneral.SistemaEnMantenimiento(Global.Usr_Id))
-            {
-                this.Enabled = false;
-                stMantenimiento.Visible = true;
-            }
-            else
-            {
-                //foreach (Form frm in this.MdiChildren)
-                //{
-                //    frm.Enabled = true;
-                //}
-                this.Enabled = true;
-                stMantenimiento.Visible = false;
-            }
-        }
-
-        protected override void OnSizeChanged(EventArgs e)
-        {
-            base.OnSizeChanged(e);
-            this.Refresh();
-        }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
         #endregion Eventos
+
+        private void mnuFreq1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

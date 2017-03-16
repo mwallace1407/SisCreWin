@@ -117,6 +117,7 @@ namespace SisCreWin.Modelo
         public static String Puentes_C_HistoricoDePago { get { return "sp_Puentes_C_HistoricoDePago"; } }
         public static String Puentes_C_ReporteDePagos { get { return "sp_Puentes_C_ReporteDePagos"; } }
         public static String Puentes_C_ObtenerSaldosParaLiquidar { get { return "sp_Puentes_C_ObtenerSaldosParaLiquidar"; } }
+        public static String Puentes_C_CarteraFechaDeterminada { get { return "sp_Puentes_C_CarteraFechaDeterminada"; } }
         //!Operaciones_Puentes
         #endregion Negocio
         #endregion Variables

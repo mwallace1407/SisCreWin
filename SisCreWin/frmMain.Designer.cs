@@ -76,10 +76,11 @@
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrMtto = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.stFechasSistema = new System.Windows.Forms.ToolStripStatusLabel();
             this.stBaseConectada = new System.Windows.Forms.ToolStripStatusLabel();
             this.stMantenimiento = new System.Windows.Forms.ToolStripStatusLabel();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
-            this.stFechasSistema = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuConsultarCartera = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -130,61 +131,62 @@
             // mnuFreq1
             // 
             this.mnuFreq1.Name = "mnuFreq1";
-            this.mnuFreq1.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq1.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq1.Text = "01";
+            this.mnuFreq1.Click += new System.EventHandler(this.mnuFreq1_Click);
             // 
             // mnuFreq2
             // 
             this.mnuFreq2.Name = "mnuFreq2";
-            this.mnuFreq2.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq2.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq2.Text = "02";
             // 
             // mnuFreq3
             // 
             this.mnuFreq3.Name = "mnuFreq3";
-            this.mnuFreq3.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq3.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq3.Text = "03";
             // 
             // mnuFreq4
             // 
             this.mnuFreq4.Name = "mnuFreq4";
-            this.mnuFreq4.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq4.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq4.Text = "04";
             // 
             // mnuFreq5
             // 
             this.mnuFreq5.Name = "mnuFreq5";
-            this.mnuFreq5.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq5.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq5.Text = "05";
             // 
             // mnuFreq6
             // 
             this.mnuFreq6.Name = "mnuFreq6";
-            this.mnuFreq6.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq6.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq6.Text = "06";
             // 
             // mnuFreq7
             // 
             this.mnuFreq7.Name = "mnuFreq7";
-            this.mnuFreq7.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq7.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq7.Text = "07";
             // 
             // mnuFreq8
             // 
             this.mnuFreq8.Name = "mnuFreq8";
-            this.mnuFreq8.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq8.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq8.Text = "08";
             // 
             // mnuFreq9
             // 
             this.mnuFreq9.Name = "mnuFreq9";
-            this.mnuFreq9.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq9.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq9.Text = "09";
             // 
             // mnuFreq10
             // 
             this.mnuFreq10.Name = "mnuFreq10";
-            this.mnuFreq10.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq10.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq10.Text = "10";
             // 
             // toolStripSeparator2
@@ -219,7 +221,7 @@
             this.mnuTIIE,
             this.mnuTiposPagoPuentes});
             this.catálogosToolStripMenuItem.Name = "catálogosToolStripMenuItem";
-            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.catálogosToolStripMenuItem.Text = "&Catálogos";
             // 
             // mnuPromotores
@@ -266,7 +268,7 @@
             this.mnuBuroHistInd,
             this.mnuBuroHistPuentes});
             this.buróToolStripMenuItem.Name = "buróToolStripMenuItem";
-            this.buróToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.buróToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.buróToolStripMenuItem.Text = "&Buró";
             // 
             // mnuCSVIndividuales
@@ -309,42 +311,43 @@
             this.mnuRegistrarPagoPuente,
             this.toolStripSeparator1,
             this.mnuHistoricoPuentes,
-            this.mnuRptContaPuentes});
+            this.mnuRptContaPuentes,
+            this.mnuConsultarCartera});
             this.puentesToolStripMenuItem.Name = "puentesToolStripMenuItem";
-            this.puentesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.puentesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.puentesToolStripMenuItem.Text = "&Puentes";
             // 
             // mnuCierreDiarioPuentes
             // 
             this.mnuCierreDiarioPuentes.Name = "mnuCierreDiarioPuentes";
-            this.mnuCierreDiarioPuentes.Size = new System.Drawing.Size(361, 22);
-            this.mnuCierreDiarioPuentes.Text = "Generar &cierre diario";
+            this.mnuCierreDiarioPuentes.Size = new System.Drawing.Size(332, 22);
+            this.mnuCierreDiarioPuentes.Text = "Generar cierre &diario";
             this.mnuCierreDiarioPuentes.Click += new System.EventHandler(this.mnuCierreDiarioPuentes_Click);
             // 
             // mnuRegistrarPagoPuente
             // 
             this.mnuRegistrarPagoPuente.Name = "mnuRegistrarPagoPuente";
-            this.mnuRegistrarPagoPuente.Size = new System.Drawing.Size(361, 22);
+            this.mnuRegistrarPagoPuente.Size = new System.Drawing.Size(332, 22);
             this.mnuRegistrarPagoPuente.Text = "Registrar &pago para un crédito";
             this.mnuRegistrarPagoPuente.Click += new System.EventHandler(this.mnuRegistrarPagoPuente_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(358, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(329, 6);
             // 
             // mnuHistoricoPuentes
             // 
             this.mnuHistoricoPuentes.Name = "mnuHistoricoPuentes";
-            this.mnuHistoricoPuentes.Size = new System.Drawing.Size(361, 22);
+            this.mnuHistoricoPuentes.Size = new System.Drawing.Size(332, 22);
             this.mnuHistoricoPuentes.Text = "Consultar &historial de créditos";
             this.mnuHistoricoPuentes.Click += new System.EventHandler(this.mnuHistoricoPuentes_Click);
             // 
             // mnuRptContaPuentes
             // 
             this.mnuRptContaPuentes.Name = "mnuRptContaPuentes";
-            this.mnuRptContaPuentes.Size = new System.Drawing.Size(361, 22);
-            this.mnuRptContaPuentes.Text = "&Generar / consultar cierre contable mensual";
+            this.mnuRptContaPuentes.Size = new System.Drawing.Size(332, 22);
+            this.mnuRptContaPuentes.Text = "Generar cierre &mensual";
             this.mnuRptContaPuentes.Click += new System.EventHandler(this.mnuRptContaPuentes_Click);
             // 
             // mnuSistema
@@ -446,6 +449,13 @@
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
+            // stFechasSistema
+            // 
+            this.stFechasSistema.Image = global::SisCreWin.Properties.Resources.calendario_icon_32;
+            this.stFechasSistema.Name = "stFechasSistema";
+            this.stFechasSistema.Size = new System.Drawing.Size(144, 17);
+            this.stFechasSistema.Text = "Fechas del sistema";
+            // 
             // stBaseConectada
             // 
             this.stBaseConectada.AutoToolTip = true;
@@ -463,12 +473,12 @@
             this.stMantenimiento.Text = "El sistema se encuentra en mantenimiento. Espere por favor.";
             this.stMantenimiento.Visible = false;
             // 
-            // stFechasSistema
+            // mnuConsultarCartera
             // 
-            this.stFechasSistema.Image = global::SisCreWin.Properties.Resources.calendario_icon_32;
-            this.stFechasSistema.Name = "stFechasSistema";
-            this.stFechasSistema.Size = new System.Drawing.Size(144, 17);
-            this.stFechasSistema.Text = "Fechas del sistema";
+            this.mnuConsultarCartera.Name = "mnuConsultarCartera";
+            this.mnuConsultarCartera.Size = new System.Drawing.Size(332, 22);
+            this.mnuConsultarCartera.Text = "Consultar &cartera a fecha determinada";
+            this.mnuConsultarCartera.Click += new System.EventHandler(this.mnuConsultarCartera_Click);
             // 
             // frmMain
             // 
@@ -552,5 +562,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTiposPagoPuentes;
         private System.Windows.Forms.ToolStripStatusLabel stBaseConectada;
         private System.Windows.Forms.ToolStripStatusLabel stFechasSistema;
+        private System.Windows.Forms.ToolStripMenuItem mnuConsultarCartera;
     }
 }

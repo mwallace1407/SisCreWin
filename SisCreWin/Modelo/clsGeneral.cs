@@ -357,6 +357,14 @@ namespace SisCreWin.Modelo
                 }
             }
         }
+
+        public static DateTime ObtenerUltimoDiaMes(int Anno, int Mes, bool FechaConMilisegundos)
+        {
+            if (FechaConMilisegundos)
+                return new DateTime(Anno, Mes, 1).AddMonths(1).AddMilliseconds(-2);
+            else
+                return new DateTime(Anno, Mes, 1).AddMonths(1).AddDays(-1);
+        }
         #endregion Metodos
         #region Modelos
         #region Sistema
