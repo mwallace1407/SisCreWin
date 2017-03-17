@@ -21,6 +21,7 @@ namespace SisCreWin
     {
         #region Variables
         DataTable ModulosFecuentes = new DataTable();
+        frmInfo formInfo = new frmInfo();
         #endregion Variables
         #region Propiedades
         #endregion Propiedades
@@ -136,6 +137,9 @@ namespace SisCreWin
                 case 22:
                     frmGen = new frmCierreMensual();
                     break;
+                case 23:
+                    frmGen = new frmFechaContablePuentes();
+                    break;
                 default:
                     break;
             }
@@ -159,6 +163,7 @@ namespace SisCreWin
                 frmGen.MdiParent = this;
                 frmGen.Icon = SisCreWin.Properties.Resources.favicon;
                 frmGen.Show();
+                frmGen.BringToFront();
             }
             else
             {
@@ -201,21 +206,35 @@ namespace SisCreWin
                 MessageBox.Show("No se pudo obtener la lista para su usuario", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        #endregion Metodos
-        #region Eventos
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            BaseConectada baseC = clsBD.ObtenerBaseConectada();
-            DatosStatusBar sb = clsBD.Negocio_C_FechasDelSistema();
 
-            this.Text = this.Text + " - " + Global.Usuario;
-            tmrMtto.Enabled = true;
-            tmrMtto.Start();
-            ProcesarFecuentes();
+        private void ParametrosSistema()
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+
+            Resultado = clsBD.Negocio_C_DatosDelSistema();
+
+            BaseConectada baseC = clsBD.ObtenerBaseConectada();
+            DatosStatusBar sb = clsBD.Negocio_C_FechasDelSistema(Resultado);
+
             stBaseConectada.Text = baseC.BaseDatos;
             stBaseConectada.ToolTipText = baseC.Detalle;
             stFechasSistema.Text = sb.Titulo;
             stFechasSistema.ToolTipText = sb.Detalle;
+        }
+        #endregion Metodos
+        #region Eventos
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            ParametrosSistema();
+            this.Text = this.Text + " - " + Global.Usuario;
+            tmrMtto.Enabled = true;
+            tmrMtto.Start();
+            ProcesarFecuentes();
+            formInfo.StartPosition = FormStartPosition.Manual;
+            formInfo.Location = new Point(this.ClientSize.Width - (formInfo.Width + (SystemInformation.Border3DSize.Width * 2)) - 10, 10);
+            formInfo.MdiParent = this;
+            formInfo.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            formInfo.Show();
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -232,6 +251,8 @@ namespace SisCreWin
 
         private void tmrMtto_Tick(object sender, EventArgs e)
         {
+            ParametrosSistema();
+
             if (clsGeneral.SistemaEnMantenimiento(Global.Usr_Id))
             {
                 this.Enabled = false;
@@ -374,12 +395,22 @@ namespace SisCreWin
         {
             AbrirVentana(CatalogoModulos.Puentes_ReporteContable);
         }
+
+        private void mnuFechaContable_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Puentes_EstablecerFechaContable);
+        }
         #endregion Menu
         #endregion Eventos
 
         private void mnuFreq1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void statusStrip1_Click(object sender, EventArgs e)
+        {
+            formInfo.Show();
         }
     }
 }

@@ -724,22 +724,16 @@ namespace SisCreWin.BD
         #endregion Sistema
         #region Negocio
         #region General
-        public static DatosStatusBar Negocio_C_FechasDelSistema()
+        public static DatosStatusBar Negocio_C_FechasDelSistema(ResultadoStored_DT Resultado)
         {
-            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
             DatosStatusBar sb = new DatosStatusBar();
-
-            Resultado = EjecutarStored_DT(CatalogoStoreds.Negocio_C_FechasDelSistema, null);
             sb.Titulo = "Fechas del sistema";
 
             if (!Resultado.HayError)
             {
                 sb.Detalle = string.Empty;
-
-                for (int w = 0; w < Resultado.Resultado.Columns.Count; w++)
-                {
-                    sb.Detalle += Resultado.Resultado.Columns[w].ColumnName + ": " + Resultado.Resultado.Rows[0][w].ToString() + Environment.NewLine;
-                }
+                sb.Detalle += Resultado.Resultado.Columns[0].ColumnName + ": " + Resultado.Resultado.Rows[0][0].ToString() + Environment.NewLine;
+                sb.Detalle += Resultado.Resultado.Columns[1].ColumnName + ": " + Resultado.Resultado.Rows[0][1].ToString() + Environment.NewLine;
             }
             else
             {
@@ -747,6 +741,15 @@ namespace SisCreWin.BD
             }
 
             return sb;
+        }
+
+        public static ResultadoStored_DT Negocio_C_DatosDelSistema()
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Negocio_C_DatosDelSistema, null);
+
+            return Resultado;
         }
         #endregion General
         #region Catalogos
@@ -1860,6 +1863,30 @@ namespace SisCreWin.BD
             paramC.Add(param);
 
             Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_CarteraFechaDeterminada, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Puentes_C_ObtenerFechaContable()
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+
+            Resultado = EjecutarStored_Str(CatalogoStoreds.Puentes_C_ObtenerFechaContable, null, "MensajeBD");
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Puentes_U_EstablecerFechaContable(string Fecha)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@Fecha", SqlDbType.VarChar);
+            param.Value = Fecha;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Puentes_U_EstablecerFechaContable, paramC);
 
             return Resultado;
         }

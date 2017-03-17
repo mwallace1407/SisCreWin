@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -99,6 +99,12 @@
     </Compile>
     <Compile Include="frmCnx.Designer.cs">
       <DependentUpon>frmCnx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInfo.Designer.cs">
+      <DependentUpon>frmInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -187,6 +193,12 @@
     <Compile Include="Negocio\Catalogos\frmOrigenesPuente.Designer.cs">
       <DependentUpon>frmOrigenesPuente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\Puentes\frmFechaContablePuentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Puentes\frmFechaContablePuentes.Designer.cs">
+      <DependentUpon>frmFechaContablePuentes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Puentes\frmHistCred.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +266,9 @@
     <EmbeddedResource Include="frmCnx.resx">
       <DependentUpon>frmCnx.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInfo.resx">
+      <DependentUpon>frmInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Catalogos\frmOrigenesPuente.resx">
       <DependentUpon>frmOrigenesPuente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Puentes\frmFechaContablePuentes.resx">
+      <DependentUpon>frmFechaContablePuentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Puentes\frmHistCred.resx">
       <DependentUpon>frmHistCred.cs</DependentUpon>

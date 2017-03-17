@@ -60,10 +60,13 @@
             this.mnuBuroHistPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.puentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCierreDiarioPuentes = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRptContaPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRegistrarPagoPuente = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuHistoricoPuentes = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuRptContaPuentes = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuConsultarCartera = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFechaContable = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSistema = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuModulos = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,7 +83,6 @@
             this.stBaseConectada = new System.Windows.Forms.ToolStripStatusLabel();
             this.stMantenimiento = new System.Windows.Forms.ToolStripStatusLabel();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
-            this.mnuConsultarCartera = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -131,62 +133,62 @@
             // mnuFreq1
             // 
             this.mnuFreq1.Name = "mnuFreq1";
-            this.mnuFreq1.Size = new System.Drawing.Size(152, 22);
+            this.mnuFreq1.Size = new System.Drawing.Size(90, 22);
             this.mnuFreq1.Text = "01";
             this.mnuFreq1.Click += new System.EventHandler(this.mnuFreq1_Click);
             // 
             // mnuFreq2
             // 
             this.mnuFreq2.Name = "mnuFreq2";
-            this.mnuFreq2.Size = new System.Drawing.Size(152, 22);
+            this.mnuFreq2.Size = new System.Drawing.Size(90, 22);
             this.mnuFreq2.Text = "02";
             // 
             // mnuFreq3
             // 
             this.mnuFreq3.Name = "mnuFreq3";
-            this.mnuFreq3.Size = new System.Drawing.Size(152, 22);
+            this.mnuFreq3.Size = new System.Drawing.Size(90, 22);
             this.mnuFreq3.Text = "03";
             // 
             // mnuFreq4
             // 
             this.mnuFreq4.Name = "mnuFreq4";
-            this.mnuFreq4.Size = new System.Drawing.Size(152, 22);
+            this.mnuFreq4.Size = new System.Drawing.Size(90, 22);
             this.mnuFreq4.Text = "04";
             // 
             // mnuFreq5
             // 
             this.mnuFreq5.Name = "mnuFreq5";
-            this.mnuFreq5.Size = new System.Drawing.Size(152, 22);
+            this.mnuFreq5.Size = new System.Drawing.Size(90, 22);
             this.mnuFreq5.Text = "05";
             // 
             // mnuFreq6
             // 
             this.mnuFreq6.Name = "mnuFreq6";
-            this.mnuFreq6.Size = new System.Drawing.Size(152, 22);
+            this.mnuFreq6.Size = new System.Drawing.Size(90, 22);
             this.mnuFreq6.Text = "06";
             // 
             // mnuFreq7
             // 
             this.mnuFreq7.Name = "mnuFreq7";
-            this.mnuFreq7.Size = new System.Drawing.Size(152, 22);
+            this.mnuFreq7.Size = new System.Drawing.Size(90, 22);
             this.mnuFreq7.Text = "07";
             // 
             // mnuFreq8
             // 
             this.mnuFreq8.Name = "mnuFreq8";
-            this.mnuFreq8.Size = new System.Drawing.Size(152, 22);
+            this.mnuFreq8.Size = new System.Drawing.Size(90, 22);
             this.mnuFreq8.Text = "08";
             // 
             // mnuFreq9
             // 
             this.mnuFreq9.Name = "mnuFreq9";
-            this.mnuFreq9.Size = new System.Drawing.Size(152, 22);
+            this.mnuFreq9.Size = new System.Drawing.Size(90, 22);
             this.mnuFreq9.Text = "09";
             // 
             // mnuFreq10
             // 
             this.mnuFreq10.Name = "mnuFreq10";
-            this.mnuFreq10.Size = new System.Drawing.Size(152, 22);
+            this.mnuFreq10.Size = new System.Drawing.Size(90, 22);
             this.mnuFreq10.Text = "10";
             // 
             // toolStripSeparator2
@@ -221,7 +223,7 @@
             this.mnuTIIE,
             this.mnuTiposPagoPuentes});
             this.catálogosToolStripMenuItem.Name = "catálogosToolStripMenuItem";
-            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.catálogosToolStripMenuItem.Text = "&Catálogos";
             // 
             // mnuPromotores
@@ -268,7 +270,7 @@
             this.mnuBuroHistInd,
             this.mnuBuroHistPuentes});
             this.buróToolStripMenuItem.Name = "buróToolStripMenuItem";
-            this.buróToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.buróToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.buróToolStripMenuItem.Text = "&Buró";
             // 
             // mnuCSVIndividuales
@@ -308,13 +310,15 @@
             // 
             this.puentesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuCierreDiarioPuentes,
+            this.mnuRptContaPuentes,
             this.mnuRegistrarPagoPuente,
             this.toolStripSeparator1,
             this.mnuHistoricoPuentes,
-            this.mnuRptContaPuentes,
-            this.mnuConsultarCartera});
+            this.toolStripMenuItem1,
+            this.mnuConsultarCartera,
+            this.mnuFechaContable});
             this.puentesToolStripMenuItem.Name = "puentesToolStripMenuItem";
-            this.puentesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.puentesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.puentesToolStripMenuItem.Text = "&Puentes";
             // 
             // mnuCierreDiarioPuentes
@@ -323,6 +327,13 @@
             this.mnuCierreDiarioPuentes.Size = new System.Drawing.Size(332, 22);
             this.mnuCierreDiarioPuentes.Text = "Generar cierre &diario";
             this.mnuCierreDiarioPuentes.Click += new System.EventHandler(this.mnuCierreDiarioPuentes_Click);
+            // 
+            // mnuRptContaPuentes
+            // 
+            this.mnuRptContaPuentes.Name = "mnuRptContaPuentes";
+            this.mnuRptContaPuentes.Size = new System.Drawing.Size(332, 22);
+            this.mnuRptContaPuentes.Text = "Generar cierre contable &mensual";
+            this.mnuRptContaPuentes.Click += new System.EventHandler(this.mnuRptContaPuentes_Click);
             // 
             // mnuRegistrarPagoPuente
             // 
@@ -343,12 +354,24 @@
             this.mnuHistoricoPuentes.Text = "Consultar &historial de créditos";
             this.mnuHistoricoPuentes.Click += new System.EventHandler(this.mnuHistoricoPuentes_Click);
             // 
-            // mnuRptContaPuentes
+            // toolStripMenuItem1
             // 
-            this.mnuRptContaPuentes.Name = "mnuRptContaPuentes";
-            this.mnuRptContaPuentes.Size = new System.Drawing.Size(332, 22);
-            this.mnuRptContaPuentes.Text = "Generar cierre &mensual";
-            this.mnuRptContaPuentes.Click += new System.EventHandler(this.mnuRptContaPuentes_Click);
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(329, 6);
+            // 
+            // mnuConsultarCartera
+            // 
+            this.mnuConsultarCartera.Name = "mnuConsultarCartera";
+            this.mnuConsultarCartera.Size = new System.Drawing.Size(332, 22);
+            this.mnuConsultarCartera.Text = "Consultar &cartera a fecha determinada";
+            this.mnuConsultarCartera.Click += new System.EventHandler(this.mnuConsultarCartera_Click);
+            // 
+            // mnuFechaContable
+            // 
+            this.mnuFechaContable.Name = "mnuFechaContable";
+            this.mnuFechaContable.Size = new System.Drawing.Size(332, 22);
+            this.mnuFechaContable.Text = "Establecer &fecha contable";
+            this.mnuFechaContable.Click += new System.EventHandler(this.mnuFechaContable_Click);
             // 
             // mnuSistema
             // 
@@ -448,6 +471,7 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
+            this.statusStrip1.Click += new System.EventHandler(this.statusStrip1_Click);
             // 
             // stFechasSistema
             // 
@@ -473,13 +497,6 @@
             this.stMantenimiento.Text = "El sistema se encuentra en mantenimiento. Espere por favor.";
             this.stMantenimiento.Visible = false;
             // 
-            // mnuConsultarCartera
-            // 
-            this.mnuConsultarCartera.Name = "mnuConsultarCartera";
-            this.mnuConsultarCartera.Size = new System.Drawing.Size(332, 22);
-            this.mnuConsultarCartera.Text = "Consultar &cartera a fecha determinada";
-            this.mnuConsultarCartera.Click += new System.EventHandler(this.mnuConsultarCartera_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -495,6 +512,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnuMain;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de administración de créditos";
@@ -563,5 +581,7 @@
         private System.Windows.Forms.ToolStripStatusLabel stBaseConectada;
         private System.Windows.Forms.ToolStripStatusLabel stFechasSistema;
         private System.Windows.Forms.ToolStripMenuItem mnuConsultarCartera;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuFechaContable;
     }
 }
