@@ -133,63 +133,82 @@
             // mnuFreq1
             // 
             this.mnuFreq1.Name = "mnuFreq1";
-            this.mnuFreq1.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
+            this.mnuFreq1.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq1.Text = "01";
             this.mnuFreq1.Click += new System.EventHandler(this.mnuFreq1_Click);
             // 
             // mnuFreq2
             // 
             this.mnuFreq2.Name = "mnuFreq2";
-            this.mnuFreq2.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
+            this.mnuFreq2.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq2.Text = "02";
+            this.mnuFreq2.Click += new System.EventHandler(this.mnuFreq2_Click);
             // 
             // mnuFreq3
             // 
             this.mnuFreq3.Name = "mnuFreq3";
-            this.mnuFreq3.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq3.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
+            this.mnuFreq3.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq3.Text = "03";
+            this.mnuFreq3.Click += new System.EventHandler(this.mnuFreq3_Click);
             // 
             // mnuFreq4
             // 
             this.mnuFreq4.Name = "mnuFreq4";
-            this.mnuFreq4.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
+            this.mnuFreq4.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq4.Text = "04";
+            this.mnuFreq4.Click += new System.EventHandler(this.mnuFreq4_Click);
             // 
             // mnuFreq5
             // 
             this.mnuFreq5.Name = "mnuFreq5";
-            this.mnuFreq5.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq5.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5)));
+            this.mnuFreq5.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq5.Text = "05";
+            this.mnuFreq5.Click += new System.EventHandler(this.mnuFreq5_Click);
             // 
             // mnuFreq6
             // 
             this.mnuFreq6.Name = "mnuFreq6";
-            this.mnuFreq6.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq6.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
+            this.mnuFreq6.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq6.Text = "06";
+            this.mnuFreq6.Click += new System.EventHandler(this.mnuFreq6_Click);
             // 
             // mnuFreq7
             // 
             this.mnuFreq7.Name = "mnuFreq7";
-            this.mnuFreq7.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq7.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D7)));
+            this.mnuFreq7.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq7.Text = "07";
+            this.mnuFreq7.Click += new System.EventHandler(this.mnuFreq7_Click);
             // 
             // mnuFreq8
             // 
             this.mnuFreq8.Name = "mnuFreq8";
-            this.mnuFreq8.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq8.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D8)));
+            this.mnuFreq8.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq8.Text = "08";
+            this.mnuFreq8.Click += new System.EventHandler(this.mnuFreq8_Click);
             // 
             // mnuFreq9
             // 
             this.mnuFreq9.Name = "mnuFreq9";
-            this.mnuFreq9.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq9.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D9)));
+            this.mnuFreq9.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq9.Text = "09";
+            this.mnuFreq9.Click += new System.EventHandler(this.mnuFreq9_Click);
             // 
             // mnuFreq10
             // 
             this.mnuFreq10.Name = "mnuFreq10";
-            this.mnuFreq10.Size = new System.Drawing.Size(90, 22);
+            this.mnuFreq10.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D0)));
+            this.mnuFreq10.Size = new System.Drawing.Size(152, 22);
             this.mnuFreq10.Text = "10";
+            this.mnuFreq10.Click += new System.EventHandler(this.mnuFreq10_Click);
             // 
             // toolStripSeparator2
             // 

@@ -22,6 +22,7 @@ namespace SisCreWin
         #region Variables
         DataTable ModulosFecuentes = new DataTable();
         frmInfo formInfo = new frmInfo();
+        ResultadoStored_DT Frecuentes = new ResultadoStored_DT();
         #endregion Variables
         #region Propiedades
         #endregion Propiedades
@@ -173,13 +174,11 @@ namespace SisCreWin
 
         private void ProcesarFecuentes()
         {
-            ResultadoStored_DT Resultado = new ResultadoStored_DT();
+            Frecuentes = clsBD.Sistema_C_Top10PaginasUsuario(Global.Usr_Id);
 
-            Resultado = clsBD.Sistema_C_Top10PaginasUsuario(Global.Usr_Id);
-
-            if(!Resultado.HayError)
+            if(!Frecuentes.HayError)
             {
-                for (int w = 0; w < Resultado.Resultado.Rows.Count; w++)
+                for (int w = 0; w < Frecuentes.Resultado.Rows.Count; w++)
                 {
                     try
                     {
@@ -189,8 +188,8 @@ namespace SisCreWin
                         {
                             if(itm[0].Name == "mnuFreq" + (w + 1).ToString())
                             {
-                                itm[0].Text = Resultado.Resultado.Rows[w]["Nombre"].ToString();
-                                itm[0].ToolTipText = Resultado.Resultado.Rows[w]["Descripcion"].ToString();
+                                itm[0].Text = Frecuentes.Resultado.Rows[w]["Nombre"].ToString();
+                                itm[0].ToolTipText = Frecuentes.Resultado.Rows[w]["Descripcion"].ToString();
                                 itm[0].Visible = true;
                             }
                         }
@@ -400,13 +399,208 @@ namespace SisCreWin
         {
             AbrirVentana(CatalogoModulos.Puentes_EstablecerFechaContable);
         }
-        #endregion Menu
-        #endregion Eventos
 
         private void mnuFreq1_Click(object sender, EventArgs e)
         {
-
+            if (!Frecuentes.HayError)
+            {
+                try
+                {
+                    AbrirVentana((int)Frecuentes.Resultado.Rows[0]["Id"]);
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudo obtener el id del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
+
+        private void mnuFreq2_Click(object sender, EventArgs e)
+        {
+            if (!Frecuentes.HayError)
+            {
+                try
+                {
+                    AbrirVentana((int)Frecuentes.Resultado.Rows[1]["Id"]);
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudo obtener el id del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void mnuFreq3_Click(object sender, EventArgs e)
+        {
+            if (!Frecuentes.HayError)
+            {
+                try
+                {
+                    AbrirVentana((int)Frecuentes.Resultado.Rows[2]["Id"]);
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudo obtener el id del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void mnuFreq4_Click(object sender, EventArgs e)
+        {
+            if (!Frecuentes.HayError)
+            {
+                try
+                {
+                    AbrirVentana((int)Frecuentes.Resultado.Rows[3]["Id"]);
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudo obtener el id del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void mnuFreq5_Click(object sender, EventArgs e)
+        {
+            if (!Frecuentes.HayError)
+            {
+                try
+                {
+                    AbrirVentana((int)Frecuentes.Resultado.Rows[4]["Id"]);
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudo obtener el id del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void mnuFreq6_Click(object sender, EventArgs e)
+        {
+            if (!Frecuentes.HayError)
+            {
+                try
+                {
+                    AbrirVentana((int)Frecuentes.Resultado.Rows[5]["Id"]);
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudo obtener el id del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void mnuFreq7_Click(object sender, EventArgs e)
+        {
+            if (!Frecuentes.HayError)
+            {
+                try
+                {
+                    AbrirVentana((int)Frecuentes.Resultado.Rows[6]["Id"]);
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudo obtener el id del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void mnuFreq8_Click(object sender, EventArgs e)
+        {
+            if (!Frecuentes.HayError)
+            {
+                try
+                {
+                    AbrirVentana((int)Frecuentes.Resultado.Rows[7]["Id"]);
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudo obtener el id del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void mnuFreq9_Click(object sender, EventArgs e)
+        {
+            if (!Frecuentes.HayError)
+            {
+                try
+                {
+                    AbrirVentana((int)Frecuentes.Resultado.Rows[8]["Id"]);
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudo obtener el id del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void mnuFreq10_Click(object sender, EventArgs e)
+        {
+            if (!Frecuentes.HayError)
+            {
+                try
+                {
+                    AbrirVentana((int)Frecuentes.Resultado.Rows[9]["Id"]);
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudo obtener el id del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                mnuModulosFreq.Visible = false;
+                MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        #endregion Menu
+        #endregion Eventos
 
         private void statusStrip1_Click(object sender, EventArgs e)
         {
