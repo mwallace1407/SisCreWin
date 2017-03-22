@@ -16,6 +16,33 @@ namespace SisCreWin
 {
     public partial class frmLogin : Form
     {
+        private void TareasVersiones()
+        {
+            Version VersionBD;
+            Version VersionApp = null;
+
+            Version.TryParse(clsBD.Sistema_C_ParametroVersion().Resultado, out VersionBD);
+
+            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+            {
+                VersionApp = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
+
+                if (VersionBD == null && VersionApp != null)
+                    clsBD.Sistema_U_ParametroVersion(VersionApp.ToString());
+
+                int Compara = VersionBD.CompareTo(VersionApp);
+
+                if (Compara > 0)
+                {
+                    btnProcesar.Enabled = false;
+                    MessageBox.Show("Debe actualizar la aplicación para poder ingresar", "Adevertencia", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                }
+                else if (Compara < 0)
+                {
+                    clsBD.Sistema_U_ParametroVersion(VersionApp.ToString());
+                }
+            }
+        }
         public frmLogin()
         {
             InitializeComponent();
@@ -24,7 +51,7 @@ namespace SisCreWin
         private void frmLogin_Load(object sender, EventArgs e)
         {
             clsSeguridad.Credencial Cred = new clsSeguridad.Credencial();
-
+            
             Cred = clsSeguridad.ObtenerUsuarioActual();
             txtUsuario.Text = Cred.Usuario;
             txtDominio.Text = Cred.Dominio;
@@ -45,6 +72,8 @@ namespace SisCreWin
 
                 frm.ShowDialog(this);
             }
+
+            TareasVersiones();
         }
 
         private void btnProcesar_Click(object sender, EventArgs e)

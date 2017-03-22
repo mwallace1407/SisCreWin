@@ -720,6 +720,30 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
+        public static ResultadoStored_Str Sistema_U_ParametroVersion(string Version)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@Version", SqlDbType.VarChar);
+            param.Value = Version;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Sistema_U_ParametroVersion, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Sistema_C_ParametroVersion()
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+
+            Resultado = EjecutarStored_Str(CatalogoStoreds.Sistema_C_ParametroVersion, null, "Version");
+
+            return Resultado;
+        }
         #endregion General
         #endregion Sistema
         #region Negocio

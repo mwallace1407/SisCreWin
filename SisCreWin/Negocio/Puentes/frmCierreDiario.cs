@@ -43,6 +43,12 @@ namespace SisCreWin.Negocio.Puentes
                 btnCrear.Enabled = false;
                 lblMensaje.Text = Resultado.Resultado.Rows[0]["Validacion"].ToString();
             }
+
+            if (dtpFechaSistema.Value > DateTime.Now)
+            {
+                btnCrear.Enabled = false;
+                MessageBox.Show("No existen periodos pendientes por cerrar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         #endregion Metodos
         #region Eventos

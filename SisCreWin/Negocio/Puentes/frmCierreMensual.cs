@@ -43,70 +43,91 @@ namespace SisCreWin.Negocio.Puentes
         #region Metodos
         private void ValoresIniciales()
         {
-            grdDatos.DataSource = null;
-            grdDatosDet.DataSource = null;
-            grdDatosR.DataSource = null;
-            txtTopSel.Value = 100;
-            dtpFechaFin.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.AddDays(1).ToString("dd/MM/yyyy")).AddMilliseconds(-2);
-            dtpFechaFin.Value = dtpFechaFin.MaxDate;
-            dtpFechaIni.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.ToString("dd/MM/yyyy"));
-            dtpFechaIni.Value = dtpFechaIni.MaxDate;
-
-            cboUsuarios.DisplayMember = "Usr_Nombre";
-            cboUsuarios.ValueMember = "Usr_Id";
-            cboUsuarios.DataSource = clsBD.Usuarios_C_Usuarios().Resultado;
-
-            cboFechasGen.DisplayMember = "Descripcion";
-            cboFechasGen.ValueMember = "Valor";
-            cboFechasGen.DataSource = clsBD.Puentes_C_ObtenerFechasCierre().Resultado;
-
-            cboFechas.DisplayMember = "Descripcion";
-            cboFechas.ValueMember = "Valor";
-            cboFechas.DataSource = clsBD.Puentes_C_ObtenerFechasCierre(true).Resultado;
-
-            cboCierresGenerados.DisplayMember = "Descripcion";
-            cboCierresGenerados.ValueMember = "Valor";
-            cboCierresGenerados.DataSource = clsBD.Puentes_C_ObtenerFechasCierre(true).Resultado;
-
-            if (tab01.SelectedIndex == 0)
+            try
             {
-                if (cboFechasGen.Items.Count == 0)
+                grdDatos.DataSource = null;
+                grdDatosDet.DataSource = null;
+                grdDatosR.DataSource = null;
+                txtTopSel.Value = 100;
+                dtpFechaFin.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.AddDays(1).ToString("dd/MM/yyyy")).AddMilliseconds(-2);
+                dtpFechaFin.Value = dtpFechaFin.MaxDate;
+                dtpFechaIni.MaxDate = clsGeneral.ObtieneFecha(DateTime.Now.ToString("dd/MM/yyyy"));
+                dtpFechaIni.Value = dtpFechaIni.MaxDate;
+
+                cboUsuarios.DisplayMember = "Usr_Nombre";
+                cboUsuarios.ValueMember = "Usr_Id";
+                cboUsuarios.DataSource = clsBD.Usuarios_C_Usuarios().Resultado;
+
+                cboFechasGen.DisplayMember = "Descripcion";
+                cboFechasGen.ValueMember = "Valor";
+                cboFechasGen.DataSource = clsBD.Puentes_C_ObtenerFechasCierre().Resultado;
+
+                cboFechas.DisplayMember = "Descripcion";
+                cboFechas.ValueMember = "Valor";
+                cboFechas.DataSource = clsBD.Puentes_C_ObtenerFechasCierre(true).Resultado;
+
+                cboCierresGenerados.DisplayMember = "Descripcion";
+                cboCierresGenerados.ValueMember = "Valor";
+                cboCierresGenerados.DataSource = clsBD.Puentes_C_ObtenerFechasCierre(true).Resultado;
+
+                if (tab01.SelectedIndex == 0)
                 {
-                    btnGenerar.Enabled = false;
-                    btnExportarExcel.Enabled = false;
-                    MessageBox.Show("No hay periodos disponibles para realizar el cierre mensual", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (cboFechasGen.Items.Count == 0)
+                    {
+                        btnGenerar.Enabled = false;
+                        btnExportarExcel.Enabled = false;
+                        MessageBox.Show("No hay periodos disponibles para realizar el cierre mensual", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        btnGenerar.Enabled = true;
+                        btnExportarExcel.Enabled = true;
+                    }
                 }
-                else
+
+                if (tab01.SelectedIndex == 1)
                 {
-                    btnGenerar.Enabled = true;
-                    btnExportarExcel.Enabled = true;
+                    if (cboFechas.Items.Count == 0)
+                    {
+                        btnProcesar.Enabled = false;
+                        MessageBox.Show("No hay periodos disponibles para visualizar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        btnProcesar.Enabled = true;
+                    }
+                }
+
+                if (tab01.SelectedIndex == 2)
+                {
+                    if (cboCierresGenerados.Items.Count == 0)
+                    {
+                        btnAutorizar.Enabled = false;
+                        MessageBox.Show("No hay periodos disponibles para autorizar un cierre mensual", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        btnAutorizar.Enabled = true;
+                    }
+                }
+
+                ResultadoStored_DT Resultado = new BD.ResultadoStored_DT();
+
+                Resultado = clsBD.Puentes_C_VerificarPosibilidadCierre();
+                DateTime FechaSistema = clsGeneral.ObtieneFecha(Resultado.Resultado.Rows[0]["FechaSistema"].ToString());
+
+                if (cboFechasGen.Items.Count > 0)
+                {
+                    DateTime FechaCierreCbo = clsGeneral.ObtieneFecha(cboFechasGen.GetItemText(cboFechasGen.Items[cboFechasGen.Items.Count - 1]));
+
+                    if (FechaSistema <= FechaCierreCbo)
+                        btnGenerar.Enabled = false;
                 }
             }
-
-            if (tab01.SelectedIndex == 1)
+            catch (Exception ex)
             {
-                if (cboFechas.Items.Count == 0)
-                {
-                    btnProcesar.Enabled = false;
-                    MessageBox.Show("No hay periodos disponibles para visualizar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    btnProcesar.Enabled = true;
-                }
-            }
-
-            if (tab01.SelectedIndex == 2)
-            {
-                if (cboCierresGenerados.Items.Count == 0)
-                {
-                    btnAutorizar.Enabled = false;
-                    MessageBox.Show("No hay periodos disponibles para autorizar un cierre mensual", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    btnAutorizar.Enabled = true;
-                }
+                btnGenerar.Enabled = false;
+                MessageBox.Show("Error al cargar valores iniciales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

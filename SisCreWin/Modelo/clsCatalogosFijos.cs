@@ -46,6 +46,8 @@ namespace SisCreWin.Modelo
         public static String Catalogos_C_Procedimientos { get { return "sp_Catalogos_C_Procedimientos"; } }
         public static String Sistema_C_ParametrosMantenimiento { get { return "sp_Sistema_C_ParametrosMantenimiento"; } }
         public static String Sistema_U_ParametrosMantenimiento { get { return "sp_Sistema_U_ParametrosMantenimiento"; } }
+        public static String Sistema_U_ParametroVersion { get { return "sp_Sistema_U_ParametroVersion"; } }
+        public static String Sistema_C_ParametroVersion { get { return "sp_Sistema_C_ParametroVersion"; } }
         //!General
         #endregion Sistema
         #region Negocio

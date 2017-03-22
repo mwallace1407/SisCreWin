@@ -35,7 +35,6 @@
             this.btnCrear = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabEstadisticas = new System.Windows.Forms.TabPage();
             this.pnlProgreso = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,7 +51,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab01.Controls.Add(this.tabCrear);
-            this.tab01.Controls.Add(this.tabEstadisticas);
             this.tab01.Location = new System.Drawing.Point(14, 14);
             this.tab01.Margin = new System.Windows.Forms.Padding(5);
             this.tab01.Name = "tab01";
@@ -126,17 +124,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Por favor revise la siguiente información:";
             // 
-            // tabEstadisticas
-            // 
-            this.tabEstadisticas.Location = new System.Drawing.Point(4, 26);
-            this.tabEstadisticas.Margin = new System.Windows.Forms.Padding(5);
-            this.tabEstadisticas.Name = "tabEstadisticas";
-            this.tabEstadisticas.Padding = new System.Windows.Forms.Padding(5);
-            this.tabEstadisticas.Size = new System.Drawing.Size(743, 311);
-            this.tabEstadisticas.TabIndex = 1;
-            this.tabEstadisticas.Text = "Estadísticas";
-            this.tabEstadisticas.UseVisualStyleBackColor = true;
-            // 
             // pnlProgreso
             // 
             this.pnlProgreso.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -209,7 +196,6 @@
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabEstadisticas;
         private System.Windows.Forms.DateTimePicker dtpFechaSistema;
         private System.Windows.Forms.Panel pnlProgreso;
         private System.ComponentModel.BackgroundWorker wkr01;
