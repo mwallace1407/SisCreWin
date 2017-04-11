@@ -39,6 +39,8 @@
             this.cboTipoPago = new System.Windows.Forms.ComboBox();
             this.tabPagos = new System.Windows.Forms.TabControl();
             this.tabP01 = new System.Windows.Forms.TabPage();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.txtMontoTotal = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,6 +55,8 @@
             this.txtComiAplicacion = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.tabP02 = new System.Windows.Forms.TabPage();
+            this.txtQObservaciones = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.txtQMontoTotal = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -91,10 +95,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.wkr01 = new System.ComponentModel.BackgroundWorker();
             this.wkr02 = new System.ComponentModel.BackgroundWorker();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtObservaciones = new System.Windows.Forms.TextBox();
-            this.txtQObservaciones = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
@@ -131,7 +131,7 @@
             this.tab01.Margin = new System.Windows.Forms.Padding(5);
             this.tab01.Name = "tab01";
             this.tab01.SelectedIndex = 0;
-            this.tab01.Size = new System.Drawing.Size(996, 645);
+            this.tab01.Size = new System.Drawing.Size(996, 692);
             this.tab01.TabIndex = 1;
             // 
             // tabCrear
@@ -155,7 +155,7 @@
             this.tabCrear.Margin = new System.Windows.Forms.Padding(5);
             this.tabCrear.Name = "tabCrear";
             this.tabCrear.Padding = new System.Windows.Forms.Padding(5);
-            this.tabCrear.Size = new System.Drawing.Size(988, 615);
+            this.tabCrear.Size = new System.Drawing.Size(988, 662);
             this.tabCrear.TabIndex = 0;
             this.tabCrear.Text = "Registrar pago";
             this.tabCrear.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@
             // btnExportarDet
             // 
             this.btnExportarDet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportarDet.Location = new System.Drawing.Point(165, 584);
+            this.btnExportarDet.Location = new System.Drawing.Point(165, 631);
             this.btnExportarDet.Name = "btnExportarDet";
             this.btnExportarDet.Size = new System.Drawing.Size(201, 23);
             this.btnExportarDet.TabIndex = 12;
@@ -174,7 +174,7 @@
             // btnExportar
             // 
             this.btnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportar.Location = new System.Drawing.Point(165, 555);
+            this.btnExportar.Location = new System.Drawing.Point(165, 602);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(201, 23);
             this.btnExportar.TabIndex = 11;
@@ -186,7 +186,7 @@
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(369, 406);
+            this.label19.Location = new System.Drawing.Point(369, 453);
             this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(58, 17);
@@ -212,7 +212,7 @@
             this.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdDetalle.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.grdDetalle.Location = new System.Drawing.Point(372, 426);
+            this.grdDetalle.Location = new System.Drawing.Point(372, 473);
             this.grdDetalle.MultiSelect = false;
             this.grdDetalle.Name = "grdDetalle";
             this.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -247,7 +247,7 @@
             this.tabPagos.Location = new System.Drawing.Point(14, 144);
             this.tabPagos.Name = "tabPagos";
             this.tabPagos.SelectedIndex = 0;
-            this.tabPagos.Size = new System.Drawing.Size(352, 372);
+            this.tabPagos.Size = new System.Drawing.Size(352, 386);
             this.tabPagos.TabIndex = 3;
             // 
             // tabP01
@@ -270,10 +270,30 @@
             this.tabP01.Location = new System.Drawing.Point(4, 26);
             this.tabP01.Name = "tabP01";
             this.tabP01.Padding = new System.Windows.Forms.Padding(3);
-            this.tabP01.Size = new System.Drawing.Size(344, 342);
+            this.tabP01.Size = new System.Drawing.Size(344, 356);
             this.tabP01.TabIndex = 0;
             this.tabP01.Text = "Normal";
             this.tabP01.UseVisualStyleBackColor = true;
+            // 
+            // txtObservaciones
+            // 
+            this.txtObservaciones.Location = new System.Drawing.Point(8, 232);
+            this.txtObservaciones.MaxLength = 500;
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtObservaciones.Size = new System.Drawing.Size(330, 78);
+            this.txtObservaciones.TabIndex = 9;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(5, 212);
+            this.label23.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(107, 17);
+            this.label23.TabIndex = 22;
+            this.label23.Text = "Observaciones:";
             // 
             // txtMontoTotal
             // 
@@ -294,7 +314,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 168);
+            this.label10.Location = new System.Drawing.Point(5, 186);
             this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(140, 17);
@@ -330,7 +350,7 @@
             // txtPagoIntMoratorios
             // 
             this.txtPagoIntMoratorios.DecimalPlaces = 6;
-            this.txtPagoIntMoratorios.Location = new System.Drawing.Point(188, 166);
+            this.txtPagoIntMoratorios.Location = new System.Drawing.Point(188, 184);
             this.txtPagoIntMoratorios.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -372,7 +392,7 @@
             // lblMensaje
             // 
             this.lblMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
-            this.lblMensaje.Location = new System.Drawing.Point(5, 299);
+            this.lblMensaje.Location = new System.Drawing.Point(5, 313);
             this.lblMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(333, 37);
@@ -382,18 +402,17 @@
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(5, 68);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 17);
+            this.label7.Size = new System.Drawing.Size(172, 37);
             this.label7.TabIndex = 14;
-            this.label7.Text = "Interés cubierto:";
+            this.label7.Text = "Interés sobre capital vencido cubierto:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 139);
+            this.label9.Location = new System.Drawing.Point(5, 157);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(172, 17);
@@ -403,7 +422,7 @@
             // txtInteresCapVenc
             // 
             this.txtInteresCapVenc.DecimalPlaces = 6;
-            this.txtInteresCapVenc.Location = new System.Drawing.Point(188, 95);
+            this.txtInteresCapVenc.Location = new System.Drawing.Point(188, 103);
             this.txtInteresCapVenc.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -419,7 +438,7 @@
             // txtComiAplicacion
             // 
             this.txtComiAplicacion.DecimalPlaces = 6;
-            this.txtComiAplicacion.Location = new System.Drawing.Point(188, 137);
+            this.txtComiAplicacion.Location = new System.Drawing.Point(188, 155);
             this.txtComiAplicacion.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -434,12 +453,12 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(5, 97);
+            this.label8.Location = new System.Drawing.Point(5, 105);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(172, 35);
+            this.label8.Size = new System.Drawing.Size(172, 52);
             this.label8.TabIndex = 16;
-            this.label8.Text = "Interés sobre capital vencido cubierto:";
+            this.label8.Text = "Intereses ordinarios sobre capital vencido cubierto:";
             // 
             // tabP02
             // 
@@ -461,10 +480,30 @@
             this.tabP02.Location = new System.Drawing.Point(4, 26);
             this.tabP02.Name = "tabP02";
             this.tabP02.Padding = new System.Windows.Forms.Padding(3);
-            this.tabP02.Size = new System.Drawing.Size(344, 342);
+            this.tabP02.Size = new System.Drawing.Size(344, 356);
             this.tabP02.TabIndex = 1;
             this.tabP02.Text = "Quita / Quebranto";
             this.tabP02.UseVisualStyleBackColor = true;
+            // 
+            // txtQObservaciones
+            // 
+            this.txtQObservaciones.Location = new System.Drawing.Point(8, 232);
+            this.txtQObservaciones.MaxLength = 500;
+            this.txtQObservaciones.Multiline = true;
+            this.txtQObservaciones.Name = "txtQObservaciones";
+            this.txtQObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtQObservaciones.Size = new System.Drawing.Size(330, 78);
+            this.txtQObservaciones.TabIndex = 9;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(5, 212);
+            this.label24.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(107, 17);
+            this.label24.TabIndex = 35;
+            this.label24.Text = "Observaciones:";
             // 
             // txtQMontoTotal
             // 
@@ -485,7 +524,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 168);
+            this.label11.Location = new System.Drawing.Point(5, 186);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(140, 17);
@@ -521,7 +560,7 @@
             // txtQPagoIntMoratorios
             // 
             this.txtQPagoIntMoratorios.DecimalPlaces = 6;
-            this.txtQPagoIntMoratorios.Location = new System.Drawing.Point(188, 166);
+            this.txtQPagoIntMoratorios.Location = new System.Drawing.Point(188, 184);
             this.txtQPagoIntMoratorios.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -563,7 +602,7 @@
             // lblQMensaje
             // 
             this.lblQMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
-            this.lblQMensaje.Location = new System.Drawing.Point(5, 299);
+            this.lblQMensaje.Location = new System.Drawing.Point(5, 313);
             this.lblQMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblQMensaje.Name = "lblQMensaje";
             this.lblQMensaje.Size = new System.Drawing.Size(333, 37);
@@ -573,18 +612,17 @@
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(5, 68);
             this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(111, 17);
+            this.label15.Size = new System.Drawing.Size(172, 36);
             this.label15.TabIndex = 30;
-            this.label15.Text = "Interés cubierto:";
+            this.label15.Text = "Interés sobre capital vencido cubierto:";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(5, 139);
+            this.label16.Location = new System.Drawing.Point(5, 157);
             this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(172, 17);
@@ -594,7 +632,7 @@
             // txtQInteresCapVenc
             // 
             this.txtQInteresCapVenc.DecimalPlaces = 6;
-            this.txtQInteresCapVenc.Location = new System.Drawing.Point(188, 95);
+            this.txtQInteresCapVenc.Location = new System.Drawing.Point(188, 103);
             this.txtQInteresCapVenc.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -610,7 +648,7 @@
             // txtQComiAplicacion
             // 
             this.txtQComiAplicacion.DecimalPlaces = 6;
-            this.txtQComiAplicacion.Location = new System.Drawing.Point(188, 137);
+            this.txtQComiAplicacion.Location = new System.Drawing.Point(188, 155);
             this.txtQComiAplicacion.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -625,12 +663,12 @@
             // 
             // label17
             // 
-            this.label17.Location = new System.Drawing.Point(5, 97);
+            this.label17.Location = new System.Drawing.Point(5, 105);
             this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(172, 35);
+            this.label17.Size = new System.Drawing.Size(172, 53);
             this.label17.TabIndex = 31;
-            this.label17.Text = "Interés sobre capital vencido cubierto:";
+            this.label17.Text = "Intereses ordinarios sobre capital vencido cubierto:";
             // 
             // grdDatos
             // 
@@ -646,7 +684,7 @@
             this.grdDatos.MultiSelect = false;
             this.grdDatos.Name = "grdDatos";
             this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDatos.Size = new System.Drawing.Size(608, 351);
+            this.grdDatos.Size = new System.Drawing.Size(608, 398);
             this.grdDatos.TabIndex = 12;
             this.grdDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDatos_CellEnter);
             // 
@@ -684,7 +722,7 @@
             // 
             this.btnCrear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCrear.Enabled = false;
-            this.btnCrear.Location = new System.Drawing.Point(165, 523);
+            this.btnCrear.Location = new System.Drawing.Point(165, 570);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(201, 25);
@@ -887,7 +925,7 @@
             this.pnlProgreso.Controls.Add(this.label2);
             this.pnlProgreso.Location = new System.Drawing.Point(3000, 3000);
             this.pnlProgreso.Name = "pnlProgreso";
-            this.pnlProgreso.Size = new System.Drawing.Size(604, 316);
+            this.pnlProgreso.Size = new System.Drawing.Size(604, 363);
             this.pnlProgreso.TabIndex = 2;
             this.pnlProgreso.Visible = false;
             // 
@@ -896,7 +934,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(254, 233);
+            this.label2.Location = new System.Drawing.Point(254, 256);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 16);
             this.label2.TabIndex = 0;
@@ -913,51 +951,11 @@
             this.wkr02.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr02_DoWork);
             this.wkr02.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr02_RunWorkerCompleted);
             // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(5, 198);
-            this.label23.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(107, 17);
-            this.label23.TabIndex = 22;
-            this.label23.Text = "Observaciones:";
-            // 
-            // txtObservaciones
-            // 
-            this.txtObservaciones.Location = new System.Drawing.Point(8, 218);
-            this.txtObservaciones.MaxLength = 500;
-            this.txtObservaciones.Multiline = true;
-            this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtObservaciones.Size = new System.Drawing.Size(330, 78);
-            this.txtObservaciones.TabIndex = 9;
-            // 
-            // txtQObservaciones
-            // 
-            this.txtQObservaciones.Location = new System.Drawing.Point(8, 218);
-            this.txtQObservaciones.MaxLength = 500;
-            this.txtQObservaciones.Multiline = true;
-            this.txtQObservaciones.Name = "txtQObservaciones";
-            this.txtQObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtQObservaciones.Size = new System.Drawing.Size(330, 78);
-            this.txtQObservaciones.TabIndex = 9;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(5, 198);
-            this.label24.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(107, 17);
-            this.label24.TabIndex = 35;
-            this.label24.Text = "Observaciones:";
-            // 
             // frmRegistroPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 673);
+            this.ClientSize = new System.Drawing.Size(1024, 720);
             this.Controls.Add(this.pnlProgreso);
             this.Controls.Add(this.tab01);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

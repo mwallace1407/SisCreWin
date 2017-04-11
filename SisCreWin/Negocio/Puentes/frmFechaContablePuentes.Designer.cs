@@ -40,7 +40,7 @@
             this.dtpFecha.CustomFormat = "MMMM yyyy";
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFecha.Location = new System.Drawing.Point(92, 46);
-            this.dtpFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFecha.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(196, 23);
             this.dtpFecha.TabIndex = 3;
@@ -64,7 +64,6 @@
             this.lblFechaActual.Name = "lblFechaActual";
             this.lblFechaActual.Size = new System.Drawing.Size(196, 22);
             this.lblFechaActual.TabIndex = 5;
-            this.lblFechaActual.Text = "label1";
             this.lblFechaActual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmFechaContablePuentes
@@ -77,7 +76,7 @@
             this.Controls.Add(this.dtpFecha);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmFechaContablePuentes";
