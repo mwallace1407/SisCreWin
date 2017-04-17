@@ -39,37 +39,43 @@
             this.cboTipoPago = new System.Windows.Forms.ComboBox();
             this.tabPagos = new System.Windows.Forms.TabControl();
             this.tabP01 = new System.Windows.Forms.TabPage();
+            this.pnlN03 = new System.Windows.Forms.Panel();
+            this.txtPagoIntMoratorios = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pnlN02 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtInteresCapVenc = new System.Windows.Forms.NumericUpDown();
+            this.pnlN01 = new System.Windows.Forms.Panel();
+            this.txtPagoCapital = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtMontoTotal = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtPagoCapital = new System.Windows.Forms.NumericUpDown();
-            this.txtPagoIntMoratorios = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtInteresCubierto = new System.Windows.Forms.NumericUpDown();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtInteresCapVenc = new System.Windows.Forms.NumericUpDown();
             this.txtComiAplicacion = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabP02 = new System.Windows.Forms.TabPage();
+            this.pnlQ03 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtQPagoIntMoratorios = new System.Windows.Forms.NumericUpDown();
+            this.pnlQ02 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtQInteresCapVenc = new System.Windows.Forms.NumericUpDown();
+            this.pnlQ01 = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtQPagoCapital = new System.Windows.Forms.NumericUpDown();
             this.txtQObservaciones = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.txtQMontoTotal = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtQPagoCapital = new System.Windows.Forms.NumericUpDown();
-            this.txtQPagoIntMoratorios = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
             this.txtQInteresCubierto = new System.Windows.Forms.NumericUpDown();
             this.lblQMensaje = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtQInteresCapVenc = new System.Windows.Forms.NumericUpDown();
             this.txtQComiAplicacion = new System.Windows.Forms.NumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
             this.grdDatos = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.cboNumeroPrestamo = new System.Windows.Forms.ComboBox();
@@ -100,18 +106,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
             this.tabPagos.SuspendLayout();
             this.tabP01.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMontoTotal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPagoCapital)).BeginInit();
+            this.pnlN03.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPagoIntMoratorios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCubierto)).BeginInit();
+            this.pnlN02.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtInteresCapVenc)).BeginInit();
+            this.pnlN01.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPagoCapital)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMontoTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCubierto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtComiAplicacion)).BeginInit();
             this.tabP02.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQMontoTotal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQPagoCapital)).BeginInit();
+            this.pnlQ03.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQPagoIntMoratorios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCubierto)).BeginInit();
+            this.pnlQ02.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCapVenc)).BeginInit();
+            this.pnlQ01.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQPagoCapital)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQMontoTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCubierto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQComiAplicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.tabHistorial.SuspendLayout();
@@ -247,48 +259,152 @@
             this.tabPagos.Location = new System.Drawing.Point(14, 144);
             this.tabPagos.Name = "tabPagos";
             this.tabPagos.SelectedIndex = 0;
-            this.tabPagos.Size = new System.Drawing.Size(352, 386);
+            this.tabPagos.Size = new System.Drawing.Size(352, 419);
             this.tabPagos.TabIndex = 3;
             // 
             // tabP01
             // 
+            this.tabP01.Controls.Add(this.pnlN03);
+            this.tabP01.Controls.Add(this.pnlN02);
+            this.tabP01.Controls.Add(this.pnlN01);
             this.tabP01.Controls.Add(this.txtObservaciones);
             this.tabP01.Controls.Add(this.label23);
             this.tabP01.Controls.Add(this.txtMontoTotal);
-            this.tabP01.Controls.Add(this.label10);
             this.tabP01.Controls.Add(this.label5);
-            this.tabP01.Controls.Add(this.txtPagoCapital);
-            this.tabP01.Controls.Add(this.txtPagoIntMoratorios);
-            this.tabP01.Controls.Add(this.label6);
             this.tabP01.Controls.Add(this.txtInteresCubierto);
             this.tabP01.Controls.Add(this.lblMensaje);
             this.tabP01.Controls.Add(this.label7);
             this.tabP01.Controls.Add(this.label9);
-            this.tabP01.Controls.Add(this.txtInteresCapVenc);
             this.tabP01.Controls.Add(this.txtComiAplicacion);
-            this.tabP01.Controls.Add(this.label8);
             this.tabP01.Location = new System.Drawing.Point(4, 26);
             this.tabP01.Name = "tabP01";
             this.tabP01.Padding = new System.Windows.Forms.Padding(3);
-            this.tabP01.Size = new System.Drawing.Size(344, 356);
+            this.tabP01.Size = new System.Drawing.Size(344, 389);
             this.tabP01.TabIndex = 0;
             this.tabP01.Text = "Normal";
             this.tabP01.UseVisualStyleBackColor = true;
             // 
+            // pnlN03
+            // 
+            this.pnlN03.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlN03.Controls.Add(this.txtPagoIntMoratorios);
+            this.pnlN03.Controls.Add(this.label10);
+            this.pnlN03.Location = new System.Drawing.Point(3, 206);
+            this.pnlN03.Name = "pnlN03";
+            this.pnlN03.Size = new System.Drawing.Size(338, 32);
+            this.pnlN03.TabIndex = 8;
+            // 
+            // txtPagoIntMoratorios
+            // 
+            this.txtPagoIntMoratorios.DecimalPlaces = 6;
+            this.txtPagoIntMoratorios.Location = new System.Drawing.Point(185, 5);
+            this.txtPagoIntMoratorios.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtPagoIntMoratorios.Name = "txtPagoIntMoratorios";
+            this.txtPagoIntMoratorios.Size = new System.Drawing.Size(150, 23);
+            this.txtPagoIntMoratorios.TabIndex = 8;
+            this.txtPagoIntMoratorios.ThousandsSeparator = true;
+            this.txtPagoIntMoratorios.ValueChanged += new System.EventHandler(this.txtPagoIntMoratorios_ValueChanged);
+            this.txtPagoIntMoratorios.Enter += new System.EventHandler(this.txtPagoIntMoratorios_Enter);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(2, 7);
+            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(140, 17);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Intereses moratorios:";
+            // 
+            // pnlN02
+            // 
+            this.pnlN02.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlN02.Controls.Add(this.label8);
+            this.pnlN02.Controls.Add(this.txtInteresCapVenc);
+            this.pnlN02.Location = new System.Drawing.Point(3, 114);
+            this.pnlN02.Name = "pnlN02";
+            this.pnlN02.Size = new System.Drawing.Size(338, 58);
+            this.pnlN02.TabIndex = 6;
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(2, 5);
+            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(172, 52);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Intereses ordinarios sobre capital vencido cubierto:";
+            // 
+            // txtInteresCapVenc
+            // 
+            this.txtInteresCapVenc.DecimalPlaces = 6;
+            this.txtInteresCapVenc.Location = new System.Drawing.Point(185, 3);
+            this.txtInteresCapVenc.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtInteresCapVenc.Name = "txtInteresCapVenc";
+            this.txtInteresCapVenc.Size = new System.Drawing.Size(150, 23);
+            this.txtInteresCapVenc.TabIndex = 6;
+            this.txtInteresCapVenc.ThousandsSeparator = true;
+            this.txtInteresCapVenc.ValueChanged += new System.EventHandler(this.txtInteresCapVenc_ValueChanged);
+            this.txtInteresCapVenc.Enter += new System.EventHandler(this.txtInteresCapVenc_Enter);
+            // 
+            // pnlN01
+            // 
+            this.pnlN01.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlN01.Controls.Add(this.txtPagoCapital);
+            this.pnlN01.Controls.Add(this.label6);
+            this.pnlN01.Location = new System.Drawing.Point(3, 37);
+            this.pnlN01.Name = "pnlN01";
+            this.pnlN01.Size = new System.Drawing.Size(338, 32);
+            this.pnlN01.TabIndex = 4;
+            // 
+            // txtPagoCapital
+            // 
+            this.txtPagoCapital.DecimalPlaces = 6;
+            this.txtPagoCapital.Location = new System.Drawing.Point(185, 5);
+            this.txtPagoCapital.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtPagoCapital.Name = "txtPagoCapital";
+            this.txtPagoCapital.Size = new System.Drawing.Size(150, 23);
+            this.txtPagoCapital.TabIndex = 4;
+            this.txtPagoCapital.ThousandsSeparator = true;
+            this.txtPagoCapital.ValueChanged += new System.EventHandler(this.txtPagoCapital_ValueChanged);
+            this.txtPagoCapital.Enter += new System.EventHandler(this.txtPagoCapital_Enter);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(2, 7);
+            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(110, 17);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Pago a capital:";
+            // 
             // txtObservaciones
             // 
-            this.txtObservaciones.Location = new System.Drawing.Point(8, 232);
+            this.txtObservaciones.Location = new System.Drawing.Point(8, 261);
             this.txtObservaciones.MaxLength = 500;
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtObservaciones.Size = new System.Drawing.Size(330, 78);
+            this.txtObservaciones.Size = new System.Drawing.Size(330, 82);
             this.txtObservaciones.TabIndex = 9;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(5, 212);
+            this.label23.Location = new System.Drawing.Point(5, 241);
             this.label23.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(107, 17);
@@ -310,16 +426,7 @@
             this.txtMontoTotal.ThousandsSeparator = true;
             this.txtMontoTotal.ValueChanged += new System.EventHandler(this.txtMontoTotal_ValueChanged);
             this.txtMontoTotal.Enter += new System.EventHandler(this.txtMontoTotal_Enter);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 186);
-            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(140, 17);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Intereses moratorios:";
+            this.txtMontoTotal.Leave += new System.EventHandler(this.txtMontoTotal_Leave);
             // 
             // label5
             // 
@@ -331,52 +438,10 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Monto total a pagar:";
             // 
-            // txtPagoCapital
-            // 
-            this.txtPagoCapital.DecimalPlaces = 6;
-            this.txtPagoCapital.Location = new System.Drawing.Point(188, 37);
-            this.txtPagoCapital.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtPagoCapital.Name = "txtPagoCapital";
-            this.txtPagoCapital.Size = new System.Drawing.Size(150, 23);
-            this.txtPagoCapital.TabIndex = 4;
-            this.txtPagoCapital.ThousandsSeparator = true;
-            this.txtPagoCapital.ValueChanged += new System.EventHandler(this.txtPagoCapital_ValueChanged);
-            this.txtPagoCapital.Enter += new System.EventHandler(this.txtPagoCapital_Enter);
-            // 
-            // txtPagoIntMoratorios
-            // 
-            this.txtPagoIntMoratorios.DecimalPlaces = 6;
-            this.txtPagoIntMoratorios.Location = new System.Drawing.Point(188, 184);
-            this.txtPagoIntMoratorios.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtPagoIntMoratorios.Name = "txtPagoIntMoratorios";
-            this.txtPagoIntMoratorios.Size = new System.Drawing.Size(150, 23);
-            this.txtPagoIntMoratorios.TabIndex = 8;
-            this.txtPagoIntMoratorios.ThousandsSeparator = true;
-            this.txtPagoIntMoratorios.ValueChanged += new System.EventHandler(this.txtPagoIntMoratorios_ValueChanged);
-            this.txtPagoIntMoratorios.Enter += new System.EventHandler(this.txtPagoIntMoratorios_Enter);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 39);
-            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 17);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Pago a capital:";
-            // 
             // txtInteresCubierto
             // 
             this.txtInteresCubierto.DecimalPlaces = 6;
-            this.txtInteresCubierto.Location = new System.Drawing.Point(188, 66);
+            this.txtInteresCubierto.Location = new System.Drawing.Point(188, 75);
             this.txtInteresCubierto.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -392,7 +457,7 @@
             // lblMensaje
             // 
             this.lblMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
-            this.lblMensaje.Location = new System.Drawing.Point(5, 313);
+            this.lblMensaje.Location = new System.Drawing.Point(5, 346);
             this.lblMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(333, 37);
@@ -402,7 +467,7 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(5, 68);
+            this.label7.Location = new System.Drawing.Point(5, 77);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(172, 37);
@@ -412,33 +477,17 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 157);
+            this.label9.Location = new System.Drawing.Point(5, 180);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(172, 17);
             this.label9.TabIndex = 18;
             this.label9.Text = "Comisión por aplicación:";
             // 
-            // txtInteresCapVenc
-            // 
-            this.txtInteresCapVenc.DecimalPlaces = 6;
-            this.txtInteresCapVenc.Location = new System.Drawing.Point(188, 103);
-            this.txtInteresCapVenc.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtInteresCapVenc.Name = "txtInteresCapVenc";
-            this.txtInteresCapVenc.Size = new System.Drawing.Size(150, 23);
-            this.txtInteresCapVenc.TabIndex = 6;
-            this.txtInteresCapVenc.ThousandsSeparator = true;
-            this.txtInteresCapVenc.ValueChanged += new System.EventHandler(this.txtInteresCapVenc_ValueChanged);
-            this.txtInteresCapVenc.Enter += new System.EventHandler(this.txtInteresCapVenc_Enter);
-            // 
             // txtComiAplicacion
             // 
             this.txtComiAplicacion.DecimalPlaces = 6;
-            this.txtComiAplicacion.Location = new System.Drawing.Point(188, 155);
+            this.txtComiAplicacion.Location = new System.Drawing.Point(188, 178);
             this.txtComiAplicacion.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -451,54 +500,149 @@
             this.txtComiAplicacion.ValueChanged += new System.EventHandler(this.txtComiAplicacion_ValueChanged);
             this.txtComiAplicacion.Enter += new System.EventHandler(this.txtComiAplicacion_Enter);
             // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(5, 105);
-            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(172, 52);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Intereses ordinarios sobre capital vencido cubierto:";
-            // 
             // tabP02
             // 
+            this.tabP02.Controls.Add(this.pnlQ03);
+            this.tabP02.Controls.Add(this.pnlQ02);
+            this.tabP02.Controls.Add(this.pnlQ01);
             this.tabP02.Controls.Add(this.txtQObservaciones);
             this.tabP02.Controls.Add(this.label24);
             this.tabP02.Controls.Add(this.txtQMontoTotal);
-            this.tabP02.Controls.Add(this.label11);
             this.tabP02.Controls.Add(this.label12);
-            this.tabP02.Controls.Add(this.txtQPagoCapital);
-            this.tabP02.Controls.Add(this.txtQPagoIntMoratorios);
-            this.tabP02.Controls.Add(this.label13);
             this.tabP02.Controls.Add(this.txtQInteresCubierto);
             this.tabP02.Controls.Add(this.lblQMensaje);
             this.tabP02.Controls.Add(this.label15);
             this.tabP02.Controls.Add(this.label16);
-            this.tabP02.Controls.Add(this.txtQInteresCapVenc);
             this.tabP02.Controls.Add(this.txtQComiAplicacion);
-            this.tabP02.Controls.Add(this.label17);
             this.tabP02.Location = new System.Drawing.Point(4, 26);
             this.tabP02.Name = "tabP02";
             this.tabP02.Padding = new System.Windows.Forms.Padding(3);
-            this.tabP02.Size = new System.Drawing.Size(344, 356);
+            this.tabP02.Size = new System.Drawing.Size(344, 389);
             this.tabP02.TabIndex = 1;
             this.tabP02.Text = "Quita / Quebranto";
             this.tabP02.UseVisualStyleBackColor = true;
             // 
+            // pnlQ03
+            // 
+            this.pnlQ03.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlQ03.Controls.Add(this.label17);
+            this.pnlQ03.Controls.Add(this.txtQPagoIntMoratorios);
+            this.pnlQ03.Location = new System.Drawing.Point(3, 206);
+            this.pnlQ03.Name = "pnlQ03";
+            this.pnlQ03.Size = new System.Drawing.Size(338, 32);
+            this.pnlQ03.TabIndex = 8;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(2, 7);
+            this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(140, 17);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "Intereses moratorios:";
+            // 
+            // txtQPagoIntMoratorios
+            // 
+            this.txtQPagoIntMoratorios.DecimalPlaces = 6;
+            this.txtQPagoIntMoratorios.Location = new System.Drawing.Point(185, 5);
+            this.txtQPagoIntMoratorios.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtQPagoIntMoratorios.Name = "txtQPagoIntMoratorios";
+            this.txtQPagoIntMoratorios.Size = new System.Drawing.Size(150, 23);
+            this.txtQPagoIntMoratorios.TabIndex = 8;
+            this.txtQPagoIntMoratorios.ThousandsSeparator = true;
+            this.txtQPagoIntMoratorios.ValueChanged += new System.EventHandler(this.txtQPagoIntMoratorios_ValueChanged);
+            this.txtQPagoIntMoratorios.Enter += new System.EventHandler(this.txtQPagoIntMoratorios_Enter);
+            // 
+            // pnlQ02
+            // 
+            this.pnlQ02.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlQ02.Controls.Add(this.label13);
+            this.pnlQ02.Controls.Add(this.txtQInteresCapVenc);
+            this.pnlQ02.Location = new System.Drawing.Point(3, 114);
+            this.pnlQ02.Name = "pnlQ02";
+            this.pnlQ02.Size = new System.Drawing.Size(338, 58);
+            this.pnlQ02.TabIndex = 6;
+            // 
+            // label13
+            // 
+            this.label13.Location = new System.Drawing.Point(2, 5);
+            this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(172, 52);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Intereses ordinarios sobre capital vencido cubierto:";
+            // 
+            // txtQInteresCapVenc
+            // 
+            this.txtQInteresCapVenc.DecimalPlaces = 6;
+            this.txtQInteresCapVenc.Location = new System.Drawing.Point(185, 3);
+            this.txtQInteresCapVenc.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtQInteresCapVenc.Name = "txtQInteresCapVenc";
+            this.txtQInteresCapVenc.Size = new System.Drawing.Size(150, 23);
+            this.txtQInteresCapVenc.TabIndex = 6;
+            this.txtQInteresCapVenc.ThousandsSeparator = true;
+            this.txtQInteresCapVenc.ValueChanged += new System.EventHandler(this.txtQInteresCapVenc_ValueChanged);
+            this.txtQInteresCapVenc.Enter += new System.EventHandler(this.txtQInteresCapVenc_Enter);
+            // 
+            // pnlQ01
+            // 
+            this.pnlQ01.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlQ01.Controls.Add(this.label25);
+            this.pnlQ01.Controls.Add(this.txtQPagoCapital);
+            this.pnlQ01.Location = new System.Drawing.Point(3, 37);
+            this.pnlQ01.Name = "pnlQ01";
+            this.pnlQ01.Size = new System.Drawing.Size(338, 32);
+            this.pnlQ01.TabIndex = 4;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(2, 7);
+            this.label25.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(110, 17);
+            this.label25.TabIndex = 12;
+            this.label25.Text = "Pago a capital:";
+            // 
+            // txtQPagoCapital
+            // 
+            this.txtQPagoCapital.DecimalPlaces = 6;
+            this.txtQPagoCapital.Location = new System.Drawing.Point(185, 5);
+            this.txtQPagoCapital.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.txtQPagoCapital.Name = "txtQPagoCapital";
+            this.txtQPagoCapital.Size = new System.Drawing.Size(150, 23);
+            this.txtQPagoCapital.TabIndex = 4;
+            this.txtQPagoCapital.ThousandsSeparator = true;
+            this.txtQPagoCapital.ValueChanged += new System.EventHandler(this.txtQPagoCapital_ValueChanged);
+            this.txtQPagoCapital.Enter += new System.EventHandler(this.txtQPagoCapital_Enter);
+            // 
             // txtQObservaciones
             // 
-            this.txtQObservaciones.Location = new System.Drawing.Point(8, 232);
+            this.txtQObservaciones.Location = new System.Drawing.Point(8, 261);
             this.txtQObservaciones.MaxLength = 500;
             this.txtQObservaciones.Multiline = true;
             this.txtQObservaciones.Name = "txtQObservaciones";
             this.txtQObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtQObservaciones.Size = new System.Drawing.Size(330, 78);
+            this.txtQObservaciones.Size = new System.Drawing.Size(330, 82);
             this.txtQObservaciones.TabIndex = 9;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(5, 212);
+            this.label24.Location = new System.Drawing.Point(5, 241);
             this.label24.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(107, 17);
@@ -521,16 +665,6 @@
             this.txtQMontoTotal.ValueChanged += new System.EventHandler(this.txtQMontoTotal_ValueChanged);
             this.txtQMontoTotal.Enter += new System.EventHandler(this.txtQMontoTotal_Enter);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 186);
-            this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(140, 17);
-            this.label11.TabIndex = 34;
-            this.label11.Text = "Intereses moratorios:";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -541,52 +675,10 @@
             this.label12.TabIndex = 28;
             this.label12.Text = "Monto total a pagar:";
             // 
-            // txtQPagoCapital
-            // 
-            this.txtQPagoCapital.DecimalPlaces = 6;
-            this.txtQPagoCapital.Location = new System.Drawing.Point(188, 37);
-            this.txtQPagoCapital.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtQPagoCapital.Name = "txtQPagoCapital";
-            this.txtQPagoCapital.Size = new System.Drawing.Size(150, 23);
-            this.txtQPagoCapital.TabIndex = 4;
-            this.txtQPagoCapital.ThousandsSeparator = true;
-            this.txtQPagoCapital.ValueChanged += new System.EventHandler(this.txtQPagoCapital_ValueChanged);
-            this.txtQPagoCapital.Enter += new System.EventHandler(this.txtQPagoCapital_Enter);
-            // 
-            // txtQPagoIntMoratorios
-            // 
-            this.txtQPagoIntMoratorios.DecimalPlaces = 6;
-            this.txtQPagoIntMoratorios.Location = new System.Drawing.Point(188, 184);
-            this.txtQPagoIntMoratorios.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtQPagoIntMoratorios.Name = "txtQPagoIntMoratorios";
-            this.txtQPagoIntMoratorios.Size = new System.Drawing.Size(150, 23);
-            this.txtQPagoIntMoratorios.TabIndex = 8;
-            this.txtQPagoIntMoratorios.ThousandsSeparator = true;
-            this.txtQPagoIntMoratorios.ValueChanged += new System.EventHandler(this.txtQPagoIntMoratorios_ValueChanged);
-            this.txtQPagoIntMoratorios.Enter += new System.EventHandler(this.txtQPagoIntMoratorios_Enter);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(5, 39);
-            this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(110, 17);
-            this.label13.TabIndex = 29;
-            this.label13.Text = "Pago a capital:";
-            // 
             // txtQInteresCubierto
             // 
             this.txtQInteresCubierto.DecimalPlaces = 6;
-            this.txtQInteresCubierto.Location = new System.Drawing.Point(188, 66);
+            this.txtQInteresCubierto.Location = new System.Drawing.Point(188, 75);
             this.txtQInteresCubierto.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -602,7 +694,7 @@
             // lblQMensaje
             // 
             this.lblQMensaje.Image = global::SisCreWin.Properties.Resources.DivBackA_big;
-            this.lblQMensaje.Location = new System.Drawing.Point(5, 313);
+            this.lblQMensaje.Location = new System.Drawing.Point(5, 346);
             this.lblQMensaje.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblQMensaje.Name = "lblQMensaje";
             this.lblQMensaje.Size = new System.Drawing.Size(333, 37);
@@ -612,7 +704,7 @@
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(5, 68);
+            this.label15.Location = new System.Drawing.Point(5, 77);
             this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(172, 36);
@@ -622,33 +714,17 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(5, 157);
+            this.label16.Location = new System.Drawing.Point(5, 180);
             this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(172, 17);
             this.label16.TabIndex = 32;
             this.label16.Text = "Comisión por aplicación:";
             // 
-            // txtQInteresCapVenc
-            // 
-            this.txtQInteresCapVenc.DecimalPlaces = 6;
-            this.txtQInteresCapVenc.Location = new System.Drawing.Point(188, 103);
-            this.txtQInteresCapVenc.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.txtQInteresCapVenc.Name = "txtQInteresCapVenc";
-            this.txtQInteresCapVenc.Size = new System.Drawing.Size(150, 23);
-            this.txtQInteresCapVenc.TabIndex = 6;
-            this.txtQInteresCapVenc.ThousandsSeparator = true;
-            this.txtQInteresCapVenc.ValueChanged += new System.EventHandler(this.txtQInteresCapVenc_ValueChanged);
-            this.txtQInteresCapVenc.Enter += new System.EventHandler(this.txtQInteresCapVenc_Enter);
-            // 
             // txtQComiAplicacion
             // 
             this.txtQComiAplicacion.DecimalPlaces = 6;
-            this.txtQComiAplicacion.Location = new System.Drawing.Point(188, 155);
+            this.txtQComiAplicacion.Location = new System.Drawing.Point(188, 178);
             this.txtQComiAplicacion.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -660,15 +736,6 @@
             this.txtQComiAplicacion.ThousandsSeparator = true;
             this.txtQComiAplicacion.ValueChanged += new System.EventHandler(this.txtQComiAplicacion_ValueChanged);
             this.txtQComiAplicacion.Enter += new System.EventHandler(this.txtQComiAplicacion_Enter);
-            // 
-            // label17
-            // 
-            this.label17.Location = new System.Drawing.Point(5, 105);
-            this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(172, 53);
-            this.label17.TabIndex = 31;
-            this.label17.Text = "Intereses ordinarios sobre capital vencido cubierto:";
             // 
             // grdDatos
             // 
@@ -757,7 +824,7 @@
             this.tabHistorial.Controls.Add(this.groupBox2);
             this.tabHistorial.Location = new System.Drawing.Point(4, 26);
             this.tabHistorial.Name = "tabHistorial";
-            this.tabHistorial.Size = new System.Drawing.Size(988, 615);
+            this.tabHistorial.Size = new System.Drawing.Size(988, 662);
             this.tabHistorial.TabIndex = 1;
             this.tabHistorial.Text = "Historial de pagos";
             this.tabHistorial.UseVisualStyleBackColor = true;
@@ -959,7 +1026,6 @@
             this.Controls.Add(this.pnlProgreso);
             this.Controls.Add(this.tab01);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(16, 538);
             this.Name = "frmRegistroPago";
@@ -973,19 +1039,29 @@
             this.tabPagos.ResumeLayout(false);
             this.tabP01.ResumeLayout(false);
             this.tabP01.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMontoTotal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPagoCapital)).EndInit();
+            this.pnlN03.ResumeLayout(false);
+            this.pnlN03.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPagoIntMoratorios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCubierto)).EndInit();
+            this.pnlN02.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtInteresCapVenc)).EndInit();
+            this.pnlN01.ResumeLayout(false);
+            this.pnlN01.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPagoCapital)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMontoTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInteresCubierto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtComiAplicacion)).EndInit();
             this.tabP02.ResumeLayout(false);
             this.tabP02.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQMontoTotal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQPagoCapital)).EndInit();
+            this.pnlQ03.ResumeLayout(false);
+            this.pnlQ03.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQPagoIntMoratorios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCubierto)).EndInit();
+            this.pnlQ02.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCapVenc)).EndInit();
+            this.pnlQ01.ResumeLayout(false);
+            this.pnlQ01.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQPagoCapital)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQMontoTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQInteresCubierto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQComiAplicacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
             this.tabHistorial.ResumeLayout(false);
@@ -1029,18 +1105,15 @@
         private System.Windows.Forms.TabPage tabP01;
         private System.Windows.Forms.TabPage tabP02;
         private System.Windows.Forms.NumericUpDown txtQMontoTotal;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown txtQPagoCapital;
         private System.Windows.Forms.NumericUpDown txtQPagoIntMoratorios;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown txtQInteresCubierto;
         private System.Windows.Forms.Label lblQMensaje;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.NumericUpDown txtQInteresCapVenc;
         private System.Windows.Forms.NumericUpDown txtQComiAplicacion;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cboTipoPago;
         private System.Windows.Forms.DataGridView grdDetalle;
@@ -1067,5 +1140,14 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtQObservaciones;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Panel pnlN03;
+        private System.Windows.Forms.Panel pnlN02;
+        private System.Windows.Forms.Panel pnlN01;
+        private System.Windows.Forms.Panel pnlQ01;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Panel pnlQ02;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel pnlQ03;
+        private System.Windows.Forms.Label label17;
     }
 }

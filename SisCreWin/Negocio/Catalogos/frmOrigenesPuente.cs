@@ -42,6 +42,7 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[6].ReadOnly = true;
                 grdDatos.Columns[6].Visible = false;
 
+                grdDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
                 clsGeneral.FormatoResaltadoGrid(ref grdDatos, "OCP_Estado", "LIQUIDADO");
             }
             else

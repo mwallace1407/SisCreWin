@@ -31,6 +31,7 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[1].ReadOnly = true;
                 grdDatos.Columns[2].ReadOnly = true;
 
+                grdDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
                 clsGeneral.FormatoResaltadoGrid(ref grdDatos, "Prom_Activo", "N");
             }
             else

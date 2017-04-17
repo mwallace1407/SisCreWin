@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab01 = new System.Windows.Forms.TabControl();
             this.tabCrear = new System.Windows.Forms.TabPage();
+            this.cboIngAdministracion = new System.Windows.Forms.ComboBox();
             this.chkIngActivo = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtIngSpread = new System.Windows.Forms.NumericUpDown();
@@ -57,6 +59,7 @@
             this.tabModificar = new System.Windows.Forms.TabPage();
             this.btnExportarExcel = new System.Windows.Forms.Button();
             this.gbDatos = new System.Windows.Forms.GroupBox();
+            this.cboModAdministracion = new System.Windows.Forms.ComboBox();
             this.chkModActivo = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtModSpread = new System.Windows.Forms.NumericUpDown();
@@ -85,8 +88,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
             this.sfd01 = new System.Windows.Forms.SaveFileDialog();
-            this.cboIngAdministracion = new System.Windows.Forms.ComboBox();
-            this.cboModAdministracion = new System.Windows.Forms.ComboBox();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngSpread)).BeginInit();
@@ -152,6 +153,16 @@
             this.tabCrear.TabIndex = 0;
             this.tabCrear.Text = "Crear";
             this.tabCrear.UseVisualStyleBackColor = true;
+            // 
+            // cboIngAdministracion
+            // 
+            this.cboIngAdministracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboIngAdministracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboIngAdministracion.FormattingEnabled = true;
+            this.cboIngAdministracion.Location = new System.Drawing.Point(229, 279);
+            this.cboIngAdministracion.Name = "cboIngAdministracion";
+            this.cboIngAdministracion.Size = new System.Drawing.Size(252, 25);
+            this.cboIngAdministracion.TabIndex = 28;
             // 
             // chkIngActivo
             // 
@@ -464,6 +475,16 @@
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Proyecto seleccionado:";
             // 
+            // cboModAdministracion
+            // 
+            this.cboModAdministracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboModAdministracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboModAdministracion.FormattingEnabled = true;
+            this.cboModAdministracion.Location = new System.Drawing.Point(228, 289);
+            this.cboModAdministracion.Name = "cboModAdministracion";
+            this.cboModAdministracion.Size = new System.Drawing.Size(221, 25);
+            this.cboModAdministracion.TabIndex = 50;
+            // 
             // chkModActivo
             // 
             this.chkModActivo.AutoSize = true;
@@ -748,6 +769,8 @@
             this.grdDatos.Location = new System.Drawing.Point(11, 40);
             this.grdDatos.MultiSelect = false;
             this.grdDatos.Name = "grdDatos";
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.grdDatos.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdDatos.Size = new System.Drawing.Size(564, 423);
             this.grdDatos.TabIndex = 2;
@@ -768,26 +791,6 @@
             this.sfd01.CheckFileExists = true;
             this.sfd01.DefaultExt = "*.xlsx";
             this.sfd01.Filter = "Archivos de Excel|*.xlsx";
-            // 
-            // cboIngAdministracion
-            // 
-            this.cboIngAdministracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboIngAdministracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboIngAdministracion.FormattingEnabled = true;
-            this.cboIngAdministracion.Location = new System.Drawing.Point(229, 279);
-            this.cboIngAdministracion.Name = "cboIngAdministracion";
-            this.cboIngAdministracion.Size = new System.Drawing.Size(252, 25);
-            this.cboIngAdministracion.TabIndex = 28;
-            // 
-            // cboModAdministracion
-            // 
-            this.cboModAdministracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboModAdministracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboModAdministracion.FormattingEnabled = true;
-            this.cboModAdministracion.Location = new System.Drawing.Point(228, 289);
-            this.cboModAdministracion.Name = "cboModAdministracion";
-            this.cboModAdministracion.Size = new System.Drawing.Size(221, 25);
-            this.cboModAdministracion.TabIndex = 50;
             // 
             // frmProyectos
             // 

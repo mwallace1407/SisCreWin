@@ -23,6 +23,7 @@ namespace SisCreWin.Negocio.Puentes
         string ArchivoProceso = string.Empty;
         bool EnProceso = false;
         int NumeroPrestamoAnt = 0;
+        int RowIndexNum = 0;
         //Pagos
         ResultadoStored_DT ResultadoGrid = new ResultadoStored_DT();
         int? NumeroPrestamo = null;
@@ -186,6 +187,50 @@ namespace SisCreWin.Negocio.Puentes
                     grdDatos.Columns[w].ReadOnly = true;
                 }
 
+                grdDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
+
+                try
+                {
+                    grdDatos.Columns[5].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                    grdDatos.Columns[6].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                    grdDatos.Columns[7].DefaultCellStyle = Sistema.Global.CeldaNumerica_0Dec;
+                    grdDatos.Columns[9].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[10].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[13].DefaultCellStyle = Sistema.Global.CeldaNumerica_6Dec;
+                    grdDatos.Columns[14].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[15].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[16].DefaultCellStyle = Sistema.Global.CeldaNumerica_6Dec;
+                    grdDatos.Columns[18].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[19].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[20].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[21].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[22].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[23].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[24].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[25].DefaultCellStyle = Sistema.Global.CeldaNumerica_6Dec;
+                    grdDatos.Columns[26].DefaultCellStyle = Sistema.Global.CeldaNumerica_6Dec;
+                    grdDatos.Columns[27].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[28].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[29].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[30].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[31].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[32].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[33].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[34].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[35].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[36].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[37].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[38].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[39].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[40].DefaultCellStyle = Sistema.Global.CeldaNumerica_0Dec;
+
+                    grdDatos.Columns[0].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al presentar datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 grdDatos.ClearSelection();
 
                 for (int w = 0; w < grdDatos.Rows.Count; w++)
@@ -259,10 +304,10 @@ namespace SisCreWin.Negocio.Puentes
         private void ExportarSaldos()
         {
             ResultadoExport exp = new ResultadoExport();
-            DataTable dt = new DataTable();
-            dt = (DataTable)grdDatos.DataSource;
-
-            exp = clsBD.ExportarExcel(dt);
+            //DataTable dt = new DataTable();
+            //dt = (DataTable)grdDatos.DataSource;
+            //exp = clsBD.ExportarExcel(dt);
+            exp = clsBD.ExportarExcel(clsBD.Puentes_C_MovimientosPrestamo((int)cboNumeroPrestamo.SelectedValue, dtpFechaPago.Value.AddDays(-5), dtpFechaPago.MaxDate).Resultado);
 
             if (!exp.HayError)
             {
@@ -287,10 +332,14 @@ namespace SisCreWin.Negocio.Puentes
         private void ExportarDetalle()
         {
             ResultadoExport exp = new ResultadoExport();
-            DataTable dt = new DataTable();
-            dt = (DataTable)grdDetalle.DataSource;
+            //DataTable dt = new DataTable();
+            //dt = (DataTable)grdDetalle.DataSource;
 
-            exp = clsBD.ExportarExcel(dt);
+            //exp = clsBD.ExportarExcel(dt);
+            DateTime FechaPago = clsGeneral.ObtieneFecha(grdDatos[0, RowIndexNum].Value.ToString());
+            int NumeroPrestamo = (int)grdDatos[1, RowIndexNum].Value;
+
+            exp = clsBD.ExportarExcel(clsBD.Puentes_C_HistoricoDePago(NumeroPrestamo, FechaPago).Resultado);
 
             if (!exp.HayError)
             {
@@ -371,6 +420,25 @@ namespace SisCreWin.Negocio.Puentes
                 for (int w = 0; w < grdPDatos.Columns.Count; w++)
                 {
                     grdPDatos.Columns[w].ReadOnly = true;
+                }
+
+                grdPDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
+
+                try
+                {
+                    grdPDatos.Columns[4].DefaultCellStyle = Sistema.Global.CeldaFechaHora;
+                    grdPDatos.Columns[5].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                    grdPDatos.Columns[6].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                    grdPDatos.Columns[8].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdPDatos.Columns[9].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdPDatos.Columns[10].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdPDatos.Columns[11].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdPDatos.Columns[12].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdPDatos.Columns[14].DefaultCellStyle = Sistema.Global.CeldaFechaHora;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al presentar datos de pagos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 grdPDatos.ClearSelection();
@@ -624,11 +692,30 @@ namespace SisCreWin.Negocio.Puentes
                 DateTime FechaPago = clsGeneral.ObtieneFecha(grdDatos[0, e.RowIndex].Value.ToString());
                 int NumeroPrestamo = (int)grdDatos[1, e.RowIndex].Value;
 
+                RowIndexNum = e.RowIndex;
                 Resultado = clsBD.Puentes_C_HistoricoDePago(NumeroPrestamo, FechaPago);
 
                 if(!Resultado.HayError)
                 {
                     grdDetalle.DataSource = Resultado.Resultado;
+                    grdDetalle.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
+
+                    try
+                    {
+                        grdDetalle.Columns[4].DefaultCellStyle = Sistema.Global.CeldaFechaHora;
+                        grdDetalle.Columns[5].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                        grdDetalle.Columns[6].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                        grdDetalle.Columns[8].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                        grdDetalle.Columns[9].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                        grdDetalle.Columns[10].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                        grdDetalle.Columns[11].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                        grdDetalle.Columns[12].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                        grdDetalle.Columns[14].DefaultCellStyle = Sistema.Global.CeldaFechaHora;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error al presentar datos de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
@@ -733,7 +820,6 @@ namespace SisCreWin.Negocio.Puentes
         {
             txtQPagoIntMoratorios.Select(0, txtQPagoIntMoratorios.Text.Length);
         }
-        #endregion Eventos
 
         private void chkPUsarCredito_CheckedChanged(object sender, EventArgs e)
         {
@@ -814,5 +900,11 @@ namespace SisCreWin.Negocio.Puentes
             EnProceso = false;
             Sistema.Global.ProcesosPendientes = false;
         }
+
+        private void txtMontoTotal_Leave(object sender, EventArgs e)
+        {
+            //txtPagoCapital.Select();
+        }
+        #endregion Eventos
     }
 }

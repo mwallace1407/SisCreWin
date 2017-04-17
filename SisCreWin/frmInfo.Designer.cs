@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlDatosSistema = new System.Windows.Forms.Panel();
             this.gbParametros = new System.Windows.Forms.GroupBox();
             this.grdInfo = new System.Windows.Forms.DataGridView();
@@ -65,6 +66,8 @@
             // 
             this.grdInfo.AllowUserToAddRows = false;
             this.grdInfo.AllowUserToResizeColumns = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            this.grdInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.grdInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

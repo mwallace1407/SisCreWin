@@ -43,5 +43,96 @@ namespace SisCreWin.Sistema
             get { return vBaseCnx; }
             set { vBaseCnx = value; }
         }
+
+        public static System.Windows.Forms.DataGridViewCellStyle CeldaFecha
+        {
+            get
+            {
+                System.Windows.Forms.DataGridViewCellStyle estilo = new System.Windows.Forms.DataGridViewCellStyle();
+
+                estilo.Format = "d";
+                estilo.NullValue = null;
+                estilo.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+
+                return estilo;
+            }
+        }
+
+        public static System.Windows.Forms.DataGridViewCellStyle CeldaFechaHora
+        {
+            get
+            {
+                System.Windows.Forms.DataGridViewCellStyle estilo = new System.Windows.Forms.DataGridViewCellStyle();
+
+                estilo.Format = "G";
+                estilo.NullValue = null;
+                estilo.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+
+                return estilo;
+            }
+        }
+
+        public static System.Windows.Forms.DataGridViewCellStyle CeldaNumerica_0Dec
+        {
+            get
+            {
+                System.Windows.Forms.DataGridViewCellStyle estilo = new System.Windows.Forms.DataGridViewCellStyle();
+
+                estilo.Format = "N0";
+                estilo.NullValue = null;
+                estilo.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+
+                return estilo;
+            }
+        }
+
+        public static System.Windows.Forms.DataGridViewCellStyle CeldaNumerica_2Dec
+        {
+            get
+            {
+                System.Windows.Forms.DataGridViewCellStyle estilo = new System.Windows.Forms.DataGridViewCellStyle();
+
+                estilo.Format = "N2";
+                estilo.NullValue = null;
+                estilo.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+
+                return estilo;
+            }
+        }
+
+        public static System.Windows.Forms.DataGridViewCellStyle CeldaNumerica_4Dec
+        {
+            get
+            {
+                System.Windows.Forms.DataGridViewCellStyle estilo = new System.Windows.Forms.DataGridViewCellStyle();
+
+                estilo.Format = "N4";
+                estilo.NullValue = null;
+                estilo.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+
+                return estilo;
+            }
+        }
+
+        public static System.Windows.Forms.DataGridViewCellStyle CeldaNumerica_6Dec
+        {
+            get
+            {
+                System.Windows.Forms.DataGridViewCellStyle estilo = new System.Windows.Forms.DataGridViewCellStyle();
+
+                estilo.Format = "N6";
+                estilo.NullValue = null;
+
+                return estilo;
+            }
+        }
+
+        public static System.Drawing.Color ColorAltGrid
+        {
+            get
+            {
+                return System.Drawing.Color.Gainsboro;
+            }
+        }
     }
 }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tab01 = new System.Windows.Forms.TabControl();
             this.tabCrear = new System.Windows.Forms.TabPage();
+            this.chkAuto = new System.Windows.Forms.CheckBox();
             this.txtIngValor = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.txtIngMes = new System.Windows.Forms.NumericUpDown();
@@ -53,7 +54,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
             this.sfd01 = new System.Windows.Forms.SaveFileDialog();
-            this.chkAuto = new System.Windows.Forms.CheckBox();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtIngValor)).BeginInit();
@@ -99,6 +99,19 @@
             this.tabCrear.TabIndex = 0;
             this.tabCrear.Text = "Crear";
             this.tabCrear.UseVisualStyleBackColor = true;
+            // 
+            // chkAuto
+            // 
+            this.chkAuto.AutoSize = true;
+            this.chkAuto.Checked = true;
+            this.chkAuto.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAuto.Location = new System.Drawing.Point(61, 40);
+            this.chkAuto.Name = "chkAuto";
+            this.chkAuto.Size = new System.Drawing.Size(329, 21);
+            this.chkAuto.TabIndex = 22;
+            this.chkAuto.Text = "Obtener automáticamente el periodo faltante";
+            this.chkAuto.UseVisualStyleBackColor = true;
+            this.chkAuto.CheckedChanged += new System.EventHandler(this.chkAuto_CheckedChanged);
             // 
             // txtIngValor
             // 
@@ -326,7 +339,7 @@
             this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.grdDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.grdDatos.Location = new System.Drawing.Point(11, 40);
@@ -352,19 +365,6 @@
             this.sfd01.CheckFileExists = true;
             this.sfd01.DefaultExt = "*.xlsx";
             this.sfd01.Filter = "Archivos de Excel|*.xlsx";
-            // 
-            // chkAuto
-            // 
-            this.chkAuto.AutoSize = true;
-            this.chkAuto.Checked = true;
-            this.chkAuto.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAuto.Location = new System.Drawing.Point(61, 40);
-            this.chkAuto.Name = "chkAuto";
-            this.chkAuto.Size = new System.Drawing.Size(329, 21);
-            this.chkAuto.TabIndex = 22;
-            this.chkAuto.Text = "Obtener automáticamente el periodo faltante";
-            this.chkAuto.UseVisualStyleBackColor = true;
-            this.chkAuto.CheckedChanged += new System.EventHandler(this.chkAuto_CheckedChanged);
             // 
             // frmTIIE
             // 

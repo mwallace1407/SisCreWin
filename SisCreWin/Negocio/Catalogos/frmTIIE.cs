@@ -30,6 +30,8 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[0].ReadOnly = true;
                 grdDatos.Columns[1].ReadOnly = true;
                 grdDatos.Columns[2].ReadOnly = true;
+
+                grdDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
             }
             else
             {

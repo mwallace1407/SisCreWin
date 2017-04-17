@@ -105,6 +105,20 @@ namespace SisCreWin.Negocio.Puentes
                     grdPDatos.Columns[w].ReadOnly = true;
                 }
 
+                try
+                {
+                    grdPDatos.Columns[1].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                    grdPDatos.Columns[4].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdPDatos.Columns[5].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdPDatos.Columns[6].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdPDatos.Columns[7].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al presentar datos del reporte", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                grdPDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
                 grdPDatos.ClearSelection();
             }
             else

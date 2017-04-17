@@ -310,6 +310,31 @@ namespace SisCreWin.Negocio.Puentes
                 if (ResultadoGrid.Resultado.Rows.Count <= 100)
                     grdDatos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
+                grdDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
+
+                try
+                {
+                    grdDatos.Columns[5].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[6].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[7].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[8].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[9].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[10].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[11].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[12].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[13].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[14].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[15].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[16].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[17].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[18].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                    grdDatos.Columns[1].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al presentar datos de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 grdDatos.ClearSelection();
             }
             else
@@ -332,6 +357,7 @@ namespace SisCreWin.Negocio.Puentes
                 if (ResultadoGrid.Resultado.Rows.Count <= 100)
                     grdDatosR.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
+                grdDatosR.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
                 grdDatosR.ClearSelection();
             }
             else
@@ -586,6 +612,31 @@ namespace SisCreWin.Negocio.Puentes
                         pnlDetalle.Size = new Size(tabPage1.Width - 16, tabPage1.Height - 16);
                         pnlDetalle.Location = new Point(8, 8);
                         pnlDetalle.Visible = true;
+
+                        grdDatosDet.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
+
+                        try
+                        {
+                            grdDatosDet.Columns[5].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[6].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[7].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[8].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[9].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[10].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[11].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[12].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[13].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[14].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[15].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[16].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[17].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[18].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                            grdDatosDet.Columns[1].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error al presentar datos de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     catch (Exception ex)
                     {

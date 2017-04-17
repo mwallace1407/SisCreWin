@@ -32,6 +32,9 @@ namespace SisCreWin.Sistema
                 grdDatos.Columns[1].ReadOnly = true;
                 grdDatos.Columns[2].ReadOnly = true;
                 grdDatos.Columns[3].ReadOnly = true;
+
+                grdDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
+                clsGeneral.FormatoResaltadoGrid(ref grdDatos, "Usr_Activo", "N");
             }
             else
             {
@@ -74,6 +77,9 @@ namespace SisCreWin.Sistema
                 grdDatosP.Columns[1].ReadOnly = true;
                 grdDatosP.Columns[2].ReadOnly = true;
                 grdDatosP.Columns[3].ReadOnly = true;
+
+                grdDatosP.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
+                clsGeneral.FormatoResaltadoGrid(ref grdDatosP, "Mod_Autorizado", "N");
             }
             else
             {

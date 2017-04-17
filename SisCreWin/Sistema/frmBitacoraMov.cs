@@ -139,6 +139,8 @@ namespace SisCreWin.Sistema
                     grdDatos.Columns[1].ReadOnly = true;
                     grdDatos.Columns[2].ReadOnly = true;
                     grdDatos.Columns[3].ReadOnly = true;
+
+                    grdDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
                 }
                 else
                 {

@@ -51,7 +51,14 @@ namespace SisCreWin.Negocio.Catalogos
                 grdDatos.Columns[11].ReadOnly = true;
                 grdDatos.Columns[12].ReadOnly = true;
                 grdDatos.Columns[1].Visible = false;
+                grdDatos.Columns[4].DefaultCellStyle = Sistema.Global.CeldaNumerica_0Dec;
+                grdDatos.Columns[5].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                grdDatos.Columns[6].DefaultCellStyle = Sistema.Global.CeldaFecha;
+                grdDatos.Columns[7].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                grdDatos.Columns[8].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
+                grdDatos.Columns[11].DefaultCellStyle = Sistema.Global.CeldaNumerica_2Dec;
 
+                grdDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
                 clsGeneral.FormatoResaltadoGrid(ref grdDatos, "Proy_Activo", "N");
             }
             else

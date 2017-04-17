@@ -28,6 +28,13 @@ namespace SisCreWin
                 txtServidor.Text = tmpVal;
                 tmpVal = (string)llave.GetValue("BD");
                 txtBD.Text = tmpVal;
+
+                try
+                {
+                    tmpVal = (string)llave.GetValue("Pwd");
+                    txtPass.Text = new De_CryptDLL.De_Crypt().Desencriptar(tmpVal, Environment.MachineName.ToLower(), true);
+                }
+                catch { }
             }
             catch { }
             finally

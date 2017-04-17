@@ -948,7 +948,7 @@ namespace SisCreWin.BD
             param = new SqlParameter("@Proy_Spread", SqlDbType.Decimal);
             param.Value = Proyecto.Proy_Spread;
             paramC.Add(param);
-            param = new SqlParameter("@Proy_Activo", SqlDbType.Decimal);
+            param = new SqlParameter("@Proy_Activo", SqlDbType.Bit);
             param.Value = Proyecto.Proy_Activo;
             paramC.Add(param);
 

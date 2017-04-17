@@ -36,6 +36,9 @@ namespace SisCreWin.Sistema
                 grdDatos.Columns[3].ReadOnly = true;
                 grdDatos.Columns[4].ReadOnly = true;
                 grdDatos.Columns[5].ReadOnly = true;
+
+                grdDatos.AlternatingRowsDefaultCellStyle.BackColor = Sistema.Global.ColorAltGrid;
+                clsGeneral.FormatoResaltadoGrid(ref grdDatos, "Mod_Activo", "N");
             }
             else
             {
