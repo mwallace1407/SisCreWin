@@ -17,6 +17,7 @@ namespace SisCreWin.Modelo
         //public static string RutaReportes = System.Web.Configuration.WebConfigurationManager.AppSettings["RutaReportes"].ToString();
         public static string Produccion = crypto.Desencriptar(System.Configuration.ConfigurationManager.AppSettings["Produccion"].ToString(), "ODES", true);
         public static string BDCnx = crypto.Desencriptar(System.Configuration.ConfigurationManager.ConnectionStrings["Sistema"].ConnectionString, "ODES", true);
+        public static string BDCnxQA = crypto.Desencriptar(System.Configuration.ConfigurationManager.ConnectionStrings["SistemaQA"].ConnectionString, "ODES", true);
 
         public static DataTable ddlSiNo
         {

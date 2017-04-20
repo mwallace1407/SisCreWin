@@ -82,6 +82,9 @@ namespace SisCreWin
             {
                 ResultadoStored_Int Resultado;
 
+                if (chkPruebas.Checked)
+                    Global.OverrideCnx = clsGeneral.BDCnxQA;
+
                 if (clsGeneral.Produccion != "N")
                     Resultado = clsBD.Usuarios_C_ValidarLogin(clsGeneral.Codificar(txtUsuario.Text.Trim()));
                 else

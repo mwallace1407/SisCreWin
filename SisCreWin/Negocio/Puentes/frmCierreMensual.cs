@@ -120,7 +120,7 @@ namespace SisCreWin.Negocio.Puentes
                 {
                     DateTime FechaCierreCbo = clsGeneral.ObtieneFecha(cboFechasGen.GetItemText(cboFechasGen.Items[cboFechasGen.Items.Count - 1]));
 
-                    if (FechaSistema <= FechaCierreCbo)
+                    if (FechaSistema >= FechaCierreCbo)
                         btnGenerar.Enabled = false;
                 }
             }

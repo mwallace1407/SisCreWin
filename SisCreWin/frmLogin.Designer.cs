@@ -40,6 +40,7 @@
             this.txtContrasenna = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
+            this.chkPruebas = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCnxAlt)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +65,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.chkPruebas);
             this.groupBox1.Controls.Add(this.btnCnxAlt);
             this.groupBox1.Controls.Add(this.txtDominio);
             this.groupBox1.Controls.Add(this.label3);
@@ -77,18 +82,19 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(392, 170);
+            this.groupBox1.Size = new System.Drawing.Size(392, 189);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Introduzca sus credenciales";
             // 
             // btnCnxAlt
             // 
+            this.btnCnxAlt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCnxAlt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCnxAlt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.btnCnxAlt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCnxAlt.Image = global::SisCreWin.Properties.Resources.disk_utility_5;
-            this.btnCnxAlt.Location = new System.Drawing.Point(11, 132);
+            this.btnCnxAlt.Location = new System.Drawing.Point(11, 151);
             this.btnCnxAlt.Name = "btnCnxAlt";
             this.btnCnxAlt.Size = new System.Drawing.Size(30, 30);
             this.btnCnxAlt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -119,7 +125,8 @@
             // 
             // btnProcesar
             // 
-            this.btnProcesar.Location = new System.Drawing.Point(284, 132);
+            this.btnProcesar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProcesar.Location = new System.Drawing.Point(284, 151);
             this.btnProcesar.Margin = new System.Windows.Forms.Padding(4);
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(100, 30);
@@ -147,13 +154,23 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Contraseña:";
             // 
+            // chkPruebas
+            // 
+            this.chkPruebas.AutoSize = true;
+            this.chkPruebas.Location = new System.Drawing.Point(105, 127);
+            this.chkPruebas.Name = "chkPruebas";
+            this.chkPruebas.Size = new System.Drawing.Size(197, 21);
+            this.chkPruebas.TabIndex = 8;
+            this.chkPruebas.Text = "Usar ambiente de pruebas";
+            this.chkPruebas.UseVisualStyleBackColor = true;
+            // 
             // frmLogin
             // 
             this.AcceptButton = this.btnProcesar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(425, 200);
+            this.ClientSize = new System.Drawing.Size(425, 219);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,6 +201,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolTip tip01;
         private System.Windows.Forms.PictureBox btnCnxAlt;
+        private System.Windows.Forms.CheckBox chkPruebas;
     }
 }
 
