@@ -124,8 +124,8 @@
   <data name="splash_screen_animated_fast_1loop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\splash_screen_animated_fast_1loop.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inf" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="splash_screen_animated_frame1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\splash_screen_animated_frame1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="xlsIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\xlsIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,11 +136,14 @@
   <data name="database-configuration-590" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database-configuration-590.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gears_animated_t" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gears_animated_t.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="DivBackA_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DivBackA_big.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="err" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\err.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="calendario_icon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendario_icon_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Online_banking_gray_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Online_banking_gray-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,17 +154,17 @@
   <data name="favicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\favicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="splash_screen_animated_frame1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\splash_screen_animated_frame1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Graphicloads_Filetype_Excel_xls" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Graphicloads-Filetype-Excel-xls.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SisCreIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SisCreIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gears_animated_t" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gears_animated_t.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="inf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="err" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\err.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="help1600_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\help1600_s.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,7 +172,7 @@
   <data name="xlsIcon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\xlsIcon_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="calendario_icon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calendario_icon_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Loading_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Loading_02.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

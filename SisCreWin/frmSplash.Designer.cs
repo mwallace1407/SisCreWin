@@ -43,7 +43,7 @@
             // 
             // pbAni
             // 
-            this.pbAni.Image = global::SisCreWin.Properties.Resources.splash_screen_animated_fast_1loop;
+            this.pbAni.Image = global::SisCreWin.Properties.Resources.Loading_02;
             this.pbAni.Location = new System.Drawing.Point(0, 0);
             this.pbAni.Name = "pbAni";
             this.pbAni.Size = new System.Drawing.Size(500, 500);

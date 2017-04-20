@@ -61,7 +61,7 @@ namespace SisCreWin
             }
             else
             {
-                pbAni.Image = global::SisCreWin.Properties.Resources.splash_screen_animated_frame1;
+                pbAni.Image = global::SisCreWin.Properties.Resources.Loading_02;
                 this.Close();
             }
         }

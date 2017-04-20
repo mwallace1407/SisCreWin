@@ -183,6 +183,16 @@ namespace SisCreWin.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Loading_02 {
+            get {
+                object obj = ResourceManager.GetObject("Loading_02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Online_banking_gray_512 {
             get {
                 object obj = ResourceManager.GetObject("Online_banking_gray_512", resourceCulture);
