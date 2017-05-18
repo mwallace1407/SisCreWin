@@ -29,20 +29,20 @@ namespace SisCreWin.Negocio.Puentes
 
         private void UltimaFecha()
         {
-            ResultadoStored_DT Resultado = new BD.ResultadoStored_DT();
+            ResultadoStored_Str Resultado = new BD.ResultadoStored_Str();
 
-            Resultado = clsBD.Puentes_C_VerificarPosibilidadCierre();
-            dtpFechaSistema.Value = clsGeneral.ObtieneFecha(Resultado.Resultado.Rows[0]["FechaSistema"].ToString());
+            Resultado = clsBD.Puentes_C_ObtenerFechaUltimoCierre();
+            dtpFechaSistema.Value = clsGeneral.ObtieneFecha(Resultado.Resultado);
 
-            if (Resultado.Resultado.Rows[0]["Validacion"].ToString() == string.Empty)
-            {
-                btnCrear.Enabled = true;
-            }
-            else
-            {
-                btnCrear.Enabled = false;
-                lblMensaje.Text = Resultado.Resultado.Rows[0]["Validacion"].ToString();
-            }
+            //if (Resultado.Resultado.Rows[0]["Validacion"].ToString() == string.Empty)
+            //{
+            //    btnCrear.Enabled = true;
+            //}
+            //else
+            //{
+            //    btnCrear.Enabled = false;
+            //    lblMensaje.Text = Resultado.Resultado.Rows[0]["Validacion"].ToString();
+            //}
 
             if (dtpFechaSistema.Value > DateTime.Now)
             {

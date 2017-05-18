@@ -78,6 +78,7 @@ namespace SisCreWin.Modelo
         public static String Buro_C_HistoricoPuentes { get { return "sp_Buro_C_HistoricoPuentes"; } }
         public static String Buro_C_HistoricoPuentesDatos { get { return "sp_Buro_C_HistoricoPuentesDatos"; } }
         public static String Buro_C_PeriodosDisponiblesPuentes { get { return "sp_Buro_C_PeriodosDisponiblesPuentes"; } }
+        public static String Buro_I_SaldosPuente { get { return "sp_Buro_I_SaldosPuente"; } }
         public static String ReportesBuro_C_CreditosIndividuales { get { return "sp_ReportesBuro_C_CreditosIndividuales"; } }
         public static String Buro_I_HistoricoIndividuales { get { return "sp_Buro_I_HistoricoIndividuales"; } }
         public static String Buro_C_HistoricoIndividuales { get { return "sp_Buro_C_HistoricoIndividuales"; } }
@@ -122,6 +123,10 @@ namespace SisCreWin.Modelo
         public static String Puentes_C_CarteraFechaDeterminada { get { return "sp_Puentes_C_CarteraFechaDeterminada"; } }
         public static String Puentes_C_ObtenerFechaContable { get { return "sp_Puentes_C_ObtenerFechaContable"; } }
         public static String Puentes_U_EstablecerFechaContable { get { return "sp_Puentes_U_EstablecerFechaContable"; } }
+        public static String Puentes_I_ArchivosAjustes { get { return "sp_Puentes_I_ArchivosAjustes"; } }
+        public static String Puentes_C_ReporteDeAjustes { get { return "sp_Puentes_C_ReporteDeAjustes"; } }
+        public static String Puentes_C_AdjuntosPorAjuste { get { return "sp_Puentes_C_AdjuntosPorAjuste"; } }
+        public static String Puentes_C_DatosAdjuntoAjuste { get { return "sp_Puentes_C_DatosAdjuntoAjuste"; } }
         //!Operaciones_Puentes
         #endregion Negocio
         #endregion Variables
@@ -157,6 +162,7 @@ namespace SisCreWin.Modelo
         public static int Puentes_RegenerarCierreMensual { get { return 20; } }
         public static int Puentes_GenerarCierreMensual { get { return 22; } }
         public static int Puentes_EstablecerFechaContable { get { return 23; } }
+        public static int Puentes_RegistrarAjuste { get { return 24; } }
         #endregion Negocio
         #endregion Variables
     }

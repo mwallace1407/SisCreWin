@@ -143,7 +143,9 @@ namespace SisCreWin.Negocio.Buro
 
         private void GenerarArchivo(string Archivo, string Contenido)
         {
-            using (StreamWriter outfile = new StreamWriter(Archivo, true, Encoding.UTF8))
+            System.Text.Encoding utf8SinBOM = new UTF8Encoding(false); //Genera UTF-8 sin BOM
+
+            using (StreamWriter outfile = new StreamWriter(Archivo, true, utf8SinBOM))
             {
                 outfile.AutoFlush = true;
                 outfile.NewLine = Environment.NewLine;
@@ -309,7 +311,7 @@ namespace SisCreWin.Negocio.Buro
                         }
 
                         Archivo = Path.Combine(fbd01.SelectedPath, clsGeneral.GeneraNombreArchivoRnd("BuroPuentes_", "txt"));
-                        GenerarArchivo(Archivo, clsGeneral.Unzip(Resultado.Resultado, clsGeneral.Codificaciones.UTF8));
+                        GenerarArchivo(Archivo, clsGeneral.Unzip(Resultado.Resultado, clsGeneral.Codificaciones.UTF8SinBOM));
 
                         if (File.Exists(Archivo))
                         {

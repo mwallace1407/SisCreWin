@@ -23,12 +23,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <MinimumRequiredVersion>1.5.0.0</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.6.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.6.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -207,6 +207,12 @@
     <Compile Include="Negocio\Puentes\frmHistCred.Designer.cs">
       <DependentUpon>frmHistCred.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\Puentes\frmRegistroAjuste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Puentes\frmRegistroAjuste.Designer.cs">
+      <DependentUpon>frmRegistroAjuste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Puentes\frmRegistroPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Puentes\frmHistCred.resx">
       <DependentUpon>frmHistCred.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Puentes\frmRegistroAjuste.resx">
+      <DependentUpon>frmRegistroAjuste.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Puentes\frmRegistroPago.resx">
       <DependentUpon>frmRegistroPago.cs</DependentUpon>

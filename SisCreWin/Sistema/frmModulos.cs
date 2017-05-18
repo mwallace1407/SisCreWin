@@ -73,6 +73,7 @@ namespace SisCreWin.Sistema
                     MessageBox.Show("Se ha agregado un módulo.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtCNombre.Text = string.Empty;
                     txtCDescripcion.Text = string.Empty;
+                    txtCFormulario.Text = string.Empty;
                     chkCActivo.Checked = false;
                     txtCNombre.Focus();
                 }

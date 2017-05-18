@@ -62,7 +62,7 @@ namespace SisCreWin
             {
                 frmCnx frm = new SisCreWin.frmCnx();
 
-                txtContrasenna.Text = new De_CryptDLL.De_Crypt().Desencriptar("jJvVWwOoq0ZucX8dSj6KdA==", Environment.MachineName.ToLower(), true);
+                txtContrasenna.Text = new De_CryptDLL.De_Crypt().Desencriptar("TAcQpQFELRFucX8dSj6KdA==", Environment.MachineName.ToLower(), true);
                 frm.ShowDialog(this);
             }
 

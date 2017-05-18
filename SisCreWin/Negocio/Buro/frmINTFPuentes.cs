@@ -131,7 +131,7 @@ namespace SisCreWin.Negocio.Buro
             {
                 string CadenaTXT = ProcesarDatos(Resultado.Resultado);
                 clsGeneral.BuroHistoricoPuentes Buro = new clsGeneral.BuroHistoricoPuentes(Sistema.Global.Usr_Id, Convert.ToInt32(FechaDoc.ToString("yyyyMM")), vBHP_Documento: clsGeneral.Zip(CadenaTXT));
-                clsGeneral.BuroDocumentos BuroDoc = new clsGeneral.BuroDocumentos(Sistema.Global.Usr_Id, FechaDoc.Year, FechaDoc.Month, "P", vBDG_Documento: clsGeneral.Zip(CadenaTXT, clsGeneral.Codificaciones.UTF8));
+                clsGeneral.BuroDocumentos BuroDoc = new clsGeneral.BuroDocumentos(Sistema.Global.Usr_Id, FechaDoc.Year, FechaDoc.Month, "P", vBDG_Documento: clsGeneral.Zip(CadenaTXT, clsGeneral.Codificaciones.UTF8SinBOM));
 
                 clsBD.Bitacoras_I_MovimientosSistema(Bitacora);
                 clsBD.Buro_I_HistoricoPuentes(Buro);
@@ -139,8 +139,9 @@ namespace SisCreWin.Negocio.Buro
 
                 ArchivoProceso = Path.Combine(DirectorioReporte, clsGeneral.GeneraNombreArchivoRnd("BuroPuentes_", "txt"));
                 System.IO.TextWriter tw;
+                System.Text.Encoding utf8SinBOM = new UTF8Encoding(false); //Genera UTF-8 sin BOM
 
-                tw = new System.IO.StreamWriter(ArchivoProceso, false, System.Text.Encoding.UTF8);
+                tw = new System.IO.StreamWriter(ArchivoProceso, false, utf8SinBOM);
                 tw.Write(CadenaTXT);
                 tw.Close();
             }

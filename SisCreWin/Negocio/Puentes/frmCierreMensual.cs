@@ -448,6 +448,7 @@ namespace SisCreWin.Negocio.Puentes
                 clsBD.Bitacoras_I_MovimientosSistema(Bitacora);
                 clsBD.Puentes_I_HistoricoCierreMensual(Sistema.Global.Usr_Id, Fecha.Value, clsGeneral.Zip(dsXML));
                 clsBD.Puentes_M_CierreMensual(Cierre);
+                clsBD.Buro_I_SaldosPuente(Fecha.Value, Convert.ToInt32(Fecha.Value.ToString("yyyyMM")));
             }
             else
             {

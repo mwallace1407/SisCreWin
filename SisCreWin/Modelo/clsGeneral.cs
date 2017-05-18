@@ -118,7 +118,18 @@ namespace SisCreWin.Modelo
         public enum Codificaciones
         {
             UTF8,
+            UTF8SinBOM,
             ANSI
+        }
+
+        public enum TiposPagoPuentesEnum
+        {
+            Normal = 1,
+            Quita = 2,
+            Quebranto = 3,
+            Dacion = 4,
+            Adjudicacion = 5,
+            Ajuste = 6
         }
         #endregion Enumeraciones
         #region Metodos
@@ -294,6 +305,10 @@ namespace SisCreWin.Modelo
                 case Codificaciones.UTF8:
                     bytes = Encoding.UTF8.GetBytes(str);
                     break;
+                case Codificaciones.UTF8SinBOM:
+                    System.Text.Encoding utf8SinBOM = new UTF8Encoding(false);
+                    bytes = utf8SinBOM.GetBytes(str);
+                    break;
                 default:
                     bytes = Encoding.UTF8.GetBytes(str);
                     break;
@@ -332,6 +347,10 @@ namespace SisCreWin.Modelo
                     case Codificaciones.UTF8:
                         Result = Encoding.UTF8.GetString(mso.ToArray());
                         break;
+                    case Codificaciones.UTF8SinBOM:
+                        System.Text.Encoding utf8SinBOM = new UTF8Encoding(false);
+                        Result = utf8SinBOM.GetString(mso.ToArray());
+                        break;
                     default:
                         Result = Encoding.UTF8.GetString(mso.ToArray());
                         break;
@@ -365,6 +384,53 @@ namespace SisCreWin.Modelo
                 return new DateTime(Anno, Mes, 1).AddMonths(1).AddMilliseconds(-2);
             else
                 return new DateTime(Anno, Mes, 1).AddMonths(1).AddDays(-1);
+        }
+
+        public static string GetBytesReadable(long i)
+        {
+            // Get absolute value
+            long absolute_i = (i < 0 ? -i : i);
+            // Determine the suffix and readable value
+            string suffix;
+            double readable;
+            if (absolute_i >= 0x1000000000000000) // Exabyte
+            {
+                suffix = "EB";
+                readable = (i >> 50);
+            }
+            else if (absolute_i >= 0x4000000000000) // Petabyte
+            {
+                suffix = "PB";
+                readable = (i >> 40);
+            }
+            else if (absolute_i >= 0x10000000000) // Terabyte
+            {
+                suffix = "TB";
+                readable = (i >> 30);
+            }
+            else if (absolute_i >= 0x40000000) // Gigabyte
+            {
+                suffix = "GB";
+                readable = (i >> 20);
+            }
+            else if (absolute_i >= 0x100000) // Megabyte
+            {
+                suffix = "MB";
+                readable = (i >> 10);
+            }
+            else if (absolute_i >= 0x400) // Kilobyte
+            {
+                suffix = "KB";
+                readable = i;
+            }
+            else
+            {
+                return i.ToString("0 B"); // Byte
+            }
+            // Divide by 1024 to get fractional value
+            readable = (readable / 1024);
+            // Return formatted number with suffix
+            return readable.ToString("0.### ") + suffix;
         }
         #endregion Metodos
         #region Modelos

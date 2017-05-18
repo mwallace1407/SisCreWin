@@ -83,6 +83,7 @@
             this.stBaseConectada = new System.Windows.Forms.ToolStripStatusLabel();
             this.stMantenimiento = new System.Windows.Forms.ToolStripStatusLabel();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
+            this.mnuRegistrarAjustePuente = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -242,7 +243,7 @@
             this.mnuTIIE,
             this.mnuTiposPagoPuentes});
             this.catálogosToolStripMenuItem.Name = "catálogosToolStripMenuItem";
-            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.catálogosToolStripMenuItem.Text = "&Catálogos";
             // 
             // mnuPromotores
@@ -289,7 +290,7 @@
             this.mnuBuroHistInd,
             this.mnuBuroHistPuentes});
             this.buróToolStripMenuItem.Name = "buróToolStripMenuItem";
-            this.buróToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.buróToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.buróToolStripMenuItem.Text = "&Buró";
             // 
             // mnuCSVIndividuales
@@ -331,13 +332,14 @@
             this.mnuCierreDiarioPuentes,
             this.mnuRptContaPuentes,
             this.mnuRegistrarPagoPuente,
+            this.mnuRegistrarAjustePuente,
             this.toolStripSeparator1,
             this.mnuHistoricoPuentes,
             this.toolStripMenuItem1,
             this.mnuConsultarCartera,
             this.mnuFechaContable});
             this.puentesToolStripMenuItem.Name = "puentesToolStripMenuItem";
-            this.puentesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.puentesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.puentesToolStripMenuItem.Text = "&Puentes";
             // 
             // mnuCierreDiarioPuentes
@@ -516,6 +518,13 @@
             this.stMantenimiento.Text = "El sistema se encuentra en mantenimiento. Espere por favor.";
             this.stMantenimiento.Visible = false;
             // 
+            // mnuRegistrarAjustePuente
+            // 
+            this.mnuRegistrarAjustePuente.Name = "mnuRegistrarAjustePuente";
+            this.mnuRegistrarAjustePuente.Size = new System.Drawing.Size(332, 22);
+            this.mnuRegistrarAjustePuente.Text = "Registrar &ajuste para un crédito";
+            this.mnuRegistrarAjustePuente.Click += new System.EventHandler(this.mnuRegistrarAjustePuente_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -602,5 +611,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuConsultarCartera;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mnuFechaContable;
+        private System.Windows.Forms.ToolStripMenuItem mnuRegistrarAjustePuente;
     }
 }

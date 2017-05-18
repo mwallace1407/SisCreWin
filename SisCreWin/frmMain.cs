@@ -141,6 +141,9 @@ namespace SisCreWin
                 case 23:
                     frmGen = new frmFechaContablePuentes();
                     break;
+                case 24:
+                    frmGen = new frmRegistroAjuste();
+                    break;
                 default:
                     break;
             }
@@ -197,6 +200,23 @@ namespace SisCreWin
                     catch { }
                 }
 
+                try
+                {
+                    for (int w = Frecuentes.Resultado.Rows.Count; w < 10; w++)
+                    {
+                        ToolStripItem[] itm = mnuMain.Items.Find("mnuFreq" + (w + 1).ToString(), true);
+
+                        if (itm.Count() > 0)
+                        {
+                            if (itm[0].Name == "mnuFreq" + (w + 1).ToString())
+                            {
+                                itm[0].Visible = false;
+                            }
+                        }
+                    }
+                }
+                catch { }
+
                 mnuModulosFreq.Visible = true;
             }
             else
@@ -251,6 +271,7 @@ namespace SisCreWin
         private void tmrMtto_Tick(object sender, EventArgs e)
         {
             ParametrosSistema();
+            ProcesarFecuentes();
 
             if (clsGeneral.SistemaEnMantenimiento(Global.Usr_Id))
             {
@@ -279,6 +300,11 @@ namespace SisCreWin
 
         }
         
+        private void statusStrip1_Click(object sender, EventArgs e)
+        {
+            formInfo.Show();
+        }
+
         #region Menu
         private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -599,12 +625,13 @@ namespace SisCreWin
                 MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        #endregion Menu
-        #endregion Eventos
 
-        private void statusStrip1_Click(object sender, EventArgs e)
+        private void mnuRegistrarAjustePuente_Click(object sender, EventArgs e)
         {
-            formInfo.Show();
+            AbrirVentana(CatalogoModulos.Puentes_RegistrarAjuste);
         }
+        #endregion Menu
+
+        #endregion Eventos
     }
 }

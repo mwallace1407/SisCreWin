@@ -48,11 +48,6 @@
             this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.cboNumeroPrestamo = new System.Windows.Forms.ComboBox();
-            this.tip01 = new System.Windows.Forms.ToolTip(this.components);
-            this.pnlProgreso = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.wkr01 = new System.ComponentModel.BackgroundWorker();
             this.tabPagos = new System.Windows.Forms.TabPage();
             this.grdPDatos = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -67,17 +62,45 @@
             this.dtpPFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.cboPNumeroPrestamo = new System.Windows.Forms.ComboBox();
+            this.tabAjustes = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.grdAArchivos = new System.Windows.Forms.DataGridView();
+            this.grdADatos = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAExportar = new System.Windows.Forms.Button();
+            this.btnAVisualizar = new System.Windows.Forms.Button();
+            this.chkAUsarFechaFinal = new System.Windows.Forms.CheckBox();
+            this.dtpAFechaFinal = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.chkAUsarFechaInicial = new System.Windows.Forms.CheckBox();
+            this.chkAUsarCredito = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtpAFechaInicial = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboANumeroPrestamo = new System.Windows.Forms.ComboBox();
+            this.tip01 = new System.Windows.Forms.ToolTip(this.components);
+            this.pnlProgreso = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.wkr01 = new System.ComponentModel.BackgroundWorker();
             this.wkr02 = new System.ComponentModel.BackgroundWorker();
+            this.wkr03 = new System.ComponentModel.BackgroundWorker();
+            this.fbd01 = new System.Windows.Forms.FolderBrowserDialog();
             this.tab01.SuspendLayout();
             this.tabSaldos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.pnlProgreso.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPagos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdPDatos)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.tabAjustes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdAArchivos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdADatos)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.pnlProgreso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tab01
@@ -87,6 +110,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab01.Controls.Add(this.tabSaldos);
             this.tab01.Controls.Add(this.tabPagos);
+            this.tab01.Controls.Add(this.tabAjustes);
             this.tab01.Location = new System.Drawing.Point(16, 16);
             this.tab01.Margin = new System.Windows.Forms.Padding(4);
             this.tab01.Name = "tab01";
@@ -190,9 +214,9 @@
             // 
             // btnExportarDet
             // 
-            this.btnExportarDet.Location = new System.Drawing.Point(11, 248);
+            this.btnExportarDet.Location = new System.Drawing.Point(11, 250);
             this.btnExportarDet.Name = "btnExportarDet";
-            this.btnExportarDet.Size = new System.Drawing.Size(218, 23);
+            this.btnExportarDet.Size = new System.Drawing.Size(218, 29);
             this.btnExportarDet.TabIndex = 9;
             this.btnExportarDet.Text = "Exportar detalle a Excel";
             this.btnExportarDet.UseVisualStyleBackColor = true;
@@ -259,9 +283,9 @@
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(11, 219);
+            this.btnExportar.Location = new System.Drawing.Point(11, 215);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(218, 23);
+            this.btnExportar.Size = new System.Drawing.Size(218, 29);
             this.btnExportar.TabIndex = 8;
             this.btnExportar.Text = "Exportar saldos a Excel";
             this.btnExportar.UseVisualStyleBackColor = true;
@@ -269,9 +293,9 @@
             // 
             // btnVisualizar
             // 
-            this.btnVisualizar.Location = new System.Drawing.Point(11, 190);
+            this.btnVisualizar.Location = new System.Drawing.Point(11, 180);
             this.btnVisualizar.Name = "btnVisualizar";
-            this.btnVisualizar.Size = new System.Drawing.Size(218, 23);
+            this.btnVisualizar.Size = new System.Drawing.Size(218, 29);
             this.btnVisualizar.TabIndex = 7;
             this.btnVisualizar.Text = "Visualizar";
             this.btnVisualizar.UseVisualStyleBackColor = true;
@@ -314,47 +338,6 @@
             this.cboNumeroPrestamo.Name = "cboNumeroPrestamo";
             this.cboNumeroPrestamo.Size = new System.Drawing.Size(218, 25);
             this.cboNumeroPrestamo.TabIndex = 2;
-            // 
-            // pnlProgreso
-            // 
-            this.pnlProgreso.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlProgreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnlProgreso.Controls.Add(this.pictureBox1);
-            this.pnlProgreso.Controls.Add(this.label2);
-            this.pnlProgreso.Location = new System.Drawing.Point(1022, 494);
-            this.pnlProgreso.Name = "pnlProgreso";
-            this.pnlProgreso.Size = new System.Drawing.Size(205, 263);
-            this.pnlProgreso.TabIndex = 3;
-            this.pnlProgreso.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::SisCreWin.Properties.Resources.gears_animated_t;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 61);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(141, 141);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(54, 206);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Procesando...";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // wkr01
-            // 
-            this.wkr01.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr01_DoWork);
-            this.wkr01.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr01_RunWorkerCompleted);
             // 
             // tabPagos
             // 
@@ -467,7 +450,7 @@
             // 
             // btnPExportar
             // 
-            this.btnPExportar.Location = new System.Drawing.Point(11, 225);
+            this.btnPExportar.Location = new System.Drawing.Point(11, 215);
             this.btnPExportar.Name = "btnPExportar";
             this.btnPExportar.Size = new System.Drawing.Size(218, 29);
             this.btnPExportar.TabIndex = 8;
@@ -477,7 +460,7 @@
             // 
             // btnPVisualizar
             // 
-            this.btnPVisualizar.Location = new System.Drawing.Point(11, 190);
+            this.btnPVisualizar.Location = new System.Drawing.Point(11, 180);
             this.btnPVisualizar.Name = "btnPVisualizar";
             this.btnPVisualizar.Size = new System.Drawing.Size(218, 29);
             this.btnPVisualizar.TabIndex = 7;
@@ -523,10 +506,265 @@
             this.cboPNumeroPrestamo.Size = new System.Drawing.Size(218, 25);
             this.cboPNumeroPrestamo.TabIndex = 2;
             // 
+            // tabAjustes
+            // 
+            this.tabAjustes.Controls.Add(this.label11);
+            this.tabAjustes.Controls.Add(this.label12);
+            this.tabAjustes.Controls.Add(this.grdAArchivos);
+            this.tabAjustes.Controls.Add(this.grdADatos);
+            this.tabAjustes.Controls.Add(this.groupBox3);
+            this.tabAjustes.Location = new System.Drawing.Point(4, 26);
+            this.tabAjustes.Name = "tabAjustes";
+            this.tabAjustes.Size = new System.Drawing.Size(1002, 507);
+            this.tabAjustes.TabIndex = 2;
+            this.tabAjustes.Text = "Ajustes";
+            this.tabAjustes.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(245, 302);
+            this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(126, 17);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "Archivos adjuntos:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(245, 7);
+            this.label12.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 17);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "Ajustes:";
+            // 
+            // grdAArchivos
+            // 
+            this.grdAArchivos.AllowUserToAddRows = false;
+            this.grdAArchivos.AllowUserToDeleteRows = false;
+            this.grdAArchivos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdAArchivos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdAArchivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdAArchivos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdAArchivos.Location = new System.Drawing.Point(248, 322);
+            this.grdAArchivos.MultiSelect = false;
+            this.grdAArchivos.Name = "grdAArchivos";
+            this.grdAArchivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdAArchivos.Size = new System.Drawing.Size(747, 178);
+            this.grdAArchivos.TabIndex = 30;
+            this.grdAArchivos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdAArchivos_CellDoubleClick);
+            // 
+            // grdADatos
+            // 
+            this.grdADatos.AllowUserToAddRows = false;
+            this.grdADatos.AllowUserToDeleteRows = false;
+            this.grdADatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdADatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdADatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdADatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdADatos.Location = new System.Drawing.Point(248, 27);
+            this.grdADatos.MultiSelect = false;
+            this.grdADatos.Name = "grdADatos";
+            this.grdADatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdADatos.Size = new System.Drawing.Size(747, 272);
+            this.grdADatos.TabIndex = 29;
+            this.grdADatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdADatos_CellEnter);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.Controls.Add(this.btnAExportar);
+            this.groupBox3.Controls.Add(this.btnAVisualizar);
+            this.groupBox3.Controls.Add(this.chkAUsarFechaFinal);
+            this.groupBox3.Controls.Add(this.dtpAFechaFinal);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.chkAUsarFechaInicial);
+            this.groupBox3.Controls.Add(this.chkAUsarCredito);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.dtpAFechaInicial);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.cboANumeroPrestamo);
+            this.groupBox3.Location = new System.Drawing.Point(7, 7);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(235, 493);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Parámetros";
+            // 
+            // btnAExportar
+            // 
+            this.btnAExportar.Location = new System.Drawing.Point(11, 215);
+            this.btnAExportar.Name = "btnAExportar";
+            this.btnAExportar.Size = new System.Drawing.Size(218, 29);
+            this.btnAExportar.TabIndex = 17;
+            this.btnAExportar.Text = "Exportar ajustes a Excel";
+            this.btnAExportar.UseVisualStyleBackColor = true;
+            this.btnAExportar.Click += new System.EventHandler(this.btnAExportar_Click);
+            // 
+            // btnAVisualizar
+            // 
+            this.btnAVisualizar.Location = new System.Drawing.Point(11, 180);
+            this.btnAVisualizar.Name = "btnAVisualizar";
+            this.btnAVisualizar.Size = new System.Drawing.Size(218, 29);
+            this.btnAVisualizar.TabIndex = 16;
+            this.btnAVisualizar.Text = "Visualizar";
+            this.btnAVisualizar.UseVisualStyleBackColor = true;
+            this.btnAVisualizar.Click += new System.EventHandler(this.btnAVisualizar_Click);
+            // 
+            // chkAUsarFechaFinal
+            // 
+            this.chkAUsarFechaFinal.AutoSize = true;
+            this.chkAUsarFechaFinal.Checked = true;
+            this.chkAUsarFechaFinal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAUsarFechaFinal.Location = new System.Drawing.Point(11, 134);
+            this.chkAUsarFechaFinal.Name = "chkAUsarFechaFinal";
+            this.chkAUsarFechaFinal.Size = new System.Drawing.Size(15, 14);
+            this.chkAUsarFechaFinal.TabIndex = 5;
+            this.tip01.SetToolTip(this.chkAUsarFechaFinal, "Usar fecha de movimiento");
+            this.chkAUsarFechaFinal.UseVisualStyleBackColor = true;
+            // 
+            // dtpAFechaFinal
+            // 
+            this.dtpAFechaFinal.CustomFormat = "dd/MM/yyyy";
+            this.dtpAFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpAFechaFinal.Location = new System.Drawing.Point(11, 151);
+            this.dtpAFechaFinal.Name = "dtpAFechaFinal";
+            this.dtpAFechaFinal.Size = new System.Drawing.Size(218, 23);
+            this.dtpAFechaFinal.TabIndex = 6;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(34, 132);
+            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(82, 17);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Fecha final:";
+            // 
+            // chkAUsarFechaInicial
+            // 
+            this.chkAUsarFechaInicial.AutoSize = true;
+            this.chkAUsarFechaInicial.Checked = true;
+            this.chkAUsarFechaInicial.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAUsarFechaInicial.Location = new System.Drawing.Point(11, 77);
+            this.chkAUsarFechaInicial.Name = "chkAUsarFechaInicial";
+            this.chkAUsarFechaInicial.Size = new System.Drawing.Size(15, 14);
+            this.chkAUsarFechaInicial.TabIndex = 3;
+            this.tip01.SetToolTip(this.chkAUsarFechaInicial, "Usar fecha de movimiento");
+            this.chkAUsarFechaInicial.UseVisualStyleBackColor = true;
+            // 
+            // chkAUsarCredito
+            // 
+            this.chkAUsarCredito.AutoSize = true;
+            this.chkAUsarCredito.Checked = true;
+            this.chkAUsarCredito.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAUsarCredito.Location = new System.Drawing.Point(11, 22);
+            this.chkAUsarCredito.Name = "chkAUsarCredito";
+            this.chkAUsarCredito.Size = new System.Drawing.Size(15, 14);
+            this.chkAUsarCredito.TabIndex = 1;
+            this.tip01.SetToolTip(this.chkAUsarCredito, "Usar número de crédito");
+            this.chkAUsarCredito.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(34, 20);
+            this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(135, 17);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Número de crédito:";
+            // 
+            // dtpAFechaInicial
+            // 
+            this.dtpAFechaInicial.CustomFormat = "dd/MM/yyyy";
+            this.dtpAFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpAFechaInicial.Location = new System.Drawing.Point(11, 94);
+            this.dtpAFechaInicial.Name = "dtpAFechaInicial";
+            this.dtpAFechaInicial.Size = new System.Drawing.Size(218, 23);
+            this.dtpAFechaInicial.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(34, 75);
+            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(92, 17);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Fecha inicial:";
+            // 
+            // cboANumeroPrestamo
+            // 
+            this.cboANumeroPrestamo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboANumeroPrestamo.FormattingEnabled = true;
+            this.cboANumeroPrestamo.Location = new System.Drawing.Point(11, 39);
+            this.cboANumeroPrestamo.Name = "cboANumeroPrestamo";
+            this.cboANumeroPrestamo.Size = new System.Drawing.Size(218, 25);
+            this.cboANumeroPrestamo.TabIndex = 2;
+            // 
+            // pnlProgreso
+            // 
+            this.pnlProgreso.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlProgreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnlProgreso.Controls.Add(this.pictureBox1);
+            this.pnlProgreso.Controls.Add(this.label2);
+            this.pnlProgreso.Location = new System.Drawing.Point(1022, 494);
+            this.pnlProgreso.Name = "pnlProgreso";
+            this.pnlProgreso.Size = new System.Drawing.Size(205, 263);
+            this.pnlProgreso.TabIndex = 3;
+            this.pnlProgreso.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::SisCreWin.Properties.Resources.gears_animated_t;
+            this.pictureBox1.Location = new System.Drawing.Point(32, 61);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(141, 141);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(54, 206);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Procesando...";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // wkr01
+            // 
+            this.wkr01.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr01_DoWork);
+            this.wkr01.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr01_RunWorkerCompleted);
+            // 
             // wkr02
             // 
             this.wkr02.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr02_DoWork);
             this.wkr02.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr02_RunWorkerCompleted);
+            // 
+            // wkr03
+            // 
+            this.wkr03.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr03_DoWork);
+            this.wkr03.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr03_RunWorkerCompleted);
+            // 
+            // fbd01
+            // 
+            this.fbd01.Description = "Seleccione una carpeta para depositar el archivo";
             // 
             // frmHistCred
             // 
@@ -548,13 +786,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.pnlProgreso.ResumeLayout(false);
-            this.pnlProgreso.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPagos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdPDatos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabAjustes.ResumeLayout(false);
+            this.tabAjustes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdAArchivos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdADatos)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.pnlProgreso.ResumeLayout(false);
+            this.pnlProgreso.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -600,5 +844,24 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboPNumeroPrestamo;
         private System.ComponentModel.BackgroundWorker wkr02;
+        private System.Windows.Forms.TabPage tabAjustes;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView grdAArchivos;
+        private System.Windows.Forms.DataGridView grdADatos;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox chkAUsarFechaFinal;
+        private System.Windows.Forms.DateTimePicker dtpAFechaFinal;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox chkAUsarFechaInicial;
+        private System.Windows.Forms.CheckBox chkAUsarCredito;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dtpAFechaInicial;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cboANumeroPrestamo;
+        private System.Windows.Forms.Button btnAExportar;
+        private System.Windows.Forms.Button btnAVisualizar;
+        private System.ComponentModel.BackgroundWorker wkr03;
+        private System.Windows.Forms.FolderBrowserDialog fbd01;
     }
 }

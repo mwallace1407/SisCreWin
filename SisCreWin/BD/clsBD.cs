@@ -1352,6 +1352,24 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
+        public static ResultadoStored_Str Buro_I_SaldosPuente(DateTime FechaProceso, int IdentificadorProceso)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@FechaProceso", SqlDbType.DateTime);
+            param.Value = FechaProceso;
+            paramC.Add(param);
+            param = new SqlParameter("@IdentificadorProceso", SqlDbType.Int);
+            param.Value = IdentificadorProceso;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Buro_I_SaldosPuente, paramC);
+
+            return Resultado;
+        }
         //!Puentes
         //Individuales
         public static ResultadoStored_DT ReportesBuro_C_CreditosIndividuales(string FECHA_DEL_REPORTE)
@@ -1577,7 +1595,7 @@ namespace SisCreWin.BD
             return Resultado;
         }
 
-        public static ResultadoStored_Str Puentes_M_RegistrarPago(clsGeneral.PuentesPagos Puente, clsGeneral.PuentesPagos PuenteQ)
+        public static ResultadoStored_Str Puentes_M_RegistrarPago(clsGeneral.PuentesPagos Puente, clsGeneral.PuentesPagos PuenteQ, Guid? idArchivos = null)
         {
             ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
             SqlParameter param;
@@ -1610,7 +1628,7 @@ namespace SisCreWin.BD
             param = new SqlParameter("@PHP_Observaciones", SqlDbType.VarChar);
             param.Value = Puente.PHP_Observaciones;
             paramC.Add(param);
-            //Quitas y quebrantos
+            //Quitas, quebrantos y ajustes
             param = new SqlParameter("@PTP_Id", SqlDbType.Decimal);
             param.Value = PuenteQ.PTP_Id;
             paramC.Add(param);
@@ -1631,6 +1649,10 @@ namespace SisCreWin.BD
             paramC.Add(param);
             param = new SqlParameter("@PHP_QObservaciones", SqlDbType.VarChar);
             param.Value = PuenteQ.PHP_Observaciones;
+            paramC.Add(param);
+            //Ajuste
+            param = new SqlParameter("@PHP_Archivos", SqlDbType.UniqueIdentifier);
+            param.Value = idArchivos;
             paramC.Add(param);
 
             Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Puentes_M_RegistrarPago, paramC);
@@ -1911,6 +1933,81 @@ namespace SisCreWin.BD
             paramC.Add(param);
 
             Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Puentes_U_EstablecerFechaContable, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Puentes_I_ArchivosAjustes(Guid PHP_Archivos, string PAA_Nombre, long PAA_Tamanno, byte[] PAA_Archivo)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PHP_Archivos", SqlDbType.UniqueIdentifier);
+            param.Value = PHP_Archivos;
+            paramC.Add(param);
+            param = new SqlParameter("@PAA_Nombre", SqlDbType.VarChar);
+            param.Value = PAA_Nombre;
+            paramC.Add(param);
+            param = new SqlParameter("@PAA_Tamanno", SqlDbType.Int);
+            param.Value = PAA_Tamanno;
+            paramC.Add(param);
+            param = new SqlParameter("@PAA_Archivo", SqlDbType.VarBinary);
+            param.Value = PAA_Archivo;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Puentes_I_ArchivosAjustes, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Puentes_C_ReporteDeAjustes(int? PHP_NumeroPrestamo, DateTime? PHP_FechaPago_Ini, DateTime? PHP_FechaPago_Fin)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PHP_NumeroPrestamo", SqlDbType.Int);
+            param.Value = PHP_NumeroPrestamo;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago_Ini", SqlDbType.DateTime);
+            param.Value = PHP_FechaPago_Ini;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago_Fin", SqlDbType.DateTime);
+            param.Value = PHP_FechaPago_Fin;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_ReporteDeAjustes, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Puentes_C_AdjuntosPorAjuste(Guid? PHP_Archivos)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PHP_Archivos", SqlDbType.UniqueIdentifier);
+            param.Value = PHP_Archivos;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Puentes_C_AdjuntosPorAjuste, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Byte Puentes_C_DatosAdjuntoAjuste(int PAA_Id)
+        {
+            ResultadoStored_Byte Resultado = new ResultadoStored_Byte(null, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PAA_Id", SqlDbType.Int);
+            param.Value = PAA_Id;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_Byte(CatalogoStoreds.Puentes_C_DatosAdjuntoAjuste, paramC, "PAA_Archivo");
 
             return Resultado;
         }

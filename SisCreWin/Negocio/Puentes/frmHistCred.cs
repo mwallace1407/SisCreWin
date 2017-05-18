@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -114,6 +115,25 @@ namespace SisCreWin.Negocio.Puentes
             }
         }
 
+        private void CargarGridA()
+        {
+            if (!ResultadoGrid.HayError)
+            {
+                grdADatos.DataSource = ResultadoGrid.Resultado;
+
+                for (int w = 0; w < grdADatos.Columns.Count; w++)
+                {
+                    grdADatos.Columns[w].ReadOnly = true;
+                }
+
+                grdADatos.ClearSelection();
+            }
+            else
+            {
+                MessageBox.Show(ResultadoGrid.Error, "Error al obtener datos de pagos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void Exportar()
         {
             ResultadoExport exp = new ResultadoExport();
@@ -166,6 +186,41 @@ namespace SisCreWin.Negocio.Puentes
             paramC.Add(param);
 
             exp = clsBD.ExportarExcel(CatalogoStoreds.Puentes_C_ReporteDePagos, paramC);
+
+            if (!exp.HayError)
+            {
+                try
+                {
+                    Archivo = exp.Archivo;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ExportarA()
+        {
+            ResultadoExport exp = new ResultadoExport();
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PHP_NumeroPrestamo", SqlDbType.Int);
+            param.Value = NumeroPrestamo;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago_Ini", SqlDbType.DateTime);
+            param.Value = FechaIni;
+            paramC.Add(param);
+            param = new SqlParameter("@PHP_FechaPago_Fin", SqlDbType.DateTime);
+            param.Value = FechaFin;
+            paramC.Add(param);
+
+            exp = clsBD.ExportarExcel(CatalogoStoreds.Puentes_C_ReporteDeAjustes, paramC);
 
             if (!exp.HayError)
             {
@@ -240,6 +295,21 @@ namespace SisCreWin.Negocio.Puentes
             Sistema.Global.ProcesosPendientes = true;
 
             wkr02.RunWorkerAsync();
+        }
+
+        private void ProcesarA()
+        {
+            NumeroPrestamo = (chkAUsarCredito.Checked) ? (int?)cboANumeroPrestamo.SelectedValue : null;
+            FechaIni = (chkAUsarFechaInicial.Checked) ? (DateTime?)dtpAFechaInicial.Value : null;
+            FechaFin = (chkAUsarFechaFinal.Checked) ? (DateTime?)dtpAFechaFinal.Value : null;
+
+            pnlProgreso.Size = new Size(this.Width - 6, this.Height - 6);
+            pnlProgreso.Location = new Point(3, 3);
+            pnlProgreso.Visible = true;
+            EnProceso = true;
+            Sistema.Global.ProcesosPendientes = true;
+
+            wkr03.RunWorkerAsync();
         }
 
         public frmHistCred()
@@ -374,7 +444,6 @@ namespace SisCreWin.Negocio.Puentes
 
             ExportarDetalle();
         }
-        #endregion Eventos
 
         private void chkPUsarCredito_CheckedChanged(object sender, EventArgs e)
         {
@@ -454,6 +523,151 @@ namespace SisCreWin.Negocio.Puentes
             pnlProgreso.Visible = false;
             EnProceso = false;
             Sistema.Global.ProcesosPendientes = false;
+        }
+        
+        private void wkr03_DoWork(object sender, DoWorkEventArgs e)
+        {
+            ResultadoGrid = new BD.ResultadoStored_DT();
+            ResultadoGrid = clsBD.Puentes_C_ReporteDeAjustes(NumeroPrestamo, FechaIni, FechaFin);
+
+            if (tipoProceso == TipoProceso.Extraccion)
+                ExportarA();
+        }
+
+        private void btnAVisualizar_Click(object sender, EventArgs e)
+        {
+            tipoProceso = TipoProceso.Visualizacion;
+            ProcesarA();
+        }
+
+        private void btnAExportar_Click(object sender, EventArgs e)
+        {
+            if (grdADatos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar", "Exportar a Excel", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            Archivo = string.Empty;
+            tipoProceso = TipoProceso.Extraccion;
+            ProcesarA();
+        }
+
+        private void wkr03_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (tipoProceso == TipoProceso.Visualizacion)
+            {
+                CargarGridA();
+            }
+            else
+            {
+                try
+                {
+                    if (System.IO.File.Exists(Archivo))
+                        System.Diagnostics.Process.Start(Archivo);
+                    else
+                        MessageBox.Show("No existe el archivo especificado", "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            pnlProgreso.Visible = false;
+            EnProceso = false;
+            Sistema.Global.ProcesosPendientes = false;
+        }
+
+        private void grdADatos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ResultadoStored_DT Resultado = new ResultadoStored_DT();
+                Guid idArchivos;
+                long Tamanno;
+
+                grdAArchivos.DataSource = null;
+
+                if (Guid.TryParse(grdADatos[16, e.RowIndex].Value.ToString(), out idArchivos))
+                {
+                    Resultado = clsBD.Puentes_C_AdjuntosPorAjuste(idArchivos);
+
+                    if (!Resultado.HayError)
+                    {
+                        Resultado.Resultado.Columns[2].ReadOnly = false;
+
+                        for (int w = 0; w < Resultado.Resultado.Rows.Count; w++)
+                        {
+                            if (long.TryParse(Resultado.Resultado.Rows[w][2].ToString(), out Tamanno))
+                                Resultado.Resultado.Rows[w][2] = clsGeneral.GetBytesReadable(Tamanno);
+                        }
+
+                        grdAArchivos.DataSource = Resultado.Resultado;
+                    }
+                    else
+                    {
+                        MessageBox.Show(Resultado.Error, "Error al obtener adjuntos de ajuste", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al procesar adjuntos de ajuste", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion Eventos
+
+        private void grdAArchivos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grdAArchivos.SelectedRows.Count != 0)
+            {
+                DataGridViewRow dr = grdAArchivos.SelectedRows[0];
+                ResultadoStored_Byte Resultado = new ResultadoStored_Byte();
+                string Archivo = string.Empty;
+
+                Resultado = clsBD.Puentes_C_DatosAdjuntoAjuste(Convert.ToInt32(dr.Cells[0].Value));
+
+                if (!Resultado.HayError)
+                {
+                    try
+                    {
+                        fbd01.ShowDialog(this);
+
+                        if (!Directory.Exists(fbd01.SelectedPath))
+                        {
+                            MessageBox.Show("El directorio seleccionado no existe", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        Archivo = Path.Combine(fbd01.SelectedPath, dr.Cells[1].Value.ToString());
+
+                        while (File.Exists(Archivo))
+                        {
+                            Archivo = Path.Combine(fbd01.SelectedPath, Path.GetFileNameWithoutExtension(dr.Cells[1].Value.ToString()) + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(dr.Cells[1].Value.ToString()));
+                        }
+
+                        File.WriteAllBytes(Archivo, Resultado.Resultado);
+
+                        if (File.Exists(Archivo))
+                        {
+                            System.Diagnostics.Process.Start(Archivo);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se puede abrir el archivo correspondiente al registro solicitado", "Error al generar archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error al generar archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(Resultado.Error, "Error al obtener datos de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
