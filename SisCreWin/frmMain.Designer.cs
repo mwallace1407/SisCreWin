@@ -52,6 +52,7 @@
             this.mnuOrigenesPuente = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTIIE = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTiposPagoPuentes = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuViviendas = new System.Windows.Forms.ToolStripMenuItem();
             this.buróToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCSVIndividuales = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuINTFPuentes = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +85,6 @@
             this.stBaseConectada = new System.Windows.Forms.ToolStripStatusLabel();
             this.stMantenimiento = new System.Windows.Forms.ToolStripStatusLabel();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
-            this.mnuViviendas = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -240,10 +240,10 @@
             this.catálogosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuPromotores,
             this.mnuProyectos,
+            this.mnuViviendas,
             this.mnuOrigenesPuente,
             this.mnuTIIE,
-            this.mnuTiposPagoPuentes,
-            this.mnuViviendas});
+            this.mnuTiposPagoPuentes});
             this.catálogosToolStripMenuItem.Name = "catálogosToolStripMenuItem";
             this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.catálogosToolStripMenuItem.Text = "&Catálogos";
@@ -282,6 +282,13 @@
             this.mnuTiposPagoPuentes.Size = new System.Drawing.Size(273, 22);
             this.mnuTiposPagoPuentes.Text = "&Tipos de pago créditos puente";
             this.mnuTiposPagoPuentes.Click += new System.EventHandler(this.mnuTiposPagoPuentes_Click);
+            // 
+            // mnuViviendas
+            // 
+            this.mnuViviendas.Name = "mnuViviendas";
+            this.mnuViviendas.Size = new System.Drawing.Size(273, 22);
+            this.mnuViviendas.Text = "&Viviendas por proyecto";
+            this.mnuViviendas.Click += new System.EventHandler(this.mnuViviendas_Click);
             // 
             // buróToolStripMenuItem
             // 
@@ -526,13 +533,6 @@
             this.stMantenimiento.Size = new System.Drawing.Size(414, 17);
             this.stMantenimiento.Text = "El sistema se encuentra en mantenimiento. Espere por favor.";
             this.stMantenimiento.Visible = false;
-            // 
-            // mnuViviendas
-            // 
-            this.mnuViviendas.Name = "mnuViviendas";
-            this.mnuViviendas.Size = new System.Drawing.Size(273, 22);
-            this.mnuViviendas.Text = "&Viviendas";
-            this.mnuViviendas.Click += new System.EventHandler(this.mnuViviendas_Click);
             // 
             // frmMain
             // 

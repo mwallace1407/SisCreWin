@@ -66,6 +66,7 @@
             this.txtReferenciaMod = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnExportarExcel = new System.Windows.Forms.Button();
             this.gbBusqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCredito)).BeginInit();
             this.gbResultados.SuspendLayout();
@@ -95,14 +96,14 @@
             this.gbBusqueda.Margin = new System.Windows.Forms.Padding(4);
             this.gbBusqueda.Name = "gbBusqueda";
             this.gbBusqueda.Padding = new System.Windows.Forms.Padding(4);
-            this.gbBusqueda.Size = new System.Drawing.Size(369, 213);
+            this.gbBusqueda.Size = new System.Drawing.Size(382, 213);
             this.gbBusqueda.TabIndex = 0;
             this.gbBusqueda.TabStop = false;
             this.gbBusqueda.Text = "Búsqueda";
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(281, 176);
+            this.btnBuscar.Location = new System.Drawing.Point(297, 176);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 5;
@@ -127,7 +128,7 @@
             this.cboEstados.Location = new System.Drawing.Point(86, 144);
             this.cboEstados.Margin = new System.Windows.Forms.Padding(4);
             this.cboEstados.Name = "cboEstados";
-            this.cboEstados.Size = new System.Drawing.Size(270, 25);
+            this.cboEstados.Size = new System.Drawing.Size(286, 25);
             this.cboEstados.TabIndex = 4;
             // 
             // label4
@@ -145,7 +146,7 @@
             this.txtUbicacion.Location = new System.Drawing.Point(86, 114);
             this.txtUbicacion.MaxLength = 150;
             this.txtUbicacion.Name = "txtUbicacion";
-            this.txtUbicacion.Size = new System.Drawing.Size(270, 23);
+            this.txtUbicacion.Size = new System.Drawing.Size(286, 23);
             this.txtUbicacion.TabIndex = 3;
             this.txtUbicacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -164,7 +165,7 @@
             this.txtCUV.Location = new System.Drawing.Point(86, 85);
             this.txtCUV.MaxLength = 16;
             this.txtCUV.Name = "txtCUV";
-            this.txtCUV.Size = new System.Drawing.Size(270, 23);
+            this.txtCUV.Size = new System.Drawing.Size(286, 23);
             this.txtCUV.TabIndex = 2;
             this.txtCUV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -187,7 +188,7 @@
             0,
             0});
             this.numCredito.Name = "numCredito";
-            this.numCredito.Size = new System.Drawing.Size(270, 23);
+            this.numCredito.Size = new System.Drawing.Size(286, 23);
             this.numCredito.TabIndex = 1;
             this.numCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -208,17 +209,19 @@
             this.cboProyectos.Location = new System.Drawing.Point(86, 24);
             this.cboProyectos.Margin = new System.Windows.Forms.Padding(4);
             this.cboProyectos.Name = "cboProyectos";
-            this.cboProyectos.Size = new System.Drawing.Size(270, 25);
+            this.cboProyectos.Size = new System.Drawing.Size(286, 25);
             this.cboProyectos.TabIndex = 0;
             // 
             // gbResultados
             // 
-            this.gbResultados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbResultados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbResultados.Controls.Add(this.btnExportarExcel);
             this.gbResultados.Controls.Add(this.grdDatos);
-            this.gbResultados.Location = new System.Drawing.Point(392, 16);
+            this.gbResultados.Location = new System.Drawing.Point(405, 16);
             this.gbResultados.Name = "gbResultados";
-            this.gbResultados.Size = new System.Drawing.Size(607, 213);
+            this.gbResultados.Size = new System.Drawing.Size(467, 483);
             this.gbResultados.TabIndex = 1;
             this.gbResultados.TabStop = false;
             this.gbResultados.Text = "Resultado de búsqueda";
@@ -227,24 +230,24 @@
             // 
             this.grdDatos.AllowUserToAddRows = false;
             this.grdDatos.AllowUserToDeleteRows = false;
-            this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.grdDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.grdDatos.Location = new System.Drawing.Point(6, 22);
+            this.grdDatos.Location = new System.Drawing.Point(6, 55);
             this.grdDatos.MultiSelect = false;
             this.grdDatos.Name = "grdDatos";
             this.grdDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDatos.Size = new System.Drawing.Size(595, 185);
+            this.grdDatos.Size = new System.Drawing.Size(455, 422);
             this.grdDatos.TabIndex = 27;
             this.grdDatos.SelectionChanged += new System.EventHandler(this.grdDatos_SelectionChanged);
             // 
             // gbDatos
             // 
-            this.gbDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gbDatos.Controls.Add(this.btnProcesar);
             this.gbDatos.Controls.Add(this.label15);
             this.gbDatos.Controls.Add(this.cboEstadosMod);
@@ -269,14 +272,14 @@
             this.gbDatos.Enabled = false;
             this.gbDatos.Location = new System.Drawing.Point(16, 236);
             this.gbDatos.Name = "gbDatos";
-            this.gbDatos.Size = new System.Drawing.Size(983, 353);
+            this.gbDatos.Size = new System.Drawing.Size(382, 263);
             this.gbDatos.TabIndex = 2;
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Datos de vivienda";
             // 
             // btnProcesar
             // 
-            this.btnProcesar.Location = new System.Drawing.Point(222, 316);
+            this.btnProcesar.Location = new System.Drawing.Point(222, 229);
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(150, 25);
             this.btnProcesar.TabIndex = 24;
@@ -287,7 +290,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 292);
+            this.label15.Location = new System.Drawing.Point(6, 205);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(52, 17);
@@ -298,7 +301,7 @@
             // 
             this.cboEstadosMod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstadosMod.FormattingEnabled = true;
-            this.cboEstadosMod.Location = new System.Drawing.Point(172, 284);
+            this.cboEstadosMod.Location = new System.Drawing.Point(172, 197);
             this.cboEstadosMod.Margin = new System.Windows.Forms.Padding(4);
             this.cboEstadosMod.Name = "cboEstadosMod";
             this.cboEstadosMod.Size = new System.Drawing.Size(200, 25);
@@ -307,7 +310,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 260);
+            this.label14.Location = new System.Drawing.Point(6, 173);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(153, 17);
             this.label14.TabIndex = 21;
@@ -317,7 +320,7 @@
             // 
             this.dtpFechaMod.CustomFormat = "dd/MM/yyyy";
             this.dtpFechaMod.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaMod.Location = new System.Drawing.Point(172, 254);
+            this.dtpFechaMod.Location = new System.Drawing.Point(172, 167);
             this.dtpFechaMod.Name = "dtpFechaMod";
             this.dtpFechaMod.Size = new System.Drawing.Size(200, 23);
             this.dtpFechaMod.TabIndex = 20;
@@ -325,7 +328,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 231);
+            this.label13.Location = new System.Drawing.Point(6, 144);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(98, 17);
             this.label13.TabIndex = 19;
@@ -334,7 +337,7 @@
             // numSaldoInsolutoMod
             // 
             this.numSaldoInsolutoMod.DecimalPlaces = 4;
-            this.numSaldoInsolutoMod.Location = new System.Drawing.Point(172, 225);
+            this.numSaldoInsolutoMod.Location = new System.Drawing.Point(172, 138);
             this.numSaldoInsolutoMod.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -349,7 +352,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 202);
+            this.label12.Location = new System.Drawing.Point(6, 115);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(159, 17);
             this.label12.TabIndex = 17;
@@ -358,7 +361,7 @@
             // numMontoSaldoPenMod
             // 
             this.numMontoSaldoPenMod.DecimalPlaces = 4;
-            this.numMontoSaldoPenMod.Location = new System.Drawing.Point(172, 196);
+            this.numMontoSaldoPenMod.Location = new System.Drawing.Point(172, 109);
             this.numMontoSaldoPenMod.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -373,7 +376,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 173);
+            this.label11.Location = new System.Drawing.Point(6, 86);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(160, 17);
             this.label11.TabIndex = 15;
@@ -382,7 +385,7 @@
             // numMontoPagoPenMod
             // 
             this.numMontoPagoPenMod.DecimalPlaces = 4;
-            this.numMontoPagoPenMod.Location = new System.Drawing.Point(172, 167);
+            this.numMontoPagoPenMod.Location = new System.Drawing.Point(172, 80);
             this.numMontoPagoPenMod.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -397,7 +400,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 144);
+            this.label10.Location = new System.Drawing.Point(6, 57);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(152, 17);
             this.label10.TabIndex = 13;
@@ -406,7 +409,7 @@
             // numMontoMinPenMod
             // 
             this.numMontoMinPenMod.DecimalPlaces = 4;
-            this.numMontoMinPenMod.Location = new System.Drawing.Point(172, 138);
+            this.numMontoMinPenMod.Location = new System.Drawing.Point(172, 51);
             this.numMontoMinPenMod.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -421,7 +424,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 115);
+            this.label9.Location = new System.Drawing.Point(6, 28);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(121, 17);
             this.label9.TabIndex = 11;
@@ -430,7 +433,7 @@
             // numMontoCredMod
             // 
             this.numMontoCredMod.DecimalPlaces = 4;
-            this.numMontoCredMod.Location = new System.Drawing.Point(172, 109);
+            this.numMontoCredMod.Location = new System.Drawing.Point(172, 22);
             this.numMontoCredMod.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -444,69 +447,86 @@
             // 
             // txtUbicacionMod
             // 
-            this.txtUbicacionMod.Location = new System.Drawing.Point(172, 80);
+            this.txtUbicacionMod.Location = new System.Drawing.Point(587, 167);
             this.txtUbicacionMod.MaxLength = 150;
             this.txtUbicacionMod.Name = "txtUbicacionMod";
             this.txtUbicacionMod.Size = new System.Drawing.Size(200, 23);
             this.txtUbicacionMod.TabIndex = 9;
             this.txtUbicacionMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUbicacionMod.Visible = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 86);
+            this.label8.Location = new System.Drawing.Point(421, 173);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(73, 17);
             this.label8.TabIndex = 8;
             this.label8.Text = "Ubicación";
+            this.label8.Visible = false;
             // 
             // txtCUVMod
             // 
-            this.txtCUVMod.Location = new System.Drawing.Point(172, 51);
+            this.txtCUVMod.Location = new System.Drawing.Point(587, 138);
             this.txtCUVMod.MaxLength = 16;
             this.txtCUVMod.Name = "txtCUVMod";
             this.txtCUVMod.Size = new System.Drawing.Size(200, 23);
             this.txtCUVMod.TabIndex = 7;
             this.txtCUVMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCUVMod.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 57);
+            this.label7.Location = new System.Drawing.Point(421, 144);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 17);
             this.label7.TabIndex = 6;
             this.label7.Text = "CUV";
+            this.label7.Visible = false;
             // 
             // txtReferenciaMod
             // 
-            this.txtReferenciaMod.Location = new System.Drawing.Point(172, 22);
+            this.txtReferenciaMod.Location = new System.Drawing.Point(587, 109);
             this.txtReferenciaMod.MaxLength = 17;
             this.txtReferenciaMod.Name = "txtReferenciaMod";
             this.txtReferenciaMod.Size = new System.Drawing.Size(200, 23);
             this.txtReferenciaMod.TabIndex = 6;
             this.txtReferenciaMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtReferenciaMod.Visible = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 28);
+            this.label6.Location = new System.Drawing.Point(421, 115);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 17);
             this.label6.TabIndex = 0;
             this.label6.Text = "Referencia";
+            this.label6.Visible = false;
+            // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.BackgroundImage = global::SisCreWin.Properties.Resources.xlsIcon_32;
+            this.btnExportarExcel.Location = new System.Drawing.Point(6, 17);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(32, 32);
+            this.btnExportarExcel.TabIndex = 28;
+            this.tip01.SetToolTip(this.btnExportarExcel, "Exportar catálogo a Excel");
+            this.btnExportarExcel.UseVisualStyleBackColor = true;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
             // 
             // frmViviendasMod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 601);
+            this.ClientSize = new System.Drawing.Size(884, 511);
             this.Controls.Add(this.gbDatos);
             this.Controls.Add(this.gbResultados);
             this.Controls.Add(this.gbBusqueda);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1027, 640);
+            this.MinimumSize = new System.Drawing.Size(900, 550);
             this.Name = "frmViviendasMod";
             this.Text = "Modificar viviendas";
             this.Load += new System.EventHandler(this.frmViviendasMod_Load);
@@ -565,5 +585,6 @@
         private System.Windows.Forms.TextBox txtReferenciaMod;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolTip tip01;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }

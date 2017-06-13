@@ -216,6 +216,29 @@ namespace SisCreWin.Negocio.Catalogos
                 MessageBox.Show(Res.Error, "Errores en el proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            ResultadoExport exp = new BD.ResultadoExport();
+
+            exp = clsBD.ExportarExcel(CatalogoStoreds.Catalogos_C_BuscarVivienda, null);
+
+            if (!exp.HayError)
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start(exp.Archivo);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion Eventos
     }
 }
