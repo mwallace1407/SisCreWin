@@ -61,6 +61,17 @@ namespace SisCreWin.Negocio.Puentes
                 cboPNumeroPrestamo.DisplayMember = "Descripcion";
                 cboPNumeroPrestamo.ValueMember = "Valor";
                 cboPNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos(true).Resultado;
+
+                //Ajustes
+                dtpAFechaInicial.MinDate = new DateTime(2005, 01, 01);
+                dtpAFechaInicial.MaxDate = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                dtpAFechaInicial.Value = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                dtpAFechaFinal.MinDate = new DateTime(2005, 01, 01);
+                dtpAFechaFinal.MaxDate = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                dtpAFechaFinal.Value = clsGeneral.ObtieneFecha(Resultado.Resultado);
+                cboANumeroPrestamo.DisplayMember = "Descripcion";
+                cboANumeroPrestamo.ValueMember = "Valor";
+                cboANumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos(true).Resultado;
             }
             else
             {
@@ -623,6 +634,96 @@ namespace SisCreWin.Negocio.Puentes
             if (grdAArchivos.SelectedRows.Count != 0)
             {
                 DataGridViewRow dr = grdAArchivos.SelectedRows[0];
+                ResultadoStored_Byte Resultado = new ResultadoStored_Byte();
+                string Archivo = string.Empty;
+
+                Resultado = clsBD.Puentes_C_DatosAdjuntoAjuste(Convert.ToInt32(dr.Cells[0].Value));
+
+                if (!Resultado.HayError)
+                {
+                    try
+                    {
+                        fbd01.ShowDialog(this);
+
+                        if (!Directory.Exists(fbd01.SelectedPath))
+                        {
+                            MessageBox.Show("El directorio seleccionado no existe", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        Archivo = Path.Combine(fbd01.SelectedPath, dr.Cells[1].Value.ToString());
+
+                        while (File.Exists(Archivo))
+                        {
+                            Archivo = Path.Combine(fbd01.SelectedPath, Path.GetFileNameWithoutExtension(dr.Cells[1].Value.ToString()) + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(dr.Cells[1].Value.ToString()));
+                        }
+
+                        File.WriteAllBytes(Archivo, Resultado.Resultado);
+
+                        if (File.Exists(Archivo))
+                        {
+                            System.Diagnostics.Process.Start(Archivo);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se puede abrir el archivo correspondiente al registro solicitado", "Error al generar archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error al generar archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(Resultado.Error, "Error al obtener datos de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void grdPDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ResultadoStored_DT Resultado = new ResultadoStored_DT();
+                Guid idArchivos;
+                long Tamanno;
+
+                grdPArchivos.DataSource = null;
+
+                if (Guid.TryParse(grdPDatos[16, e.RowIndex].Value.ToString(), out idArchivos))
+                {
+                    Resultado = clsBD.Puentes_C_AdjuntosPorAjuste(idArchivos);
+
+                    if (!Resultado.HayError)
+                    {
+                        Resultado.Resultado.Columns[2].ReadOnly = false;
+
+                        for (int w = 0; w < Resultado.Resultado.Rows.Count; w++)
+                        {
+                            if (long.TryParse(Resultado.Resultado.Rows[w][2].ToString(), out Tamanno))
+                                Resultado.Resultado.Rows[w][2] = clsGeneral.GetBytesReadable(Tamanno);
+                        }
+
+                        grdPArchivos.DataSource = Resultado.Resultado;
+                    }
+                    else
+                    {
+                        MessageBox.Show(Resultado.Error, "Error al obtener adjuntos de pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al procesar adjuntos de pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void grdPArchivos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grdPArchivos.SelectedRows.Count != 0)
+            {
+                DataGridViewRow dr = grdPArchivos.SelectedRows[0];
                 ResultadoStored_Byte Resultado = new ResultadoStored_Byte();
                 string Archivo = string.Empty;
 

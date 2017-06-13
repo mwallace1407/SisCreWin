@@ -101,6 +101,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.wkr01 = new System.ComponentModel.BackgroundWorker();
             this.wkr02 = new System.ComponentModel.BackgroundWorker();
+            this.tabP03 = new System.Windows.Forms.TabPage();
+            this.grdArchivos = new System.Windows.Forms.DataGridView();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.btnExaminar = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.grdPropiedades = new System.Windows.Forms.DataGridView();
+            this.ofd01 = new System.Windows.Forms.OpenFileDialog();
             this.tab01.SuspendLayout();
             this.tabCrear.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
@@ -130,6 +139,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdPDatos)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.pnlProgreso.SuspendLayout();
+            this.tabP03.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdArchivos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPropiedades)).BeginInit();
             this.SuspendLayout();
             // 
             // tab01
@@ -256,6 +268,7 @@
             // 
             this.tabPagos.Controls.Add(this.tabP01);
             this.tabPagos.Controls.Add(this.tabP02);
+            this.tabPagos.Controls.Add(this.tabP03);
             this.tabPagos.Location = new System.Drawing.Point(14, 144);
             this.tabPagos.Name = "tabPagos";
             this.tabPagos.SelectedIndex = 0;
@@ -1018,6 +1031,109 @@
             this.wkr02.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wkr02_DoWork);
             this.wkr02.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.wkr02_RunWorkerCompleted);
             // 
+            // tabP03
+            // 
+            this.tabP03.Controls.Add(this.grdArchivos);
+            this.tabP03.Controls.Add(this.btnAgregar);
+            this.tabP03.Controls.Add(this.label11);
+            this.tabP03.Controls.Add(this.label26);
+            this.tabP03.Controls.Add(this.btnExaminar);
+            this.tabP03.Controls.Add(this.label27);
+            this.tabP03.Controls.Add(this.grdPropiedades);
+            this.tabP03.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabP03.Location = new System.Drawing.Point(4, 26);
+            this.tabP03.Name = "tabP03";
+            this.tabP03.Size = new System.Drawing.Size(344, 389);
+            this.tabP03.TabIndex = 2;
+            this.tabP03.Text = "Adjuntar";
+            this.tabP03.UseVisualStyleBackColor = true;
+            // 
+            // grdArchivos
+            // 
+            this.grdArchivos.AllowUserToAddRows = false;
+            this.grdArchivos.AllowUserToDeleteRows = false;
+            this.grdArchivos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdArchivos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdArchivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdArchivos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdArchivos.Location = new System.Drawing.Point(11, 247);
+            this.grdArchivos.MultiSelect = false;
+            this.grdArchivos.Name = "grdArchivos";
+            this.grdArchivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdArchivos.Size = new System.Drawing.Size(325, 139);
+            this.grdArchivos.TabIndex = 28;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Enabled = false;
+            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(261, 216);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 25);
+            this.btnAgregar.TabIndex = 27;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(8, 220);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(205, 16);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Paso 3.- Agregue el archivo a la lista:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(8, 35);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(311, 16);
+            this.label26.TabIndex = 25;
+            this.label26.Text = "Paso 2.- Revise la información del archivo seleccionado:";
+            // 
+            // btnExaminar
+            // 
+            this.btnExaminar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExaminar.Location = new System.Drawing.Point(261, 9);
+            this.btnExaminar.Name = "btnExaminar";
+            this.btnExaminar.Size = new System.Drawing.Size(75, 23);
+            this.btnExaminar.TabIndex = 24;
+            this.btnExaminar.Text = "Examinar...";
+            this.btnExaminar.UseVisualStyleBackColor = true;
+            this.btnExaminar.Click += new System.EventHandler(this.btnExaminar_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(8, 12);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(177, 16);
+            this.label27.TabIndex = 23;
+            this.label27.Text = "Paso 1.- Seleccione un archivo:";
+            // 
+            // grdPropiedades
+            // 
+            this.grdPropiedades.AllowUserToAddRows = false;
+            this.grdPropiedades.AllowUserToDeleteRows = false;
+            this.grdPropiedades.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdPropiedades.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdPropiedades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdPropiedades.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdPropiedades.Location = new System.Drawing.Point(11, 55);
+            this.grdPropiedades.MultiSelect = false;
+            this.grdPropiedades.Name = "grdPropiedades";
+            this.grdPropiedades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdPropiedades.Size = new System.Drawing.Size(325, 155);
+            this.grdPropiedades.TabIndex = 22;
+            // 
             // frmRegistroPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1070,6 +1186,10 @@
             this.groupBox2.PerformLayout();
             this.pnlProgreso.ResumeLayout(false);
             this.pnlProgreso.PerformLayout();
+            this.tabP03.ResumeLayout(false);
+            this.tabP03.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdArchivos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPropiedades)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1149,5 +1269,14 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel pnlQ03;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TabPage tabP03;
+        private System.Windows.Forms.DataGridView grdArchivos;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button btnExaminar;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DataGridView grdPropiedades;
+        private System.Windows.Forms.OpenFileDialog ofd01;
     }
 }

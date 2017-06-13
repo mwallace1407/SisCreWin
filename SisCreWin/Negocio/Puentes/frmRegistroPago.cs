@@ -31,6 +31,10 @@ namespace SisCreWin.Negocio.Puentes
         DateTime? FechaFin = null;
         TipoProceso tipoProceso;
         string Archivo;
+        //Archivos
+        DataTable Propiedades;
+        DataTable Archivos;
+        List<string> ListaArchivos;
         #endregion Variables
         #region Enumeraciones
         private enum TipoProceso
@@ -104,6 +108,13 @@ namespace SisCreWin.Negocio.Puentes
                 cboPNumeroPrestamo.DisplayMember = "Descripcion";
                 cboPNumeroPrestamo.ValueMember = "Valor";
                 cboPNumeroPrestamo.DataSource = clsBD.Puentes_C_ObtenerPrestamos(true).Resultado;
+                //Archivos
+                ListaArchivos = new List<string>();
+                Archivos = new DataTable();
+                Archivos.Columns.Add("Archivo");
+                Archivos.Columns.Add("Ubicación");
+                grdArchivos.DataSource = null;
+                grdPropiedades.DataSource = null;
             }
             else
             {
@@ -569,11 +580,49 @@ namespace SisCreWin.Negocio.Puentes
             ResultadoStored_Str Resultado = new ResultadoStored_Str();
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Puentes_M_RegistrarPago, vBit_DatosPrevios: clsGeneral.Zip("Préstamo: " + Puente.PHP_NumeroPrestamo.ToString()));
 
+            //Adjuntar archivos
+            Guid idArchivos = new Guid();
+            idArchivos = Guid.NewGuid();
+            //************
+            
             clsBD.Bitacoras_I_MovimientosSistema(Bitacora);
-            Resultado = clsBD.Puentes_M_RegistrarPago(Puente, PuenteQ);
+            //Resultado = clsBD.Puentes_M_RegistrarPago(Puente, PuenteQ);
+
+            if (ListaArchivos.Count > 0)
+                Resultado = clsBD.Puentes_M_RegistrarPago(Puente, PuenteQ, idArchivos);
+            else
+                Resultado = clsBD.Puentes_M_RegistrarPago(Puente, PuenteQ);
 
             if (Resultado.HayError)
                 ErrorProceso = Resultado.Error;
+
+            if (ListaArchivos.Count > 0)
+            {
+                foreach (string Archivo in ListaArchivos)
+                {
+                    try
+                    {
+                        if (File.Exists(Archivo))
+                        {
+                            FileInfo fi = new FileInfo(Archivo);
+
+                            Resultado = new ResultadoStored_Str();
+                            Resultado = clsBD.Puentes_I_ArchivosAjustes(idArchivos, fi.Name, fi.Length, File.ReadAllBytes(Archivo));
+
+                            if (Resultado.HayError)
+                                ErrorProceso += "Error con carga de " + Path.GetFileName(Archivo) + ": " + Resultado.Error;
+                        }
+                        else
+                        {
+                            ErrorProceso += "No se encontró el archivo " + Path.GetFileName(Archivo);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorProceso += "Error con carga de " + Path.GetFileName(Archivo) + ": " + ex.Message;
+                    }
+                }
+            }
         }
 
         private void wkr01_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -906,5 +955,95 @@ namespace SisCreWin.Negocio.Puentes
             //txtPagoCapital.Select();
         }
         #endregion Eventos
+
+        private void btnExaminar_Click(object sender, EventArgs e)
+        {
+            ofd01.ShowDialog(this);
+            btnAgregar.Enabled = false;
+
+            if (File.Exists(ofd01.FileName))
+            {
+                try
+                {
+                    DataRow dr;
+                    FileInfo fi = new FileInfo(ofd01.FileName);
+
+                    Propiedades = new DataTable();
+                    Propiedades.Columns.Add("Concepto");
+                    Propiedades.Columns.Add("Valor");
+
+                    dr = Propiedades.NewRow();
+                    dr[0] = "Nombre";
+                    dr[1] = fi.Name;
+                    Propiedades.Rows.Add(dr);
+
+                    dr = Propiedades.NewRow();
+                    dr[0] = "Ubicación";
+                    dr[1] = fi.DirectoryName;
+                    Propiedades.Rows.Add(dr);
+
+                    dr = Propiedades.NewRow();
+                    dr[0] = "Tamaño";
+                    dr[1] = clsGeneral.GetBytesReadable(fi.Length);
+                    Propiedades.Rows.Add(dr);
+
+                    dr = Propiedades.NewRow();
+                    dr[0] = "Creado";
+                    dr[1] = fi.CreationTime.ToLongDateString() + " " + fi.CreationTime.ToLongTimeString();
+                    Propiedades.Rows.Add(dr);
+
+                    dr = Propiedades.NewRow();
+                    dr[0] = "Modificado";
+                    dr[1] = fi.LastWriteTime.ToLongDateString() + " " + fi.CreationTime.ToLongTimeString();
+                    Propiedades.Rows.Add(dr);
+
+                    grdPropiedades.DataSource = Propiedades;
+
+                    if (fi.Length <= 524288000)
+                    {
+                        btnAgregar.Enabled = true;
+                        btnAgregar.Select();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El archivo es demasiado grande para ser cargado en el sistema", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al leer información del archivo seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            DataRow dr = Archivos.NewRow();
+
+            if (File.Exists(ofd01.FileName))
+            {
+                FileInfo fi = new FileInfo(ofd01.FileName);
+
+                if (!ListaArchivos.Contains(ofd01.FileName))
+                {
+                    dr[0] = fi.Name;
+                    dr[1] = fi.DirectoryName;
+                    Archivos.Rows.Add(dr);
+                    ListaArchivos.Add(ofd01.FileName);
+
+                    ofd01.FileName = null;
+                    Propiedades = null;
+                    grdPropiedades.DataSource = null;
+                }
+                else
+                {
+                    MessageBox.Show("Ya agregó este archivo a la lista", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+            grdArchivos.DataSource = Archivos;
+            btnAgregar.Enabled = false;
+            btnExaminar.Select();
+        }
     }
 }

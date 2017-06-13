@@ -65,6 +65,11 @@ namespace SisCreWin.Modelo
         public static String Catalogos_I_Proyectos { get { return "sp_Catalogos_I_Proyectos"; } }
         public static String Catalogos_U_Proyectos { get { return "sp_Catalogos_U_Proyectos"; } }
         public static String Catalogos_C_ProyectosBitacora { get { return "sp_Catalogos_C_ProyectosBitacora"; } }
+        public static String Catalogos_C_ViviendasEstados { get { return "sp_Catalogos_C_ViviendasEstados"; } }
+        public static String Catalogos_C_BuscarVivienda { get { return "sp_Catalogos_C_BuscarVivienda"; } }
+        public static String Catalogos_C_ViviendasInformacionIndividual { get { return "sp_Catalogos_C_ViviendasInformacionIndividual"; } }
+        public static String Catalogos_U_Viviendas { get { return "sp_Catalogos_U_Viviendas"; } }
+        public static String Catalogos_C_ViviendasBitacora { get { return "sp_Catalogos_C_ViviendasBitacora"; } }
         //!Proyectos
         //TiposPagoPuentes
         public static String Catalogos_C_TiposPagoPuentes { get { return "sp_Catalogos_C_TiposPagoPuentes"; } }
@@ -163,6 +168,7 @@ namespace SisCreWin.Modelo
         public static int Puentes_GenerarCierreMensual { get { return 22; } }
         public static int Puentes_EstablecerFechaContable { get { return 23; } }
         public static int Puentes_RegistrarAjuste { get { return 24; } }
+        public static int Catalogos_ModificarViviendas { get { return 25; } }
         #endregion Negocio
         #endregion Variables
     }

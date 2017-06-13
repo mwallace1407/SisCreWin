@@ -62,6 +62,7 @@
             this.mnuCierreDiarioPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRptContaPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRegistrarPagoPuente = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRegistrarAjustePuente = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuHistoricoPuentes = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -83,7 +84,7 @@
             this.stBaseConectada = new System.Windows.Forms.ToolStripStatusLabel();
             this.stMantenimiento = new System.Windows.Forms.ToolStripStatusLabel();
             this.tip01 = new System.Windows.Forms.ToolTip(this.components);
-            this.mnuRegistrarAjustePuente = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuViviendas = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -241,7 +242,8 @@
             this.mnuProyectos,
             this.mnuOrigenesPuente,
             this.mnuTIIE,
-            this.mnuTiposPagoPuentes});
+            this.mnuTiposPagoPuentes,
+            this.mnuViviendas});
             this.catálogosToolStripMenuItem.Name = "catálogosToolStripMenuItem";
             this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.catálogosToolStripMenuItem.Text = "&Catálogos";
@@ -362,6 +364,13 @@
             this.mnuRegistrarPagoPuente.Size = new System.Drawing.Size(332, 22);
             this.mnuRegistrarPagoPuente.Text = "Registrar &pago para un crédito";
             this.mnuRegistrarPagoPuente.Click += new System.EventHandler(this.mnuRegistrarPagoPuente_Click);
+            // 
+            // mnuRegistrarAjustePuente
+            // 
+            this.mnuRegistrarAjustePuente.Name = "mnuRegistrarAjustePuente";
+            this.mnuRegistrarAjustePuente.Size = new System.Drawing.Size(332, 22);
+            this.mnuRegistrarAjustePuente.Text = "Registrar &ajuste para un crédito";
+            this.mnuRegistrarAjustePuente.Click += new System.EventHandler(this.mnuRegistrarAjustePuente_Click);
             // 
             // toolStripSeparator1
             // 
@@ -518,12 +527,12 @@
             this.stMantenimiento.Text = "El sistema se encuentra en mantenimiento. Espere por favor.";
             this.stMantenimiento.Visible = false;
             // 
-            // mnuRegistrarAjustePuente
+            // mnuViviendas
             // 
-            this.mnuRegistrarAjustePuente.Name = "mnuRegistrarAjustePuente";
-            this.mnuRegistrarAjustePuente.Size = new System.Drawing.Size(332, 22);
-            this.mnuRegistrarAjustePuente.Text = "Registrar &ajuste para un crédito";
-            this.mnuRegistrarAjustePuente.Click += new System.EventHandler(this.mnuRegistrarAjustePuente_Click);
+            this.mnuViviendas.Name = "mnuViviendas";
+            this.mnuViviendas.Size = new System.Drawing.Size(273, 22);
+            this.mnuViviendas.Text = "&Viviendas";
+            this.mnuViviendas.Click += new System.EventHandler(this.mnuViviendas_Click);
             // 
             // frmMain
             // 
@@ -612,5 +621,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mnuFechaContable;
         private System.Windows.Forms.ToolStripMenuItem mnuRegistrarAjustePuente;
+        private System.Windows.Forms.ToolStripMenuItem mnuViviendas;
     }
 }

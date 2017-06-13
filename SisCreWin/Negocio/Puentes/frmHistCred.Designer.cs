@@ -87,6 +87,9 @@
             this.wkr02 = new System.ComponentModel.BackgroundWorker();
             this.wkr03 = new System.ComponentModel.BackgroundWorker();
             this.fbd01 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label13 = new System.Windows.Forms.Label();
+            this.grdPArchivos = new System.Windows.Forms.DataGridView();
+            this.label14 = new System.Windows.Forms.Label();
             this.tab01.SuspendLayout();
             this.tabSaldos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalle)).BeginInit();
@@ -101,6 +104,7 @@
             this.groupBox3.SuspendLayout();
             this.pnlProgreso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPArchivos)).BeginInit();
             this.SuspendLayout();
             // 
             // tab01
@@ -341,6 +345,9 @@
             // 
             // tabPagos
             // 
+            this.tabPagos.Controls.Add(this.label14);
+            this.tabPagos.Controls.Add(this.label13);
+            this.tabPagos.Controls.Add(this.grdPArchivos);
             this.tabPagos.Controls.Add(this.grdPDatos);
             this.tabPagos.Controls.Add(this.groupBox2);
             this.tabPagos.Location = new System.Drawing.Point(4, 26);
@@ -360,12 +367,13 @@
             this.grdPDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.grdPDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdPDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.grdPDatos.Location = new System.Drawing.Point(248, 15);
+            this.grdPDatos.Location = new System.Drawing.Point(248, 27);
             this.grdPDatos.MultiSelect = false;
             this.grdPDatos.Name = "grdPDatos";
             this.grdPDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdPDatos.Size = new System.Drawing.Size(747, 485);
+            this.grdPDatos.Size = new System.Drawing.Size(747, 272);
             this.grdPDatos.TabIndex = 15;
+            this.grdPDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPDatos_CellEnter);
             // 
             // groupBox2
             // 
@@ -766,6 +774,44 @@
             // 
             this.fbd01.Description = "Seleccione una carpeta para depositar el archivo";
             // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(246, 302);
+            this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(126, 17);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "Archivos adjuntos:";
+            // 
+            // grdPArchivos
+            // 
+            this.grdPArchivos.AllowUserToAddRows = false;
+            this.grdPArchivos.AllowUserToDeleteRows = false;
+            this.grdPArchivos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdPArchivos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.grdPArchivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdPArchivos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdPArchivos.Location = new System.Drawing.Point(249, 322);
+            this.grdPArchivos.MultiSelect = false;
+            this.grdPArchivos.Name = "grdPArchivos";
+            this.grdPArchivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdPArchivos.Size = new System.Drawing.Size(746, 178);
+            this.grdPArchivos.TabIndex = 33;
+            this.grdPArchivos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPArchivos_CellDoubleClick);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(245, 7);
+            this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(52, 17);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "Pagos:";
+            // 
             // frmHistCred
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -787,6 +833,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPagos.ResumeLayout(false);
+            this.tabPagos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdPDatos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -799,6 +846,7 @@
             this.pnlProgreso.ResumeLayout(false);
             this.pnlProgreso.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPArchivos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -863,5 +911,8 @@
         private System.Windows.Forms.Button btnAVisualizar;
         private System.ComponentModel.BackgroundWorker wkr03;
         private System.Windows.Forms.FolderBrowserDialog fbd01;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView grdPArchivos;
+        private System.Windows.Forms.Label label14;
     }
 }

@@ -237,6 +237,12 @@
     <Compile Include="Negocio\Puentes\frmReporteContable.Designer.cs">
       <DependentUpon>frmReporteContable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\Catalogos\frmViviendasMod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Catalogos\frmViviendasMod.Designer.cs">
+      <DependentUpon>frmViviendasMod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sistema\frmBitacoraMov.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Puentes\frmReporteContable.resx">
       <DependentUpon>frmReporteContable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Catalogos\frmViviendasMod.resx">
+      <DependentUpon>frmViviendasMod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

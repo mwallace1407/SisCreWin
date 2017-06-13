@@ -62,7 +62,9 @@ namespace SisCreWin
             {
                 frmCnx frm = new SisCreWin.frmCnx();
 
-                txtContrasenna.Text = new De_CryptDLL.De_Crypt().Desencriptar("TAcQpQFELRFucX8dSj6KdA==", Environment.MachineName.ToLower(), true);
+                if (System.IO.File.Exists(@"C:\Users\oenriquez\Downloads\siscre.txt"))
+                    txtContrasenna.Text = System.IO.File.ReadAllText(@"C:\Users\oenriquez\Downloads\siscre.txt");
+
                 frm.ShowDialog(this);
             }
 

@@ -144,6 +144,9 @@ namespace SisCreWin
                 case 24:
                     frmGen = new frmRegistroAjuste();
                     break;
+                case 25:
+                    frmGen = new frmViviendasMod();
+                    break;
                 default:
                     break;
             }
@@ -306,126 +309,7 @@ namespace SisCreWin
         }
 
         #region Menu
-        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        private void tileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void tileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void arrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
-        private void mnuUsuarios_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Usuarios_ABC);
-        }
-
-        private void mnuModulos_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Catalogos_Modulos_ABC);
-        }
-
-        private void mnuOrigenesPuente_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Puentes_OCP_ABC);
-        }
-
-        private void mnuPromotores_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Promotores_ABC);
-        }
-
-        private void mnuSalir_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void mnuProyectos_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Proyectos_ABC);
-        }
-
-        private void mnuTIIE_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Catalogos_TIIE_ABC);
-        }
-
-        private void mnuCSVIndividuales_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Buro_Individuales_GenerarCSV);
-        }
-
-        private void mnuINTFPuentes_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Buro_Puentes_GenerarINTF);
-        }
-
-        private void mnuCierreDiarioPuentes_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Puentes_GenerarCierre);
-        }
-
-        private void mnuRegistrarPagoPuente_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Puentes_RegistrarPago);
-        }
-
-        private void mnuBitacoraMov_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Bitacora_Movimientos);
-        }
-
-        private void mnuBuroHistInd_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Buro_Individuales_Historico);
-        }
-
-        private void mnuBuroHistPuentes_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Buro_Puentes_Historico);
-        }
-
-        private void mnuHistoricoPuentes_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Puentes_Historico);
-        }
-
-        private void mnuMttoSist_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Sistema_Mantenimiento);
-        }
-
-        private void mnuRptContaPuentes_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Puentes_GenerarCierreMensual);
-        }
-
-        private void mnuTiposPagoPuentes_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Catalogos_TiposPagoPuentes_ABC);
-        }
-
-        private void mnuConsultarCartera_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Puentes_ReporteContable);
-        }
-
-        private void mnuFechaContable_Click(object sender, EventArgs e)
-        {
-            AbrirVentana(CatalogoModulos.Puentes_EstablecerFechaContable);
-        }
-
+        #region Frecuentes
         private void mnuFreq1_Click(object sender, EventArgs e)
         {
             if (!Frecuentes.HayError)
@@ -625,10 +509,136 @@ namespace SisCreWin
                 MessageBox.Show("No se pudo obtener el detalle del elemento frecuente", "Módulos frecuentes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        #endregion Frecuentes
 
+        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void tileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void tileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileHorizontal);
+        }
+
+        private void arrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.ArrangeIcons);
+        }
+
+        private void mnuUsuarios_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Usuarios_ABC);
+        }
+
+        private void mnuModulos_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Catalogos_Modulos_ABC);
+        }
+
+        private void mnuOrigenesPuente_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Puentes_OCP_ABC);
+        }
+
+        private void mnuPromotores_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Promotores_ABC);
+        }
+
+        private void mnuSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void mnuProyectos_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Proyectos_ABC);
+        }
+
+        private void mnuTIIE_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Catalogos_TIIE_ABC);
+        }
+
+        private void mnuCSVIndividuales_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Buro_Individuales_GenerarCSV);
+        }
+
+        private void mnuINTFPuentes_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Buro_Puentes_GenerarINTF);
+        }
+
+        private void mnuCierreDiarioPuentes_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Puentes_GenerarCierre);
+        }
+
+        private void mnuRegistrarPagoPuente_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Puentes_RegistrarPago);
+        }
+
+        private void mnuBitacoraMov_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Bitacora_Movimientos);
+        }
+
+        private void mnuBuroHistInd_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Buro_Individuales_Historico);
+        }
+
+        private void mnuBuroHistPuentes_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Buro_Puentes_Historico);
+        }
+
+        private void mnuHistoricoPuentes_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Puentes_Historico);
+        }
+
+        private void mnuMttoSist_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Sistema_Mantenimiento);
+        }
+
+        private void mnuRptContaPuentes_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Puentes_GenerarCierreMensual);
+        }
+
+        private void mnuTiposPagoPuentes_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Catalogos_TiposPagoPuentes_ABC);
+        }
+
+        private void mnuConsultarCartera_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Puentes_ReporteContable);
+        }
+
+        private void mnuFechaContable_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Puentes_EstablecerFechaContable);
+        }
+        
         private void mnuRegistrarAjustePuente_Click(object sender, EventArgs e)
         {
             AbrirVentana(CatalogoModulos.Puentes_RegistrarAjuste);
+        }
+
+        private void mnuViviendas_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(CatalogoModulos.Catalogos_ModificarViviendas);
         }
         #endregion Menu
 

@@ -971,6 +971,122 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
+        public static ResultadoStored_DT Catalogos_C_ViviendasEstados(bool ObtenerTodos = false)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Catalogos_C_ViviendasEstados, null);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Catalogos_C_BuscarVivienda(int Proy_Id, int PViv_Credito, string PViv_CUV, string PViv_Ubicacion, string PViv_Estatus)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@Proy_Id", SqlDbType.Int);
+            param.Value = Proy_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_Credito", SqlDbType.Int);
+            param.Value = PViv_Credito;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_CUV", SqlDbType.VarChar);
+            param.Value = PViv_CUV;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_Ubicacion", SqlDbType.NVarChar);
+            param.Value = PViv_Ubicacion;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_Estatus", SqlDbType.VarChar);
+            param.Value = PViv_Estatus;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Catalogos_C_BuscarVivienda, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_DT Catalogos_C_ViviendasInformacionIndividual(int PViv_Id)
+        {
+            ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PViv_Id", SqlDbType.Int);
+            param.Value = PViv_Id;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_DT(CatalogoStoreds.Catalogos_C_ViviendasInformacionIndividual, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Catalogos_U_Viviendas(clsGeneral.Vivienda Vivienda)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PViv_Id", SqlDbType.Int);
+            param.Value = Vivienda.PViv_Id;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_Referencia", SqlDbType.VarChar);
+            param.Value = Vivienda.PViv_Referencia;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_CUV", SqlDbType.VarChar);
+            param.Value = Vivienda.PViv_CUV;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_Ubicacion", SqlDbType.NVarChar);
+            param.Value = Vivienda.PViv_Ubicacion;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_MontoCredito", SqlDbType.Decimal);
+            param.Value = Vivienda.PViv_MontoCredito;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_MontoMinPendiente", SqlDbType.Decimal);
+            param.Value = Vivienda.PViv_MontoMinPendiente;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_MontoPagoPendiente", SqlDbType.Decimal);
+            param.Value = Vivienda.PViv_MontoPagoPendiente;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_MontoSaldoPendiente", SqlDbType.Decimal);
+            param.Value = Vivienda.PViv_MontoSaldoPendiente;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_SaldoInsoluto", SqlDbType.Decimal);
+            param.Value = Vivienda.PViv_SaldoInsoluto;
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_FechaUltimoPago", SqlDbType.DateTime);
+
+            if (Vivienda.PViv_FechaUltimoPago != null)
+                param.Value = Vivienda.PViv_FechaUltimoPago;
+            else
+                param.Value = DBNull.Value;
+
+            paramC.Add(param);
+            param = new SqlParameter("@PViv_Estatus", SqlDbType.VarChar);
+            param.Value = Vivienda.PViv_Estatus;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_StrNQ(CatalogoStoreds.Catalogos_U_Viviendas, paramC);
+
+            return Resultado;
+        }
+
+        public static ResultadoStored_Str Catalogos_C_ViviendasBitacora(int PViv_Id)
+        {
+            ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
+            SqlParameter param;
+            List<SqlParameter> paramC = new List<SqlParameter>();
+
+            param = new SqlParameter("@PViv_Id", SqlDbType.Int);
+            param.Value = PViv_Id;
+            paramC.Add(param);
+
+            Resultado = EjecutarStored_Str(CatalogoStoreds.Catalogos_C_ViviendasBitacora, paramC, "ColXML");
+
+            return Resultado;
+        }
         //!Proyectos
         //TIIE
         public static ResultadoStored_DT Catalogos_C_TIIE()

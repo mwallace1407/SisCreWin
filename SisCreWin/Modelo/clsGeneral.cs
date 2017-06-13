@@ -734,6 +734,55 @@ namespace SisCreWin.Modelo
                 PTP_Activo = vPTP_Activo;
             }
         }
+
+        public struct Vivienda
+        {
+            public int PViv_Id;
+            public int Proy_Id;
+            public int PViv_Credito;
+            public Int16 PViv_Consecutivo;
+            public string PViv_Referencia;
+            public string PViv_CUV;
+            public string PViv_Ubicacion;
+            public decimal PViv_MontoCredito;
+            public decimal PViv_MontoMinPendiente;
+            public decimal PViv_MontoPagoPendiente;
+            public decimal PViv_MontoSaldoPendiente;
+            public decimal PViv_SaldoInsoluto;
+            public DateTime? PViv_FechaUltimoPago;
+            public string PViv_Estatus;
+
+            public Vivienda(int vPViv_Id,
+                int vProy_Id,
+                int vPViv_Credito,
+                Int16 vPViv_Consecutivo,
+                string vPViv_Referencia,
+                string vPViv_CUV,
+                string vPViv_Ubicacion,
+                decimal vPViv_MontoCredito,
+                decimal vPViv_MontoMinPendiente,
+                decimal vPViv_MontoPagoPendiente,
+                decimal vPViv_MontoSaldoPendiente,
+                decimal vPViv_SaldoInsoluto,
+                DateTime? vPViv_FechaUltimoPago,
+                string vPViv_Estatus)
+            {
+                PViv_Id = vPViv_Id;
+                Proy_Id = vProy_Id;
+                PViv_Credito = vPViv_Credito;
+                PViv_Consecutivo = vPViv_Consecutivo;
+                PViv_Referencia = vPViv_Referencia;
+                PViv_CUV = vPViv_CUV;
+                PViv_Ubicacion = vPViv_Ubicacion;
+                PViv_MontoCredito = vPViv_MontoCredito;
+                PViv_MontoMinPendiente = vPViv_MontoMinPendiente;
+                PViv_MontoPagoPendiente = vPViv_MontoPagoPendiente;
+                PViv_MontoSaldoPendiente = vPViv_MontoSaldoPendiente;
+                PViv_SaldoInsoluto = vPViv_SaldoInsoluto;
+                PViv_FechaUltimoPago = vPViv_FechaUltimoPago;
+                PViv_Estatus = vPViv_Estatus;
+            }
+        }
         #endregion Negocio
         #endregion Modelos
     }
