@@ -1,20 +1,14 @@
-﻿using SisCreWin.BD;
-using SisCreWin.Modelo;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using SisCreWin.BD;
+using SisCreWin.Modelo;
 
 namespace SisCreWin.Sistema
 {
     public partial class frmUsuarios : Form
     {
         #region Metodos
+
         private void CargarUsuariosGrid()
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT();
@@ -91,11 +85,13 @@ namespace SisCreWin.Sistema
         {
             InitializeComponent();
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void frmUsuarios_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnCrearUsuario_Click(object sender, EventArgs e)
@@ -135,12 +131,10 @@ namespace SisCreWin.Sistema
 
         private void tabModificar_Click(object sender, EventArgs e)
         {
-
         }
 
         private void tab01_TabIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void tab01_SelectedIndexChanged(object sender, EventArgs e)
@@ -275,7 +269,7 @@ namespace SisCreWin.Sistema
 
             exp = clsBD.ExportarExcel(CatalogoStoreds.Usuarios_C_Usuarios, null);
 
-            if(!exp.HayError)
+            if (!exp.HayError)
             {
                 try
                 {
@@ -291,6 +285,7 @@ namespace SisCreWin.Sistema
                 MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion Eventos
     }
 }

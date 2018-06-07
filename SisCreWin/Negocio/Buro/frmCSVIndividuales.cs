@@ -3,36 +3,37 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.FileIO;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
-using System.IO;
 using SisCreWin.Sistema;
-using Microsoft.VisualBasic.FileIO;
-using System.Data.SqlClient;
 
 namespace SisCreWin.Negocio.Buro
 {
     public partial class frmCSVIndividuales : Form
     {
         #region Variables
-        string FechaReporte = string.Empty;
-        string DirectorioReporte = string.Empty;
-        string ErrorProceso = string.Empty;
-        string ArchivoProceso = string.Empty;
-        DateTime FechaDoc = DateTime.Now;
-        DataTable dtCSV = new DataTable();
-        string ArchivoCSV = string.Empty;
-        string CSV_Clave = string.Empty;
-        string CSV_Fecha = string.Empty;
-        string CSV_Total = string.Empty;
-        bool CSV_Continuar = false;
-        bool EnProceso = false;
+
+        private string FechaReporte = string.Empty;
+        private string DirectorioReporte = string.Empty;
+        private string ErrorProceso = string.Empty;
+        private string ArchivoProceso = string.Empty;
+        private DateTime FechaDoc = DateTime.Now;
+        private DataTable dtCSV = new DataTable();
+        private string ArchivoCSV = string.Empty;
+        private string CSV_Clave = string.Empty;
+        private string CSV_Fecha = string.Empty;
+        private string CSV_Total = string.Empty;
+        private bool CSV_Continuar = false;
+        private bool EnProceso = false;
+
         #endregion Variables
+
         #region Metodos
+
         public frmCSVIndividuales()
         {
             InitializeComponent();
@@ -151,7 +152,7 @@ namespace SisCreWin.Negocio.Buro
             {
                 if (dg.InvokeRequired)
                 {
-                    dg.BeginInvoke((MethodInvoker)delegate ()
+                    dg.BeginInvoke((MethodInvoker)delegate()
                     {
                         dg.Rows.Clear();
                         dg.ColumnCount = d.Columns.Count;
@@ -173,7 +174,7 @@ namespace SisCreWin.Negocio.Buro
                                 Datos.Add(row[w].ToString());
                             }
 
-                            dg.BeginInvoke((MethodInvoker)delegate () { dg.Rows.Add(Datos.ToArray()); });
+                            dg.BeginInvoke((MethodInvoker)delegate() { dg.Rows.Add(Datos.ToArray()); });
                         }
                     }
                 }
@@ -183,8 +184,11 @@ namespace SisCreWin.Negocio.Buro
                 ErrorProceso = "Error al cargar visualizador: " + ex.Message;
             }
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void tab01_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tab01.SelectedIndex == 0)
@@ -239,7 +243,7 @@ namespace SisCreWin.Negocio.Buro
         private void wkr01_DoWork(object sender, DoWorkEventArgs e)
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT();
-            
+
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.ReportesBuro_C_CreditosIndividuales, vBit_DatosPrevios: clsGeneral.Zip("Parámetros: @FECHA_DEL_REPORTE = " + FechaReporte));
             Resultado = clsBD.ReportesBuro_C_CreditosIndividuales(FechaReporte);
 
@@ -247,7 +251,6 @@ namespace SisCreWin.Negocio.Buro
             {
                 ArchivoProceso = Path.Combine(DirectorioReporte, clsGeneral.GeneraNombreArchivoRnd("BuroInd_", "csv"));
                 ProcesarDatos(Resultado.Resultado, ArchivoProceso);
-
 
                 clsGeneral.BuroHistoricoIndividuales Buro = new clsGeneral.BuroHistoricoIndividuales(Sistema.Global.Usr_Id, vBHI_Documento: clsGeneral.Zip(System.IO.File.ReadAllText(ArchivoProceso, Encoding.Default), clsGeneral.Codificaciones.ANSI));
                 clsGeneral.BuroDocumentos BuroDoc = new clsGeneral.BuroDocumentos(Global.Usr_Id, FechaDoc.Year, FechaDoc.Month, "I", vBDG_Documento: clsGeneral.Zip(System.IO.File.ReadAllText(ArchivoProceso, Encoding.Default), clsGeneral.Codificaciones.ANSI));
@@ -281,7 +284,7 @@ namespace SisCreWin.Negocio.Buro
 
         private void frmCSVIndividuales_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(EnProceso)
+            if (EnProceso)
             {
                 e.Cancel = true;
             }
@@ -299,10 +302,9 @@ namespace SisCreWin.Negocio.Buro
                     " BDG_Mes = " + FechaReporteAut.Month.ToString() +
                     " BDG_Tipo = I"));
 
-
             ResultadoStored_Str Resultado2 = new ResultadoStored_Str();
             clsGeneral.BuroDocumentos BuroDoc = new clsGeneral.BuroDocumentos(Global.Usr_Id, FechaReporteAut.Year, FechaReporteAut.Month, "I");
-            
+
             if (MessageBox.Show("¿Está seguro de autorizar el reproceso de el documento?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 clsBD.Bitacoras_I_MovimientosSistema(Bitacora);
@@ -319,6 +321,7 @@ namespace SisCreWin.Negocio.Buro
                 }
             }
         }
+
         #endregion Eventos
 
         private void btnExaminar_Click(object sender, EventArgs e)

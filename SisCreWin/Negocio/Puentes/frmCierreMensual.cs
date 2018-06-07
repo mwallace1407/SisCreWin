@@ -1,29 +1,27 @@
-﻿using SisCreWin.BD;
-using SisCreWin.Modelo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SisCreWin.BD;
+using SisCreWin.Modelo;
 
 namespace SisCreWin.Negocio.Puentes
 {
     public partial class frmCierreMensual : Form
     {
         #region Variables
-        ResultadoStored_DT ResultadoGrid = new ResultadoStored_DT();
-        DateTime? Fecha = null;
-        TipoProceso tipoProceso;
-        string Archivo;
-        bool EnProceso = false;
-        string ErrorProceso = string.Empty;
 
-        List<string> FechasProceso = new List<string>();
+        private ResultadoStored_DT ResultadoGrid = new ResultadoStored_DT();
+        private DateTime? Fecha = null;
+        private TipoProceso tipoProceso;
+        private string Archivo;
+        private bool EnProceso = false;
+        private string ErrorProceso = string.Empty;
+
+        private List<string> FechasProceso = new List<string>();
 
         private DateTime? Fecha_Ini = null;
         private DateTime? Fecha_Fin = null;
@@ -31,16 +29,22 @@ namespace SisCreWin.Negocio.Puentes
         private int? Usr_Id = null;
         private int TopSel = 100;
 
-        DataTable DetalleCierre;
+        private DataTable DetalleCierre;
+
         #endregion Variables
+
         #region Enumeraciones
+
         private enum TipoProceso
         {
             Visualizacion,
             Extraccion
         }
+
         #endregion Enumeraciones
+
         #region Metodos
+
         private void ValoresIniciales()
         {
             try
@@ -365,8 +369,11 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show(ResultadoGrid.Error, "Error al obtener datos de cierres generados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void frmCierreMensual_Load(object sender, EventArgs e)
         {
             ValoresIniciales();
@@ -429,7 +436,7 @@ namespace SisCreWin.Negocio.Puentes
             if (MessageBox.Show("¿Está seguro de realizar el cierre mensual?" + Environment.NewLine + "Este es un procedimiento que no tiene reverso", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 ProcesarGen();
         }
-        
+
         private void wkr02_DoWork(object sender, DoWorkEventArgs e)
         {
             DataSet ds = new DataSet();
@@ -438,7 +445,7 @@ namespace SisCreWin.Negocio.Puentes
             ResultadoGrid = new BD.ResultadoStored_DT();
             ResultadoGrid = clsBD.Puentes_C_ReporteContableMensual(Fecha_Ini, Fecha_Fin);
 
-            if(!ResultadoGrid.HayError)
+            if (!ResultadoGrid.HayError)
             {
                 ds.Tables.Add(ResultadoGrid.Resultado);
 
@@ -537,7 +544,7 @@ namespace SisCreWin.Negocio.Puentes
                     MessageBox.Show(ex.Message, "Error al abrir el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
+
             pnlProgreso.Visible = false;
             EnProceso = false;
             Sistema.Global.ProcesosPendientes = false;
@@ -705,7 +712,7 @@ namespace SisCreWin.Negocio.Puentes
                 {
                     FechasProceso.Add(cboCierresGenerados.GetItemText(cboCierresGenerados.Items[w]));
                 }
-                
+
                 pnlProgreso.Size = new Size(this.Width - 6, this.Height - 6);
                 pnlProgreso.Location = new Point(3, 3);
                 pnlProgreso.Visible = true;
@@ -755,6 +762,7 @@ namespace SisCreWin.Negocio.Puentes
             EnProceso = false;
             Sistema.Global.ProcesosPendientes = false;
         }
+
         #endregion Eventos
     }
 }

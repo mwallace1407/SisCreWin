@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
-using SisCreWin.Modelo;
 using System.Data.SqlClient;
+using SisCreWin.Modelo;
 
 namespace SisCreWin.BD
 {
     public class clsBD
     {
         #region ProcedimientosBase
+
         public static BaseConectada ObtenerBaseConectada()
         {
             BaseConectada vBase = new BaseConectada(string.Empty, string.Empty);
@@ -20,16 +18,17 @@ namespace SisCreWin.BD
             {
                 if (SisCreWin.Sistema.Global.OverrideCnx == string.Empty)
                     SisCreWin.Sistema.Global.OverrideCnx = clsGeneral.BDCnx;
-                
+
                 SqlConnectionStringBuilder cnxDet = new SqlConnectionStringBuilder(SisCreWin.Sistema.Global.OverrideCnx);
 
                 vBase.BaseDatos = cnxDet.InitialCatalog;
                 vBase.Detalle = "Servidor: " + cnxDet.DataSource + Environment.NewLine + "Usuario: " + cnxDet.UserID;
             }
-            catch (Exception ex){ string s = ex.Message; }
+            catch (Exception ex) { string s = ex.Message; }
 
             return vBase;
         }
+
         private static ResultadoStored_Str EjecutarStored_Str(string Stored, List<SqlParameter> Params, string ColumnaResultado, bool DevolverError = true, int TimeOut = 0)
         {
             ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
@@ -57,7 +56,6 @@ namespace SisCreWin.BD
 
                     rdr.Close();
                 }
-
             }
             catch (Exception ex)
             {
@@ -172,7 +170,6 @@ namespace SisCreWin.BD
 
                     rdr.Close();
                 }
-
             }
             catch (Exception ex)
             {
@@ -215,7 +212,6 @@ namespace SisCreWin.BD
 
                     rdr.Close();
                 }
-
             }
             catch (Exception ex)
             {
@@ -251,7 +247,7 @@ namespace SisCreWin.BD
 
                 if (TimeOut > 0)
                     cmd.CommandTimeout = TimeOut;
-                
+
                 Resultado.Archivo = System.IO.Path.Combine(System.IO.Path.GetTempPath(), exportar.GenerarExcel(cmd.ExecuteReader(CommandBehavior.CloseConnection), System.IO.Path.GetTempPath(), clsGeneral.GeneraNombreArchivoRnd("Rpt_", "xlsx"), 250000));
                 //Resultado.Resultado.Load(cmd.ExecuteReader(CommandBehavior.CloseConnection));
             }
@@ -281,9 +277,13 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         #endregion ProcedimientosBase
+
         #region Sistema
+
         #region Usuarios
+
         public static ResultadoStored_Int Usuarios_C_ValidarLogin(string Usuario)
         {
             ResultadoStored_Int Resultado = new ResultadoStored_Int(0, string.Empty, false);
@@ -478,8 +478,11 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         #endregion Usuarios
+
         #region Catalogos
+
         //Modulos
         public static ResultadoStored_DT Catalogos_C_Modulos()
         {
@@ -600,9 +603,13 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         //!Modulos
+
         #endregion Catalogos
+
         #region Bitacoras
+
         public static ResultadoStored_Str Bitacoras_I_MovimientosSistema(clsGeneral.BitacoraMovimientosSistema Bitacora)
         {
             ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
@@ -692,8 +699,11 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         #endregion Bitacoras
+
         #region General
+
         public static ResultadoStored_DT Sistema_C_ParametrosMantenimiento()
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
@@ -744,10 +754,15 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         #endregion General
+
         #endregion Sistema
+
         #region Negocio
+
         #region General
+
         public static DatosStatusBar Negocio_C_FechasDelSistema(ResultadoStored_DT Resultado)
         {
             DatosStatusBar sb = new DatosStatusBar();
@@ -775,8 +790,11 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         #endregion General
+
         #region Catalogos
+
         //Promotores
         public static ResultadoStored_DT Catalogos_C_Promotores(bool ObtenerTodos = false)
         {
@@ -846,6 +864,7 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         //!Promotores
         //Proyectos
         public static ResultadoStored_DT Catalogos_C_Proyectos(bool ObtenerTodos = false)
@@ -868,7 +887,6 @@ namespace SisCreWin.BD
             ResultadoStored_Int Resultado = new ResultadoStored_Int(0, string.Empty, false);
             SqlParameter param;
             List<SqlParameter> paramC = new List<SqlParameter>();
-
 
             param = new SqlParameter("@Prom_Id", SqlDbType.Int);
             param.Value = Proyecto.Prom_Id;
@@ -1087,6 +1105,7 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         //!Proyectos
         //TIIE
         public static ResultadoStored_DT Catalogos_C_TIIE()
@@ -1184,6 +1203,7 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         //!TIIE
         //Origen_Creditos_Puente
         public static ResultadoStored_DT Catalogos_C_OrigenCreditosPuente()
@@ -1269,6 +1289,7 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         //!Origen_Creditos_Puente
         //TiposPagoPuentes
         public static ResultadoStored_DT Catalogos_C_TiposPagoPuentes()
@@ -1339,9 +1360,13 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         //!TiposPagoPuentes
+
         #endregion Catalogos
+
         #region Buro
+
         //Puentes
         public static ResultadoStored_DT ReportesBuro_C_CreditosPuentes(string FechaDoc, string Periodo, int PeriodoInt)
         {
@@ -1486,6 +1511,7 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         //!Puentes
         //Individuales
         public static ResultadoStored_DT ReportesBuro_C_CreditosIndividuales(string FECHA_DEL_REPORTE)
@@ -1620,13 +1646,14 @@ namespace SisCreWin.BD
                     bulkCopy.WriteToServer(dtCSV);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Resultado = ex.Message;
             }
 
             return Resultado;
         }
+
         //!Individuales
         public static ResultadoStored_Str Buro_M_Documentos(clsGeneral.BuroDocumentos Buro)
         {
@@ -1660,7 +1687,7 @@ namespace SisCreWin.BD
             ResultadoStored_Str Resultado = new ResultadoStored_Str(string.Empty, string.Empty, false);
             SqlParameter param;
             List<SqlParameter> paramC = new List<SqlParameter>();
-            
+
             param = new SqlParameter("@BDG_Anno", SqlDbType.Int);
             param.Value = Buro.BDG_Anno;
             paramC.Add(param);
@@ -1675,8 +1702,11 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         #endregion Buro
+
         #region Puentes
+
         //Operaciones_Puentes
         public static ResultadoStored_DT Puentes_C_VerificarPosibilidadCierre()
         {
@@ -1831,7 +1861,7 @@ namespace SisCreWin.BD
             ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
             SqlParameter param;
             List<SqlParameter> paramC = new List<SqlParameter>();
-            
+
             param = new SqlParameter("@Fecha_Ini", SqlDbType.DateTime);
             param.Value = Fecha_Ini;
             paramC.Add(param);
@@ -1948,7 +1978,7 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
-        
+
         public static ResultadoStored_DT Puentes_C_TiposPago()
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT(new DataTable(), string.Empty, false);
@@ -2127,11 +2157,16 @@ namespace SisCreWin.BD
 
             return Resultado;
         }
+
         //!Operaciones_Puentes
+
         #endregion Puentes
+
         #endregion Negocio
     }
+
     #region Modelos
+
     public struct ResultadoStored_Str
     {
         public string Resultado;
@@ -2225,5 +2260,6 @@ namespace SisCreWin.BD
             Detalle = vDetalle;
         }
     }
+
     #endregion Modelos
 }

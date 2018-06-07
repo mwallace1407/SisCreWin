@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
@@ -15,13 +9,17 @@ namespace SisCreWin.Sistema
     public partial class frmBitacoraMov : Form
     {
         #region Variables
+
         private DateTime? Fecha_Ini = null;
         private DateTime? Fecha_Fin = null;
         private string Procedimiento = null;
         private int? Usr_Id = null;
         private int TopSel = 100;
+
         #endregion Variables
+
         #region Metodos
+
         public frmBitacoraMov()
         {
             InitializeComponent();
@@ -152,8 +150,11 @@ namespace SisCreWin.Sistema
                 MessageBox.Show(Resultado.Error, "Error al obtener datos de bitácora", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void frmBitacoraMov_Load(object sender, EventArgs e)
         {
             cboProcedimientos.DrawMode = DrawMode.OwnerDrawFixed;
@@ -229,7 +230,7 @@ namespace SisCreWin.Sistema
         private void btnExportarExcel_Click(object sender, EventArgs e)
         {
             ResultadoExport exp = new BD.ResultadoExport();
-            
+
             exp = clsBD.Bitacoras_C_MovimientosSistema_Exp(Fecha_Ini, Fecha_Fin, Procedimiento, Usr_Id, TopSel);
 
             if (!exp.HayError)
@@ -334,6 +335,7 @@ namespace SisCreWin.Sistema
                 }
             }
         }
+
         #endregion Eventos
     }
 }

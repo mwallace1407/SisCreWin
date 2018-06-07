@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SisCreWin.BD;
 
@@ -37,6 +31,7 @@ namespace SisCreWin
             Parametros.AcceptChanges();
             grdInfo.DataSource = Parametros;
         }
+
         public frmInfo()
         {
             InitializeComponent();

@@ -1,38 +1,42 @@
-﻿using SisCreWin.BD;
-using SisCreWin.Modelo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SisCreWin.BD;
+using SisCreWin.Modelo;
 
 namespace SisCreWin.Negocio.Puentes
 {
     public partial class frmHistCred : Form
     {
         #region Variables
-        ResultadoStored_DT ResultadoGrid = new ResultadoStored_DT();
-        int? NumeroPrestamo = null;
-        DateTime? FechaIni = null;
-        DateTime? FechaFin = null;
-        TipoProceso tipoProceso;
-        string Archivo;
-        bool EnProceso = false;
+
+        private ResultadoStored_DT ResultadoGrid = new ResultadoStored_DT();
+        private int? NumeroPrestamo = null;
+        private DateTime? FechaIni = null;
+        private DateTime? FechaFin = null;
+        private TipoProceso tipoProceso;
+        private string Archivo;
+        private bool EnProceso = false;
+
         #endregion Variables
+
         #region Enumeraciones
+
         private enum TipoProceso
         {
             Visualizacion,
             Extraccion
         }
+
         #endregion Enumeraciones
+
         #region Metodos
+
         private void ValoresIniciales()
         {
             ResultadoStored_Str Resultado = new BD.ResultadoStored_Str();
@@ -78,6 +82,7 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show(Resultado.Error, "Errores en el proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void CargarGrid()
         {
             if (!ResultadoGrid.HayError)
@@ -327,7 +332,9 @@ namespace SisCreWin.Negocio.Puentes
         {
             InitializeComponent();
         }
+
         #endregion Metodos
+
         #region Eventos
 
         private void frmHistCred_Load(object sender, EventArgs e)
@@ -343,7 +350,7 @@ namespace SisCreWin.Negocio.Puentes
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            if(grdDatos.Rows.Count == 0)
+            if (grdDatos.Rows.Count == 0)
             {
                 MessageBox.Show("No hay datos para exportar", "Exportar a Excel", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -535,7 +542,7 @@ namespace SisCreWin.Negocio.Puentes
             EnProceso = false;
             Sistema.Global.ProcesosPendientes = false;
         }
-        
+
         private void wkr03_DoWork(object sender, DoWorkEventArgs e)
         {
             ResultadoGrid = new BD.ResultadoStored_DT();
@@ -627,6 +634,7 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show(ex.Message, "Error al procesar adjuntos de ajuste", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion Eventos
 
         private void grdAArchivos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

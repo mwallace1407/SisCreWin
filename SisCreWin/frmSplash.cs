@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SisCreWin
@@ -14,6 +8,7 @@ namespace SisCreWin
     {
         private Image GIFAnim = global::SisCreWin.Properties.Resources.splash_screen_animated_fast_1loop;
         private int frames;
+
         public frmSplash()
         {
             InitializeComponent();

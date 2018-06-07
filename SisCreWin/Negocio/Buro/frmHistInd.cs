@@ -1,27 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
-using System.IO;
 
 namespace SisCreWin.Negocio.Buro
 {
     public partial class frmHistInd : Form
     {
         #region Variables
+
         private DateTime? Fecha_Ini = null;
         private DateTime? Fecha_Fin = null;
         private int? Usr_Id = null;
         private int TopSel = 100;
+
         #endregion Variables
+
         #region Metodos
+
         public frmHistInd()
         {
             InitializeComponent();
@@ -135,8 +134,11 @@ namespace SisCreWin.Negocio.Buro
                 outfile.Write(Contenido);
             }
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void frmBitacoraMov_Load(object sender, EventArgs e)
         {
             cboUsuarios.DrawMode = DrawMode.OwnerDrawFixed;
@@ -185,7 +187,7 @@ namespace SisCreWin.Negocio.Buro
         private void btnExportarExcel_Click(object sender, EventArgs e)
         {
             ResultadoExport exp = new BD.ResultadoExport();
-            
+
             exp = clsBD.Buro_C_HistoricoIndividuales_Exp(Fecha_Ini, Fecha_Fin, Usr_Id, TopSel);
 
             if (!exp.HayError)
@@ -286,7 +288,7 @@ namespace SisCreWin.Negocio.Buro
                         Archivo = Path.Combine(fbd01.SelectedPath, clsGeneral.GeneraNombreArchivoRnd("BuroInd_", "csv"));
                         GenerarArchivo(Archivo, clsGeneral.Unzip(Resultado.Resultado, clsGeneral.Codificaciones.ANSI));
 
-                        if(File.Exists(Archivo))
+                        if (File.Exists(Archivo))
                         {
                             System.Diagnostics.Process.Start(Archivo);
                         }
@@ -309,8 +311,8 @@ namespace SisCreWin.Negocio.Buro
 
         private void grdDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
+
         #endregion Eventos
     }
 }

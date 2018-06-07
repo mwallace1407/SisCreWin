@@ -3,44 +3,47 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
-using System.IO;
-using System.Data.SqlClient;
 
 namespace SisCreWin.Negocio.Puentes
 {
     public partial class frmRegistroAjuste : Form
     {
         #region Variables
-        clsGeneral.PuentesPagos Puente;
-        clsGeneral.PuentesPagos PuenteQ;
-        string ErrorProceso = string.Empty;
-        string ArchivoProceso = string.Empty;
-        bool EnProceso = false;
-        int NumeroPrestamoAnt = 0;
 
-        DataTable Propiedades;
-        DataTable Archivos;
-        List<string> ListaArchivos;
+        private clsGeneral.PuentesPagos Puente;
+        private clsGeneral.PuentesPagos PuenteQ;
+        private string ErrorProceso = string.Empty;
+        private string ArchivoProceso = string.Empty;
+        private bool EnProceso = false;
+        private int NumeroPrestamoAnt = 0;
+
+        private DataTable Propiedades;
+        private DataTable Archivos;
+        private List<string> ListaArchivos;
+
         #endregion Variables
+
         #region Enumeraciones
+
         private enum TipoProceso
         {
             Visualizacion,
             Extraccion
         }
+
         #endregion Enumeraciones
+
         #region Metodos
+
         public frmRegistroAjuste()
         {
             InitializeComponent();
         }
-        
+
         private void ValoresIniciales()
         {
             ResultadoStored_Str Resultado = new BD.ResultadoStored_Str();
@@ -63,7 +66,7 @@ namespace SisCreWin.Negocio.Puentes
                 txtPagoIntMoratorios.Value = 0;
                 btnCrear.Enabled = false;
                 txtObservaciones.Text = string.Empty;
-                
+
                 ListaArchivos = new List<string>();
                 Archivos = new DataTable();
                 Archivos.Columns.Add("Archivo");
@@ -102,8 +105,11 @@ namespace SisCreWin.Negocio.Puentes
             if (cboNumeroPrestamo.SelectedIndex < 0 || (cboNumeroPrestamo.SelectedIndex >= 0 && Convert.ToInt32(cboNumeroPrestamo.SelectedValue) <= 0))
                 btnCrear.Enabled = false;
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void frmRegistroPago_Load(object sender, EventArgs e)
         {
             ValoresIniciales();
@@ -210,7 +216,7 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show("Se han realizado los movimientos de aplicación de ajuste.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             ValoresIniciales();
-            
+
             if (cboNumeroPrestamo.FindString(NumeroPrestamoAnt.ToString()) >= 0)
             {
                 cboNumeroPrestamo.SelectedValue = NumeroPrestamoAnt;
@@ -261,12 +267,10 @@ namespace SisCreWin.Negocio.Puentes
 
         private void cboNumeroPrestamo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
         }
 
         private void dtpFechaPago_ValueChanged(object sender, EventArgs e)
         {
-            
         }
 
         private void txtMontoTotal_Enter(object sender, EventArgs e)
@@ -298,6 +302,7 @@ namespace SisCreWin.Negocio.Puentes
         {
             txtPagoIntMoratorios.Select(0, txtPagoIntMoratorios.Text.Length);
         }
+
         private void btnExaminar_Click(object sender, EventArgs e)
         {
             ofd01.ShowDialog(this);
@@ -387,6 +392,7 @@ namespace SisCreWin.Negocio.Puentes
             btnAgregar.Enabled = false;
             btnExaminar.Select();
         }
+
         #endregion Eventos
     }
 }

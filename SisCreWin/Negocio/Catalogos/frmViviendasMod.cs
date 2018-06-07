@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
@@ -15,9 +10,13 @@ namespace SisCreWin.Negocio.Catalogos
     public partial class frmViviendasMod : Form
     {
         #region Variables
+
         private int PViv_Id = 0;
+
         #endregion Variables
+
         #region Metodos
+
         public frmViviendasMod()
         {
             InitializeComponent();
@@ -41,7 +40,7 @@ namespace SisCreWin.Negocio.Catalogos
             cboProyectos.DisplayMember = "Proy_Nombre";
             cboProyectos.ValueMember = "Proy_Id";
             cboProyectos.DataSource = dt;
-            
+
             cboEstadosMod.DisplayMember = "Valor";
             cboEstadosMod.ValueMember = "Id";
             cboEstadosMod.DataSource = clsBD.Catalogos_C_ViviendasEstados().Resultado;
@@ -75,8 +74,11 @@ namespace SisCreWin.Negocio.Catalogos
             PViv_Id = 0;
             gbDatos.Enabled = false;
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void frmViviendasMod_Load(object sender, EventArgs e)
         {
             cboProyectos.DrawMode = DrawMode.OwnerDrawFixed;
@@ -239,6 +241,7 @@ namespace SisCreWin.Negocio.Catalogos
                 MessageBox.Show(exp.Error, "Error al generar el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion Eventos
     }
 }

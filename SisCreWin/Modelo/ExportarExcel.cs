@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
-using System.Data.Common;
+using System.Linq;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
@@ -13,8 +11,9 @@ namespace SisCreWin.Modelo
     public class ExportarExcel
     {
         #region OpenXml
+
         static private int rowsPerSheet = 250000;
-        DataTable ResultsData = new DataTable();
+        private DataTable ResultsData = new DataTable();
 
         public string GenerarExcel(IDataReader reader, string RutaArchivos, string Archivo, int RegistrosPorHoja)
         {
@@ -84,7 +83,7 @@ namespace SisCreWin.Modelo
         {
             try
             {
-                //Check if the file exists. 
+                //Check if the file exists.
                 //if (firstTime)
                 //{
                 //    Random rnd = new Random();
@@ -114,10 +113,8 @@ namespace SisCreWin.Modelo
                     var sheetData = new SheetData();
                     worksheetPart.Worksheet = new Worksheet(sheetData);
 
-
                     var bold1 = new Bold();
                     CellFormat cf = new CellFormat();
-
 
                     // Add Sheets to the Workbook.
                     Sheets sheets;
@@ -244,6 +241,7 @@ namespace SisCreWin.Modelo
                 return "Error: Export=>" + ex.Message + ex.StackTrace;
             }
         }
+
         #endregion OpenXml
     }
 }

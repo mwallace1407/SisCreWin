@@ -1,20 +1,14 @@
-﻿using SisCreWin.BD;
-using SisCreWin.Modelo;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using SisCreWin.BD;
+using SisCreWin.Modelo;
 
 namespace SisCreWin.Sistema
 {
     public partial class frmParametros : Form
     {
         #region Metodos
+
         private void CargarValoresIniciales()
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT();
@@ -29,7 +23,7 @@ namespace SisCreWin.Sistema
 
             for (int w = 0; w < Resultado.Resultado.Rows.Count; w++)
             {
-                if(Resultado.Resultado.Rows[w]["Param_Llave"].ToString() == "SisMant")
+                if (Resultado.Resultado.Rows[w]["Param_Llave"].ToString() == "SisMant")
                 {
                     if (Resultado.Resultado.Rows[w]["Param_Valor"].ToString() == "0")
                         chkActivo.Checked = false;
@@ -45,8 +39,11 @@ namespace SisCreWin.Sistema
 
             lblActualizacion.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
         #endregion Metodos
+
         #region Eventos
+
         public frmParametros()
         {
             InitializeComponent();
@@ -64,7 +61,7 @@ namespace SisCreWin.Sistema
 
             Resultado = clsBD.Sistema_U_ParametrosMantenimiento((chkActivo.Checked) ? "1" : "0", cboUsuarios.SelectedValue.ToString());
 
-            if(!Resultado.HayError)
+            if (!Resultado.HayError)
             {
                 clsBD.Bitacoras_I_MovimientosSistema(Bitacora);
                 MessageBox.Show("Proceso satisfacoriamente finalizado", "Mantenimiento del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -75,6 +72,7 @@ namespace SisCreWin.Sistema
                 MessageBox.Show(Resultado.Error, "Errores en el proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion Eventos
     }
 }

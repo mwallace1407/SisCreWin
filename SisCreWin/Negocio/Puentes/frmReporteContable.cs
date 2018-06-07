@@ -1,38 +1,42 @@
-﻿using SisCreWin.BD;
-using SisCreWin.Modelo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SisCreWin.BD;
+using SisCreWin.Modelo;
 
 namespace SisCreWin.Negocio.Puentes
 {
     public partial class frmReporteContable : Form
     {
         #region Variables
-        ResultadoStored_DT ResultadoGrid = new ResultadoStored_DT();
-        TipoProceso tipoProceso;
-        string Archivo;
-        bool EnProceso = false;
-        string ErrorProceso = string.Empty;
+
+        private ResultadoStored_DT ResultadoGrid = new ResultadoStored_DT();
+        private TipoProceso tipoProceso;
+        private string Archivo;
+        private bool EnProceso = false;
+        private string ErrorProceso = string.Empty;
 
         private DateTime? Fecha_Ini = null;
         private DateTime? Fecha_Fin = null;
+
         #endregion Variables
+
         #region Enumeraciones
+
         private enum TipoProceso
         {
             Visualizacion,
             Extraccion
         }
+
         #endregion Enumeraciones
+
         #region Metodos
+
         private void ValoresIniciales()
         {
             dtpPFechaFinal.MaxDate = clsGeneral.ObtenerUltimoDiaMes(DateTime.Now.AddMonths(-1).Year, DateTime.Now.AddMonths(-1).Month, true);
@@ -67,7 +71,7 @@ namespace SisCreWin.Negocio.Puentes
             ResultadoExport exp = new ResultadoExport();
             SqlParameter param;
             List<SqlParameter> paramC = new List<SqlParameter>();
-            
+
             param = new SqlParameter("@Fecha_Ini", SqlDbType.DateTime);
             param.Value = Fecha_Ini;
             paramC.Add(param);
@@ -126,8 +130,11 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show(ResultadoGrid.Error, "Error al obtener el reporte", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void frmReporteContable_Load(object sender, EventArgs e)
         {
             ValoresIniciales();
@@ -223,8 +230,8 @@ namespace SisCreWin.Negocio.Puentes
 
         private void dtpPFechaInicial_ValueChanged(object sender, EventArgs e)
         {
-            
         }
+
         #endregion Eventos
     }
 }

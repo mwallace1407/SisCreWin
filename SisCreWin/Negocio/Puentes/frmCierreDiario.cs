@@ -1,27 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
-using System.IO;
 
 namespace SisCreWin.Negocio.Puentes
 {
     public partial class frmCierreDiario : Form
     {
         #region Variables
-        string FechaReporte = string.Empty;
-        string ErrorProceso = string.Empty;
-        string ArchivoProceso = string.Empty;
-        bool EnProceso = false;
+
+        private string FechaReporte = string.Empty;
+        private string ErrorProceso = string.Empty;
+        private string ArchivoProceso = string.Empty;
+        private bool EnProceso = false;
+
         #endregion Variables
+
         #region Metodos
+
         public frmCierreDiario()
         {
             InitializeComponent();
@@ -50,11 +48,13 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show("No existen periodos pendientes por cerrar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void tab01_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
         }
 
         private void frmCierreDiario_Load(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace SisCreWin.Negocio.Puentes
         {
             if (MessageBox.Show("¿Está seguro de realizar el cierre diario para los créditos puente?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
-            
+
             pnlProgreso.Size = new Size(this.Width - 6, this.Height - 6);
             pnlProgreso.Location = new Point(3, 3);
             pnlProgreso.Visible = true;
@@ -79,7 +79,7 @@ namespace SisCreWin.Negocio.Puentes
         private void wkr01_DoWork(object sender, DoWorkEventArgs e)
         {
             ResultadoStored_Str Resultado = new ResultadoStored_Str();
-            
+
             clsGeneral.BitacoraMovimientosSistema Bitacora = new clsGeneral.BitacoraMovimientosSistema(Sistema.Global.Usr_Id, CatalogoStoreds.Puentes_I_CierreDiario, vBit_DatosPrevios: clsGeneral.Zip("Parámetros: Ninguno"));
             clsBD.Bitacoras_I_MovimientosSistema(Bitacora);
             Resultado = clsBD.Puentes_I_CierreDiario();
@@ -101,11 +101,12 @@ namespace SisCreWin.Negocio.Puentes
 
             UltimaFecha();
         }
+
         #endregion Eventos
 
         private void frmCierreDiario_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(EnProceso)
+            if (EnProceso)
             {
                 e.Cancel = true;
             }

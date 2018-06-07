@@ -1,20 +1,14 @@
-﻿using SisCreWin.BD;
-using SisCreWin.Modelo;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using SisCreWin.BD;
+using SisCreWin.Modelo;
 
 namespace SisCreWin.Negocio.Catalogos
 {
     public partial class frmTiposPagoPuentes : Form
     {
         #region Metodos
+
         private void CargarGrid()
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT();
@@ -46,8 +40,11 @@ namespace SisCreWin.Negocio.Catalogos
         {
             InitializeComponent();
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void btnCrear_Click(object sender, EventArgs e)
         {
             ResultadoStored_Int Resultado = new ResultadoStored_Int();
@@ -151,7 +148,7 @@ namespace SisCreWin.Negocio.Catalogos
 
             exp = clsBD.ExportarExcel(CatalogoStoreds.Catalogos_C_TiposPagoPuentes, null);
 
-            if(!exp.HayError)
+            if (!exp.HayError)
             {
                 try
                 {
@@ -172,8 +169,8 @@ namespace SisCreWin.Negocio.Catalogos
 
         private void frmTiposPagoPuentes_Load(object sender, EventArgs e)
         {
-
         }
+
         #endregion Eventos
     }
 }

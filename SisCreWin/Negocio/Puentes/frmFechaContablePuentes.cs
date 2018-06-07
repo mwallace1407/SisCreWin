@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
@@ -15,6 +8,7 @@ namespace SisCreWin.Negocio.Puentes
     public partial class frmFechaContablePuentes : Form
     {
         #region Metodos
+
         private void ValoresIniciales()
         {
             ResultadoStored_Str Resultado = new BD.ResultadoStored_Str();
@@ -82,8 +76,11 @@ namespace SisCreWin.Negocio.Puentes
                 MessageBox.Show("Error al actualizar fecha contable: " + Resultado.Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion Metodos
+
         #region Eventos
+
         public frmFechaContablePuentes()
         {
             InitializeComponent();
@@ -101,6 +98,7 @@ namespace SisCreWin.Negocio.Puentes
                 Procesar(clsGeneral.ObtenerUltimoDiaMes(dtpFecha.Value.Year, dtpFecha.Value.Month, false));
             }
         }
+
         #endregion Eventos
     }
 }

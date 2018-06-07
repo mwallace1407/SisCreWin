@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SisCreWin.Sistema
+﻿namespace SisCreWin.Sistema
 {
-    static class Global
+    internal static class Global
     {
         private static int vUsr_Id = 0;
         private static bool vProcesosPendientes = false;

@@ -1,14 +1,7 @@
-﻿using SisCreWin.BD;
-using SisCreWin.Modelo;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using SisCreWin.BD;
+using SisCreWin.Modelo;
 
 namespace SisCreWin.Negocio.Catalogos
 {
@@ -17,6 +10,7 @@ namespace SisCreWin.Negocio.Catalogos
         private DateTime? FechaLiq = null;
 
         #region Metodos
+
         private void CargarGrid()
         {
             ResultadoStored_DT Resultado = new ResultadoStored_DT();
@@ -91,8 +85,11 @@ namespace SisCreWin.Negocio.Catalogos
         {
             InitializeComponent();
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void btnCrear_Click(object sender, EventArgs e)
         {
             ResultadoStored_Int Resultado = new ResultadoStored_Int();
@@ -120,7 +117,7 @@ namespace SisCreWin.Negocio.Catalogos
                     MessageBox.Show("Se ha agregado un origen.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtIngId.Value = 1;
                     txtIngOrigen.Text = string.Empty;
-                    if(cboIngProyectos.Items.Count > 0) { cboIngProyectos.SelectedIndex = 0; }
+                    if (cboIngProyectos.Items.Count > 0) { cboIngProyectos.SelectedIndex = 0; }
                     if (cboIngDacionAdju.Items.Count > 0) { cboIngDacionAdju.SelectedIndex = 0; }
                     dtpIngFechaLiquidacion.Value = DateTime.Now;
                     txtIngEstado.Text = string.Empty;
@@ -158,7 +155,7 @@ namespace SisCreWin.Negocio.Catalogos
                 if (cboModDacionAdju.Items.Count > 0) { cboModDacionAdju.SelectedValue = dr.Cells["OCP_Dacion_o_Adjudicacion"].Value; }
                 if (cboModEstado.Items.Count > 0) { cboModEstado.SelectedValue = dr.Cells["OCP_Estado"].Value; }
 
-                if(clsGeneral.ObtieneFecha(dr.Cells["OCP_Fecha_Liquidacion"].Value.ToString()).ToString("dd/MM/yyyy") == "01/01/1900")
+                if (clsGeneral.ObtieneFecha(dr.Cells["OCP_Fecha_Liquidacion"].Value.ToString()).ToString("dd/MM/yyyy") == "01/01/1900")
                 {
                     dtpModFechaLiquidacion.Value = clsGeneral.ObtieneFecha(DateTime.Now.ToString("dd/MM/yyyy"));
                     dtpModFechaLiquidacion.Enabled = false;
@@ -222,7 +219,7 @@ namespace SisCreWin.Negocio.Catalogos
 
             exp = clsBD.ExportarExcel(CatalogoStoreds.Catalogos_C_OrigenCreditosPuente, null);
 
-            if(!exp.HayError)
+            if (!exp.HayError)
             {
                 try
                 {
@@ -258,8 +255,8 @@ namespace SisCreWin.Negocio.Catalogos
 
         private void tabModificar_Click(object sender, EventArgs e)
         {
-
         }
+
         #endregion Eventos
     }
 }

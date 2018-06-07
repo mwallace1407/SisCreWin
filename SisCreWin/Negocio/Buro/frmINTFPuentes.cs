@@ -1,28 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
-using System.IO;
 
 namespace SisCreWin.Negocio.Buro
 {
     public partial class frmINTFPuentes : Form
     {
         #region Variables
-        string DirectorioReporte = string.Empty;
-        string ErrorProceso = string.Empty;
-        string ArchivoProceso = string.Empty;
-        DateTime FechaDoc = DateTime.Now;
-        bool EnProceso = false;
+
+        private string DirectorioReporte = string.Empty;
+        private string ErrorProceso = string.Empty;
+        private string ArchivoProceso = string.Empty;
+        private DateTime FechaDoc = DateTime.Now;
+        private bool EnProceso = false;
+
         #endregion Variables
+
         #region Metodos
+
         public frmINTFPuentes()
         {
             InitializeComponent();
@@ -68,8 +69,11 @@ namespace SisCreWin.Negocio.Buro
             else
                 btnAutorizar.Enabled = true;
         }
+
         #endregion Metodos
+
         #region Eventos
+
         private void tab01_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tab01.SelectedIndex == 0)
@@ -170,7 +174,7 @@ namespace SisCreWin.Negocio.Buro
 
         private void frmCSVIndividuales_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(EnProceso)
+            if (EnProceso)
             {
                 e.Cancel = true;
             }
@@ -187,7 +191,6 @@ namespace SisCreWin.Negocio.Buro
                 vBit_DatosPrevios: clsGeneral.Zip("Parámetros: @BDG_Anno = " + FechaReporteAut.Year.ToString() +
                     " BDG_Mes = " + FechaReporteAut.Month.ToString() +
                     " BDG_Tipo = I"));
-
 
             ResultadoStored_Str Resultado2 = new ResultadoStored_Str();
             clsGeneral.BuroDocumentos BuroDoc = new clsGeneral.BuroDocumentos(Sistema.Global.Usr_Id, FechaReporteAut.Year, FechaReporteAut.Month, "P");
@@ -208,6 +211,7 @@ namespace SisCreWin.Negocio.Buro
                 }
             }
         }
+
         #endregion Eventos
     }
 }

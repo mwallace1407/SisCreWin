@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using SisCreWin.Seguridad;
 using SisCreWin.BD;
 using SisCreWin.Modelo;
+using SisCreWin.Seguridad;
 using SisCreWin.Sistema;
 
 namespace SisCreWin
@@ -43,6 +36,7 @@ namespace SisCreWin
                 }
             }
         }
+
         public frmLogin()
         {
             InitializeComponent();
@@ -51,7 +45,7 @@ namespace SisCreWin
         private void frmLogin_Load(object sender, EventArgs e)
         {
             clsSeguridad.Credencial Cred = new clsSeguridad.Credencial();
-            
+
             Cred = clsSeguridad.ObtenerUsuarioActual();
             txtUsuario.Text = Cred.Usuario;
             txtDominio.Text = Cred.Dominio;
@@ -80,7 +74,7 @@ namespace SisCreWin
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
-            if(clsSeguridad.IsValidateCredentials(txtUsuario.Text, txtContrasenna.Text, txtDominio.Text))
+            if (clsSeguridad.IsValidateCredentials(txtUsuario.Text, txtContrasenna.Text, txtDominio.Text))
             {
                 ResultadoStored_Int Resultado;
 
@@ -91,7 +85,7 @@ namespace SisCreWin
                     Resultado = clsBD.Usuarios_C_ValidarLogin(clsGeneral.Codificar(txtUsuario.Text.Trim()));
                 else
                     Resultado = clsBD.Usuarios_C_ValidarLogin(clsGeneral.Codificar("oenriquez"));
-                
+
                 //string ss = clsGeneral.Codificar("");
 
                 if (!Resultado.HayError)

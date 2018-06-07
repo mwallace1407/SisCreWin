@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using SisCreWin.Sistema;
 using Microsoft.Win32;
+using SisCreWin.Sistema;
 
 namespace SisCreWin
 {
@@ -59,6 +52,7 @@ namespace SisCreWin
                 llave.Close();
             }
         }
+
         private string setCnx(string Servidor, string BD, string Usuario, string Pass, bool Trusted)
         {
             if (Trusted)
@@ -66,6 +60,7 @@ namespace SisCreWin
             else
                 return "Data Source=" + Servidor + ";Initial Catalog=" + BD + ";User Id=" + Usuario + ";Password=" + Pass + ";";
         }
+
         public frmCnx()
         {
             InitializeComponent();

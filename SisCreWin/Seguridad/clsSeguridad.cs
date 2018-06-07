@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SisCreWin.Seguridad
 {
-    class clsSeguridad
+    internal class clsSeguridad
     {
         public static string GetloggedinUserName()
         {
@@ -46,7 +42,7 @@ namespace SisCreWin.Seguridad
             public string Usuario;
             public string Dominio;
 
-            public Credencial (string vUsuario, string vDominio)
+            public Credencial(string vUsuario, string vDominio)
             {
                 Usuario = vUsuario;
                 Dominio = vDominio;
